@@ -1,0 +1,90 @@
+---
+import { Image } from "astro:assets";
+import ctaImage from "../../assets/image-cta.webp";
+
+interface Props {
+    title: string;
+    subtitle?: string;
+    description?: string;
+    cta: {
+        text: string;
+        href: string;
+    };
+    id?: string;
+    variant?: "default" | "brushed-full";
+    classes?: Record<string, string>;
+}
+
+const { title, subtitle, description, cta, id, variant = "default", classes = {} } = Astro.props;
+
+const isFull = variant === "brushed-full";
+---
+
+{isFull ? (
+    <section {id} class:list={["py-16 md:py-28", classes?.container]}>
+        <div class="max-w-6xl mx-auto px-4 sm:px-6">
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-3">
+
+                <!-- Card gauche -->
+                <div class="relative flex flex-col justify-between rounded-2xl bg-[#e8e5e0] p-6 md:p-8 min-h-[400px] md:min-h-[480px]">
+                    <!-- Header bar -->
+                    <div class="flex items-center gap-2">
+                        <span class="w-2 h-2 rounded-full bg-primary"></span>
+                        <span class="text-[0.65rem] font-semibold uppercase tracking-[0.15em] text-[#1a1a1a]">
+                            {subtitle || "Bis Repetita"}
+                        </span>
+                    </div>
+
+                    <!-- Contenu bas -->
+                    <div class="flex flex-col gap-6">
+                        <h2 class="text-3xl md:text-4xl lg:text-[2.75rem] text-[#1a1a1a] leading-[1.1] tracking-[-0.02em]" style="font-family: 'Manrope', system-ui, sans-serif; font-weight: 500;">
+                            {title}
+                        </h2>
+                    </div>
+                </div>
+
+                <!-- Image droite -->
+                <div class="h-64 md:h-auto relative rounded-2xl overflow-hidden">
+                    <Image
+                        src={ctaImage}
+                        alt="Bis Repetita boxing"
+                        class="absolute inset-0 w-full h-full object-cover"
+                        quality={90}
+                    />
+                    <!-- Bouton sur l'image -->
+                    <a
+                        href={cta.href}
+                        class="absolute bottom-6 right-6 md:bottom-8 md:right-8 inline-flex items-center gap-3 bg-white/20 backdrop-blur-sm border-none text-white text-base md:text-lg font-bold uppercase tracking-[0.15em] rounded-full px-7 md:px-8 py-2.5 md:py-3 transition-all duration-300 hover:bg-white/30 hover:border-white/50"
+                    >
+                        {cta.text}
+                        <span aria-hidden="true">&rarr;</span>
+                    </a>
+                </div>
+
+            </div>
+        </div>
+    </section>
+) : (
+    <section {id} class:list={["py-16 md:py-28", classes?.container]}>
+        <div class="max-w-6xl mx-auto px-4 sm:px-6">
+            <div class="bg-primary border border-primary-light/30 rounded-2xl px-8 py-12 md:px-12 md:py-16 flex flex-col md:flex-row md:items-center md:justify-between gap-8 relative overflow-hidden">
+                <h2 class="text-3xl md:text-4xl lg:text-5xl font-medium font-display text-background shrink-0">
+                    {title}
+                </h2>
+                <div class="flex flex-col items-start md:items-end gap-4">
+                    {description && (
+                        <p class="text-base md:text-lg text-background/70 md:text-right max-w-md">
+                            {description}
+                        </p>
+                    )}
+                    <a
+                        href={cta.href}
+                        class="inline-flex items-center justify-center bg-background text-primary font-medium rounded-full px-8 py-3 text-base transition-colors hover:bg-background/90"
+                    >
+                        {cta.text}
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+)}

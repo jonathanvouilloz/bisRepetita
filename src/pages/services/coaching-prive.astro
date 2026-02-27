@@ -1,0 +1,157 @@
+---
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import Hero from "../../components/widgets/Hero.astro";
+import ContentShowcase from "../../components/widgets/ContentShowcase.astro";
+import FAQ from "../../components/widgets/FAQ.astro";
+import CTABanner from "../../components/widgets/CTABanner.astro";
+import GsapReveal from "../../components/widgets/GsapReveal.astro";
+import Schema from "../../components/seo/Schema.astro";
+
+const metadata = {
+    title: "Coaching Privé de Boxe à Genève",
+    description:
+        "Séances de coaching privé de boxe à Genève avec Nicolas de Boccard. Entraînement individuel ou en petit groupe (1 à 6 personnes). Programme sur mesure adapté à vos objectifs.",
+};
+
+const faqs = [
+    {
+        question: "Combien de personnes par seance ?",
+        answer: "Les seances de coaching prive accueillent de 1 a 6 personnes maximum, pour garantir un encadrement personnalise et un suivi adapte a chaque participant.",
+    },
+    {
+        question: "Faut-il avoir de l'experience en boxe ?",
+        answer: "Aucune experience prealable n'est requise. Le coaching prive est justement ideal pour les debutants, car le programme est entierement adapte a votre niveau.",
+    },
+    {
+        question: "Quelle est la duree d'une seance ?",
+        answer: "Chaque seance dure 60 minutes, incluant echauffement, travail technique, conditionnement physique et retour au calme.",
+    },
+    {
+        question: "Puis-je venir avec des amis ou collegues ?",
+        answer: "Absolument ! Les seances en petit groupe (2 a 6 personnes) sont tres populaires. C'est une excellente facon de partager l'experience tout en beneficiant d'un encadrement de qualite.",
+    },
+];
+---
+
+<BaseLayout {metadata}>
+    <Fragment slot="head">
+        <Schema
+            type="Service"
+            data={{
+                title: "Coaching Privé de Boxe",
+                description: metadata.description,
+            }}
+        />
+    </Fragment>
+
+    <Hero
+        title={`Coaching <span class="font-display text-primary">Prive</span>`}
+        description="Un accompagnement sur mesure pour atteindre vos objectifs. Seances individuelles ou en petit groupe, adaptees a votre niveau et vos ambitions."
+        actions={[
+            {
+                text: "Reserver une seance",
+                href: "/contact",
+                variant: "primary",
+                icon: "lucide:arrow-right",
+            },
+            {
+                text: "Voir les tarifs",
+                href: "/tarifs",
+                variant: "secondary",
+            },
+        ]}
+        classes={{ container: "min-h-[60vh]" }}
+    />
+
+    <GsapReveal animation="fadeUp">
+        <ContentShowcase
+            tagline="L'approche"
+            title="Un programme taille sur mesure"
+            items={[
+                {
+                    title: "Evaluation initiale",
+                    description:
+                        "Chaque parcours commence par un bilan complet : condition physique, objectifs, experience, contraintes.",
+                    icon: "lucide:clipboard-check",
+
+                },
+                {
+                    title: "Programme personnalise",
+                    description:
+                        "Un plan d'entrainement adapte a vos objectifs : remise en forme, technique de boxe, competition ou depassement personnel.",
+                    icon: "lucide:target",
+
+                },
+                {
+                    title: "Suivi & progression",
+                    description:
+                        "Un accompagnement continu avec des points reguliers pour ajuster le programme et mesurer vos progres.",
+                    icon: "lucide:trending-up",
+
+                },
+            ]}
+            imageAlt="Coaching prive au studio Bis Repetita"
+        >
+            <Fragment>
+                <h3 class="text-2xl font-bold tracking-tight sm:text-3xl mb-2 font-display">
+                    Votre objectif, <span class="text-primary">notre mission</span>
+                </h3>
+                Que vous souhaitiez vous remettre en forme, apprendre la boxe ou preparer une competition, le coaching prive dans notre <a href="/studio" class="text-primary hover:underline">studio de boxe premium à Genève</a> vous offre un cadre optimal pour progresser a votre rythme.
+            </Fragment>
+        </ContentShowcase>
+    </GsapReveal>
+
+    <GsapReveal animation="fadeUp">
+        <ContentShowcase
+            title="Pour qui ?"
+            items={[
+                {
+                    title: "Debutants",
+                    description:
+                        "Apprenez les fondamentaux dans un cadre bienveillant et securise, a votre rythme.",
+                    icon: "lucide:sparkles",
+
+                },
+                {
+                    title: "Pratiquants confirmes",
+                    description:
+                        "Perfectionnez votre technique, preparez vos combats et repoussez vos limites.",
+                    icon: "lucide:flame",
+
+                },
+                {
+                    title: "Groupes prives",
+                    description:
+                        "Partagez l'experience avec vos proches ou collegues dans une dynamique de groupe motivante.",
+                    icon: "lucide:users",
+
+                },
+            ]}
+            isReversed={true}
+            imageAlt="Seance de coaching prive"
+        >
+            <Fragment>
+                <h3 class="text-2xl font-bold tracking-tight sm:text-3xl mb-2 font-display">
+                    Adapte a <span class="text-primary">chacun</span>
+                </h3>
+                Le coaching prive s'adresse a tous, quel que soit votre age, votre condition physique ou votre experience de la boxe.
+            </Fragment>
+        </ContentShowcase>
+    </GsapReveal>
+
+    <GsapReveal animation="fadeUp">
+        <FAQ
+            title="Questions frequentes"
+            subtitle="Tout ce que vous devez savoir sur le coaching prive."
+            items={faqs}
+        />
+    </GsapReveal>
+
+    <GsapReveal animation="fadeUp">
+        <CTABanner
+            title="Commencez votre transformation"
+            description="Reservez votre premiere seance decouverte et decouvrez le coaching prive Bis Repetita."
+            cta={{ text: "Reserver maintenant", href: "/contact" }}
+        />
+    </GsapReveal>
+</BaseLayout>

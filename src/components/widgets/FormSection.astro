@@ -1,0 +1,26 @@
+---
+import SectionTitle from "../ui/SectionTitle.astro";
+import Form from "../ui/Form.astro";
+import Container from "../ui/Container.astro";
+
+interface Props {
+    id?: string;
+    badge?: string;
+    title: string;
+    subtitle?: string;
+    formName?: string;
+}
+
+const { id, badge, title, subtitle, formName } = Astro.props;
+---
+
+<Container id={id} class="py-12 md:py-16">
+    {(badge || title || subtitle) && (
+        <div class="text-center mb-12">
+            <SectionTitle badge={badge} title={title} subtitle={subtitle} />
+        </div>
+    )}
+    <div class="mx-auto max-w-xl bg-card border border-border rounded-3xl p-8">
+        <Form formName={formName} />
+    </div>
+</Container>

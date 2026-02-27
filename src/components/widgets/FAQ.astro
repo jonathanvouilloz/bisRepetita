@@ -1,0 +1,110 @@
+---
+import WidgetWrapper from "./WidgetWrapper.astro";
+import Headline from "../ui/Headline.astro";
+import type { FAQProps } from "../../types/types";
+
+const {
+    items,
+    title,
+    subtitle,
+    tagline,
+    id,
+    isDark = false,
+    classes = {},
+    bg,
+} = Astro.props as FAQProps;
+---
+
+<WidgetWrapper id={id} isDark={isDark} bg={bg} classes={classes}>
+    <Headline
+        title={title}
+        subtitle={subtitle}
+        tagline={tagline}
+        titleAs="h2"
+        align="center"
+        classes={{
+            container: "max-w-4xl mx-auto mb-12",
+            title: "text-4xl md:text-5xl font-medium tracking-tight font-display",
+            subtitle: "text-lg text-muted-foreground max-w-2xl mx-auto",
+        }}
+    />
+    <div class="max-w-4xl mx-auto divide-y divide-border/50">
+        {
+            items.map((item, i) => (
+                <div class="faq-item">
+                    <button
+                        class="faq-toggle w-full flex items-center justify-between py-6 text-left text-foreground font-medium hover:text-primary transition-colors group"
+                        aria-expanded="false"
+                        aria-controls={`faq-${i}`}
+                    >
+                        <span class="flex items-center gap-4">
+                            <span class="text-sm text-primary/40 font-mono shrink-0">{String(i + 1).padStart(2, "0")}</span>
+                            <span class="text-base">{item.question}</span>
+                        </span>
+                        {/* Chevron rotative */}
+                        <svg
+                            class="faq-chevron w-5 h-5 text-primary ml-4 shrink-0 transition-transform duration-300"
+                            fill="none"
+                            viewBox="0 0 24 24"
+                            stroke="currentColor"
+                        >
+                            <path
+                                stroke-linecap="round"
+                                stroke-linejoin="round"
+                                stroke-width="2"
+                                d="M19 9l-7 7-7-7"
+                            />
+                        </svg>
+                    </button>
+                    <div
+                        id={`faq-${i}`}
+                        class="faq-content overflow-hidden"
+                        style="height: 0px;"
+                    >
+                        <div class="pb-6 pl-10 border-l-2 border-primary ml-3">
+                            <p class="text-muted-foreground leading-relaxed">
+                                <Fragment set:html={item.answer} />
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            ))
+        }
+    </div>
+</WidgetWrapper>
+
+<script>
+    function initFaq() {
+        document.querySelectorAll(".faq-toggle").forEach((btn) => {
+            // Avoid duplicate listeners
+            if (btn.hasAttribute("data-faq-init")) return;
+            btn.setAttribute("data-faq-init", "true");
+
+            btn.addEventListener("click", () => {
+                const expanded = btn.getAttribute("aria-expanded") === "true";
+                const content = btn.nextElementSibling as HTMLElement;
+                const inner = content.firstElementChild as HTMLElement;
+
+                btn.setAttribute("aria-expanded", String(!expanded));
+
+                if (!expanded) {
+                    content.style.height = inner.offsetHeight + "px";
+                } else {
+                    content.style.height = "0px";
+                }
+            });
+        });
+    }
+
+    initFaq();
+    document.addEventListener("astro:page-load", initFaq);
+</script>
+
+<style>
+    .faq-content {
+        transition: height 0.35s ease;
+    }
+    .faq-toggle[aria-expanded="true"] .faq-chevron {
+        transform: rotate(180deg);
+    }
+</style>

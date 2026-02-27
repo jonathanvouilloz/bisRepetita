@@ -1,0 +1,520 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import Button from "../components/ui/Button.astro";
+import Badge from "../components/ui/Badge.astro";
+import Card from "../components/ui/Card.astro";
+import Container from "../components/ui/Container.astro";
+import SectionTitle from "../components/ui/SectionTitle.astro";
+import Form from "../components/ui/Form.astro";
+import Hero from "../components/widgets/Hero.astro";
+import Stats from "../components/widgets/Stats.astro";
+import ServiceCard from "../components/widgets/ServiceCard.astro";
+import Features from "../components/widgets/Features.astro";
+import ContentShowcase from "../components/widgets/ContentShowcase.astro";
+import Testimonials from "../components/widgets/Testimonials.astro";
+import PricingTable from "../components/widgets/PricingTable.astro";
+import FAQ from "../components/widgets/FAQ.astro";
+import TeamMember from "../components/widgets/TeamMember.astro";
+import CTABanner from "../components/widgets/CTABanner.astro";
+import LocationMap from "../components/widgets/LocationMap.astro";
+import WidgetWrapper from "../components/widgets/WidgetWrapper.astro";
+import GsapReveal from "../components/widgets/GsapReveal.astro";
+import FormSection from "../components/widgets/FormSection.astro";
+
+const metadata = {
+    title: "Styleguide — Bis Repetita",
+    description: "Composants et design tokens du site Bis Repetita.",
+};
+
+const demoTestimonials = [
+    { quote: "Un coaching exceptionnel qui m'a transformé.", name: "Laurent M.", role: "Dirigeant" },
+    { quote: "Le studio Bis Repetita est un écrin.", name: "Sophie D.", role: "Avocate" },
+    { quote: "Impact énorme sur la cohésion d'équipe.", name: "Marc T.", role: "CEO" },
+    { quote: "Un cadre exceptionnel et un coach hors pair.", name: "Claire B.", role: "Médecin" },
+];
+
+const demoFeatures = [
+    { title: "Feature 1", description: "Description de la feature numéro 1.", icon: "lucide:shield" },
+    { title: "Feature 2", description: "Description de la feature numéro 2.", icon: "lucide:crown" },
+    { title: "Feature 3", description: "Description de la feature numéro 3.", icon: "lucide:trending-up" },
+];
+
+const demoTiers = [
+    {
+        name: "Basic",
+        price: "50 CHF",
+        priceNote: "/ mois",
+        description: "Pour démarrer.",
+        features: ["Feature A", "Feature B", "Feature C"],
+        cta: { text: "Choisir", href: "#" },
+    },
+    {
+        name: "Pro",
+        price: "100 CHF",
+        priceNote: "/ mois",
+        description: "Le plus populaire.",
+        features: ["Tout Basic", "Feature D", "Feature E", "Support prioritaire"],
+        cta: { text: "Choisir", href: "#" },
+        highlighted: true,
+    },
+    {
+        name: "Enterprise",
+        price: "Sur devis",
+        description: "Pour les grandes équipes.",
+        features: ["Tout Pro", "Feature F", "Dédié"],
+        cta: { text: "Contacter", href: "#" },
+    },
+];
+
+const demoFaqs = [
+    { question: "Question numéro 1 ?", answer: "Réponse détaillée à la question numéro 1." },
+    { question: "Question numéro 2 ?", answer: "Réponse détaillée à la question numéro 2." },
+    { question: "Question numéro 3 ?", answer: "Réponse détaillée à la question numéro 3." },
+];
+
+const demoMember = {
+    name: "Nicolas de Boccard",
+    role: "Fondateur & Head Coach",
+    bio: ["Passionné de boxe depuis plus de 15 ans.", "Coach certifié SwissBoxing."],
+    credentials: ["Certifié SwissBoxing", "15+ ans d'expérience"],
+};
+
+const demoServices = [
+    { title: "Service 1", description: "Description du service 1.", href: "#", index: 1 },
+    { title: "Service 2", description: "Description du service 2.", href: "#", index: 2 },
+    { title: "Service 3", description: "Description du service 3.", href: "#", index: 3 },
+];
+
+const demoStats = [
+    { value: "500+", label: "Athlètes", description: "Entraînés depuis 2010." },
+    { value: "98%", label: "Satisfaction", description: "De nos clients." },
+    { value: "15+", label: "Années", description: "D'expérience." },
+];
+---
+
+<BaseLayout {metadata}>
+    <Fragment slot="head">
+        <meta name="robots" content="noindex, nofollow" />
+    </Fragment>
+
+    <div class="pt-24">
+
+    <!-- ═══════════════════════════════════════════════════════════════════ -->
+    <!-- SECTION 1: Design Tokens                                          -->
+    <!-- ═══════════════════════════════════════════════════════════════════ -->
+    <Container class="py-16">
+        <SectionTitle badge="Design Tokens" title="Couleurs, typographie & shadows" class="mb-12" />
+
+        <!-- Colors -->
+        <h3 class="text-2xl font-display font-bold mb-6">Palette</h3>
+        <div class="grid grid-cols-2 sm:grid-cols-4 md:grid-cols-6 gap-4 mb-12">
+            {[
+                { name: "--background", color: "var(--background)", text: "text-foreground" },
+                { name: "--foreground", color: "var(--foreground)", text: "text-background" },
+                { name: "--primary", color: "var(--primary)", text: "text-background" },
+                { name: "--primary-light", color: "var(--primary-light)", text: "text-background" },
+                { name: "--border", color: "var(--border)", text: "text-foreground" },
+                { name: "--muted", color: "var(--muted)", text: "text-foreground" },
+                { name: "--muted-foreground", color: "var(--muted-foreground)", text: "text-background" },
+                { name: "--card", color: "var(--card)", text: "text-foreground" },
+            ].map((token) => (
+                <div class="flex flex-col items-center gap-2">
+                    <div
+                        class="w-full aspect-square rounded-xl border border-border"
+                        style={`background-color: ${token.color}`}
+                    />
+                    <span class="text-xs text-muted-foreground font-mono">{token.name}</span>
+                </div>
+            ))}
+        </div>
+
+        <!-- Typography -->
+        <h3 class="text-2xl font-display font-bold mb-6">Typographie</h3>
+        <div class="space-y-4 mb-12 border border-border rounded-2xl p-8">
+            <p class="font-display text-4xl font-bold">Bricolage Grotesque (font-display)</p>
+            <p class="text-xl">Manrope (body) — Le texte courant du site.</p>
+            <p class="text-sm text-muted-foreground">Muted foreground — texte secondaire.</p>
+            <p class="text-gradient-gold text-2xl font-bold">Text gradient gold</p>
+        </div>
+
+        <!-- Shadows -->
+        <h3 class="text-2xl font-display font-bold mb-6">Shadows</h3>
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
+            <div class="rounded-2xl border border-border p-6 shadow-[var(--shadow-gold-card)]">
+                <p class="text-sm font-mono text-muted-foreground">--shadow-gold-card</p>
+            </div>
+            <div class="rounded-2xl border border-border p-6 shadow-[var(--shadow-gold-button)]">
+                <p class="text-sm font-mono text-muted-foreground">--shadow-gold-button</p>
+            </div>
+            <div class="rounded-2xl border border-border p-6 shadow-[var(--shadow-gold-icon)]">
+                <p class="text-sm font-mono text-muted-foreground">--shadow-gold-icon</p>
+            </div>
+        </div>
+    </Container>
+
+    <div class="border-t border-border" />
+
+    <!-- ═══════════════════════════════════════════════════════════════════ -->
+    <!-- SECTION 2: Atomes                                                 -->
+    <!-- ═══════════════════════════════════════════════════════════════════ -->
+    <Container class="py-16">
+        <SectionTitle badge="Atomes" title="Boutons, badges & titres" class="mb-12" />
+
+        <!-- Buttons -->
+        <h3 class="text-2xl font-display font-bold mb-6">Button</h3>
+        <div class="border border-border rounded-2xl p-8 space-y-6 mb-12">
+            <div class="flex flex-wrap items-center gap-4">
+                <Button variant="primary" size="sm">Primary SM</Button>
+                <Button variant="primary" size="md">Primary MD</Button>
+                <Button variant="primary" size="lg">Primary LG</Button>
+            </div>
+            <div class="flex flex-wrap items-center gap-4">
+                <Button variant="secondary" size="sm">Secondary SM</Button>
+                <Button variant="secondary" size="md">Secondary MD</Button>
+                <Button variant="secondary" size="lg">Secondary LG</Button>
+            </div>
+            <div class="flex flex-wrap items-center gap-4">
+                <Button variant="tertiary" size="sm">Tertiary SM</Button>
+                <Button variant="tertiary" size="md">Tertiary MD</Button>
+                <Button variant="tertiary" size="lg">Tertiary LG</Button>
+            </div>
+        </div>
+
+        <!-- Badges -->
+        <h3 class="text-2xl font-display font-bold mb-6">Badge</h3>
+        <div class="border border-border rounded-2xl p-8 mb-12">
+            <div class="flex flex-wrap items-center gap-4">
+                <Badge variant="pill">Pill badge</Badge>
+                <Badge variant="pill">Certifié</Badge>
+                <Badge variant="circle">A</Badge>
+                <Badge variant="circle">5</Badge>
+            </div>
+        </div>
+
+        <!-- SectionTitle -->
+        <h3 class="text-2xl font-display font-bold mb-6">SectionTitle</h3>
+        <div class="border border-border rounded-2xl p-8 space-y-12 mb-12">
+            <div>
+                <p class="text-xs text-muted-foreground mb-4 font-mono">align="center" + badge</p>
+                <SectionTitle
+                    badge="Badge label"
+                    title="Titre centré avec badge"
+                    subtitle="Un sous-titre explicatif qui donne du contexte."
+                />
+            </div>
+            <div>
+                <p class="text-xs text-muted-foreground mb-4 font-mono">align="left" sans badge</p>
+                <SectionTitle
+                    title="Titre aligné à gauche"
+                    subtitle="Un sous-titre pour le contexte."
+                    align="left"
+                />
+            </div>
+        </div>
+    </Container>
+
+    <div class="border-t border-border" />
+
+    <!-- ═══════════════════════════════════════════════════════════════════ -->
+    <!-- SECTION 3: Composants UI                                          -->
+    <!-- ═══════════════════════════════════════════════════════════════════ -->
+    <Container class="py-16">
+        <SectionTitle badge="Composants UI" title="Card, Form" class="mb-12" />
+
+        <!-- Card -->
+        <h3 class="text-2xl font-display font-bold mb-6">Card</h3>
+        <div class="border border-border rounded-2xl p-8 mb-12">
+            <div class="grid md:grid-cols-3 gap-6">
+                <Card>
+                    <h4 class="text-lg font-bold mb-2">Card standard</h4>
+                    <p class="text-sm text-muted-foreground">Contenu de la card avec hover effect gold.</p>
+                </Card>
+                <Card href="#">
+                    <h4 class="text-lg font-bold mb-2">Card lien</h4>
+                    <p class="text-sm text-muted-foreground">Cette card est un lien cliquable.</p>
+                </Card>
+                <Card class="text-center">
+                    <h4 class="text-lg font-bold mb-2">Card custom</h4>
+                    <p class="text-sm text-muted-foreground">Avec classe additionnelle.</p>
+                </Card>
+            </div>
+        </div>
+
+        <!-- Form -->
+        <h3 class="text-2xl font-display font-bold mb-6">Form</h3>
+        <div class="border border-border rounded-2xl p-8 mb-12">
+            <div class="max-w-xl">
+                <p class="text-xs text-muted-foreground mb-4 font-mono">Default fields</p>
+                <Form />
+            </div>
+        </div>
+    </Container>
+
+    <div class="border-t border-border" />
+
+    <!-- ═══════════════════════════════════════════════════════════════════ -->
+    <!-- SECTION 4: Widgets                                                -->
+    <!-- ═══════════════════════════════════════════════════════════════════ -->
+    <div class="py-16">
+        <Container>
+            <SectionTitle badge="Widgets" title="Tous les widgets du site" class="mb-12" />
+        </Container>
+
+        <!-- Hero full -->
+        <div class="mb-16">
+            <Container><p class="text-xs text-muted-foreground mb-4 font-mono">Hero — full height (default)</p></Container>
+            <div class="border border-border rounded-2xl overflow-hidden mx-4 sm:mx-6">
+                <Hero
+                    title={`Titre du <span class="text-primary">Hero</span>`}
+                    description="Description du hero avec texte de demo."
+                    actions={[{ text: "Action principale", href: "#", variant: "primary" }]}
+                    socialProof={{
+                        avatars: ["https://i.pravatar.cc/80?img=12", "https://i.pravatar.cc/80?img=32"],
+                        badge: "99+",
+                        text: "Clients satisfaits",
+                    }}
+                />
+            </div>
+        </div>
+
+        <!-- Hero short -->
+        <div class="mb-16">
+            <Container><p class="text-xs text-muted-foreground mb-4 font-mono">Hero — short (min-h-[60vh])</p></Container>
+            <div class="border border-border rounded-2xl overflow-hidden mx-4 sm:mx-6">
+                <Hero
+                    title={`Hero <span class="text-primary">court</span>`}
+                    description="Version courte pour les pages intérieures."
+                    classes={{ container: "min-h-[60vh]" }}
+                />
+            </div>
+        </div>
+
+        <!-- Stats -->
+        <div class="mb-16">
+            <Container><p class="text-xs text-muted-foreground mb-4 font-mono">Stats</p></Container>
+            <div class="border border-border rounded-2xl overflow-hidden mx-4 sm:mx-6">
+                <Stats stats={demoStats} badge="En chiffres" intro="Une intro pour le widget Stats." />
+            </div>
+        </div>
+
+        <!-- ServiceCard -->
+        <div class="mb-16">
+            <Container>
+                <p class="text-xs text-muted-foreground mb-4 font-mono">ServiceCard (x3 grid)</p>
+                <div class="grid gap-8 md:grid-cols-3">
+                    {demoServices.map((s, i) => (
+                        <ServiceCard service={s} index={i + 1} />
+                    ))}
+                </div>
+            </Container>
+        </div>
+
+        <!-- Features cols 3 -->
+        <div class="mb-16">
+            <Container><p class="text-xs text-muted-foreground mb-4 font-mono">Features — columns=3 (default)</p></Container>
+            <div class="border border-border rounded-2xl overflow-hidden mx-4 sm:mx-6">
+                <Features
+                    tagline="Features"
+                    title="Trois colonnes"
+                    features={demoFeatures}
+                />
+            </div>
+        </div>
+
+        <!-- Features cols 2 -->
+        <div class="mb-16">
+            <Container><p class="text-xs text-muted-foreground mb-4 font-mono">Features — columns=2</p></Container>
+            <div class="border border-border rounded-2xl overflow-hidden mx-4 sm:mx-6">
+                <Features
+                    tagline="Features"
+                    title="Deux colonnes"
+                    features={demoFeatures.slice(0, 2)}
+                    columns={2}
+                />
+            </div>
+        </div>
+
+        <!-- ContentShowcase normal -->
+        <div class="mb-16">
+            <Container><p class="text-xs text-muted-foreground mb-4 font-mono">ContentShowcase — normal</p></Container>
+            <div class="border border-border rounded-2xl overflow-hidden mx-4 sm:mx-6">
+                <ContentShowcase
+                    tagline="Tagline"
+                    title="Titre ContentShowcase"
+                    items={demoFeatures}
+                >
+                    <Fragment>
+                        <h3 class="text-2xl font-bold tracking-tight sm:text-3xl mb-2 font-display">
+                            Slot <span class="text-primary">content</span>
+                        </h3>
+                        Texte de demo dans le slot du composant ContentShowcase.
+                    </Fragment>
+                </ContentShowcase>
+            </div>
+        </div>
+
+        <!-- ContentShowcase reversed -->
+        <div class="mb-16">
+            <Container><p class="text-xs text-muted-foreground mb-4 font-mono">ContentShowcase — isReversed</p></Container>
+            <div class="border border-border rounded-2xl overflow-hidden mx-4 sm:mx-6">
+                <ContentShowcase
+                    title="ContentShowcase Inversé"
+                    items={demoFeatures.slice(0, 2)}
+                    isReversed={true}
+                >
+                    <Fragment>
+                        <h3 class="text-2xl font-bold tracking-tight sm:text-3xl mb-2 font-display">
+                            Version <span class="text-primary">inversée</span>
+                        </h3>
+                        Le layout est miroir quand isReversed est true.
+                    </Fragment>
+                </ContentShowcase>
+            </div>
+        </div>
+
+        <!-- Testimonials instance 1 -->
+        <div class="mb-16">
+            <Container><p class="text-xs text-muted-foreground mb-4 font-mono">Testimonials — instance 1</p></Container>
+            <div class="border border-border rounded-2xl overflow-hidden mx-4 sm:mx-6">
+                <Testimonials
+                    tagline="Témoignages"
+                    title="Ce que disent nos clients"
+                    testimonials={demoTestimonials}
+                    rating={{ score: "4.8", stars: 5, count: "500+", source: "Google" }}
+                />
+            </div>
+        </div>
+
+        <!-- Testimonials instance 2 (test multi-instance) -->
+        <div class="mb-16">
+            <Container><p class="text-xs text-muted-foreground mb-4 font-mono">Testimonials — instance 2 (multi-instance test)</p></Container>
+            <div class="border border-border rounded-2xl overflow-hidden mx-4 sm:mx-6">
+                <Testimonials
+                    tagline="Avis"
+                    title="Deuxième instance"
+                    testimonials={demoTestimonials.slice(0, 2)}
+                />
+            </div>
+        </div>
+
+        <!-- PricingTable -->
+        <div class="mb-16">
+            <Container><p class="text-xs text-muted-foreground mb-4 font-mono">PricingTable</p></Container>
+            <div class="border border-border rounded-2xl overflow-hidden mx-4 sm:mx-6">
+                <PricingTable
+                    tagline="Tarifs"
+                    title="Choisissez votre formule"
+                    tiers={demoTiers}
+                />
+            </div>
+        </div>
+
+        <!-- FAQ -->
+        <div class="mb-16">
+            <Container><p class="text-xs text-muted-foreground mb-4 font-mono">FAQ</p></Container>
+            <div class="border border-border rounded-2xl overflow-hidden mx-4 sm:mx-6">
+                <FAQ
+                    title="Questions fréquentes"
+                    subtitle="Réponses aux questions courantes."
+                    items={demoFaqs}
+                />
+            </div>
+        </div>
+
+        <!-- TeamMember -->
+        <div class="mb-16">
+            <Container><p class="text-xs text-muted-foreground mb-4 font-mono">TeamMember</p></Container>
+            <div class="border border-border rounded-2xl overflow-hidden mx-4 sm:mx-6">
+                <TeamMember member={demoMember} />
+            </div>
+        </div>
+
+        <!-- CTABanner default -->
+        <div class="mb-16">
+            <Container><p class="text-xs text-muted-foreground mb-4 font-mono">CTABanner — default</p></Container>
+            <div class="border border-border rounded-2xl overflow-hidden mx-4 sm:mx-6">
+                <CTABanner
+                    title="Titre du CTA Banner"
+                    description="Description complémentaire."
+                    cta={{ text: "Action", href: "#" }}
+                />
+            </div>
+        </div>
+
+        <!-- CTABanner brushed-full -->
+        <div class="mb-16">
+            <Container><p class="text-xs text-muted-foreground mb-4 font-mono">CTABanner — brushed-full</p></Container>
+            <div class="border border-border rounded-2xl overflow-hidden mx-4 sm:mx-6">
+                <CTABanner
+                    title="Prêt à enfiler les gants ?"
+                    subtitle="Votre premier round"
+                    cta={{ text: "Réserver", href: "#" }}
+                    variant="brushed-full"
+                />
+            </div>
+        </div>
+
+        <!-- LocationMap -->
+        <div class="mb-16">
+            <Container><p class="text-xs text-muted-foreground mb-4 font-mono">LocationMap</p></Container>
+            <div class="border border-border rounded-2xl overflow-hidden mx-4 sm:mx-6">
+                <LocationMap />
+            </div>
+        </div>
+
+        <!-- FormSection -->
+        <div class="mb-16">
+            <Container><p class="text-xs text-muted-foreground mb-4 font-mono">FormSection</p></Container>
+            <div class="border border-border rounded-2xl overflow-hidden mx-4 sm:mx-6">
+                <FormSection
+                    badge="Contact"
+                    title="Formulaire de <span class='text-primary'>contact</span>"
+                    subtitle="Nous vous répondons sous 24h."
+                />
+            </div>
+        </div>
+    </div>
+
+    <div class="border-t border-border" />
+
+    <!-- ═══════════════════════════════════════════════════════════════════ -->
+    <!-- SECTION 5: Layout                                                 -->
+    <!-- ═══════════════════════════════════════════════════════════════════ -->
+    <Container class="py-16">
+        <SectionTitle badge="Layout" title="WidgetWrapper & GsapReveal" class="mb-12" />
+
+        <div class="border border-border rounded-2xl p-8 space-y-8">
+            <div>
+                <h3 class="text-xl font-display font-bold mb-4">WidgetWrapper</h3>
+                <p class="text-muted-foreground mb-4">Wrapper standard pour les widgets. Gère <code class="text-primary">id</code>, <code class="text-primary">isDark</code>, <code class="text-primary">bg</code>, <code class="text-primary">containerClass</code>, <code class="text-primary">fullBleed</code> et <code class="text-primary">classes</code>.</p>
+                <pre class="bg-muted rounded-xl p-4 text-sm text-foreground/80 overflow-x-auto"><code>&lt;WidgetWrapper id="section" containerClass="max-w-5xl"&gt;
+  ...contenu...
+&lt;/WidgetWrapper&gt;</code></pre>
+            </div>
+
+            <div>
+                <h3 class="text-xl font-display font-bold mb-4">GsapReveal</h3>
+                <p class="text-muted-foreground mb-4">Wrapper d'animation GSAP au scroll. Props disponibles :</p>
+                <ul class="list-disc list-inside text-muted-foreground space-y-1 mb-4">
+                    <li><code class="text-primary">animation</code> : fadeUp | fadeIn | slideLeft | slideRight | scaleIn | clipReveal | rotateIn</li>
+                    <li><code class="text-primary">delay</code> : nombre (secondes)</li>
+                    <li><code class="text-primary">duration</code> : nombre (secondes, défaut 0.8)</li>
+                    <li><code class="text-primary">stagger</code> : nombre (secondes, pour enfants)</li>
+                </ul>
+                <pre class="bg-muted rounded-xl p-4 text-sm text-foreground/80 overflow-x-auto"><code>&lt;GsapReveal animation="fadeUp" delay={0.2}&gt;
+  ...contenu animé...
+&lt;/GsapReveal&gt;</code></pre>
+            </div>
+
+            <div>
+                <h3 class="text-xl font-display font-bold mb-4">Container</h3>
+                <p class="text-muted-foreground mb-4">Conteneur centré <code class="text-primary">max-w-7xl</code> avec padding responsive. Props : <code class="text-primary">class</code>, <code class="text-primary">as</code>, <code class="text-primary">id</code>.</p>
+                <pre class="bg-muted rounded-xl p-4 text-sm text-foreground/80 overflow-x-auto"><code>&lt;Container class="py-16"&gt;
+  ...contenu...
+&lt;/Container&gt;</code></pre>
+            </div>
+        </div>
+    </Container>
+
+    </div>
+</BaseLayout>

@@ -1,64 +1,112 @@
 ---
 import Button from "./Button.astro";
 
+export interface FormField {
+    label: string;
+    name: string;
+    type: "text" | "email" | "tel" | "select" | "textarea";
+    placeholder?: string;
+    required?: boolean;
+    autocomplete?: string;
+    options?: { value: string; label: string }[];
+}
+
 interface Props {
     action?: string;
     method?: "GET" | "POST";
+    fields?: FormField[];
+    submitLabel?: string;
+    formName?: string;
 }
 
-const { action = "#", method = "POST" } = Astro.props;
+const defaultFields: FormField[] = [
+    { label: "Nom", name: "name", type: "text", placeholder: "Votre nom", required: true, autocomplete: "name" },
+    { label: "Email", name: "email", type: "email", placeholder: "votre@email.com", required: true, autocomplete: "email" },
+    { label: "Telephone", name: "phone", type: "tel", placeholder: "+41 79 000 00 00", autocomplete: "tel" },
+    {
+        label: "Type de service", name: "service", type: "select",
+        options: [
+            { value: "", label: "Selectionnez un service" },
+            { value: "coaching-prive", label: "Coaching Prive" },
+            { value: "round-by-round", label: "Round by Round" },
+            { value: "corporate", label: "Corporate" },
+        ],
+    },
+    { label: "Message", name: "message", type: "textarea", placeholder: "Votre message...", required: true },
+];
+
+const {
+    action = "/contact",
+    method = "POST",
+    fields = defaultFields,
+    submitLabel = "Envoyer",
+    formName = "contact",
+} = Astro.props;
+
+const inputClasses =
+    "block w-full rounded-xl border border-border bg-muted px-4 py-3 text-foreground placeholder:text-muted-foreground focus:border-primary focus:ring-primary/20 transition-all outline-none focus:ring-4";
 ---
 
-<form action={action} method={method} class="space-y-6">
-    <div>
-        <label
-            for="name"
-            class="block text-sm font-medium text-foreground/80 mb-2"
-            >Name</label
-        >
-        <input
-            type="text"
-            name="name"
-            id="name"
-            autocomplete="name"
-            required
-            class="block w-full rounded-xl border-border bg-muted/50 px-4 py-3 text-foreground placeholder:text-muted-foreground focus:border-primary focus:ring-primary/20 transition-all border outline-none focus:ring-4"
-            placeholder="Your name"
-        />
-    </div>
-    <div>
-        <label
-            for="email"
-            class="block text-sm font-medium text-foreground/80 mb-2"
-            >Email</label
-        >
-        <input
-            type="email"
-            name="email"
-            id="email"
-            autocomplete="email"
-            required
-            class="block w-full rounded-xl border-border bg-muted/50 px-4 py-3 text-foreground placeholder:text-muted-foreground focus:border-primary focus:ring-primary/20 transition-all border outline-none focus:ring-4"
-            placeholder="your@email.com"
-        />
-    </div>
-    <div>
-        <label
-            for="message"
-            class="block text-sm font-medium text-foreground/80 mb-2"
-            >Message</label
-        >
-        <textarea
-            name="message"
-            id="message"
-            rows="4"
-            required
-            class="block w-full rounded-xl border-border bg-muted/50 px-4 py-3 text-foreground placeholder:text-muted-foreground focus:border-primary focus:ring-primary/20 transition-all border outline-none focus:ring-4 resize-none"
-            placeholder="How can we help you?"></textarea>
-    </div>
+<form
+    name={formName}
+    method={method}
+    action={action}
+    data-netlify="true"
+    netlify-honeypot="bot-field"
+    class="space-y-6"
+>
+    <input type="hidden" name="form-name" value={formName} />
+    <p class="hidden">
+        <label>
+            Ne remplissez pas ce champ si vous etes humain :
+            <input name="bot-field" />
+        </label>
+    </p>
+
+    {fields.map((field) => (
+        <div>
+            <label
+                for={field.name}
+                class="block text-sm font-medium text-foreground/80 mb-2"
+            >
+                {field.label}
+            </label>
+            {field.type === "select" && field.options ? (
+                <select
+                    name={field.name}
+                    id={field.name}
+                    class={inputClasses}
+                >
+                    {field.options.map((opt) => (
+                        <option value={opt.value}>{opt.label}</option>
+                    ))}
+                </select>
+            ) : field.type === "textarea" ? (
+                <textarea
+                    name={field.name}
+                    id={field.name}
+                    rows="4"
+                    required={field.required}
+                    class:list={[inputClasses, "resize-none"]}
+                    placeholder={field.placeholder}
+                />
+            ) : (
+                <input
+                    type={field.type}
+                    name={field.name}
+                    id={field.name}
+                    autocomplete={field.autocomplete}
+                    required={field.required}
+                    class={inputClasses}
+                    placeholder={field.placeholder}
+                />
+            )}
+        </div>
+    ))}
+
     <div>
         <Button type="submit" size="lg" class="w-full sm:w-auto">
-            Send message
+            {submitLabel}
         </Button>
     </div>
 </form>

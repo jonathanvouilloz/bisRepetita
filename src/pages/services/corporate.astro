@@ -1,0 +1,120 @@
+---
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import Hero from "../../components/widgets/Hero.astro";
+import ContentShowcase from "../../components/widgets/ContentShowcase.astro";
+import Features from "../../components/widgets/Features.astro";
+import FormSection from "../../components/widgets/FormSection.astro";
+import CTABanner from "../../components/widgets/CTABanner.astro";
+import GsapReveal from "../../components/widgets/GsapReveal.astro";
+import Schema from "../../components/seo/Schema.astro";
+
+const metadata = {
+    title: "Programme Corporate — Boxe en entreprise à Genève",
+    description:
+        "Programmes de boxe corporate à Genève. Team building, bien-être en entreprise et événements sur mesure avec Bis Repetita. Renforcez la cohésion de vos équipes.",
+};
+---
+
+<BaseLayout {metadata}>
+    <Fragment slot="head">
+        <Schema
+            type="Service"
+            data={{
+                title: "Programme Corporate de Boxe",
+                description: metadata.description,
+            }}
+        />
+    </Fragment>
+
+    <Hero
+        title={`Programme <span class="font-display text-primary">Corporate</span>`}
+        description="Renforcez la cohesion de vos equipes avec la boxe. Team building, seances bien-etre et programmes sur mesure pour les entreprises."
+        actions={[
+            {
+                text: "Demander un devis",
+                href: "#devis",
+                variant: "primary",
+                icon: "lucide:arrow-right",
+            },
+        ]}
+        classes={{ container: "min-h-[60vh]" }}
+    />
+
+    <GsapReveal animation="fadeUp">
+        <ContentShowcase
+            tagline="Pour les entreprises"
+            title="La boxe au service du leadership"
+            items={[
+                {
+                    title: "Team Building",
+                    description:
+                        "Des sessions de boxe qui renforcent les liens, developpent la confiance mutuelle et creent une dynamique d'equipe unique.",
+                    icon: "lucide:users",
+
+                },
+                {
+                    title: "Bien-etre au travail",
+                    description:
+                        "Des seances regulieres pour ameliorer la sante et la productivite de vos collaborateurs.",
+                    icon: "lucide:heart",
+
+                },
+                {
+                    title: "Evenements sur mesure",
+                    description:
+                        "Seminaires, lancements de produit, incentives — nous concevons des experiences memorables autour de la boxe.",
+                    icon: "lucide:calendar",
+
+                },
+            ]}
+            imageAlt="Programme corporate Bis Repetita"
+        >
+            <Fragment>
+                <h3 class="text-2xl font-bold tracking-tight sm:text-3xl mb-2 font-display">
+                    Performance collective, <span class="text-primary">esprit de champion</span>
+                </h3>
+                La boxe enseigne des competences directement transposables au monde de l'entreprise : gestion du stress, prise de decision rapide, resilience et leadership. Le tout dans notre <a href="/studio" class="text-primary hover:underline">espace premium à Genève</a>.
+            </Fragment>
+        </ContentShowcase>
+    </GsapReveal>
+
+    <GsapReveal animation="fadeUp">
+        <Features
+            tagline="Formats"
+            title="Des formules adaptees a vos besoins"
+            subtitle="Chaque programme est concu sur mesure en fonction de vos objectifs et de votre equipe."
+            features={[
+                {
+                    title: "Session unique",
+                    description:
+                        "Un evenement marque pour votre equipe. Ideal pour les team building et les seminaires.",
+                    icon: "lucide:star",
+
+                },
+                {
+                    title: "Programme mensuel",
+                    description:
+                        "Des seances regulieres pour un impact durable sur la cohesion et le bien-etre de vos equipes.",
+                    icon: "lucide:repeat",
+
+                },
+                {
+                    title: "Sur site ou au studio",
+                    description:
+                        "Nous nous deplacons dans vos locaux ou vous accueillons au studio Bis Repetita.",
+                    icon: "lucide:map-pin",
+
+                },
+            ]}
+        />
+    </GsapReveal>
+
+    <GsapReveal animation="fadeUp">
+        <FormSection
+            id="devis"
+            badge="Devis"
+            title="Demander un <span class='text-primary'>devis</span>"
+            subtitle="Decrivez votre projet et nous vous recontacterons sous 24h avec une proposition personnalisee."
+        />
+    </GsapReveal>
+</BaseLayout>

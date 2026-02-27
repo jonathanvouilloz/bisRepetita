@@ -1,0 +1,27 @@
+---
+interface Props {
+    animation?: "fadeUp" | "fadeIn" | "slideLeft" | "slideRight" | "scaleIn" | "clipReveal" | "rotateIn";
+    delay?: number;
+    duration?: number;
+    class?: string;
+    stagger?: number;
+}
+
+const {
+    animation = "fadeUp",
+    delay = 0,
+    duration = 0.8,
+    class: className = "",
+    stagger = 0,
+} = Astro.props;
+---
+
+<div
+    class:list={["gsap-reveal", className]}
+    data-animation={animation}
+    data-delay={delay}
+    data-duration={duration}
+    data-stagger={stagger}
+>
+    <slot />
+</div>

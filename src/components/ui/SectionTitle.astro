@@ -1,0 +1,46 @@
+---
+interface Props {
+    title: string;
+    badge?: string;
+    subtitle?: string;
+    align?: "center" | "left";
+    as?: "h1" | "h2" | "h3";
+    class?: string;
+    titleClass?: string;
+}
+
+const {
+    title,
+    badge,
+    subtitle,
+    align = "center",
+    as: Tag = "h2",
+    class: className = "",
+    titleClass = "",
+} = Astro.props;
+
+const alignClass = align === "center" ? "text-center" : "text-left";
+const defaultTitleClass = "text-5xl md:text-[3.75rem] font-medium font-display tracking-tight text-foreground";
+const resolvedTitleClass = titleClass || defaultTitleClass;
+---
+
+<div class:list={[alignClass, className]}>
+    {badge && (
+        <div class="text-muted-foreground section-label mb-4">
+            {badge}
+        </div>
+    )}
+    <Tag
+        class={resolvedTitleClass}
+        set:html={title}
+    />
+    {subtitle && (
+        <p
+            class:list={[
+                "text-lg text-muted-foreground mt-4 max-w-2xl",
+                align === "center" && "mx-auto",
+            ]}
+            set:html={subtitle}
+        />
+    )}
+</div>

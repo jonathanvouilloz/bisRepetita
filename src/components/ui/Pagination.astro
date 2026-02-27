@@ -22,20 +22,20 @@ const { prev, next } = url;
                     class="inline-flex items-center px-4 py-2 text-sm font-medium text-muted-foreground bg-card border border-border rounded-lg hover:bg-muted hover:text-foreground transition-colors"
                 >
                     <Icon name="tabler:arrow-left" class="w-4 h-4 mr-2" />
-                    Previous
+                    Precedent
                 </a>
             ) : (
                 <span />
             )}
             <div class="flex items-center text-sm text-muted-foreground">
-                Página {currentPage} de {lastPage}
+                Page {currentPage} sur {lastPage}
             </div>
             {next ? (
                 <a
                     href={next}
                     class="inline-flex items-center px-4 py-2 text-sm font-medium text-muted-foreground bg-card border border-border rounded-lg hover:bg-muted hover:text-foreground transition-colors"
                 >
-                    Next
+                    Suivant
                     <Icon name="tabler:arrow-right" class="w-4 h-4 ml-2" />
                 </a>
             ) : (

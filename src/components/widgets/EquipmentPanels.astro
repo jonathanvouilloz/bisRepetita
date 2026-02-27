@@ -1,0 +1,127 @@
+---
+import { Image } from "astro:assets";
+
+import studioInterior from "../../assets/studio-interior.webp";
+import salle1 from "../../assets/salle-1.webp";
+import studioAtmosphere from "../../assets/studio-atmosphere.webp";
+import cours2Landscape from "../../assets/cours-2-landscape.webp";
+
+const panels = [
+    {
+        title: "Ring professionnel",
+        description:
+            "Un ring aux dimensions réglementaires pour les séances de sparring, le coaching privé et les cours Round by Round.",
+        image: studioInterior,
+        alt: "Ring professionnel du studio Bis Repetita",
+    },
+    {
+        title: "Sacs & équipements pro",
+        description:
+            "Sacs de frappe, pattes d'ours, speed bags et matériel de renforcement — tout est là pour progresser.",
+        image: salle1,
+        alt: "Sacs de frappe et équipements de boxe",
+    },
+    {
+        title: "Vestiaires premium",
+        description:
+            "Douches, casiers sécurisés et espace détente pour une expérience complète digne d'un studio haut de gamme.",
+        image: studioAtmosphere,
+        alt: "Vestiaires premium du studio",
+    },
+    {
+        title: "Espace fonctionnel",
+        description:
+            "150m² optimisés avec zones dédiées : échauffement, renforcement, travail au sac et ring central.",
+        image: cours2Landscape,
+        alt: "Espace fonctionnel du studio de boxe",
+    },
+];
+---
+
+<section class="bg-background">
+    {/* Header */}
+    <div class="mx-auto max-w-7xl px-6 md:px-12 lg:px-20 pt-20 md:pt-32 pb-10 md:pb-14">
+        <p class="text-sm font-semibold uppercase tracking-wider text-primary mb-3">Équipements</p>
+        <h2 class="text-3xl md:text-4xl font-bold text-foreground mb-3">Un studio équipé pour la performance</h2>
+        <p class="text-lg text-muted-foreground max-w-2xl">
+            Des équipements professionnels pour un entraînement optimal, dans un cadre premium au cœur de Genève.
+        </p>
+    </div>
+
+    {/* Panels — Desktop */}
+    <div class="hidden md:flex h-[550px] w-full">
+        {panels.map((panel) => (
+            <div class="equipment-panel group relative flex-1 overflow-hidden cursor-pointer">
+                <Image
+                    src={panel.image}
+                    alt={panel.alt}
+                    class="absolute inset-0 w-full h-full object-cover grayscale transition-[filter] duration-700 group-hover:grayscale-0"
+                    widths={[400, 800]}
+                    sizes="(min-width: 768px) 50vw, 100vw"
+                />
+                {/* Overlay gradient */}
+                <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/30 to-transparent" />
+
+                {/* Content */}
+                <div class="equipment-content absolute bottom-0 left-0 right-0 p-6 lg:p-8 z-10">
+                    <h3 class="text-2xl lg:text-3xl font-bold text-white leading-tight">{panel.title}</h3>
+                    <p class="equipment-desc text-sm text-white/80 max-w-xs leading-relaxed mt-3">
+                        {panel.description}
+                    </p>
+                </div>
+            </div>
+        ))}
+    </div>
+
+    {/* Panels — Mobile (stacked) */}
+    <div class="md:hidden flex flex-col gap-4 px-4 pb-8">
+        {panels.map((panel) => (
+            <div class="relative rounded-2xl overflow-hidden h-56">
+                <Image
+                    src={panel.image}
+                    alt={panel.alt}
+                    class="absolute inset-0 w-full h-full object-cover"
+                    widths={[400, 600]}
+                    sizes="100vw"
+                />
+                <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/30 to-transparent" />
+                <div class="absolute bottom-0 left-0 right-0 p-5 z-10">
+                    <h3 class="text-xl font-bold text-white mb-1">{panel.title}</h3>
+                    <p class="text-sm text-white/80 leading-relaxed">{panel.description}</p>
+                </div>
+            </div>
+        ))}
+    </div>
+</section>
+
+<style>
+    .equipment-panel {
+        transition: flex 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+
+    .equipment-panel:hover {
+        flex: 2.5;
+    }
+
+    .equipment-content {
+        transition: transform 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+
+    .equipment-panel:hover .equipment-content {
+        transform: translateY(-0.5rem);
+    }
+
+    .equipment-desc {
+        opacity: 0;
+        max-height: 0;
+        overflow: hidden;
+        transition:
+            opacity 0.4s ease 0.15s,
+            max-height 0.4s ease 0.15s;
+    }
+
+    .equipment-panel:hover .equipment-desc {
+        opacity: 1;
+        max-height: 6rem;
+    }
+</style>

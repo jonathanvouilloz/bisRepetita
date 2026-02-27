@@ -1,0 +1,157 @@
+---
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import Hero from "../../components/widgets/Hero.astro";
+import ContentShowcase from "../../components/widgets/ContentShowcase.astro";
+import FAQ from "../../components/widgets/FAQ.astro";
+import CTABanner from "../../components/widgets/CTABanner.astro";
+import GsapReveal from "../../components/widgets/GsapReveal.astro";
+import Schema from "../../components/seo/Schema.astro";
+
+const metadata = {
+    title: "Round by Round — Cours collectifs de boxe à Genève",
+    description:
+        "Cours collectifs de boxe Round by Round à Genève. Une méthode unique en rounds de 3 minutes qui allie technique, cardio et renforcement musculaire.",
+};
+
+const faqs = [
+    {
+        question: "Quel est le format d'un cours Round by Round ?",
+        answer: "Chaque cours dure 60 minutes, structure en rounds de 3 minutes avec 1 minute de recuperation. Le format alterne entre technique de boxe, cardio haute intensite et renforcement musculaire.",
+    },
+    {
+        question: "Faut-il un niveau minimum ?",
+        answer: "Non, les cours sont accessibles a tous les niveaux. Les exercices sont adaptes et le coach accompagne chaque participant individuellement.",
+    },
+    {
+        question: "Combien de participants par cours ?",
+        answer: "Les cours accueillent un maximum de 12 participants pour garantir un encadrement de qualite et une attention personnalisee.",
+    },
+    {
+        question: "Que dois-je apporter ?",
+        answer: "Une tenue de sport confortable et une bouteille d'eau. Les gants et le materiel sont fournis par le studio.",
+    },
+];
+---
+
+<BaseLayout {metadata}>
+    <Fragment slot="head">
+        <Schema
+            type="Service"
+            data={{
+                title: "Round by Round — Cours collectifs de boxe",
+                description: metadata.description,
+            }}
+        />
+    </Fragment>
+
+    <Hero
+        title={`Round by <span class="font-display text-primary">Round</span>`}
+        description="Des cours collectifs structures en rounds. Technique de boxe, cardio et renforcement dans une ambiance electrique."
+        actions={[
+            {
+                text: "Reserver un cours",
+                href: "/contact",
+                variant: "primary",
+                icon: "lucide:arrow-right",
+            },
+            {
+                text: "Voir les tarifs",
+                href: "/tarifs",
+                variant: "secondary",
+            },
+        ]}
+        classes={{ container: "min-h-[60vh]" }}
+    />
+
+    <GsapReveal animation="fadeUp">
+        <ContentShowcase
+            tagline="La methode"
+            title="Un format unique et efficace"
+            items={[
+                {
+                    title: "Structure en rounds",
+                    description:
+                        "3 minutes d'effort, 1 minute de recuperation. Le format du combat transpose a l'entrainement pour une efficacite maximale.",
+                    icon: "lucide:timer",
+
+                },
+                {
+                    title: "Mix technique & cardio",
+                    description:
+                        "Chaque round alterne entre travail technique sur sacs et pattes d'ours, et exercices de conditionnement.",
+                    icon: "lucide:zap",
+
+                },
+                {
+                    title: "Energie collective",
+                    description:
+                        "La dynamique de groupe pousse chacun a se depasser. L'ambiance sonore et l'emulation font la difference.",
+                    icon: "lucide:flame",
+
+                },
+            ]}
+            imageAlt="Cours Round by Round"
+        >
+            <Fragment>
+                <h3 class="text-2xl font-bold tracking-tight sm:text-3xl mb-2 font-display">
+                    L'entrainement qui <span class="text-primary">transforme</span>
+                </h3>
+                Round by Round est notre methode signature. Pratiquée dans un <a href="/studio" class="text-primary hover:underline">studio entièrement équipé</a>, elle offre un entrainement complet qui travaille a la fois le cardio, la technique et le mental.
+            </Fragment>
+        </ContentShowcase>
+    </GsapReveal>
+
+    <GsapReveal animation="fadeUp">
+        <ContentShowcase
+            title="Les benefices"
+            items={[
+                {
+                    title: "Condition physique",
+                    description:
+                        "Jusqu'a 800 calories brulees par seance. Un entrainement HIIT naturel qui sculpte le corps.",
+                    icon: "lucide:heart-pulse",
+
+                },
+                {
+                    title: "Technique de boxe",
+                    description:
+                        "Apprenez les fondamentaux : garde, deplacements, coups, enchainements. Progressez a chaque seance.",
+                    icon: "lucide:shield",
+
+                },
+                {
+                    title: "Gestion du stress",
+                    description:
+                        "La boxe est un exutoire naturel. Evacuez les tensions et repartez avec un esprit clair.",
+                    icon: "lucide:brain",
+
+                },
+            ]}
+            isReversed={true}
+            imageAlt="Benefices Round by Round"
+        >
+            <Fragment>
+                <h3 class="text-2xl font-bold tracking-tight sm:text-3xl mb-2 font-display">
+                    Corps et <span class="text-primary">esprit</span>
+                </h3>
+                Au-dela de la performance physique, Round by Round travaille la concentration, la confiance en soi et la capacite a gerer la pression.
+            </Fragment>
+        </ContentShowcase>
+    </GsapReveal>
+
+    <GsapReveal animation="fadeUp">
+        <FAQ
+            title="Questions frequentes"
+            subtitle="Tout ce que vous devez savoir sur les cours Round by Round."
+            items={faqs}
+        />
+    </GsapReveal>
+
+    <GsapReveal animation="fadeUp">
+        <CTABanner
+            title="Rejoignez le ring"
+            description="Inscrivez-vous a votre premier cours Round by Round et vivez l'experience."
+            cta={{ text: "Reserver un cours", href: "/contact" }}
+        />
+    </GsapReveal>
+</BaseLayout>

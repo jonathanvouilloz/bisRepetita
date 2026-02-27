@@ -2,133 +2,236 @@
 import BaseLayout from "../layouts/BaseLayout.astro";
 import { siteConfig } from "../config/site";
 import Hero from "../components/widgets/Hero.astro";
-import Features from "../components/widgets/Features.astro";
-import devImg from "../assets/images/dev_balanced.png";
-import openSourceImg from "../assets/images/open-source.png";
-import Content2 from "../components/widgets/Content2.astro";
+import Stats from "../components/widgets/Stats.astro";
+import ServiceCard from "../components/widgets/ServiceCard.astro";
+import ContentShowcase from "../components/widgets/ContentShowcase.astro";
+import Testimonials from "../components/widgets/Testimonials.astro";
+import CTABanner from "../components/widgets/CTABanner.astro";
+import GsapReveal from "../components/widgets/GsapReveal.astro";
+import SectionTitle from "../components/ui/SectionTitle.astro";
+import Container from "../components/ui/Container.astro";
+
+import Schema from "../components/seo/Schema.astro";
+import heroImage from "../assets/homepage.webp";
+import coursPortrait from "../assets/cours-portrait.webp";
+import coursLandscape from "../assets/cours-2-landscape.webp";
+
 const metadata = {
-	title: `${siteConfig.name} — The next step for your project`,
-	description:
-		"A modern and professional template for your web projects with Astro and Tailwind CSS. Boost your development with a solid foundation.",
-	ignoreTitleTemplate: true,
+    title: "Bis Repetita — Studio de boxe premium à Genève",
+    description:
+        "Studio de boxe premium à Genève. Coaching privé, cours collectifs Round by Round et programmes corporate avec Nicolas de Boccard. Première séance offerte.",
+    ignoreTitleTemplate: true,
 };
+
+const services = [
+    {
+        title: "Coaching Privé",
+        description:
+            "Séances individuelles ou en petit groupe (jusqu'à 6 personnes). Un accompagnement sur mesure adapté à vos objectifs.",
+        href: "/services/coaching-prive",
+        image: coursPortrait,
+        index: 1,
+    },
+    {
+        title: "Round by Round",
+        description:
+            "Cours collectifs structurés en rounds. Une méthode unique qui allie technique de boxe, cardio et renforcement.",
+        href: "/services/round-by-round",
+        index: 2,
+    },
+    {
+        title: "Corporate",
+        description:
+            "Team building, séances bien-être et programmes sur mesure pour les entreprises. Renforcez la cohésion de vos équipes.",
+        href: "/services/corporate",
+        index: 3,
+    },
+];
+
+const stats = [
+    {
+        value: "500+",
+        label: "Athlètes entraînés",
+        description: "Depuis plus de 15 ans, nous accompagnons des athlètes de tous niveaux vers l'excellence.",
+    },
+    {
+        value: "98%",
+        label: "Taux de satisfaction",
+        description: "La quasi-totalité de nos clients constatent des progrès significatifs, physiques et mentaux.",
+    },
+    {
+        value: "15+",
+        label: "Années d'expérience",
+        description: "Une équipe de professionnels aguerris avec une expertise approfondie de la boxe.",
+    },
+];
+
+const testimonials = [
+    {
+        quote: "Nicolas a transformé ma vision de la boxe. Bien plus qu'un sport, c'est devenu une discipline de vie. Les séances sont exigeantes mais toujours bienveillantes.",
+        name: "Laurent M.",
+        role: "Dirigeant d'entreprise",
+    },
+    {
+        quote: "Le studio Bis Repetita est un écrin. L'ambiance, les équipements, l'encadrement — tout est pensé pour vous pousser à donner le meilleur de vous-même.",
+        name: "Sophie D.",
+        role: "Avocate",
+    },
+    {
+        quote: "Les séances corporate ont eu un impact énorme sur la cohésion de notre équipe. Un format original et ultra-efficace.",
+        name: "Marc T.",
+        role: "CEO, startup tech",
+    },
+    {
+        quote: "Un cadre exceptionnel et un coach hors pair. Je recommande à 100%.",
+        name: "Claire B.",
+        role: "Médecin",
+    },
+    {
+        quote: "La méthode Round by Round est addictive. On progresse sans s'en rendre compte.",
+        name: "Thomas R.",
+        role: "Entrepreneur",
+    },
+    {
+        quote: "Après 6 mois chez Bis Repetita, j'ai gagné en confiance, en posture et en énergie. Le coaching privé est d'une qualité rare.",
+        name: "Julie F.",
+        role: "Architecte",
+    },
+    {
+        quote: "Je cherchais un sport exigeant mais accessible. La boxe avec Nicolas, c'est exactement ça. On se dépasse à chaque séance.",
+        name: "Antoine G.",
+        role: "Consultant",
+    },
+    {
+        quote: "Mes enfants adorent les cours juniors. Nicolas sait transmettre les valeurs du ring avec pédagogie et bienveillance.",
+        name: "Nathalie P.",
+        role: "Mère de famille",
+    },
+    {
+        quote: "L'approche est unique : technique, mental, physique. Tout est lié. On ressort de chaque séance transformé.",
+        name: "David K.",
+        role: "Banquier",
+    },
+];
 ---
 
 <BaseLayout {metadata}>
-	<Hero
-		title={`Starter Template for <br class="hidden md:block" /> <span class="bg-linear-to-r from-blue-400 via-purple-400 to-pink-400 bg-clip-text text-transparent">Web Developers</span>`}
-		tagline="Astro v5 + Tailwind v4"
-		description={`${siteConfig.description}`}
-		actions={[
-			{
-				text: "Get Started",
-				href: "https://github.com/devgelo-labs/astro-starter-pro",
-				variant: "primary",
-				icon: "lucide:github",
-			},
-			{
-				text: "Our Services",
-				href: "/services",
-				variant: "secondary",
-				icon: "lucide:arrow-right",
-				ariaLabel: "Learn more about our services",
-			},
-		]}
-	/>
-	<Features
-		tagline="Features"
-		title="What's Included"
-		subtitle="A selection of tools and configurations to streamline your workflow."
-		features={[
-			{
-				title: "Optimized SEO",
-				description:
-					"Base configuration for Meta tags, Open Graph, and Sitemap generation.",
-				icon: "lucide:scan-search",
-				iconClass: "bg-blue-500/10 text-blue-400",
-			},
-			{
-				title: "High Performance",
-				description: "Lightweight structure for fast load times.",
-				icon: "lucide:zap",
-				iconClass: "bg-purple-500/10 text-purple-400",
-			},
-			{
-				title: "Tailwind v4",
-				description:
-					"Integrated configuration with the latest version of Tailwind CSS.",
-				icon: "lucide:palette",
-				iconClass: "bg-pink-500/10 text-pink-400",
-			},
-		]}
-	/>
-	<Content2
-		items={[
-			{
-				title: "Responsive Design",
-				description:
-					"Base configuration for Meta tags, Open Graph, and Sitemap generation.",
-				icon: "lucide:scan-search",
-				iconClass: "bg-blue-500/10 text-blue-400",
-			},
-			{
-				title: "High Performance",
-				description: "Lightweight structure for fast load times.",
-				icon: "lucide:zap",
-				iconClass: "bg-purple-500/10 text-purple-400",
-			},
-			{
-				title: "Tailwind v4",
-				description:
-					"Integrated configuration with the latest version of Tailwind CSS.",
-				icon: "lucide:palette",
-				iconClass: "bg-pink-500/10 text-pink-400",
-			},
-		]}
-		image={devImg}
-		imageAlt="Development"
-	>
-		<Fragment>
-			<h3 class="text-2xl font-bold tracking-tight sm:text-3xl mb-2">
-				Development
-			</h3>
-			We provide a solid foundation to start your projects with best practices.
-		</Fragment>
-	</Content2>
-	<Content2
-		items={[
-			{
-				title: "Open Source",
-				description:
-					"Developed under the MIT license, free for personal and commercial use.",
-				icon: "lucide:github",
-				iconClass: "bg-indigo-500/10 text-indigo-400",
-			},
-			{
-				title: "Community Driven",
-				description:
-					"Built with the feedback and contributions of the developer community.",
-				icon: "lucide:users",
-				iconClass: "bg-orange-500/10 text-orange-400",
-			},
-			{
-				title: "Regular Updates",
-				description:
-					"Continuously improved with the latest technologies and best practices.",
-				icon: "lucide:refresh-cw",
-				iconClass: "bg-teal-500/10 text-teal-400",
-			},
-		]}
-		image={openSourceImg}
-		imageAlt="Community and Open Source"
-		isReversed={true}
-	>
-		<Fragment>
-			<h3 class="text-2xl font-bold tracking-tight sm:text-3xl mb-2">
-				Open Source & Community
-			</h3>
-			Join the revolution of modern web development. This project is open for
-			everyone to use, learn from, and contribute to.
-		</Fragment>
-	</Content2>
+    <Fragment slot="head">
+        <Schema type="SportsActivityLocation" data={{}} />
+    </Fragment>
+    <Hero
+        title={`Votre studio de <br class="hidden md:block" /> <span class="text-primary">boxe premium</span> à Genève`}
+        description="Découvrez la boxe dans un cadre d'exception. Coaching privé, cours collectifs et programmes corporate avec Nicolas de Boccard."
+        image={heroImage}
+        actions={[
+            {
+                text: "Réserver une séance",
+                href: "/contact",
+                variant: "primary",
+                icon: "lucide:arrow-right",
+            },
+            {
+                text: "Découvrir le studio",
+                href: "/studio",
+                variant: "secondary",
+                icon: "lucide:play",
+                ariaLabel: "En savoir plus sur le studio",
+            },
+        ]}
+        socialProof={{
+            avatars: [
+                "https://i.pravatar.cc/80?img=12",
+                "https://i.pravatar.cc/80?img=32",
+                "https://i.pravatar.cc/80?img=47",
+            ],
+            badge: "10K+",
+            text: "99% de nos clients ont atteint leurs objectifs",
+        }}
+    />
+
+    <Stats
+        stats={stats}
+        badge="Découvrir la salle"
+        badgeHref="/studio"
+        intro="Chez Bis Repetita, nous sommes une équipe de passionnés qui accompagnent plus de 500 athlètes depuis 2010 à révéler leur potentiel, atteindre leurs objectifs et élever leur performance."
+    />
+
+    <Container class="py-16 md:py-24">
+        <SectionTitle
+            badge="Nos services"
+            title="Une approche <span class='text-primary'>complète</span>"
+            class="mb-12"
+        />
+        <div class="grid gap-8 md:grid-cols-3 gsap-stagger-cards">
+            {services.map((service, i) => (
+                <ServiceCard service={service} index={i + 1} />
+            ))}
+        </div>
+    </Container>
+
+    <!-- Fixed background image window -->
+    <div
+        class="h-[50vh] md:h-[60vh] bg-fixed bg-cover bg-center mt-16 md:mt-24"
+        style={`background-image: url('${coursLandscape.src}')`}
+        role="img"
+        aria-label="Studio Bis Repetita"
+    >
+        <div class="w-full h-full bg-black/40"></div>
+    </div>
+
+    <div class="py-16 md:py-24">
+    <GsapReveal animation="fadeUp">
+        <ContentShowcase
+            tagline="Philosophie"
+            title="La répétition mène à la maîtrise"
+            items={[
+                {
+                    title: "Discipline & Rigueur",
+                    description:
+                        "Chaque séance est construite autour de fondamentaux techniques répétés jusqu'à l'excellence.",
+                    icon: "lucide:shield",
+                },
+                {
+                    title: "Encadrement Premium",
+                    description:
+                        "Un suivi personnalisé par Nicolas de Boccard, coach certifié avec plus de 15 ans d'expérience.",
+                    icon: "lucide:crown",
+                },
+                {
+                    title: "Résultats Mesurables",
+                    description:
+                        "Condition physique, confiance en soi, gestion du stress — des bénéfices concrets dès les premières séances.",
+                    icon: "lucide:trending-up",
+                },
+            ]}
+        >
+            <Fragment>
+                <h3 class="text-2xl font-bold tracking-tight sm:text-3xl mb-2 font-display">
+                    Bis Repetita — <span class="text-primary">la voie de l'excellence</span>
+                </h3>
+                La boxe est bien plus qu'un sport de combat. C'est une école de vie qui enseigne la discipline, le respect et le dépassement de soi. Au studio Bis Repetita, nous cultivons cette philosophie dans un cadre d'exception.
+            </Fragment>
+        </ContentShowcase>
+    </GsapReveal>
+    </div>
+
+    <GsapReveal animation="fadeUp">
+        <Testimonials
+            tagline="Temoignages"
+            title="Ce que disent nos clients"
+            testimonials={testimonials}
+            rating={{ score: "4.8", stars: 5, count: "500+", source: "Google" }}
+        />
+    </GsapReveal>
+
+    <div class="mt-8 md:mt-16"></div>
+
+    <GsapReveal animation="fadeUp">
+        <CTABanner
+            title="Prêt à enfiler les gants et vous dépasser ?"
+            subtitle="Votre premier round"
+            cta={{ text: "Réserver", href: "/contact" }}
+            variant="brushed-full"
+        />
+    </GsapReveal>
 </BaseLayout>

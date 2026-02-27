@@ -1,0 +1,114 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import Hero from "../components/widgets/Hero.astro";
+import PricingTable from "../components/widgets/PricingTable.astro";
+import FAQ from "../components/widgets/FAQ.astro";
+import CTABanner from "../components/widgets/CTABanner.astro";
+import GsapReveal from "../components/widgets/GsapReveal.astro";
+
+const metadata = {
+    title: "Tarifs — Coaching privé et cours de boxe à Genève",
+    description:
+        "Découvrez les tarifs du studio Bis Repetita à Genève. Coaching privé dès 150 CHF, cours collectifs Round by Round et programmes corporate sur mesure.",
+};
+
+const tiers = [
+    {
+        name: "Coaching Prive",
+        price: "150 CHF",
+        priceNote: "/ seance",
+        description: "Seances individuelles ou en petit groupe avec Nicolas de Boccard.",
+        features: [
+            "Seance de 60 minutes",
+            "1 a 6 personnes",
+            "Programme personnalise",
+            "Suivi de progression",
+            "Equipement fourni",
+        ],
+        cta: { text: "Reserver", href: "/contact" },
+    },
+    {
+        name: "Round by Round",
+        price: "45 CHF",
+        priceNote: "/ cours",
+        description: "Cours collectifs structures en rounds. Technique, cardio et renforcement.",
+        features: [
+            "Cours de 60 minutes",
+            "Max. 12 participants",
+            "Tous niveaux",
+            "Equipement fourni",
+            "Carte 10 cours : 400 CHF",
+        ],
+        cta: { text: "S'inscrire", href: "/contact" },
+        highlighted: true,
+    },
+    {
+        name: "Corporate",
+        price: "Sur devis",
+        description: "Programmes sur mesure pour les entreprises et les groupes.",
+        features: [
+            "Team building",
+            "Seances bien-etre",
+            "Evenements sur mesure",
+            "Au studio ou sur site",
+            "Facturation entreprise",
+        ],
+        cta: { text: "Demander un devis", href: "/services/corporate#devis" },
+    },
+];
+
+const faqs = [
+    {
+        question: "Comment reserver une seance ?",
+        answer: "Contactez-nous via le formulaire de contact ou par telephone. Nous vous proposerons un creneau adapte a votre emploi du temps.",
+    },
+    {
+        question: "Quels sont les moyens de paiement acceptes ?",
+        answer: "Nous acceptons les paiements par carte bancaire, Twint et virement bancaire. Le paiement s'effectue avant la seance.",
+    },
+    {
+        question: "Quelle est la politique d'annulation ?",
+        answer: "Toute annulation doit etre effectuee au moins 24h a l'avance. Passe ce delai, la seance est due. Consultez nos CGV pour plus de details.",
+    },
+    {
+        question: "Y a-t-il une seance decouverte ?",
+        answer: "Oui, nous proposons une premiere seance decouverte a tarif preferentiel pour vous permettre de decouvrir le studio et notre methode.",
+    },
+    {
+        question: "Les cartes de cours sont-elles nominatives ?",
+        answer: "Oui, les cartes de cours sont nominatives et non transferables. Elles sont valables 3 mois a compter de la date d'achat.",
+    },
+];
+---
+
+<BaseLayout {metadata}>
+    <Hero
+        title={`Nos <span class="font-display text-primary">Tarifs</span>`}
+        description="Des formules adaptees a chaque objectif. Coaching prive, cours collectifs ou programmes corporate."
+        classes={{ container: "min-h-[50vh]" }}
+    />
+
+    <GsapReveal animation="fadeUp">
+        <PricingTable
+            title="Choisissez votre formule"
+            subtitle="Tous les tarifs incluent l'acces aux equipements du studio."
+            tiers={tiers}
+        />
+    </GsapReveal>
+
+    <GsapReveal animation="fadeUp">
+        <FAQ
+            title="Questions sur les tarifs"
+            subtitle="Les reponses a vos questions les plus frequentes."
+            items={faqs}
+        />
+    </GsapReveal>
+
+    <GsapReveal animation="fadeUp">
+        <CTABanner
+            title="Une question sur nos tarifs ?"
+            description="Contactez-nous pour discuter de la formule la plus adaptee a vos besoins."
+            cta={{ text: "Nous contacter", href: "/contact" }}
+        />
+    </GsapReveal>
+</BaseLayout>

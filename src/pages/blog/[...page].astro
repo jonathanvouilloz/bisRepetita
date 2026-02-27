@@ -19,24 +19,24 @@ const { page } = Astro.props;
 const blog = page.data;
 
 const metadata = {
-    title: "Blog",
-    description: "Latest news and updates from our team.",
+    title: "Blog — Conseils boxe, entraînement et bien-être",
+    description: "Actualités, conseils et articles sur la boxe, l'entraînement et le bien-être par le studio Bis Repetita à Genève. Techniques, nutrition et mental.",
 };
 ---
 
 <BaseLayout metadata={metadata}>
-    <section class="relative px-4 py-8 sm:px-6 lg:px-8 md:py-12">
+    <section class="relative px-4 pt-24 pb-8 sm:px-6 lg:px-8 md:pb-12">
         <div class="absolute inset-0 z-0">
             <div
-                class="absolute inset-0 bg-linear-to-br from-blue-500/5 via-transparent to-pink-500/5"
+                class="absolute inset-0 bg-linear-to-br from-primary/5 via-transparent to-primary/3"
             >
             </div>
         </div>
         <div class="relative mx-auto max-w-5xl">
             <Headline
                 tagline="Blog"
-                title="Our Publications"
-                subtitle="Explore the latest news, tutorials, and articles from our team."
+                title="Nos publications"
+                subtitle="Actualites, conseils et articles sur la boxe, le bien-etre et la performance."
                 classes={{
                     container: "mb-12 text-center",
                     title: "font-heading mb-4 text-4xl font-bold tracking-tight text-foreground md:text-6xl",

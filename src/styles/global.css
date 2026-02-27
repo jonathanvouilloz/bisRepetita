@@ -1,10 +1,46 @@
 @import "tailwindcss";
 @plugin "@tailwindcss/typography";
 
+@utility scrollbar-hide {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+  &::-webkit-scrollbar {
+    display: none;
+  }
+}
+
+@font-face {
+  font-family: "LASVALLES";
+  src: url("/WEB/LASVALLESRegular.woff2") format("woff2"),
+       url("/WEB/LASVALLESRegular.woff") format("woff");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "LASVALLES Rounded";
+  src: url("/WEB/LASVALLESRounded1.woff2") format("woff2"),
+       url("/WEB/LASVALLESRounded1.woff") format("woff");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "LASVALLES Vintage";
+  src: url("/WEB/LASVALLESVintage.woff2") format("woff2"),
+       url("/WEB/LASVALLESVintage.woff") format("woff");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
 @theme {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
   --color-primary: var(--primary);
+  --color-primary-light: var(--primary-light);
   --color-border: var(--border);
   --color-muted: var(--muted);
   --color-muted-foreground: var(--muted-foreground);
@@ -12,29 +48,26 @@
 }
 
 :root {
-  --background: #ffffff;
-  --foreground: #0a0a0a;
-  --primary: #0254d8;
-  --border: #e5e7eb;
-  --muted: #f4f4f5;
-  --muted-foreground: #52525b;
-  --card: #ffffff;
+  --background: #0a0a0a;
+  --foreground: #e8e4de;
+  --primary: #D4A853;
+  --primary-light: #e0be7a;
+  --border: #1f1f1f;
+  --muted: #141414;
+  --muted-foreground: #8a8a8a;
+  --card: #111111;
+  --primary-glow: rgba(212, 168, 83, 0.15);
+  --card-hover: rgba(212, 168, 83, 0.08);
+  --surface-elevated: rgba(17, 17, 17, 0.8);
+  --shadow-gold-card: 0 0 40px rgba(212, 168, 83, 0.06);
+  --shadow-gold-button: 0 8px 30px rgba(212, 168, 83, 0.3);
+  --shadow-gold-icon: 0 0 12px rgba(212, 168, 83, 0.3);
 }
 
-:root[data-theme="dark"] {
-  --background: #030303;
-  --foreground: #e5e7eb;
-  --primary: #8bbcff;
-  --border: #262626;
-  --muted: #171717;
-  --muted-foreground: #a1a1aa;
-  --card: #0a0a0a;
-}
-
-/* Base styles using variables */
 @layer base {
   body {
     background-color: var(--background);
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='4' height='4' viewBox='0 0 4 4'%3E%3Cpath fill='%23292929' fill-opacity='0.3' d='M1 3h1v1H1V3zm2-2h1v1H3V1z'%3E%3C/path%3E%3C/svg%3E");
     color: var(--foreground);
   }
 
@@ -42,4 +75,71 @@
     outline: 2px solid var(--primary);
     outline-offset: 2px;
   }
+
+  ::selection {
+    background: rgba(212, 168, 83, 0.3);
+    color: #fff;
+  }
+}
+
+@layer utilities {
+  .text-gradient-gold {
+    background: linear-gradient(135deg, #D4A853 0%, #e0be7a 50%, #D4A853 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  .section-label {
+    font-size: 0.65rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.2em;
+  }
+
+  .glass-card {
+    background: rgba(17, 17, 17, 0.6);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border: 1px solid rgba(31, 31, 31, 0.5);
+  }
+}
+
+@keyframes float {
+  0%, 100% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+}
+
+@keyframes shimmer {
+  0% {
+    transform: translateX(-100%);
+  }
+  100% {
+    transform: translateX(100%);
+  }
+}
+
+@keyframes pulse-gold {
+  0%, 100% {
+    opacity: 0.4;
+  }
+  50% {
+    opacity: 1;
+  }
+}
+
+.animate-float {
+  animation: float 4s ease-in-out infinite;
+}
+
+.animate-shimmer {
+  animation: shimmer 2s ease-in-out infinite;
+}
+
+.animate-pulse-gold {
+  animation: pulse-gold 2s ease-in-out infinite;
 }

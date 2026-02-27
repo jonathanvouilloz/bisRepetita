@@ -1,5 +1,6 @@
 ---
 import type { HeadlineProps } from "../../types/types";
+import SectionTitle from "./SectionTitle.astro";
 
 const {
     title = await Astro.slots.render("title"),
@@ -7,40 +8,29 @@ const {
     tagline,
     classes = {},
     titleAs = "h2",
+    align = "left",
 } = Astro.props as HeadlineProps;
 
 const {
-    container = "max-w-xl",
-    title: titleClass = "text-3xl md:text-4xl",
-    subtitle: subtitleClass = "text-xl",
-    tagline: taglineClass = "",
+    container: containerClass = "max-w-xl",
+    title: titleClass = "text-4xl md:text-5xl",
 } = classes;
 
-const Title = titleAs as "h1" | "h2" | "h3" | "h4" | "h5" | "h6";
+// Preserve old Headline's title styling: base + custom/default size
+const resolvedTitleClass = `font-medium tracking-tight text-foreground mb-4 ${titleClass}`;
 ---
 
 {
     (title || subtitle || tagline) && (
-        <div class={`mb-4 ${container}`}>
-            {tagline && (
-                <div
-                    class={`inline-flex items-center gap-2 px-3 py-1 text-primary text-lg font-semibold ${taglineClass}`}
-                >
-                    {tagline}
-                </div>
-            )}
-            {title && (
-                <Title
-                    class={`font-bold tracking-tight text-foreground mb-4 ${titleClass}`}
-                    set:html={title}
-                />
-            )}
-            {subtitle && (
-                <p
-                    class={`text-muted-foreground ${subtitleClass}`}
-                    set:html={subtitle}
-                />
-            )}
+        <div class={`mb-4 ${containerClass}`}>
+            <SectionTitle
+                badge={tagline}
+                title={title}
+                subtitle={subtitle}
+                align={align}
+                as={titleAs as "h1" | "h2" | "h3"}
+                titleClass={resolvedTitleClass}
+            />
         </div>
     )
 }

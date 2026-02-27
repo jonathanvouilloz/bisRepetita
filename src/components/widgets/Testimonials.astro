@@ -1,0 +1,115 @@
+---
+import WidgetWrapper from "./WidgetWrapper.astro";
+import SectionTitle from "../ui/SectionTitle.astro";
+import type { TestimonialsProps } from "../../types/types";
+
+const {
+    testimonials,
+    rating,
+    title,
+    subtitle,
+    tagline,
+    id,
+    isDark = false,
+    classes = {},
+    bg,
+} = Astro.props as TestimonialsProps;
+---
+
+<WidgetWrapper id={id} isDark={isDark} bg={bg} classes={classes}>
+    <SectionTitle
+        badge={tagline}
+        title={title}
+        subtitle={subtitle}
+        align="left"
+        class="mb-10"
+    />
+
+    <div class="testimonial-widget border border-border rounded-l-2xl overflow-x-auto scrollbar-hide" style="margin-right: calc(-50vw + 50%)">
+        <div class="flex testimonial-track w-max">
+            {/* Rating card */}
+            {rating && (
+                <div class="w-[300px] md:w-[340px] p-8 flex flex-col items-center justify-center text-center border-r border-border shrink-0">
+                    <span class="text-8xl md:text-9xl font-bold font-display text-foreground leading-none">{rating.score}</span>
+                    <div class="flex gap-1 mt-4 mb-3">
+                        {Array.from({ length: rating.stars }).map(() => (
+                            <svg class="w-6 h-6 text-primary fill-current" viewBox="0 0 20 20">
+                                <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
+                            </svg>
+                        ))}
+                    </div>
+                    <span class="text-base font-medium text-muted-foreground">{rating.count} avis</span>
+                    <span class="text-sm text-muted-foreground mt-1">{rating.source}</span>
+                </div>
+            )}
+
+            {/* Testimonial cards */}
+            {testimonials.map((t, i) => (
+                <div class:list={[
+                    "w-[300px] md:w-[340px] p-8 flex flex-col justify-between shrink-0",
+                    i < testimonials.length - 1 && "border-r border-border",
+                ]}>
+                    <blockquote class="text-lg leading-relaxed text-foreground/90 mb-6">
+                        &ldquo;{t.quote}&rdquo;
+                    </blockquote>
+                    <div class="flex items-center gap-3">
+                        <div class="w-10 h-10 rounded-full bg-primary/10 text-primary flex items-center justify-center text-sm font-bold shrink-0">
+                            {t.name.charAt(0)}
+                        </div>
+                        <div>
+                            <span class="font-medium text-sm text-foreground block">{t.name}</span>
+                            {t.role && (
+                                <span class="text-sm text-muted-foreground">{t.role}</span>
+                            )}
+                        </div>
+                    </div>
+                </div>
+            ))}
+        </div>
+    </div>
+
+    {/* Navigation arrows */}
+    <div class="flex gap-2 mt-4">
+        <button
+            class="testimonial-prev w-12 h-12 border border-border rounded-xl flex items-center justify-center text-foreground hover:bg-accent transition-colors"
+            aria-label="Témoignage précédent"
+        >
+            <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M15 19l-7-7 7-7" />
+            </svg>
+        </button>
+        <button
+            class="testimonial-next w-12 h-12 border border-border rounded-xl flex items-center justify-center text-foreground hover:bg-accent transition-colors"
+            aria-label="Témoignage suivant"
+        >
+            <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7" />
+            </svg>
+        </button>
+    </div>
+</WidgetWrapper>
+
+<script>
+    document.querySelectorAll(".testimonial-widget").forEach((widget) => {
+        const strip = widget as HTMLElement;
+        const track = strip.querySelector(".testimonial-track") as HTMLElement | null;
+        const container = strip.closest(".relative") || strip.parentElement;
+        const prevBtn = container?.querySelector(".testimonial-prev") as HTMLElement | null;
+        const nextBtn = container?.querySelector(".testimonial-next") as HTMLElement | null;
+
+        if (strip && track && prevBtn && nextBtn) {
+            const getCardWidth = () => {
+                const firstCard = track.children[0] as HTMLElement;
+                return firstCard?.offsetWidth || 340;
+            };
+
+            nextBtn.addEventListener("click", () => {
+                strip.scrollBy({ left: getCardWidth(), behavior: "smooth" });
+            });
+
+            prevBtn.addEventListener("click", () => {
+                strip.scrollBy({ left: -getCardWidth(), behavior: "smooth" });
+            });
+        }
+    });
+</script>

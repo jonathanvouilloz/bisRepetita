@@ -20,21 +20,21 @@ const {
 } = Astro.props;
 
 const baseStyles =
-    "inline-flex items-center justify-center font-bold transition-all focus:outline-none focus:ring-2 focus:ring-offset-2 disabled:opacity-50 disabled:pointer-events-none rounded-xl";
+    "relative inline-flex items-center justify-center font-bold transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-primary/50 focus:ring-offset-2 focus:ring-offset-background disabled:opacity-50 disabled:pointer-events-none rounded-full overflow-hidden";
 
 const variants = {
     primary:
-        "bg-foreground text-background hover:bg-foreground/90 transform hover:scale-105 shadow-lg shadow-primary/20",
+        "bg-primary text-background hover:shadow-[var(--shadow-gold-button)] hover:-translate-y-0.5 shimmer-btn",
     secondary:
-        "bg-muted text-foreground border border-border hover:bg-muted/80",
+        "border border-primary text-primary hover:bg-primary hover:text-background hover:shadow-[0_0_20px_rgba(212,168,83,0.15)]",
     tertiary:
-        "bg-transparent text-foreground hover:bg-accent hover:text-accent-foreground",
+        "bg-transparent text-foreground hover:text-primary",
 };
 
 const sizes = {
-    sm: "px-4 py-2 text-sm",
-    md: "px-6 py-3 text-base",
-    lg: "px-8 py-4 text-lg",
+    sm: "px-5 py-2 text-sm",
+    md: "px-7 py-3 text-base",
+    lg: "px-10 py-5 text-lg",
 };
 
 const classes = [baseStyles, variants[variant], sizes[size], className].join(
@@ -52,4 +52,15 @@ const Tag = href ? "a" : "button";
     {...rest}
 >
     <slot />
+    {variant === "primary" && (
+        <span class="absolute inset-0 pointer-events-none overflow-hidden rounded-full" aria-hidden="true">
+            <span class="absolute inset-0 -translate-x-full bg-gradient-to-r from-transparent via-white/20 to-transparent shimmer-effect"></span>
+        </span>
+    )}
 </Tag>
+
+<style>
+    .shimmer-btn:hover .shimmer-effect {
+        animation: shimmer 1.5s ease-in-out;
+    }
+</style>

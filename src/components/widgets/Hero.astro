@@ -1,9 +1,6 @@
 ---
-import WidgetWrapper from "./WidgetWrapper.astro";
 import type { HeroProps } from "../../types/types";
-import Headline from "../ui/Headline.astro";
-import Button from "../ui/Button.astro";
-import { Icon } from "astro-icon/components";
+import { Image } from "astro:assets";
 
 const {
     title = await Astro.slots.render("title"),
@@ -11,73 +8,209 @@ const {
     description = await Astro.slots.render("description"),
     actions = [],
     id,
-    isDark = false,
+    image,
+    imageAlt = "",
+    variant = "default",
+    socialProof,
+    locationBadge,
     classes = {},
-    bg = await Astro.slots.render("bg"),
 } = Astro.props as HeroProps;
 
-const { container: containerClassProp = "" } = classes;
+const containerClass = classes.container || "min-h-[100vh]";
+const isCentered = variant === "centered";
 ---
 
-<WidgetWrapper
-    id={id}
-    isDark={isDark}
-    containerClass={`min-h-[calc(100vh-72px)] flex flex-col justify-center ${containerClassProp}`}
-    bg={bg}
->
-    <div class="text-center">
-        {
-            tagline && (
-                <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-primary/10 border border-primary/20 text-primary text-xs font-semibold mb-6">
-                    <span class="relative flex h-2 w-2" aria-hidden="true">
-                        <span class="absolute inline-flex h-full w-full rounded-full bg-primary/60 opacity-75 animate-ping motion-reduce:animate-none" />
-                        <span class="relative inline-flex h-2 w-2 rounded-full bg-primary" />
-                    </span>
-                    {tagline}
-                </div>
-            )
-        }
-        {
-            (title || description) && (
-                <Headline
-                    title={title}
-                    subtitle={description}
-                    titleAs="h1"
-                    classes={{
-                        container: "mb-0 max-w-none",
-                        title: "text-5xl md:text-7xl font-extrabold tracking-tight text-foreground mb-6",
-                        subtitle:
-                            "max-w-2xl mx-auto text-xl text-muted-foreground mb-10",
-                    }}
-                />
-            )
-        }
+<section id={id} class={`relative w-full ${containerClass} overflow-hidden`}>
 
-        <div
-            class="flex flex-col sm:flex-row items-center justify-center gap-4"
-        >
+    <!-- Z-0: Full-bleed background image -->
+    <div class="absolute inset-0">
+        {
+            image ? (
+                typeof image === "string" ? (
+                    <img src={image} alt={imageAlt} class="w-full h-full object-cover" loading="eager" fetchpriority="high" />
+                ) : (
+                    <Image src={image} alt={imageAlt} class="w-full h-full object-cover" widths={[800, 1200, 1920]} sizes="100vw" loading="eager" />
+                )
+            ) : (
+                <div class="w-full h-full bg-gradient-to-br from-card via-muted to-background"></div>
+            )
+        }
+    </div>
+
+    <!-- Z-10: Gradient overlays -->
+    <div class="absolute inset-0 bg-gradient-to-t from-background via-background/60 to-background/20"></div>
+    <div class="absolute inset-x-0 top-0 h-40 bg-gradient-to-b from-black/60 to-transparent"></div>
+
+    <!-- Z-20: Content -->
+    {isCentered ? (
+        <!-- Centered variant -->
+        <div class={`relative z-20 flex flex-col ${containerClass}`}>
+
+            <!-- Center block: badge + title + description -->
+            <div class="flex-1 flex flex-col items-center justify-center text-center px-6">
+                <!-- Location badge -->
+                {locationBadge && (
+                    <div class="hero-fade-in mb-8">
+                        <div class="inline-flex items-center gap-2 rounded-full bg-white/10 border border-white/15 backdrop-blur-sm px-4 py-2.5">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-primary shrink-0"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/></svg>
+                            <span class="text-sm text-foreground/80">{locationBadge.text}</span>
+                        </div>
+                    </div>
+                )}
+
+                <!-- Title -->
+                {title && (
+                    <h1
+                        class="hero-fade-in text-4xl md:text-6xl lg:text-7xl font-medium text-foreground leading-[0.95] max-w-4xl"
+                        style="letter-spacing: -0.05em;"
+                        set:html={title}
+                    />
+                )}
+
+                <!-- Description -->
+                {description && (
+                    <p class="hero-fade-in max-w-2xl text-lg md:text-xl text-muted-foreground mt-6">
+                        {description}
+                    </p>
+                )}
+            </div>
+
+            <!-- CTA anchored bottom-center flush — bridges into next section -->
+            {Array.isArray(actions) && actions.length > 0 && actions[0] && (
+                <div class="flex justify-center">
+                    <a
+                        href={actions[0].href}
+                        class="hero-fade-in inline-flex items-center gap-6 rounded-t-[2rem] bg-white text-background px-14 lg:px-24 py-7 lg:py-10 hover:bg-white/90 transition-colors group"
+                    >
+                        <span class="text-lg lg:text-2xl uppercase tracking-normal font-semibold font-display">
+                            {actions[0].text}
+                        </span>
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lg:w-7 lg:h-7 transition-transform group-hover:translate-y-1 animate-bounce"><path d="m6 9 6 6 6-6"/></svg>
+                    </a>
+                </div>
+            )}
+        </div>
+    ) : (
+        <!-- Default variant -->
+        <div class={`relative z-20 flex flex-col ${containerClass}`}>
+
+            <!-- Social proof — avatar stack -->
             {
-                Array.isArray(actions) &&
-                    actions.length > 0 &&
-                    actions.map((action) => (
-                        <Button
-                            href={action.href}
-                            variant={action.variant as "primary" | "secondary"}
-                            size="lg"
-                            aria-label={action.ariaLabel}
-                            class="w-full sm:w-auto"
-                        >
-                            {action.icon && (
-                                <Icon
-                                    name={action.icon}
-                                    class="w-5 h-5 mr-2 -ml-1"
-                                />
+                socialProof && (
+                    <div class="gsap-reveal pt-[20vh] mb-auto px-6 md:px-12 lg:px-20" data-animation="fadeIn" data-delay="0.8">
+                    <div class="inline-flex items-center gap-3 rounded-full bg-white/10 border border-white/15 backdrop-blur-sm px-4 py-2.5">
+                        <div class="flex items-center">
+                            <div class="flex -space-x-3">
+                                {socialProof.avatars.map((avatar, i) => (
+                                    typeof avatar === "string" ? (
+                                        <img
+                                            src={avatar}
+                                            alt=""
+                                            width={32}
+                                            height={32}
+                                            class="w-8 h-8 rounded-full border-2 border-white/20 object-cover"
+                                            style={`position:relative; z-index: ${socialProof.avatars.length - i}`}
+                                        />
+                                    ) : (
+                                        <Image
+                                            src={avatar}
+                                            alt=""
+                                            width={32}
+                                            height={32}
+                                            class="w-8 h-8 rounded-full border-2 border-white/20 object-cover"
+                                            style={`position:relative; z-index: ${socialProof.avatars.length - i}`}
+                                        />
+                                    )
+                                ))}
+                            </div>
+                            {socialProof.badge && (
+                                <span class="flex items-center justify-center w-8 h-8 rounded-full bg-primary text-primary-foreground text-xs font-semibold -ml-2" style={`position:relative; z-index: 0`}>
+                                    {socialProof.badge}
+                                </span>
                             )}
-                            {action.text}
-                        </Button>
-                    ))
+                        </div>
+                        <p class="text-sm text-foreground/80">{socialProof.text}</p>
+                    </div>
+                    </div>
+                )
+            }
+
+            <!-- Bottom section: title left + CTA block right -->
+            <div class="flex items-end justify-between">
+                <!-- Left: description + title -->
+                <div class="hero-fade-in px-6 md:px-12 lg:px-20 pb-10 md:pb-14">
+                    {
+                        description && (
+                            <p class="max-w-lg text-lg md:text-xl text-muted-foreground mb-4">
+                                {description}
+                            </p>
+                        )
+                    }
+                    {
+                        title && (
+                            <h1
+                                class="text-6xl md:text-8xl lg:text-[7.2rem] xl:text-[8.4rem] font-medium not-italic text-foreground leading-[0.95]" style="letter-spacing: -0.05em;"
+                                set:html={title}
+                            />
+                        )
+                    }
+                </div>
+
+                <!-- Right: CTA block — bridges into next section -->
+                {
+                    Array.isArray(actions) && actions.length > 0 && actions[0] && (
+                        <a
+                            href={actions[0].href}
+                            class="hero-fade-in hidden md:inline-flex items-center gap-6 shrink-0 rounded-tl-[2rem] bg-white text-background px-14 lg:px-24 xl:px-32 py-7 lg:py-10 xl:py-12 hover:bg-white/90 transition-colors group"
+                        >
+                            <span
+                                class="text-xl lg:text-2xl xl:text-3xl uppercase tracking-normal font-semibold font-display"
+                            >
+                                {actions[0].text}
+                            </span>
+                            <span class="text-2xl lg:text-3xl xl:text-4xl transition-transform group-hover:translate-x-2" aria-hidden="true">&rarr;</span>
+                        </a>
+                    )
+                }
+            </div>
+
+            {/* Mobile CTA */}
+            {
+                Array.isArray(actions) && actions.length > 0 && actions[0] && (
+                    <div class="flex md:hidden px-6 pb-6">
+                        <a
+                            href={actions[0].href}
+                            class="hero-fade-in inline-flex items-center gap-3 rounded-full bg-white text-background px-8 py-4 hover:bg-white/90 transition-colors group"
+                        >
+                            <span class="text-base uppercase tracking-normal font-semibold font-display">
+                                {actions[0].text}
+                            </span>
+                            <span class="text-lg transition-transform group-hover:translate-x-1" aria-hidden="true">&rarr;</span>
+                        </a>
+                    </div>
+                )
             }
         </div>
-    </div>
+    )}
+
     <slot />
-</WidgetWrapper>
+</section>
+
+<style>
+    .hero-fade-in {
+        animation: heroFadeIn 0.8s ease-out both;
+    }
+    .hero-fade-in:nth-child(2) {
+        animation-delay: 0.3s;
+    }
+    @keyframes heroFadeIn {
+        from {
+            opacity: 0;
+            transform: translateY(20px);
+        }
+        to {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    }
+</style>
