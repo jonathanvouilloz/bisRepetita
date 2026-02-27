@@ -1,62 +1,158 @@
 ---
 import { siteConfig } from "../../config/site";
-import ThemeToggle from "../ui/ThemeToggle.astro";
+import { Image } from "astro:assets";
+
+import coursPortrait from "../../assets/cours-portrait.webp";
+import cours2Landscape from "../../assets/cours-2-landscape.webp";
+import homepage from "../../assets/homepage.webp";
+
+const megaMenuImages: Record<string, ImageMetadata> = {
+    "cours-portrait.webp": coursPortrait,
+    "cours-2-landscape.webp": cours2Landscape,
+    "homepage.webp": homepage,
+};
+
+let linkIndex = 0;
+function getNavIndex() {
+    linkIndex++;
+    return String(linkIndex).padStart(2, "0");
+}
 ---
 
 <nav
-    class="fixed top-0 z-50 w-full border-b border-border bg-background md:bg-background/50 md:backdrop-blur"
+    id="main-nav"
+    class="fixed top-0 z-50 w-full transition-all duration-500"
 >
     <div
-        class="mx-auto flex max-w-7xl items-center justify-between px-4 py-4 sm:px-6 lg:px-8"
+        id="nav-inner"
+        class="relative flex w-full items-center justify-between px-8 py-5 lg:px-12 transition-all duration-500"
     >
-        <div class="flex items-center gap-2">
-            <a
-                href="/"
-                class="text-xl font-bold tracking-tight text-foreground transition-colors hover:text-primary"
-            >
-                {siteConfig.name}
-            </a>
-        </div>
-
-        <!-- Desktop Menu -->
-        <div class="hidden md:block">
-            <div class="ml-10 flex items-baseline space-x-8">
-                {
-                    siteConfig.navLinks.map((link) => (
+        <!-- LEFT: Desktop Nav Links -->
+        <div class="hidden lg:flex items-center gap-10">
+            {
+                siteConfig.navLinks.map((link) =>
+                    link.children ? (
+                        <div class="relative group" id="mega-menu-trigger">
+                            <button class="nav-link relative text-sm font-medium text-foreground transition-colors hover:text-primary flex items-center gap-1 py-1 whitespace-nowrap">
+                                {link.text}
+                                <svg
+                                    class="w-3.5 h-3.5 shrink-0 transition-transform group-hover:rotate-180"
+                                    fill="none"
+                                    viewBox="0 0 24 24"
+                                    stroke="currentColor"
+                                >
+                                    <path
+                                        stroke-linecap="round"
+                                        stroke-linejoin="round"
+                                        stroke-width="2"
+                                        d="M19 9l-7 7-7-7"
+                                    />
+                                </svg>
+                            </button>
+                            <!-- Mega Menu -->
+                            <div
+                                id="mega-menu-panel"
+                                class="absolute left-0 top-full pt-2 opacity-0 invisible translate-y-[-8px] group-hover:opacity-100 group-hover:visible group-hover:translate-y-0 transition-all duration-200 ease-out z-50"
+                            >
+                                <div class="bg-black border border-white/10 rounded-2xl w-[576px] overflow-hidden">
+                                    <div class="grid grid-cols-5 gap-3 p-4">
+                                        <!-- Left column: title + links + bottom link -->
+                                        <div class="col-span-3 flex flex-col">
+                                            <span class="text-[11px] uppercase tracking-widest text-white/30 px-3 mb-1.5">{siteConfig.name} présente</span>
+                                            {link.children.map((child: any, idx: number) => (
+                                                <a
+                                                    href={child.href}
+                                                    class="mega-menu-link group/link flex flex-col gap-0.5 rounded-lg px-3 py-2 transition-colors hover:bg-white/5"
+                                                    data-service={idx}
+                                                >
+                                                    <span class="text-sm font-medium text-foreground transition-colors group-hover/link:text-primary">
+                                                        {child.text}
+                                                    </span>
+                                                    {child.description && (
+                                                        <span class="text-xs text-muted-foreground leading-tight">
+                                                            {child.description}
+                                                        </span>
+                                                    )}
+                                                </a>
+                                            ))}
+                                            <a
+                                                href="/services/coaching-prive"
+                                                class="flex items-center gap-1 text-xs text-white/40 hover:text-primary transition-colors px-3 pt-2 mt-auto"
+                                            >
+                                                Tous nos programmes
+                                                <svg class="w-3 h-3" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" /></svg>
+                                            </a>
+                                        </div>
+                                        <!-- Right column: image -->
+                                        <div class="col-span-2 relative aspect-[4/5] overflow-hidden rounded-xl">
+                                            {link.children.map((child: any, idx: number) => {
+                                                const imgSrc = child.image && megaMenuImages[child.image];
+                                                return imgSrc ? (
+                                                    <div
+                                                        class:list={[
+                                                            "mega-menu-image absolute inset-0 transition-opacity duration-300",
+                                                            idx === 0 ? "opacity-100" : "opacity-0",
+                                                        ]}
+                                                        data-image-index={idx}
+                                                    >
+                                                        <Image
+                                                            src={imgSrc}
+                                                            alt={child.text}
+                                                            class="w-full h-full object-cover"
+                                                            widths={[600, 900]}
+                                                            sizes="(max-width: 1280px) 60vw, 540px"
+                                                        />
+                                                    </div>
+                                                ) : null;
+                                            })}
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    ) : (
                         <a
                             href={link.href}
-                            class="text-sm font-medium text-foreground transition-colors hover:text-primary"
+                            class="nav-link relative text-sm font-medium text-foreground transition-colors hover:text-primary py-1"
                         >
                             {link.text}
                         </a>
-                    ))
-                }
-            </div>
+                    ),
+                )
+            }
         </div>
 
-        <div class="hidden md:flex items-center gap-4">
+        <!-- CENTER: Logo (absolute centered) -->
+        <a
+            href="/"
+            class="absolute left-1/2 -translate-x-1/2 transition-opacity hover:opacity-80"
+        >
+            <img src="/logo-black.svg" alt={siteConfig.name} class="h-8 w-auto invert brightness-200" />
+        </a>
+
+        <!-- RIGHT: CTA (desktop) -->
+        <div class="hidden lg:flex items-center gap-4">
             <a
-                href={siteConfig.socialLinks.github}
-                target="_blank"
-                rel="noopener noreferrer"
-                class="rounded-full bg-foreground/10 px-4 py-2 text-sm font-semibold text-foreground transition-all hover:bg-foreground/20"
+                href={siteConfig.navCta.href}
+                class="nav-cta rounded-full bg-white/10 border border-white/20 backdrop-blur-sm px-6 py-2.5 text-sm font-bold text-foreground transition-all hover:shadow-[0_0_20px_rgba(255,255,255,0.15)] flex items-center gap-2"
             >
-                GitHub
+                {siteConfig.navCta.text}
+                <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7" />
+                </svg>
             </a>
-            <ThemeToggle />
         </div>
 
         <!-- Mobile Menu Button -->
-        <div class="md:hidden flex items-center">
+        <div class="lg:hidden flex items-center">
             <button
                 id="mobile-menu-button"
                 type="button"
-                class="inline-flex items-center justify-center p-2 rounded-md text-foreground hover:text-white hover:bg-white/10 focus:outline-none transition-colors"
+                class="inline-flex items-center justify-center p-2 rounded-md text-foreground hover:text-primary focus:outline-none transition-colors"
                 aria-controls="mobile-menu"
                 aria-expanded="false"
             >
-                <span class="sr-only">Open main menu</span>
-                <!-- Icon when menu is closed -->
+                <span class="sr-only">Ouvrir le menu</span>
                 <svg
                     id="menu-icon-closed"
                     class="block h-6 w-6"
@@ -71,7 +167,6 @@ import ThemeToggle from "../ui/ThemeToggle.astro";
                         stroke-width="2"
                         d="M4 6h16M4 12h16M4 18h16"></path>
                 </svg>
-                <!-- Icon when menu is open -->
                 <svg
                     id="menu-icon-open"
                     class="hidden h-6 w-6"
@@ -87,48 +182,209 @@ import ThemeToggle from "../ui/ThemeToggle.astro";
                         d="M6 18L18 6M6 6l12 12"></path>
                 </svg>
             </button>
-            <div class="ml-2">
-                <ThemeToggle />
-            </div>
         </div>
     </div>
 
-    <div class="hidden md:hidden" id="mobile-menu">
-        <div
-            class="space-y-1 border-b border-border bg-background/90 px-2 pb-3 pt-2 sm:px-3"
-        >
-            {
-                siteConfig.navLinks.map((link) => (
-                    <a
-                        href={link.href}
-                        class="block rounded-md px-3 py-2 text-base font-medium text-foreground transition-colors hover:bg-white/10 hover:text-primary"
+    <!-- Mobile Menu Overlay -->
+    <div
+        class="hidden fixed inset-0 z-50 bg-background/98 backdrop-blur-sm"
+        id="mobile-menu"
+    >
+        <div class="flex flex-col h-full">
+            <div class="flex items-center justify-between px-4 py-4 sm:px-6">
+                <a href="/" class="transition-opacity hover:opacity-80">
+                    <img src="/logo-black.svg" alt={siteConfig.name} class="h-8 w-auto invert brightness-200" />
+                </a>
+                <button
+                    id="mobile-menu-close"
+                    class="p-2 text-foreground hover:text-primary transition-colors"
+                >
+                    <svg
+                        class="h-6 w-6"
+                        fill="none"
+                        viewBox="0 0 24 24"
+                        stroke="currentColor"
                     >
-                        {link.text}
-                    </a>
-                ))
-            }
-            <a
-                href={siteConfig.socialLinks.github}
-                target="_blank"
-                class="block rounded-md px-3 py-2 text-base font-medium text-blue-400 transition-colors hover:cursor-pointer hover:bg-blue-500/10 hover:text-blue-300"
-                >GitHub</a
-            >
+                        <path
+                            stroke-linecap="round"
+                            stroke-linejoin="round"
+                            stroke-width="2"
+                            d="M6 18L18 6M6 6l12 12"></path>
+                    </svg>
+                </button>
+            </div>
+            <div id="mobile-nav-links" class="flex flex-col items-start justify-center flex-1 gap-6 px-8">
+                {
+                    (() => {
+                        let i = 0;
+                        return siteConfig.navLinks.map((link) =>
+                            link.children ? (
+                                <>
+                                    {link.children.map((child) => {
+                                        i++;
+                                        return (
+                                            <a
+                                                href={child.href}
+                                                class="mobile-nav-item flex items-center gap-4 text-2xl font-medium text-foreground transition-colors hover:text-primary opacity-0"
+                                            >
+                                                <span class="text-sm text-primary/50 font-mono">{String(i).padStart(2, "0")}</span>
+                                                {child.text}
+                                            </a>
+                                        );
+                                    })}
+                                </>
+                            ) : (
+                                (() => {
+                                    i++;
+                                    return (
+                                        <a
+                                            href={link.href}
+                                            class="mobile-nav-item flex items-center gap-4 text-2xl font-medium text-foreground transition-colors hover:text-primary opacity-0"
+                                        >
+                                            <span class="text-sm text-primary/50 font-mono">{String(i).padStart(2, "0")}</span>
+                                            {link.text}
+                                        </a>
+                                    );
+                                })()
+                            ),
+                        );
+                    })()
+                }
+                <a
+                    href={siteConfig.navCta.href}
+                    class="mobile-nav-item mt-6 rounded-full bg-primary px-8 py-3 text-lg font-bold text-background transition-all hover:bg-primary-light opacity-0"
+                >
+                    {siteConfig.navCta.text}
+                </a>
+            </div>
         </div>
     </div>
 </nav>
 
+<style is:global>
+    .nav-link {
+        transition: color 0.3s ease;
+    }
+    /* État par défaut : glass subtil */
+    #nav-inner {
+        background: rgba(10, 10, 10, 0.6);
+        backdrop-filter: blur(12px);
+        -webkit-backdrop-filter: blur(12px);
+        border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+    }
+    /* Au scroll : plus opaque, blur renforcé */
+    #main-nav.scrolled #nav-inner {
+        background: rgba(10, 10, 10, 0.85);
+        backdrop-filter: blur(20px);
+        -webkit-backdrop-filter: blur(20px);
+        border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    }
+</style>
+
 <script>
-    const button = document.getElementById("mobile-menu-button");
-    const menu = document.getElementById("mobile-menu");
-    const iconClosed = document.getElementById("menu-icon-closed");
-    const iconOpen = document.getElementById("menu-icon-open");
+    import { gsap } from "gsap";
 
-    button?.addEventListener("click", () => {
-        const isExpanded = button.getAttribute("aria-expanded") === "true";
+    function initNavbar() {
+        const button = document.getElementById("mobile-menu-button");
+        const menu = document.getElementById("mobile-menu");
+        const closeBtn = document.getElementById("mobile-menu-close");
+        const iconClosed = document.getElementById("menu-icon-closed");
+        const iconOpen = document.getElementById("menu-icon-open");
+        const nav = document.getElementById("main-nav");
 
-        button.setAttribute("aria-expanded", String(!isExpanded));
-        menu?.classList.toggle("hidden");
-        iconClosed?.classList.toggle("hidden");
-        iconOpen?.classList.toggle("hidden");
-    });
+        // Avoid duplicate listeners
+        if (nav?.hasAttribute("data-nav-init")) return;
+        nav?.setAttribute("data-nav-init", "true");
+
+        // Mobile menu toggle
+        function openMenu() {
+            menu?.classList.remove("hidden");
+            iconClosed?.classList.add("hidden");
+            iconOpen?.classList.remove("hidden");
+            button?.setAttribute("aria-expanded", "true");
+            document.body.style.overflow = "hidden";
+
+            const items = document.querySelectorAll(".mobile-nav-item");
+            gsap.fromTo(items, {
+                opacity: 0,
+                x: -20,
+            }, {
+                opacity: 1,
+                x: 0,
+                duration: 0.4,
+                stagger: 0.08,
+                ease: "power2.out",
+            });
+        }
+
+        function closeMenu() {
+            menu?.classList.add("hidden");
+            iconClosed?.classList.remove("hidden");
+            iconOpen?.classList.add("hidden");
+            button?.setAttribute("aria-expanded", "false");
+            document.body.style.overflow = "";
+
+            document.querySelectorAll(".mobile-nav-item").forEach((item) => {
+                (item as HTMLElement).style.opacity = "0";
+            });
+        }
+
+        button?.addEventListener("click", openMenu);
+        closeBtn?.addEventListener("click", closeMenu);
+
+        menu?.querySelectorAll("a").forEach((link) => {
+            link.addEventListener("click", closeMenu);
+        });
+
+        // Navbar scroll effect
+        let isScrolled = false;
+
+        function handleScroll() {
+            const scrolled = window.scrollY > 50;
+            if (scrolled === isScrolled) return;
+            isScrolled = scrolled;
+
+            if (scrolled) {
+                nav?.classList.add("scrolled");
+            } else {
+                nav?.classList.remove("scrolled");
+            }
+        }
+
+        window.addEventListener("scroll", handleScroll, { passive: true });
+        handleScroll();
+
+        // Mega menu: dynamic image switching
+        const megaLinks = document.querySelectorAll(".mega-menu-link");
+        const megaImages = document.querySelectorAll(".mega-menu-image");
+
+        megaLinks.forEach((link) => {
+            link.addEventListener("mouseenter", () => {
+                const idx = (link as HTMLElement).dataset.service;
+                megaImages.forEach((img) => {
+                    const imgIdx = (img as HTMLElement).dataset.imageIndex;
+                    if (imgIdx === idx) {
+                        img.classList.remove("opacity-0");
+                        img.classList.add("opacity-100");
+                    } else {
+                        img.classList.remove("opacity-100");
+                        img.classList.add("opacity-0");
+                    }
+                });
+            });
+        });
+
+        // Set --nav-height CSS variable
+        function updateNavHeight() {
+            const navInner = document.getElementById("nav-inner");
+            if (navInner) {
+                document.documentElement.style.setProperty("--nav-height", navInner.offsetHeight + "px");
+            }
+        }
+        updateNavHeight();
+        window.addEventListener("resize", updateNavHeight);
+    }
+
+    initNavbar();
+    document.addEventListener("astro:page-load", initNavbar);
 </script>
