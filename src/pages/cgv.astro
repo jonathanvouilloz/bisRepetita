@@ -1,5 +1,8 @@
 ---
 import BaseLayout from "../layouts/BaseLayout.astro";
+import Hero from "../components/widgets/Hero.astro";
+import CTABanner from "../components/widgets/CTABanner.astro";
+import GsapReveal from "../components/widgets/GsapReveal.astro";
 
 const metadata = {
     title: "Conditions Générales de Vente",
@@ -8,11 +11,13 @@ const metadata = {
 ---
 
 <BaseLayout {metadata}>
-    <div class="mx-auto max-w-3xl px-4 pt-24 pb-16 md:pb-24 sm:px-6 lg:px-8">
-        <h1 class="text-3xl md:text-4xl font-bold font-display mb-8">
-            Conditions Generales de <span class="text-primary">Vente</span>
-        </h1>
+    <Hero
+        title={`Conditions Générales de <span class="font-display text-primary">Vente</span>`}
+        description="Dernière mise à jour : Février 2026"
+        classes={{ container: "min-h-[50vh]" }}
+    />
 
+    <div class="mx-auto max-w-3xl px-4 pb-16 md:pb-24 sm:px-6 lg:px-8">
         <div class="prose prose-invert prose-lg max-w-none">
             <h2>1. Objet</h2>
             <p>
@@ -79,10 +84,13 @@ const metadata = {
                 Les presentes CGV sont soumises au droit suisse. Tout litige sera de la
                 competence exclusive des tribunaux de Geneve.
             </p>
-
-            <p class="text-muted-foreground text-sm mt-12">
-                Derniere mise a jour : Fevrier 2026
-            </p>
         </div>
     </div>
+
+    <GsapReveal animation="fadeUp">
+        <CTABanner
+            title="Des questions ?"
+            cta={{ text: "Nous contacter", href: "/contact" }}
+        />
+    </GsapReveal>
 </BaseLayout>
