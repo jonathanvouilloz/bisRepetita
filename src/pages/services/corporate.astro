@@ -1,15 +1,156 @@
 ---
 import BaseLayout from "../../layouts/BaseLayout.astro";
 import Hero from "../../components/widgets/Hero.astro";
+import Stats from "../../components/widgets/Stats.astro";
+import Features from "../../components/widgets/Features.astro";
+import ContentShowcase from "../../components/widgets/ContentShowcase.astro";
+import SplitShowcase from "../../components/widgets/SplitShowcase.astro";
+import PricingTable from "../../components/widgets/PricingTable.astro";
+import Testimonials from "../../components/widgets/Testimonials.astro";
+import FAQ from "../../components/widgets/FAQ.astro";
 import CTABanner from "../../components/widgets/CTABanner.astro";
+import ProfileShowcase from "../../components/widgets/ProfileShowcase.astro";
 import GsapReveal from "../../components/widgets/GsapReveal.astro";
+import { Image } from "astro:assets";
 import Schema from "../../components/seo/Schema.astro";
+import studioAtmosphere from "../../assets/studio-atmosphere.webp";
+import coursLandscape from "../../assets/cours-2-landscape.webp";
+import nicolasPortrait from "../../assets/nicolas-de-boccard.webp";
+import mapGeneve from "../../assets/map-geneve-boxe.webp";
 
 const metadata = {
-    title: "Programme Corporate — Boxe en entreprise à Genève",
+    title: "Boxe Corporate à Genève — Team Building Entreprise",
     description:
-        "Programmes de boxe corporate à Genève. Team building, bien-être en entreprise et événements sur mesure avec Bis Repetita. Renforcez la cohésion de vos équipes.",
+        "Boxe corporate à Genève : team building, gestion du stress, cohésion d'équipe. Coachs certifiés J+S, déplacement dans tout le canton. Devis sous 24h.",
 };
+
+const stats = [
+    { value: "100%", label: "Sur mesure" },
+    { value: "J+S", label: "Coachs certifiés" },
+    { value: "Canton GE", label: "Mobilité totale" },
+];
+
+const features = [
+    {
+        title: "Gestion du stress & prévention du burnout",
+        description:
+            "La boxe éducative est l'un des outils les plus efficaces contre le stress chronique. L'effort physique intense, cadré et progressif, libère les tensions accumulées et améliore la qualité du sommeil.",
+        icon: "lucide:shield-check",
+    },
+    {
+        title: "Leadership & prise de décision",
+        description:
+            "Sur le ring comme en réunion : garder son calme sous pression, lire une situation, prendre une décision. La boxe développe des compétences de leadership transférables au quotidien professionnel.",
+        icon: "lucide:target",
+    },
+    {
+        title: "Cohésion d'équipe",
+        description:
+            "Rien ne soude un groupe comme un effort partagé. La boxe crée des liens authentiques entre collaborateurs, au-delà des hiérarchies.",
+        icon: "lucide:users",
+    },
+    {
+        title: "Marque employeur",
+        description:
+            "Proposer la boxe en entreprise envoie un signal fort : une culture d'entreprise dynamique, un engagement concret pour le bien-être au travail.",
+        icon: "lucide:award",
+    },
+];
+
+const tiers = [
+    {
+        name: "Team Building",
+        description: "Atelier ponctuel pour souder vos équipes.",
+        price: "CHF TODO",
+        priceNote: "/ séance",
+        features: [
+            "Session de 60-90 min",
+            "Jusqu'à 20 participants",
+            "Matériel fourni",
+            "En entreprise ou au studio",
+            "Débriefing collectif",
+        ],
+        cta: { text: "Demander un devis", href: "/contact" },
+    },
+    {
+        name: "Coaching Régulier",
+        description: "Sessions hebdomadaires sur votre lieu de travail.",
+        price: "CHF TODO",
+        priceNote: "/ mois",
+        features: [
+            "1 à 2 séances par semaine",
+            "Programme évolutif",
+            "Suivi des progrès",
+            "Rapport trimestriel",
+            "Tarif dégressif",
+        ],
+        cta: { text: "Demander un devis", href: "/contact" },
+        highlighted: true,
+        popularLabel: "Le plus demandé",
+    },
+    {
+        name: "Séminaires & Keynotes",
+        description: "Le parallèle entre le ring et le business.",
+        price: "CHF TODO",
+        priceNote: "/ intervention",
+        features: [
+            "Conférence interactive",
+            "Atelier pratique inclus",
+            "Thèmes : leadership, résilience, dépassement",
+            "Adapté aux séminaires d'entreprise",
+        ],
+        cta: { text: "Demander un devis", href: "/contact" },
+    },
+];
+
+const testimonials = [
+    {
+        quote: "TODO — Témoignage DRH à obtenir",
+        name: "À confirmer",
+        role: "DRH — Entreprise genevoise",
+    },
+    {
+        quote: "TODO — Témoignage CEO/Manager à obtenir",
+        name: "À confirmer",
+        role: "CEO — Entreprise genevoise",
+    },
+    {
+        quote: "TODO — Témoignage Office Manager à obtenir",
+        name: "À confirmer",
+        role: "Office Manager — Entreprise genevoise",
+    },
+];
+
+const faqs = [
+    {
+        question: "Faut-il du matériel ou de l'équipement ?",
+        answer: "Tout est fourni : gants, pattes d'ours, tapis de sol. Vos collaborateurs viennent en tenue de sport confortable, nous nous occupons du reste.",
+    },
+    {
+        question: "Est-ce dangereux ? Y a-t-il des contacts physiques ?",
+        answer: "Aucun risque. Nos séances reposent sur la boxe éducative : zéro opposition directe, zéro impact au visage. Tout le travail se fait au sac et aux pattes d'ours, dans un cadre 100% sécurisé.",
+    },
+    {
+        question: "Quel espace prévoir dans nos bureaux ?",
+        answer: "Un minimum de 20m² avec un sol stable et dégagé suffit. Salle de réunion, open space, parking couvert — on s'adapte à votre configuration.",
+    },
+    {
+        question: "Combien de participants par séance ?",
+        answer: "Jusqu'à 20 personnes en déplacement, 12 au studio pour garantir un encadrement optimal sur le ring et les équipements.",
+    },
+    {
+        question: "Quels sont les tarifs ?",
+        answer: "Les séances corporate sont facturées entre 400 et 600 CHF selon le format, la durée et le nombre de participants. <a href='/contact' class='text-primary hover:underline'>Demandez un devis personnalisé</a> pour un tarif précis.",
+    },
+    {
+        question: "Proposez-vous des contrats récurrents ?",
+        answer: "Oui, nous proposons des formules mensuelles et trimestrielles avec des tarifs dégressifs. La solution idéale pour intégrer la boxe dans votre programme bien-être au travail.",
+    },
+    {
+        question: "Comment fonctionne la facturation ?",
+        answer: "Nous émettons une facture avec un délai de paiement de 30 jours. Le règlement par virement bancaire est privilégié pour les entreprises. <a href='/contact' class='text-primary hover:underline'>Contactez-nous</a> pour discuter des modalités.",
+    },
+];
 ---
 
 <BaseLayout {metadata}>
@@ -17,15 +158,28 @@ const metadata = {
         <Schema
             type="Service"
             data={{
-                title: "Programme Corporate de Boxe",
+                title: "Coaching de Boxe Corporate à Genève",
                 description: metadata.description,
+                url: "https://bisrepetita.ch/services/corporate",
+            }}
+        />
+        <Schema
+            type="FAQPage"
+            data={{
+                faqs: faqs.map((f) => ({
+                    question: f.question,
+                    answer: f.answer.replace(/<[^>]*>/g, ""),
+                })),
             }}
         />
     </Fragment>
 
+    <!-- 1. Hero (DARK) -->
     <Hero
-        title={`Programme <span class="font-display text-primary">Corporate</span>`}
-        description="Renforcez la cohésion de vos équipes avec la boxe. Team building, séances bien-être et programmes sur mesure pour les entreprises."
+        title={`Boxe <span class="font-display text-primary">Corporate</span> à Genève`}
+        description="Performance, bien-être et cohésion d'équipe. Programmes de boxe sur mesure pour les entreprises genevoises — en déplacement ou au studio."
+        image={studioAtmosphere}
+        imageAlt="Séance de boxe corporate au studio Bis Repetita Genève"
         actions={[
             {
                 text: "Demander un devis",
@@ -34,16 +188,165 @@ const metadata = {
                 icon: "lucide:arrow-right",
             },
         ]}
-        classes={{ container: "min-h-[60vh]" }}
+        classes={{ container: "min-h-[72vh]" }}
     />
 
-    <!-- TODO: Pitch entreprise, deux formats (déplacement/studio), bénéfices, processus devis -->
+    <!-- 2. Stats (LIGHT — rupture visuelle) -->
+    <Stats
+        stats={stats}
+        badge="Boxe Corporate"
+        intro="La boxe en entreprise : un levier de performance collective piloté par des professionnels de compétition. Pas de combat, pas de risque — une méthode éducative qui transforme les dynamiques d'équipe."
+        variant="wide"
+    />
 
+    <!-- 3. Features bento (DARK) — Le "Pourquoi" -->
+    <GsapReveal animation="fadeUp">
+        <Features
+            tagline="Pourquoi la boxe en entreprise"
+            title="Des bénéfices mesurables pour vos équipes"
+            features={features}
+            columns={3}
+            headlineAlign="left"
+            bento="2-3"
+        >
+            <div class="group relative bg-white p-8 rounded-3xl border border-border/50 transition-all duration-300 hover:border-primary/30 hover:shadow-[var(--shadow-gold-card)] overflow-hidden flex items-center justify-center">
+                <img src="/logo-black.svg" alt="Bis Repetita" class="w-48 h-auto opacity-90 transition-opacity duration-300 group-hover:opacity-100" />
+            </div>
+        </Features>
+    </GsapReveal>
+
+    <!-- 4. SplitShowcase — Méthodologie (DARK) -->
+    <GsapReveal animation="fadeUp">
+        <SplitShowcase
+            tagline="Notre approche"
+            title="Boxe éducative, pas compétitive"
+            image={coursLandscape}
+            imageAlt="Entraînement de boxe éducative en groupe au studio Bis Repetita"
+            items={[
+                {
+                    title: "Zéro opposition directe",
+                    description:
+                        "Tout le travail se fait au sac et aux pattes d'ours. Aucun contact entre participants. La sécurité de vos collaborateurs est notre priorité absolue.",
+                },
+                {
+                    title: "Adapté à tous les niveaux",
+                    description:
+                        "Aucun prérequis sportif. Les exercices sont modulés en temps réel selon la condition physique de chaque participant, du débutant complet au sportif confirmé.",
+                },
+                {
+                    title: "Méthode structurée",
+                    description:
+                        "Chaque séance suit un protocole éprouvé : échauffement, technique, circuit training, retour au calme. Un format calibré pour l'intensité optimale sans surcharge.",
+                },
+            ]}
+        />
+    </GsapReveal>
+
+    <!-- 5. PricingTable — 3 formules (DARK) -->
+    <GsapReveal animation="fadeUp">
+        <PricingTable
+            tagline="Nos formules"
+            title="Trois formats pour répondre à vos besoins"
+            tiers={tiers}
+        />
+    </GsapReveal>
+
+    <!-- 6. ProfileShowcase — Coach Nicolas (DARK) -->
+    <GsapReveal animation="fadeUp">
+        <ProfileShowcase
+            tagline="Votre coach"
+            title="Nicolas de Boccard"
+            image={nicolasPortrait}
+            imageAlt="Nicolas de Boccard, coach de boxe corporate à Genève"
+            items={[
+                {
+                    title: "Compétiteur et formateur",
+                    description:
+                        "Licencié SwissBoxing #102860, formé dans les clubs genevois historiques. Nicolas a transposé la rigueur de la compétition en une méthode pédagogique adaptée au monde de l'entreprise.",
+                },
+                {
+                    title: "Certifié Jeunesse+Sport",
+                    description:
+                        "Brevet fédéral de coach sportif, spécialisé dans l'encadrement de publics non-sportifs. Une expertise qui garantit sécurité et progression pour tous les profils.",
+                },
+                {
+                    title: "15+ ans d'expérience",
+                    description:
+                        "Des centaines de séances corporate délivrées auprès d'entreprises genevoises. Nicolas comprend les contraintes logistiques et les attentes du monde professionnel.",
+                },
+                {
+                    title: "Ancré à Genève",
+                    description:
+                        "Formé et enraciné dans le tissu sportif genevois depuis plus de 15 ans. Nicolas connaît les entreprises, les espaces et les rythmes du canton — un coach local qui comprend vos réalités.",
+                },
+            ]}
+        />
+    </GsapReveal>
+
+    <!-- 7. ContentShowcase centré — Ancrage local (DARK) -->
+    <div class="relative overflow-hidden py-12 md:py-20">
+        <Image
+            src={mapGeneve}
+            alt=""
+            class="absolute inset-0 w-full h-full object-cover opacity-20 pointer-events-none mix-blend-lighten"
+            widths={[800, 1400]}
+            sizes="100vw"
+        />
+        <div class="absolute inset-0 pointer-events-none" style="background: linear-gradient(to bottom, rgba(10,10,10,0.95) 0%, rgba(10,10,10,0) 30%, rgba(10,10,10,0) 70%, rgba(10,10,10,0.95) 100%)"></div>
+        <GsapReveal animation="fadeUp">
+            <ContentShowcase
+                tagline="Zones d'intervention"
+                title="La boxe vient à vous, partout dans le canton"
+                items={[
+                    {
+                        title: "Genève centre & Plainpalais",
+                        description:
+                            "Déplacement rapide dans tout l'hypercentre. Bureaux, espaces de coworking, salles de réunion — on s'adapte à votre espace.",
+                    },
+                    {
+                        title: "Organisations internationales & Nations",
+                        description:
+                            "Expérience avec les environnements internationaux. Séances en français ou anglais.",
+                    },
+                    {
+                        title: "Plan-les-Ouates & zone industrielle",
+                        description:
+                            "Intervention dans les zones d'activité du canton. Parking, accès livraison — on gère la logistique.",
+                    },
+                    {
+                        title: "Au studio — La Voie-Creuse 16",
+                        description:
+                            "Accueillez vos équipes dans notre studio premium : ring professionnel, équipements haut de gamme, vestiaires et douches.",
+                    },
+                ]}
+            />
+        </GsapReveal>
+    </div>
+
+    <!-- 8. Testimonials (DARK) — TODO placeholders -->
+    <GsapReveal animation="fadeUp">
+        <Testimonials
+            tagline="Ils nous font confiance"
+            title="Ce qu'en disent les entreprises"
+            testimonials={testimonials}
+        />
+    </GsapReveal>
+
+    <!-- 9. FAQ (DARK) -->
+    <GsapReveal animation="fadeUp">
+        <FAQ
+            title="Questions fréquentes"
+            subtitle="Tout ce que vous devez savoir sur la boxe corporate à Genève."
+            items={faqs}
+        />
+    </GsapReveal>
+
+    <!-- 10. CTABanner brushed-full (DARK) -->
     <GsapReveal animation="fadeUp">
         <CTABanner
             variant="brushed-full"
-            title="Un projet corporate en tête ?"
-            subtitle="Programmes entreprise"
+            title="Prêt à transformer vos équipes ?"
+            subtitle="Devis sous 24h"
             cta={{ text: "Demander un devis", href: "/contact" }}
         />
     </GsapReveal>
