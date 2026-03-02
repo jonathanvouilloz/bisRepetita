@@ -190,6 +190,13 @@ const testimonials = [
                 serviceType: "Cours collectifs de boxe",
             }}
         />
+        <Schema
+            type="Person"
+            data={{
+                title: "Nicolas de Boccard",
+                description: "Head Coach & Fondateur de Bis Repetita. Plus de 15 ans d'expérience en boxe anglaise. Licencié SwissBoxing #102860.",
+            }}
+        />
         <Schema type="FAQPage" data={{ faqs: faqs.map(f => ({ question: f.question, answer: f.answer.replace(/<[^>]*>/g, '') })) }} />
         <Schema type="SportsActivityLocation" data={{}} />
         <Schema

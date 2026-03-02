@@ -110,6 +110,12 @@ if (type === "WebSite") {
                 opens: "09:00",
                 closes: "17:00",
             },
+            {
+                "@type": "OpeningHoursSpecification",
+                dayOfWeek: "Sunday",
+                opens: "00:00",
+                closes: "00:00",
+            },
         ],
         hasOfferCatalog: {
             "@type": "OfferCatalog",
@@ -137,6 +143,30 @@ if (type === "WebSite") {
                         "@type": "Service",
                         name: "Programme Corporate",
                         url: new URL("/services/corporate", siteConfig.url).toString(),
+                    },
+                },
+                {
+                    "@type": "Offer",
+                    itemOffered: {
+                        "@type": "Service",
+                        name: "Coaching Solo",
+                        url: new URL("/services/coaching-solo", siteConfig.url).toString(),
+                    },
+                },
+                {
+                    "@type": "Offer",
+                    itemOffered: {
+                        "@type": "Service",
+                        name: "Coaching Duo & Trio",
+                        url: new URL("/services/coaching-duo-trio", siteConfig.url).toString(),
+                    },
+                },
+                {
+                    "@type": "Offer",
+                    itemOffered: {
+                        "@type": "Service",
+                        name: "Small Group Training",
+                        url: new URL("/services/small-group-training", siteConfig.url).toString(),
                     },
                 },
             ],
