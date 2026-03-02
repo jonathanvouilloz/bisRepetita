@@ -1,0 +1,284 @@
+---
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import Hero from "../../components/widgets/Hero.astro";
+import Stats from "../../components/widgets/Stats.astro";
+import SplitShowcase from "../../components/widgets/SplitShowcase.astro";
+import ContentShowcase from "../../components/widgets/ContentShowcase.astro";
+import Features from "../../components/widgets/Features.astro";
+import PricingTable from "../../components/widgets/PricingTable.astro";
+import FAQ from "../../components/widgets/FAQ.astro";
+import CTABanner from "../../components/widgets/CTABanner.astro";
+import GsapReveal from "../../components/widgets/GsapReveal.astro";
+import Schema from "../../components/seo/Schema.astro";
+import cours2Landscape from "../../assets/cours-2-landscape.webp";
+import salle1 from "../../assets/salle-1.webp";
+
+const metadata = {
+    title: "Small Group Training Genève | Coaching Petit Groupe (Max 6) | Bis Repetita",
+    description:
+        "Small group training à Genève. Coaching boxe anglaise en petit groupe de 6 personnes maximum. L'énergie du collectif, la précision du privé. Réservez votre séance d'essai.",
+};
+
+const stats = [
+    {
+        value: "6",
+        label: "Personnes maximum",
+        description: "Jamais plus de 6 — pour un encadrement individualisé au sein du groupe.",
+    },
+    {
+        value: "60",
+        label: "Minutes par séance",
+        description: "Un entraînement complet en format rounds : technique, physique, cardio, récupération.",
+    },
+    {
+        value: "15+",
+        label: "Années d'expérience",
+        description: "Nicolas de Boccard, licencié SwissBoxing, expert du coaching en petit groupe.",
+    },
+];
+
+const features = [
+    {
+        title: "L'anti-salle de sport",
+        description:
+            "Pas de files d'attente, pas de machines, pas de 50 personnes anonymes. Ici, c'est un club privé : 6 personnes max, un coach qui connaît chacun.",
+        icon: "lucide:shield",
+    },
+    {
+        title: "Énergie collective",
+        description:
+            "La dynamique du groupe pousse chacun à se dépasser. L'émulation naturelle remplace la motivation artificielle — round après round.",
+        icon: "lucide:flame",
+    },
+    {
+        title: "Corrections individuelles",
+        description:
+            "6 maximum, c'est le ratio qui permet à Nicolas de corriger chaque geste, d'adapter l'intensité à chaque profil. Pas de coaching générique.",
+        icon: "lucide:eye",
+    },
+    {
+        title: "Communauté soudée",
+        description:
+            "On se retrouve, on se connaît, on se motive. Le small group crée des liens que les grandes salles ne peuvent pas offrir.",
+        icon: "lucide:heart-handshake",
+    },
+    {
+        title: "Tarif accessible",
+        description:
+            "Le coaching premium à un prix par personne imbattable. Tout le savoir-faire du privé, partagé intelligemment.",
+        icon: "lucide:wallet",
+    },
+];
+
+const tiers = [
+    {
+        name: "Séance d'essai",
+        description: "Découvrez le small group training sans engagement.",
+        price: "Gratuit",
+        features: [
+            "60 minutes de coaching",
+            "Découverte du format petit groupe",
+            "Matériel fourni",
+            "Sans engagement",
+        ],
+        cta: { text: "Réserver", href: "/contact" },
+    },
+    {
+        name: "Séance unité",
+        description: "Un cours small group à la carte.",
+        price: "CHF TODO",
+        priceNote: "/ séance",
+        features: [
+            "60 minutes de coaching",
+            "6 participants max",
+            "Programme structuré",
+            "Matériel fourni",
+        ],
+        cta: { text: "Réserver", href: "/contact" },
+    },
+    {
+        name: "Pack 10 séances",
+        description: "L'engagement qui fait la différence.",
+        price: "CHF TODO",
+        priceNote: "/ 10 séances",
+        highlighted: true,
+        popularLabel: "Recommandé",
+        features: [
+            "10 × 60 minutes",
+            "6 participants max",
+            "Suivi de progression",
+            "Matériel fourni",
+            "Tarif préférentiel",
+        ],
+        cta: { text: "Réserver", href: "/contact" },
+    },
+];
+
+const faqs = [
+    {
+        question: "Pourquoi 6 personnes maximum ?",
+        answer: "C'est le seuil au-delà duquel la qualité du coaching se dégrade. À 6, Nicolas peut encore corriger chaque geste, adapter l'intensité à chacun et maintenir une ambiance de club privé.",
+    },
+    {
+        question: "Quelle est la différence avec les cours Round by Round ?",
+        answer: "Le <a href='/services/round-by-round' class='text-primary hover:underline'>Round by Round</a> accueille jusqu'à 8 participants avec 2 coachs et suit un format très structuré en rounds chronométrés. Le small group training offre plus de flexibilité dans le programme et un ratio coach/élèves encore plus favorable.",
+    },
+    {
+        question: "Faut-il venir avec son propre groupe ?",
+        answer: "Non. Vous pouvez vous inscrire seul et rejoindre un groupe existant. Nicolas compose les groupes en fonction des niveaux et des disponibilités. Vous pouvez aussi réserver un créneau privé avec votre propre groupe.",
+    },
+    {
+        question: "Le small group convient-il aux débutants ?",
+        answer: "Oui. Nicolas adapte les exercices au niveau de chacun au sein du même groupe. Si vous préférez commencer en tête-à-tête, découvrez le <a href='/services/coaching-duo-trio' class='text-primary hover:underline'>coaching duo & trio</a> ou le <a href='/services/coaching-solo' class='text-primary hover:underline'>coaching solo</a>.",
+    },
+    {
+        question: "Quels sont les tarifs du small group training ?",
+        answer: "Nous proposons des séances à l'unité et des packs de 10 séances avec tarif préférentiel. Consultez nos <a href='/tarifs' class='text-primary hover:underline'>tarifs détaillés</a> ou <a href='/contact' class='text-primary hover:underline'>contactez-nous</a>.",
+    },
+];
+---
+
+<BaseLayout {metadata}>
+    <Fragment slot="head">
+        <Schema
+            type="Service"
+            data={{
+                title: "Small Group Training à Genève",
+                description: metadata.description,
+                url: "https://bisrepetita.ch/services/small-group-training",
+                serviceType: "Coaching sportif petit groupe",
+            }}
+        />
+        <Schema type="FAQPage" data={{ faqs: faqs.map(f => ({ question: f.question, answer: f.answer.replace(/<[^>]*>/g, '') })) }} />
+    </Fragment>
+
+    {/* S1 — Hero */}
+    <Hero
+        title={`<span class="font-display text-primary">Small Group</span> Training à Genève`}
+        description="L'énergie du collectif, la précision du privé. 6 personnes maximum, un coach dédié, un programme structuré — dans un studio privé au cœur de Genève."
+        image={cours2Landscape}
+        imageAlt="Small group training boxe Genève — entraînement petit groupe Bis Repetita"
+        locationBadge={{ text: "La Voie-Creuse 16, 1202 Genève" }}
+        actions={[
+            {
+                text: "Réserver une séance d'essai",
+                href: "/contact",
+                variant: "primary",
+                icon: "lucide:arrow-right",
+            },
+            {
+                text: "Voir les tarifs",
+                href: "/tarifs",
+                variant: "secondary",
+            },
+        ]}
+        ctaStyle="outline-gold"
+        classes={{ container: "min-h-[80vh]" }}
+    />
+
+    {/* S2 — Stats */}
+    <Stats
+        stats={stats}
+        badge="Small Group Training"
+        badgeHref="#pourquoi-6"
+        intro="Le small group, c'est le coaching privé démultiplié par l'énergie du collectif — dans un groupe volontairement réduit à 6 personnes."
+    />
+
+    {/* S3 — SplitShowcase — Pourquoi 6 maximum ? */}
+    <GsapReveal animation="fadeUp">
+        <SplitShowcase
+            id="pourquoi-6"
+            tagline="Notre engagement"
+            title="Pourquoi 6 maximum ? Parce que la qualité ne se divise pas"
+            image={salle1}
+            imageAlt="Studio de boxe privé Genève — Bis Repetita"
+            items={[
+                {
+                    title: "Corrections individuelles",
+                    description: "À 6, Nicolas peut encore observer, corriger et ajuster chaque geste technique en temps réel. Au-delà, c'est du coaching générique.",
+                },
+                {
+                    title: "Intensité adaptée",
+                    description: "Chacun travaille à son rythme au sein du même groupe. Les exercices sont modulés en intensité et en complexité selon les niveaux.",
+                },
+                {
+                    title: "Ambiance de club privé",
+                    description: "On se connaît, on se retrouve, on se motive. Le petit groupe crée une communauté soudée — l'antithèse de la salle de sport anonyme.",
+                },
+            ]}
+        />
+    </GsapReveal>
+
+    {/* S4 — Features — Le club privé */}
+    <GsapReveal animation="fadeUp">
+        <Features
+            id="avantages"
+            tagline="Le club privé"
+            title="Tout ce qui fait la différence du small group"
+            features={features}
+            bento="2-3"
+        />
+    </GsapReveal>
+
+    {/* S5 — ContentShowcase — Méthode Round by Round appliquée */}
+    <GsapReveal animation="fadeUp">
+        <ContentShowcase
+            tagline="La méthode"
+            title="Méthode Round by Round appliquée au petit groupe"
+            image={cours2Landscape}
+            imageAlt="Small group training boxe Genève — méthode Round by Round"
+            isReversed={true}
+            items={[
+                {
+                    title: "Structure en rounds",
+                    description: "Chaque séance suit le format éprouvé du Round by Round : rounds chronométrés, récupération active, montée en intensité progressive.",
+                },
+                {
+                    title: "Technique et physique fusionnés",
+                    description: "Pas de séparation entre cardio et technique. Chaque round mêle séquences de boxe anglaise et préparation physique pour un entraînement complet.",
+                },
+                {
+                    title: "L'énergie du groupe en plus",
+                    description: "La dynamique collective amplifie l'effort. On se pousse mutuellement, round après round, dans un esprit de dépassement partagé.",
+                },
+            ]}
+            actions={[
+                {
+                    text: "Découvrir le Round by Round",
+                    href: "/services/round-by-round",
+                    variant: "secondary",
+                    icon: "lucide:arrow-right",
+                },
+            ]}
+        />
+    </GsapReveal>
+
+    {/* S6 — PricingTable */}
+    <GsapReveal animation="fadeUp">
+        <PricingTable
+            tagline="Tarifs"
+            title="Formules small group training"
+            tiers={tiers}
+        />
+    </GsapReveal>
+
+    {/* S7 — FAQ */}
+    <GsapReveal animation="fadeUp">
+        <FAQ
+            id="faq"
+            title="Questions fréquentes"
+            subtitle="Tout ce que vous devez savoir sur le small group training à Genève."
+            items={faqs}
+        />
+    </GsapReveal>
+
+    {/* S8 — CTABanner */}
+    <GsapReveal animation="fadeUp">
+        <CTABanner
+            variant="brushed-full"
+            title="Prêt à rejoindre le groupe ?"
+            subtitle="Small Group Training"
+            cta={{ text: "Réserver", href: "/contact" }}
+        />
+    </GsapReveal>
+</BaseLayout>

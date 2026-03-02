@@ -1,0 +1,268 @@
+---
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import Hero from "../../components/widgets/Hero.astro";
+import Stats from "../../components/widgets/Stats.astro";
+import SplitShowcase from "../../components/widgets/SplitShowcase.astro";
+import ContentShowcase from "../../components/widgets/ContentShowcase.astro";
+import Features from "../../components/widgets/Features.astro";
+import PricingTable from "../../components/widgets/PricingTable.astro";
+import FAQ from "../../components/widgets/FAQ.astro";
+import CTABanner from "../../components/widgets/CTABanner.astro";
+import GsapReveal from "../../components/widgets/GsapReveal.astro";
+import Schema from "../../components/seo/Schema.astro";
+import ambianceBis from "../../assets/ambiance-bis-repetita.webp";
+import coursPortrait from "../../assets/cours-portrait.webp";
+
+const metadata = {
+    title: "Coaching Sportif Duo & Trio Genève | S'entraîner à deux | Nicolas de Boccard",
+    description:
+        "Coaching sportif duo et trio à Genève. Progressez ensemble grâce à la boxe anglaise avec Nicolas de Boccard. Couples, amis, collègues. Réservez votre séance d'essai.",
+};
+
+const stats = [
+    {
+        value: "2–3",
+        label: "Participants",
+        description: "Le format idéal pour se motiver mutuellement tout en bénéficiant d'un coaching personnalisé.",
+    },
+    {
+        value: "60",
+        label: "Minutes par séance",
+        description: "Un entraînement complet partagé : échauffement, technique à deux, physique, bilan collectif.",
+    },
+    {
+        value: "15+",
+        label: "Années d'expérience",
+        description: "Nicolas de Boccard, licencié SwissBoxing, expert du coaching en binôme et petit groupe.",
+    },
+];
+
+const features = [
+    {
+        title: "Émulation naturelle",
+        description:
+            "S'entraîner à deux ou trois crée une dynamique de dépassement. Vous vous tirez vers le haut mutuellement, round après round.",
+        icon: "lucide:flame",
+    },
+    {
+        title: "Coaching toujours personnalisé",
+        description:
+            "Même à deux ou trois, Nicolas adapte les exercices au niveau de chacun. Personne n'est laissé de côté, personne ne s'ennuie.",
+        icon: "lucide:settings",
+    },
+    {
+        title: "Tarif partagé, qualité intacte",
+        description:
+            "Le prix par personne diminue, mais l'exigence du coaching reste identique. Un excellent rapport qualité-investissement.",
+        icon: "lucide:wallet",
+    },
+    {
+        title: "Convivialité garantie",
+        description:
+            "On partage l'effort, on partage les progrès. Le duo & trio transforme l'entraînement en moment de complicité.",
+        icon: "lucide:smile",
+    },
+];
+
+const tiers = [
+    {
+        name: "Séance d'essai",
+        description: "Découvrez le coaching duo ou trio sans engagement.",
+        price: "Gratuit",
+        features: [
+            "60 minutes de coaching",
+            "Découverte du format duo/trio",
+            "Matériel fourni",
+            "Sans engagement",
+        ],
+        cta: { text: "Réserver", href: "/contact" },
+    },
+    {
+        name: "Séance duo",
+        description: "S'entraîner à deux avec un coaching personnalisé.",
+        price: "CHF TODO",
+        priceNote: "/ séance (prix total)",
+        features: [
+            "60 minutes de coaching",
+            "2 participants",
+            "Programme adapté à chacun",
+            "Matériel fourni",
+        ],
+        cta: { text: "Réserver", href: "/contact" },
+    },
+    {
+        name: "Séance trio",
+        description: "L'émulation à trois, le coaching en plus.",
+        price: "CHF TODO",
+        priceNote: "/ séance (prix total)",
+        highlighted: true,
+        popularLabel: "Populaire",
+        features: [
+            "60 minutes de coaching",
+            "3 participants",
+            "Programme adapté au groupe",
+            "Matériel fourni",
+            "Dynamique de groupe optimale",
+        ],
+        cta: { text: "Réserver", href: "/contact" },
+    },
+];
+
+const faqs = [
+    {
+        question: "Faut-il être du même niveau pour s'entraîner en duo ou trio ?",
+        answer: "Pas du tout. Nicolas adapte les exercices au niveau de chacun au sein du même groupe. Un débutant et un pratiquant confirmé peuvent très bien s'entraîner ensemble — chacun progresse à son rythme.",
+    },
+    {
+        question: "Avec qui puis-je venir ?",
+        answer: "Avec qui vous voulez : conjoint, ami, collègue, membre de la famille. Le format duo & trio fonctionne avec n'importe quelle combinaison — l'essentiel est l'envie de progresser ensemble.",
+    },
+    {
+        question: "Quelle est la différence avec le coaching solo ?",
+        answer: "Le <a href='/services/coaching-solo' class='text-primary hover:underline'>coaching solo</a> offre 100% de l'attention du coach sur un seul élève. Le duo & trio ajoute une dimension d'émulation et de partage, avec un tarif par personne plus accessible. Pour un groupe de 4 à 6, découvrez notre <a href='/services/small-group-training' class='text-primary hover:underline'>small group training</a>.",
+    },
+    {
+        question: "Comment se déroule une séance duo ou trio ?",
+        answer: "Le format est le même que le solo — échauffement, technique, physique, bilan — mais enrichi par des exercices à deux (travail de réaction, enchaînements croisés). La séance dure 60 minutes.",
+    },
+    {
+        question: "Quels sont les tarifs du coaching duo & trio ?",
+        answer: "Le tarif est global (par séance, pas par personne). Consultez nos <a href='/tarifs' class='text-primary hover:underline'>tarifs détaillés</a> ou <a href='/contact' class='text-primary hover:underline'>contactez-nous</a> pour un devis. Vous pouvez aussi combiner avec les <a href='/services/round-by-round' class='text-primary hover:underline'>cours collectifs Round by Round</a>.",
+    },
+];
+---
+
+<BaseLayout {metadata}>
+    <Fragment slot="head">
+        <Schema
+            type="Service"
+            data={{
+                title: "Coaching Sportif Duo & Trio à Genève",
+                description: metadata.description,
+                url: "https://bisrepetita.ch/services/coaching-duo-trio",
+                serviceType: "Coaching sportif duo et trio",
+            }}
+        />
+        <Schema type="FAQPage" data={{ faqs: faqs.map(f => ({ question: f.question, answer: f.answer.replace(/<[^>]*>/g, '') })) }} />
+    </Fragment>
+
+    {/* S1 — Hero */}
+    <Hero
+        title={`Coaching <span class="font-display text-primary">Duo & Trio</span> à Genève`}
+        description="Progressez ensemble. La boxe anglaise à deux ou trois, avec un coaching sur mesure signé Nicolas de Boccard — dans un studio privé au cœur de Genève."
+        locationBadge={{ text: "La Voie-Creuse 16, 1202 Genève" }}
+        actions={[
+            {
+                text: "Réserver une séance d'essai",
+                href: "/contact",
+                variant: "primary",
+                icon: "lucide:arrow-right",
+            },
+            {
+                text: "Voir les tarifs",
+                href: "/tarifs",
+                variant: "secondary",
+            },
+        ]}
+        ctaStyle="outline-gold"
+        classes={{ container: "min-h-[80vh]" }}
+    />
+
+    {/* S2 — Stats */}
+    <Stats
+        stats={stats}
+        badge="Coaching partagé"
+        badgeHref="#deroulement"
+        intro="Le duo & trio, c'est l'équilibre parfait entre personnalisation et émulation — un coaching premium partagé avec votre partenaire d'entraînement."
+    />
+
+    {/* S3 — SplitShowcase — Comment ça se passe ? */}
+    <GsapReveal animation="fadeUp">
+        <SplitShowcase
+            id="deroulement"
+            tagline="Comment ça se passe ?"
+            title="Une séance structurée, enrichie par le groupe"
+            image={ambianceBis}
+            imageAlt="Coaching duo boxe anglaise Genève — Bis Repetita"
+            items={[
+                {
+                    title: "Échauffement collectif",
+                    description: "On démarre ensemble : mobilité, corde à sauter, shadow boxing. Le groupe se met en condition physique et mentale pour la séance.",
+                },
+                {
+                    title: "Technique à deux",
+                    description: "Travail de réaction, enchaînements croisés, exercices en miroir. Le partenaire ajoute une dimension que le solo ne peut pas offrir.",
+                },
+                {
+                    title: "Challenge physique partagé",
+                    description: "Circuit training en binôme, défis chronométrés. L'émulation naturelle pousse chacun à se dépasser — sans esprit de compétition toxique.",
+                },
+            ]}
+        />
+    </GsapReveal>
+
+    {/* S4 — Features — Pourquoi à deux ? */}
+    <GsapReveal animation="fadeUp">
+        <Features
+            id="avantages"
+            tagline="Pourquoi à deux ?"
+            title="Les avantages du coaching partagé"
+            features={features}
+            columns={3}
+        />
+    </GsapReveal>
+
+    {/* S5 — ContentShowcase — Ni collectif, ni solo */}
+    <GsapReveal animation="fadeUp">
+        <ContentShowcase
+            tagline="Le juste milieu"
+            title="Ni collectif, ni solo : le meilleur des deux"
+            image={coursPortrait}
+            imageAlt="Coaching duo boxe Genève — entraînement partagé"
+            isReversed={true}
+            items={[
+                {
+                    title: "Plus qu'un cours collectif",
+                    description: "Pas de groupes anonymes, pas de coach partagé entre 15 personnes. Ici, Nicolas connaît chacun par son nom, ses forces, ses axes de progrès.",
+                },
+                {
+                    title: "Plus accessible que le solo",
+                    description: "Le tarif par personne est plus bas qu'en coaching individuel, pour une qualité d'encadrement qui reste premium. Un investissement intelligent.",
+                },
+                {
+                    title: "L'engagement mutuel",
+                    description: "Quand on s'engage à deux, on annule moins. Le partenaire d'entraînement est le meilleur garant de votre régularité.",
+                },
+            ]}
+        />
+    </GsapReveal>
+
+    {/* S6 — PricingTable */}
+    <GsapReveal animation="fadeUp">
+        <PricingTable
+            tagline="Tarifs"
+            title="Formules duo & trio"
+            tiers={tiers}
+        />
+    </GsapReveal>
+
+    {/* S7 — FAQ */}
+    <GsapReveal animation="fadeUp">
+        <FAQ
+            id="faq"
+            title="Questions fréquentes"
+            subtitle="Tout ce que vous devez savoir sur le coaching duo & trio à Genève."
+            items={faqs}
+        />
+    </GsapReveal>
+
+    {/* S8 — CTABanner */}
+    <GsapReveal animation="fadeUp">
+        <CTABanner
+            variant="brushed-full"
+            title="Prêts à vous entraîner ensemble ?"
+            subtitle="Coaching duo & trio"
+            cta={{ text: "Réserver", href: "/contact" }}
+        />
+    </GsapReveal>
+</BaseLayout>

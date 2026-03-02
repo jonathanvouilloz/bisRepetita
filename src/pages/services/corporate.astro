@@ -25,9 +25,9 @@ const metadata = {
 };
 
 const stats = [
-    { value: "100%", label: "Sur mesure" },
-    { value: "J+S", label: "Coachs certifiés" },
-    { value: "Canton GE", label: "Mobilité totale" },
+    { value: "100%", label: "Sur mesure", description: "Chaque programme est conçu autour de vos objectifs d'équipe, votre secteur et vos contraintes logistiques." },
+    { value: "J+S", label: "Coachs certifiés", description: "Nicolas et Lionel de Boccard, licenciés SwissBoxing, formés à l'encadrement sportif professionnel." },
+    { value: "Canton GE", label: "Mobilité totale", description: "Au studio ou dans vos locaux — nous nous déplaçons dans tout le canton de Genève." },
 ];
 
 const features = [
@@ -58,6 +58,18 @@ const features = [
 ];
 
 const tiers = [
+    {
+        name: "Séance découverte",
+        description: "Un atelier d'initiation pour tester la boxe avec votre équipe.",
+        price: "Gratuit",
+        features: [
+            "Atelier découverte de 60 min",
+            "Jusqu'à 10 participants",
+            "Matériel fourni",
+            "Sans engagement",
+        ],
+        cta: { text: "Demander un devis", href: "/contact" },
+    },
     {
         name: "Team Building",
         description: "Atelier ponctuel pour souder vos équipes.",
@@ -188,6 +200,7 @@ const faqs = [
                 icon: "lucide:arrow-right",
             },
         ]}
+        ctaStyle="outline-gold"
         classes={{ container: "min-h-[72vh]" }}
     />
 
@@ -195,13 +208,14 @@ const faqs = [
     <Stats
         stats={stats}
         badge="Boxe Corporate"
+        badgeHref="#pourquoi"
         intro="La boxe en entreprise : un levier de performance collective piloté par des professionnels de compétition. Pas de combat, pas de risque — une méthode éducative qui transforme les dynamiques d'équipe."
-        variant="wide"
     />
 
     <!-- 3. Features bento (DARK) — Le "Pourquoi" -->
     <GsapReveal animation="fadeUp">
         <Features
+            id="pourquoi"
             tagline="Pourquoi la boxe en entreprise"
             title="Des bénéfices mesurables pour vos équipes"
             features={features}

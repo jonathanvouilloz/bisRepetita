@@ -1,0 +1,279 @@
+---
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import Hero from "../../components/widgets/Hero.astro";
+import Stats from "../../components/widgets/Stats.astro";
+import SplitShowcase from "../../components/widgets/SplitShowcase.astro";
+import ContentShowcase from "../../components/widgets/ContentShowcase.astro";
+import EquipmentPanels from "../../components/widgets/EquipmentPanels.astro";
+import PricingTable from "../../components/widgets/PricingTable.astro";
+import FAQ from "../../components/widgets/FAQ.astro";
+import CTABanner from "../../components/widgets/CTABanner.astro";
+import GsapReveal from "../../components/widgets/GsapReveal.astro";
+import Schema from "../../components/seo/Schema.astro";
+import nicolasPortrait from "../../assets/nicolas-portrait.webp";
+import coursPortrait from "../../assets/cours-portrait.webp";
+import studioInterior from "../../assets/studio-interior.webp";
+import salle1 from "../../assets/salle-1.webp";
+import studioAtmosphere from "../../assets/studio-atmosphere.webp";
+import cours2Landscape from "../../assets/cours-2-landscape.webp";
+
+const metadata = {
+    title: "Coach Personnel Genève | Coaching Privé Solo | Nicolas de Boccard",
+    description:
+        "Coach sportif personnel à Genève. Séances individuelles de boxe anglaise 100% sur mesure avec Nicolas de Boccard. Cadres, rééducation, sportifs d'élite. Réservez votre séance d'essai.",
+};
+
+const stats = [
+    {
+        value: "1",
+        label: "Participant",
+        description: "Un coach, un élève. L'attention est totale, chaque minute compte.",
+    },
+    {
+        value: "60",
+        label: "Minutes par séance",
+        description: "Le format optimal pour un entraînement complet : échauffement, technique, physique, bilan.",
+    },
+    {
+        value: "15+",
+        label: "Années d'expérience",
+        description: "Nicolas de Boccard, licencié SwissBoxing, formé dans les clubs genevois historiques.",
+    },
+];
+
+const pourQuiPanels = [
+    {
+        title: "Cadres & dirigeants",
+        description:
+            "Gestion du stress, confiance en soi, discipline mentale. La boxe comme outil de performance professionnelle, dans un cadre confidentiel.",
+        image: studioInterior,
+        alt: "Coaching boxe pour cadres et dirigeants à Genève",
+    },
+    {
+        title: "Rééducation & reprise",
+        description:
+            "Retour au sport après blessure ou pause prolongée. Programme progressif adapté à vos contraintes physiques, en coordination avec votre médecin si nécessaire.",
+        image: salle1,
+        alt: "Coaching boxe rééducation et reprise sportive",
+    },
+    {
+        title: "Sportifs d'élite",
+        description:
+            "Préparation physique complémentaire pour athlètes d'autres disciplines. Explosivité, coordination, cardio haute intensité.",
+        image: studioAtmosphere,
+        alt: "Préparation physique boxe pour sportifs d'élite",
+    },
+    {
+        title: "Objectif transformation",
+        description:
+            "Perte de poids, renforcement musculaire, condition physique générale. Un programme calibré sur votre objectif avec un suivi personnalisé.",
+        image: cours2Landscape,
+        alt: "Transformation physique coaching boxe Genève",
+    },
+];
+
+const tiers = [
+    {
+        name: "Séance d'essai",
+        description: "Découvrez le coaching solo sans engagement.",
+        price: "Gratuit",
+        features: [
+            "60 minutes de coaching",
+            "Découverte du format solo",
+            "Matériel fourni",
+            "Sans engagement",
+        ],
+        cta: { text: "Réserver", href: "/contact" },
+    },
+    {
+        name: "Séance découverte",
+        description: "Premier contact avec le coaching solo. Idéal pour tester l'approche.",
+        price: "CHF TODO",
+        priceNote: "/ séance",
+        features: [
+            "60 minutes de coaching individuel",
+            "Bilan personnalisé",
+            "Matériel fourni (gants, bandes)",
+            "Sans engagement",
+        ],
+        cta: { text: "Réserver", href: "/contact" },
+    },
+    {
+        name: "Pack 10 séances",
+        description: "La formule pour progresser durablement avec un suivi structuré.",
+        price: "CHF TODO",
+        priceNote: "/ 10 séances",
+        highlighted: true,
+        popularLabel: "Recommandé",
+        features: [
+            "10 × 60 minutes de coaching",
+            "Programme personnalisé",
+            "Suivi de progression",
+            "Matériel fourni",
+            "Tarif préférentiel",
+        ],
+        cta: { text: "Réserver", href: "/contact" },
+    },
+];
+
+const faqs = [
+    {
+        question: "Quelle est la différence entre le coaching solo et les autres formats ?",
+        answer: "Le coaching solo est un face-à-face exclusif avec Nicolas : 100% de l'attention, 100% de la personnalisation. Le <a href='/services/coaching-duo-trio' class='text-primary hover:underline'>coaching duo & trio</a> ajoute une dimension d'émulation entre partenaires, tandis que le <a href='/services/small-group-training' class='text-primary hover:underline'>small group training</a> mise sur la dynamique collective.",
+    },
+    {
+        question: "Le coaching solo est-il adapté aux débutants complets ?",
+        answer: "Absolument. C'est même le format idéal pour débuter : Nicolas construit les bases techniques à votre rythme, sans pression du groupe. Posture, garde, déplacements — tout est enseigné progressivement.",
+    },
+    {
+        question: "Puis-je combiner le coaching solo avec d'autres formats ?",
+        answer: "C'est même recommandé. Le solo approfondit la technique, les <a href='/services/round-by-round' class='text-primary hover:underline'>cours collectifs Round by Round</a> travaillent le cardio et le mental dans l'énergie du groupe. Les deux se complètent parfaitement.",
+    },
+    {
+        question: "À quelle fréquence faut-il s'entraîner en solo ?",
+        answer: "Pour des résultats visibles, 2 à 3 séances par semaine est optimal. Mais même une séance hebdomadaire apporte des bénéfices significatifs. Nicolas adapte le programme à votre rythme de vie.",
+    },
+    {
+        question: "Quels sont les tarifs du coaching solo ?",
+        answer: "Nous proposons des séances à l'unité et des packs de 10 séances avec tarif préférentiel. Consultez nos <a href='/tarifs' class='text-primary hover:underline'>tarifs détaillés</a> ou <a href='/contact' class='text-primary hover:underline'>contactez-nous</a> pour un devis personnalisé.",
+    },
+];
+---
+
+<BaseLayout {metadata}>
+    <Fragment slot="head">
+        <Schema
+            type="Service"
+            data={{
+                title: "Coaching Sportif Solo à Genève",
+                description: metadata.description,
+                url: "https://bisrepetita.ch/services/coaching-solo",
+                serviceType: "Coaching sportif individuel",
+            }}
+        />
+        <Schema type="FAQPage" data={{ faqs: faqs.map(f => ({ question: f.question, answer: f.answer.replace(/<[^>]*>/g, '') })) }} />
+    </Fragment>
+
+    {/* S1 — Hero */}
+    <Hero
+        title={`Coaching Sportif <span class="font-display text-primary">Solo</span> à Genève`}
+        description="L'excellence du sur-mesure. Un coach, un élève, zéro compromis. Nicolas de Boccard conçoit chaque séance autour de vos objectifs — dans un studio privé au cœur de Genève."
+        locationBadge={{ text: "La Voie-Creuse 16, 1202 Genève" }}
+        actions={[
+            {
+                text: "Réserver une séance d'essai",
+                href: "/contact",
+                variant: "primary",
+                icon: "lucide:arrow-right",
+            },
+            {
+                text: "Voir les tarifs",
+                href: "/tarifs",
+                variant: "secondary",
+            },
+        ]}
+        ctaStyle="outline-gold"
+        classes={{ container: "min-h-[80vh]" }}
+    />
+
+    {/* S2 — Stats */}
+    <Stats
+        stats={stats}
+        badge="Coaching individuel"
+        badgeHref="#approche"
+        intro="Le coaching solo, c'est l'investissement le plus direct dans votre progression — un programme entièrement dédié à vous."
+    />
+
+    {/* S3 — SplitShowcase — L'approche holistique */}
+    <GsapReveal animation="fadeUp">
+        <SplitShowcase
+            id="approche"
+            tagline="L'approche"
+            title="Un coaching holistique : technique, physique, mental"
+            image={nicolasPortrait}
+            imageAlt="Nicolas de Boccard — Coach personnel de boxe à Genève"
+            isReversed={true}
+            items={[
+                {
+                    title: "Technique de boxe anglaise",
+                    description: "Jab, cross, crochets, esquives, déplacements. Les fondamentaux du noble art enseignés avec précision, adaptés à votre niveau et votre progression.",
+                },
+                {
+                    title: "Préparation physique intégrée",
+                    description: "Renforcement musculaire, explosivité, cardio. Chaque séance fusionne technique et physique pour un entraînement complet.",
+                },
+                {
+                    title: "Force mentale",
+                    description: "Concentration, gestion du stress, résilience. La boxe forge un mental que vous emportez bien au-delà du ring — dans votre vie professionnelle et personnelle.",
+                },
+            ]}
+        />
+    </GsapReveal>
+
+    {/* S4 — Pour qui ? — Panneaux interactifs */}
+    <GsapReveal animation="fadeUp">
+        <EquipmentPanels
+            id="pour-qui"
+            tagline="Pour qui ?"
+            title="Un coaching personnalisé pour chaque profil"
+            panels={pourQuiPanels}
+        />
+    </GsapReveal>
+
+    {/* S5 — ContentShowcase — 60 minutes */}
+    <GsapReveal animation="fadeUp">
+        <ContentShowcase
+            tagline="Déroulé d'une séance"
+            title="60 minutes, quatre phases"
+            image={coursPortrait}
+            imageAlt="Séance de coaching solo boxe Genève"
+            items={[
+                {
+                    title: "Échauffement — 10 min",
+                    description: "Mobilité articulaire, corde à sauter, shadow boxing. On prépare le corps et on active le cardio progressivement.",
+                },
+                {
+                    title: "Technique — 20-25 min",
+                    description: "Travail sur pattes d'ours et sac de frappe. Enchaînements, esquives, contre-attaques — 100% de l'attention du coach sur vos gestes.",
+                },
+                {
+                    title: "Préparation physique — 15-20 min",
+                    description: "Circuit training ciblé : renforcement musculaire, explosivité, cardio haute intensité adapté à votre condition.",
+                },
+                {
+                    title: "Bilan — 5 min",
+                    description: "Retour au calme, étirements et débrief. On fait le point sur les progrès et on prépare la prochaine séance.",
+                },
+            ]}
+        />
+    </GsapReveal>
+
+    {/* S6 — PricingTable */}
+    <GsapReveal animation="fadeUp">
+        <PricingTable
+            tagline="Tarifs"
+            title="Formules coaching solo"
+            tiers={tiers}
+        />
+    </GsapReveal>
+
+    {/* S7 — FAQ */}
+    <GsapReveal animation="fadeUp">
+        <FAQ
+            id="faq"
+            title="Questions fréquentes"
+            subtitle="Tout ce que vous devez savoir sur le coaching solo à Genève."
+            items={faqs}
+        />
+    </GsapReveal>
+
+    {/* S8 — CTABanner */}
+    <GsapReveal animation="fadeUp">
+        <CTABanner
+            variant="brushed-full"
+            title="Prêt pour votre première séance solo ?"
+            subtitle="Coaching individuel"
+            cta={{ text: "Réserver", href: "/contact" }}
+        />
+    </GsapReveal>
+</BaseLayout>

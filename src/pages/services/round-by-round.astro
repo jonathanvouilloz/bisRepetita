@@ -1,15 +1,182 @@
 ---
 import BaseLayout from "../../layouts/BaseLayout.astro";
 import Hero from "../../components/widgets/Hero.astro";
+import Stats from "../../components/widgets/Stats.astro";
+import SplitShowcase from "../../components/widgets/SplitShowcase.astro";
+import ContentShowcase from "../../components/widgets/ContentShowcase.astro";
+import Features from "../../components/widgets/Features.astro";
+import ProfileShowcase from "../../components/widgets/ProfileShowcase.astro";
+import Testimonials from "../../components/widgets/Testimonials.astro";
+import LocationMap from "../../components/widgets/LocationMap.astro";
+import PricingTable from "../../components/widgets/PricingTable.astro";
+import FAQ from "../../components/widgets/FAQ.astro";
 import CTABanner from "../../components/widgets/CTABanner.astro";
 import GsapReveal from "../../components/widgets/GsapReveal.astro";
+import Headline from "../../components/ui/Headline.astro";
 import Schema from "../../components/seo/Schema.astro";
+import coursLandscape from "../../assets/cours-2-landscape.webp";
+import salle1 from "../../assets/salle-1.webp";
+import coachsPhoto from "../../assets/lionel-nicolas-boxe.webp";
 
 const metadata = {
-    title: "Round by Round — Cours collectifs de boxe à Genève",
+    title: "Cours de Boxe Round by Round Genève",
     description:
-        "Cours collectifs de boxe Round by Round à Genève. Une méthode unique en rounds de 3 minutes qui allie technique, cardio et renforcement musculaire.",
+        "Découvrez la boxe Round by Round à Genève. Un entraînement intensif sans combat, axé sur la technique et l'énergie du groupe. Séance d'essai disponible !",
+    ogImage: coursLandscape,
 };
+
+const stats = [
+    {
+        value: "8",
+        label: "Participants max",
+        description: "Un groupe volontairement réduit pour un encadrement personnalisé à chaque round.",
+    },
+    {
+        value: "3 min",
+        label: "Par round",
+        description: "Le format combat : rounds chronométrés avec récupération active entre chaque série.",
+    },
+    {
+        value: "15+",
+        label: "Années d'expérience",
+        description: "Nicolas et Lionel de Boccard, formés dans les clubs genevois historiques.",
+    },
+];
+
+const features = [
+    {
+        title: "Technique de boxe anglaise",
+        description:
+            "Les fondamentaux du noble art : jab, cross, crochets, uppercuts, esquives et déplacements. Chaque round affine votre précision sur sac de frappe et pattes d'ours, sous le regard attentif du coach.",
+        icon: "lucide:zap",
+    },
+    {
+        title: "Préparation physique intégrée",
+        description:
+            "Circuit training fusionné au format rounds : cordes à sauter, burpees, gainage dynamique, renforcement musculaire. L'intensité monte progressivement pour repousser vos limites en toute sécurité.",
+        icon: "lucide:activity",
+    },
+    {
+        title: "Force mentale",
+        description:
+            "Tenir un round quand les bras sont lourds, rester lucide sous la fatigue. La boxe forge une résilience mentale que vous emportez bien au-delà du ring — dans votre vie quotidienne et professionnelle.",
+        icon: "lucide:brain",
+    },
+    {
+        title: "Énergie collective",
+        description:
+            "8 personnes maximum, deux coachs présents. On se connaît, on se motive, on se dépasse ensemble. Le groupe crée une dynamique qu'aucune salle de sport ne peut reproduire.",
+        icon: "lucide:users",
+    },
+    {
+        title: "Gestion du stress",
+        description:
+            "Frapper au sac libère les tensions accumulées. Le rythme soutenu des rounds active les endorphines et vide l'esprit. Après 60 minutes, vous repartez plus léger, plus calme, plus concentré.",
+        icon: "lucide:heart-pulse",
+    },
+];
+
+const faqs = [
+    {
+        question: "Les cours sont-ils accessibles aux débutants ?",
+        answer: "Absolument. Les cours Round by Round sont conçus pour accueillir tous les niveaux, du grand débutant au pratiquant confirmé. Les coachs adaptent les exercices en temps réel — intensité, complexité des séquences techniques, temps de récupération — et chaque participant progresse à son rythme.",
+    },
+    {
+        question: "Y a-t-il des contacts physiques entre participants ?",
+        answer: "Non, jamais. Les cours Round by Round sont de la <strong>boxe sans combat</strong> : aucune opposition directe entre participants. Tout le travail technique se fait sur sac de frappe ou pattes d'ours avec le coach. Vous ne venez pas pour prendre des coups, mais pour apprendre à en donner au sac.",
+    },
+    {
+        question: "Combien de participants par cours ?",
+        answer: "8 maximum, toujours. C'est notre engagement pour garantir un encadrement de qualité et des corrections individuelles sur chaque geste technique. Deux coachs sont présents à chaque séance pour un ratio optimal.",
+    },
+    {
+        question: "Quelle est la durée d'un cours ?",
+        answer: "Chaque cours dure 60 minutes, structuré en rounds de 3 minutes avec des temps de récupération active. Le format est calibré pour une intensité optimale sans surcharge — vous ressortez vidé mais jamais cassé.",
+    },
+    {
+        question: "Que dois-je apporter pour ma première séance ?",
+        answer: "Venez avec une tenue de sport confortable, des chaussures de salle (type indoor/fitness) et une bouteille d'eau. Les bandes de boxe et gants sont fournis pour votre première séance. Par la suite, nous vous conseillerons sur l'équipement adapté à votre pratique.",
+    },
+    {
+        question: "Où se situe le studio et comment y accéder ?",
+        answer: "Le studio Bis Repetita se trouve au cœur du quartier des Pâquis, <a href='#localisation' class='text-primary hover:underline'>La Voie-Creuse 16, 1202 Genève</a> — à 5 minutes à pied de la gare Cornavin. Accès facile en transports publics (arrêt Navigation ou Môle) et places de stationnement à proximité.",
+    },
+    {
+        question: "Comment réserver un cours et voir le planning ?",
+        answer: "Vous pouvez réserver via notre <a href='/contact' class='text-primary hover:underline'>formulaire de contact</a> ou directement par téléphone. Les créneaux sont communiqués chaque semaine. Nous travaillons actuellement sur un planning en ligne pour faciliter la réservation.",
+    },
+    {
+        question: "Peut-on combiner Round by Round et coaching privé ?",
+        answer: "C'est même recommandé. Le <a href='/services/coaching-prive' class='text-primary hover:underline'>coaching privé</a> approfondit la technique en tête-à-tête, les cours collectifs travaillent le cardio et le mental dans l'énergie du groupe. Découvrez nos <a href='/tarifs' class='text-primary hover:underline'>tarifs combinés</a> pour profiter des deux formats.",
+    },
+];
+
+const tiers = [
+    {
+        name: "Séance d'essai",
+        description: "Découvrez le format Round by Round sans engagement.",
+        price: "Gratuit",
+        features: [
+            "60 minutes de coaching",
+            "Découverte du format collectif",
+            "Matériel fourni",
+            "Sans engagement",
+        ],
+        cta: { text: "Réserver", href: "/contact" },
+    },
+    {
+        name: "Séance unité",
+        description: "Un cours Round by Round à la carte.",
+        price: "CHF TODO",
+        priceNote: "/ séance",
+        features: [
+            "60 minutes de coaching",
+            "8 participants max",
+            "2 coachs présents",
+            "Matériel fourni",
+        ],
+        cta: { text: "Réserver", href: "/contact" },
+    },
+    {
+        name: "Pack 10 séances",
+        description: "L'engagement qui fait la différence.",
+        price: "CHF TODO",
+        priceNote: "/ 10 séances",
+        highlighted: true,
+        popularLabel: "Recommandé",
+        features: [
+            "10 × 60 minutes",
+            "8 participants max",
+            "2 coachs présents",
+            "Matériel fourni",
+            "Tarif préférentiel",
+        ],
+        cta: { text: "Réserver", href: "/contact" },
+    },
+];
+
+const testimonials = [
+    {
+        name: "Marie L.",
+        role: "Membre depuis 2024",
+        quote: "J'avais peur de la boxe, mais ici c'est de la boxe sans combat — juste du dépassement de soi. L'ambiance du groupe est incroyable, on se motive mutuellement à chaque round.",
+    },
+    {
+        name: "Thomas R.",
+        role: "Cadre en finance",
+        quote: "Après une journée de bureau, il n'y a rien de mieux. L'intensité des rounds me vide la tête en 60 minutes. Nicolas et Lionel savent exactement comment pousser sans casser.",
+    },
+    {
+        name: "Sophie M.",
+        role: "Membre depuis 2023",
+        quote: "J'ai testé beaucoup de salles à Genève. Le format Round by Round est unique : on progresse techniquement tout en se défoulant. Et 8 personnes max, ça change tout pour le coaching.",
+    },
+    {
+        name: "Alexandre D.",
+        role: "Entrepreneur",
+        quote: "La rigueur de la boxe m'aide au quotidien dans mon business. La discipline, la gestion du stress, la lucidité sous pression — tout ce que j'apprends ici, je l'applique dehors.",
+    },
+];
 ---
 
 <BaseLayout {metadata}>
@@ -17,39 +184,263 @@ const metadata = {
         <Schema
             type="Service"
             data={{
-                title: "Round by Round — Cours collectifs de boxe",
+                title: "Round by Round — Cours Collectifs de Boxe",
                 description: metadata.description,
+                url: "https://bisrepetita.ch/services/round-by-round",
+                serviceType: "Cours collectifs de boxe",
             }}
         />
+        <Schema type="FAQPage" data={{ faqs: faqs.map(f => ({ question: f.question, answer: f.answer.replace(/<[^>]*>/g, '') })) }} />
+        <Schema type="SportsActivityLocation" data={{}} />
     </Fragment>
 
+    {/* S1 — Hero (default variant with full-bleed image) */}
     <Hero
-        title={`Round by <span class="font-display text-primary">Round</span>`}
-        description="Cours collectifs structurés en rounds. Technique de boxe, cardio et renforcement dans une ambiance électrique. 8 participants maximum."
+        title={`Cours de Boxe <span class="font-display text-primary">Round by Round</span> à Genève`}
+        description="Le bruit du sac, le rythme du timer, l'énergie du groupe. 60 minutes chrono de technique de boxe et de préparation physique — dans un format qui repousse vos limites sans jamais vous opposer."
+        image={coursLandscape}
+        imageAlt="Cours collectif de boxe Round by Round à Genève — entraînement sur sacs de frappe"
+        locationBadge={{ text: "La Voie-Creuse 16, 1202 Genève" }}
         actions={[
             {
-                text: "Voir le planning",
+                text: "Réserver une séance d'essai",
                 href: "/contact",
                 variant: "primary",
                 icon: "lucide:arrow-right",
             },
-            {
-                text: "Voir les tarifs",
-                href: "/tarifs",
-                variant: "secondary",
-            },
         ]}
-        classes={{ container: "min-h-[60vh]" }}
+        ctaStyle="outline-gold"
     />
 
-    <!-- TODO: Planning intégré, format, esprit du cours, progression -->
+    {/* S2 — Stats */}
+    <Stats
+        stats={stats}
+        badge="Le format Round by Round"
+        badgeHref="#methode"
+        intro="La rencontre entre la discipline de la boxe anglaise et l'intensité du circuit training — dans un groupe volontairement réduit à 8 participants."
+    />
 
+    {/* S3 — SplitShowcase (méthode) */}
+    <GsapReveal animation="fadeUp">
+        <SplitShowcase
+            id="methode"
+            tagline="La méthode"
+            title="Un entraînement complet inspiré des pros, accessible à tous"
+            image={coursLandscape}
+            imageAlt="Méthode d'entraînement Round by Round — structure en rounds de boxe"
+            items={[
+                {
+                    title: "Structure en rounds",
+                    description: "Chaque cours suit le rythme d'un combat professionnel : rounds de 3 minutes, récupération active, montée en intensité progressive. Votre corps apprend à performer sous pression.",
+                },
+                {
+                    title: "Technique et physique intégrés",
+                    description: "Pas de séparation entre cardio et technique. Chaque round mêle séquences techniques de boxe anglaise et préparation physique pour un entraînement complet et efficace.",
+                },
+                {
+                    title: "Adapté à votre niveau",
+                    description: "Du grand débutant au pratiquant confirmé, les coachs ajustent l'intensité et la complexité en temps réel. Vous progressez à votre rythme tout en bénéficiant de l'énergie du groupe.",
+                },
+            ]}
+        />
+    </GsapReveal>
+
+    {/* S4 — Features bento (piliers) */}
+    <GsapReveal animation="fadeUp">
+        <Features
+            id="benefices"
+            tagline="Pourquoi Round by Round"
+            title="Les piliers de la méthode Round by Round"
+            features={features}
+            bento="2-3"
+        />
+    </GsapReveal>
+
+    {/* S5 — ContentShowcase (sécurité / trust) */}
+    <GsapReveal animation="fadeUp">
+        <ContentShowcase
+            id="securite"
+            tagline="Boxe sans combat à Genève"
+            title="La puissance de la boxe, l'opposition en moins"
+            image={salle1}
+            imageAlt="Salle de boxe sans combat Genève — entraînement sur sacs de frappe Bis Repetita"
+            isReversed={true}
+            items={[
+                {
+                    title: "Zéro opposition",
+                    description: "Tout le travail se fait au sac de frappe et aux pattes d'ours avec le coach. Aucun sparring, aucun contact entre participants — la puissance de la boxe en toute sécurité.",
+                },
+                {
+                    title: "Intensité adaptative",
+                    description: "Vous ne venez pas pour prendre des coups, mais pour apprendre à en donner au sac. Chaque exercice s'adapte à votre condition physique et à votre coordination.",
+                },
+                {
+                    title: "Accessible dès la 1ère séance",
+                    description: "Aucun prérequis technique ni physique. La boxe sans combat à Genève vous permet de découvrir le noble art dans un cadre bienveillant et structuré, dès votre premier round.",
+                },
+            ]}
+            actions={[
+                {
+                    text: "Réserver une séance d'essai",
+                    href: "/contact",
+                    variant: "primary",
+                    icon: "lucide:arrow-right",
+                },
+            ]}
+        />
+    </GsapReveal>
+
+    {/* S6 — ProfileShowcase (coachs) */}
+    <GsapReveal animation="fadeUp">
+        <ProfileShowcase
+            id="coachs"
+            tagline="Vos coachs"
+            title="Nicolas & Lionel de Boccard"
+            image={coachsPhoto}
+            imageAlt="Nicolas et Lionel de Boccard — coachs de boxe Bis Repetita Genève"
+            items={[
+                {
+                    title: "15+ ans d'expérience",
+                    description: "Formés dans les clubs genevois historiques, Nicolas et Lionel ont forgé leur expertise au contact des meilleurs entraîneurs suisses.",
+                },
+                {
+                    title: "Licence SwissBoxing #102860",
+                    description: "Nicolas est licencié officiel SwissBoxing, garantie d'un enseignement conforme aux standards fédéraux de la boxe anglaise.",
+                },
+                {
+                    title: "Champion Suisse Romand 2013",
+                    description: "Lionel a porté les couleurs de la boxe romande en compétition — il apporte la rigueur et l'intensité de la préparation athlétique.",
+                },
+                {
+                    title: "Complémentarité technique & physique",
+                    description: "Deux frères, deux spécialités : la précision technique de Nicolas et l'intensité physique de Lionel — le moteur de la méthode Round by Round.",
+                },
+            ]}
+        />
+    </GsapReveal>
+
+    {/* S7 — Testimonials */}
+    <GsapReveal animation="fadeUp">
+        <Testimonials
+            id="temoignages"
+            title="Ce qu'en disent nos membres"
+            subtitle="Ils ont rejoint le round — voici leur expérience."
+            testimonials={testimonials}
+            rating={{
+                score: "4.8",
+                stars: 5,
+                count: "500+",
+                source: "Google",
+            }}
+        />
+    </GsapReveal>
+
+    {/* S8 — LocationMap with H2 wrapper */}
+    <GsapReveal animation="fadeUp">
+        <section id="localisation">
+            <div class="max-w-7xl mx-auto px-6 md:px-12 lg:px-20 pt-16 md:pt-24 pb-0">
+                <Headline
+                    title="Rejoignez la communauté Round by Round à Genève"
+                    subtitle="Au cœur du quartier des Pâquis, à 5 minutes à pied de la gare Cornavin. Découvrez notre studio et venez vivre votre premier round."
+                    titleAs="h2"
+                    align="center"
+                    classes={{
+                        container: "max-w-3xl mx-auto mb-10",
+                        title: "text-4xl md:text-5xl font-medium tracking-tight font-display",
+                        subtitle: "text-lg text-muted-foreground max-w-2xl mx-auto",
+                    }}
+                />
+            </div>
+            <LocationMap />
+        </section>
+    </GsapReveal>
+
+    {/* S9 — PricingTable */}
+    <GsapReveal animation="fadeUp">
+        <PricingTable
+            tagline="Tarifs"
+            title="Formules Round by Round"
+            tiers={tiers}
+        />
+    </GsapReveal>
+
+    {/* S10 — FAQ */}
+    <GsapReveal animation="fadeUp">
+        <FAQ
+            id="faq"
+            title="Questions fréquentes"
+            subtitle="Tout ce que vous devez savoir sur les cours collectifs de boxe à Genève."
+            items={faqs}
+        />
+    </GsapReveal>
+
+    {/* S10 — CTABanner */}
     <GsapReveal animation="fadeUp">
         <CTABanner
             variant="brushed-full"
-            title="Prêt à rejoindre le ring ?"
-            subtitle="Votre premier round"
-            cta={{ text: "S'inscrire", href: "/contact" }}
+            title="Prêt à rejoindre le prochain Round ?"
+            subtitle="Séance d'essai"
+            cta={{ text: "Réserver ma place", href: "/contact" }}
         />
     </GsapReveal>
+
+    {/* Sticky CTA mobile */}
+    <div
+        id="sticky-cta-mobile"
+        class="fixed bottom-0 left-0 right-0 z-50 md:hidden translate-y-full transition-transform duration-300"
+    >
+        <div class="bg-background/80 backdrop-blur-lg border-t border-border/50 px-4 py-3">
+            <a
+                href="/contact"
+                class="flex items-center justify-center gap-2 w-full bg-primary text-background font-semibold rounded-full py-3.5 text-base uppercase tracking-wide hover:bg-primary/90 transition-colors"
+            >
+                Réserver ma séance
+                <span aria-hidden="true">&rarr;</span>
+            </a>
+        </div>
+    </div>
 </BaseLayout>
+
+<script>
+    function initStickyCta() {
+        const stickyCta = document.getElementById("sticky-cta-mobile");
+        const footer = document.querySelector("footer");
+        if (!stickyCta) return;
+
+        let heroPassed = false;
+        let footerVisible = false;
+
+        const heroObserver = new IntersectionObserver(
+            ([entry]) => {
+                heroPassed = !entry.isIntersecting;
+                updateVisibility();
+            },
+            { threshold: 0 },
+        );
+
+        const footerObserver = new IntersectionObserver(
+            ([entry]) => {
+                footerVisible = entry.isIntersecting;
+                updateVisibility();
+            },
+            { threshold: 0 },
+        );
+
+        function updateVisibility() {
+            if (heroPassed && !footerVisible) {
+                stickyCta!.classList.remove("translate-y-full");
+                stickyCta!.classList.add("translate-y-0");
+            } else {
+                stickyCta!.classList.add("translate-y-full");
+                stickyCta!.classList.remove("translate-y-0");
+            }
+        }
+
+        const heroSection = document.querySelector("section");
+        if (heroSection) heroObserver.observe(heroSection);
+        if (footer) footerObserver.observe(footer);
+    }
+
+    initStickyCta();
+    document.addEventListener("astro:page-load", initStickyCta);
+</script>
