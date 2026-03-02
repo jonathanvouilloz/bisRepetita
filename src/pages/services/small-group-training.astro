@@ -8,15 +8,16 @@ import Features from "../../components/widgets/Features.astro";
 import PricingTable from "../../components/widgets/PricingTable.astro";
 import FAQ from "../../components/widgets/FAQ.astro";
 import CTABanner from "../../components/widgets/CTABanner.astro";
+import RelatedServices from "../../components/widgets/RelatedServices.astro";
 import GsapReveal from "../../components/widgets/GsapReveal.astro";
 import Schema from "../../components/seo/Schema.astro";
 import cours2Landscape from "../../assets/cours-2-landscape.webp";
 import salle1 from "../../assets/salle-1.webp";
 
 const metadata = {
-    title: "Small Group Training Genève | Coaching Petit Groupe (Max 6) | Bis Repetita",
+    title: "Cours Boxe Petit Groupe Genève | 6 Personnes Max",
     description:
-        "Small group training à Genève. Coaching boxe anglaise en petit groupe de 6 personnes maximum. L'énergie du collectif, la précision du privé. Réservez votre séance d'essai.",
+        "Cours de boxe en petit groupe à Genève, 6 personnes maximum. Encadrement premium par Nicolas de Boccard dans un studio privé. Essai gratuit.",
 };
 
 const stats = [
@@ -33,7 +34,7 @@ const stats = [
     {
         value: "15+",
         label: "Années d'expérience",
-        description: "Nicolas de Boccard, licencié SwissBoxing, expert du coaching en petit groupe.",
+        description: "Un ratio coach/élèves inégalé à Genève pour un coaching collectif de qualité privée.",
     },
 ];
 
@@ -129,11 +130,11 @@ const faqs = [
     },
     {
         question: "Le small group convient-il aux débutants ?",
-        answer: "Oui. Nicolas adapte les exercices au niveau de chacun au sein du même groupe. Si vous préférez commencer en tête-à-tête, découvrez le <a href='/services/coaching-duo-trio' class='text-primary hover:underline'>coaching duo & trio</a> ou le <a href='/services/coaching-solo' class='text-primary hover:underline'>coaching solo</a>.",
+        answer: "Oui. Nicolas adapte les exercices au niveau de chacun au sein du même groupe. Si vous préférez commencer dans un format plus intimiste, <a href='/services/coaching-prive' class='text-primary hover:underline'>découvrez nos autres formats de coaching privé</a> (solo ou duo).",
     },
     {
         question: "Quels sont les tarifs du small group training ?",
-        answer: "Nous proposons des séances à l'unité et des packs de 10 séances avec tarif préférentiel. Consultez nos <a href='/tarifs' class='text-primary hover:underline'>tarifs détaillés</a> ou <a href='/contact' class='text-primary hover:underline'>contactez-nous</a>.",
+        answer: "Le small group est notre format le plus accessible par personne : séances à l'unité ou en pack de 10 avec tarif préférentiel. Le prix par personne est nettement inférieur au coaching solo. Consultez nos <a href='/tarifs' class='text-primary hover:underline'>tarifs détaillés</a> ou <a href='/contact' class='text-primary hover:underline'>contactez-nous</a>.",
     },
 ];
 ---
@@ -143,13 +144,25 @@ const faqs = [
         <Schema
             type="Service"
             data={{
-                title: "Small Group Training à Genève",
+                title: "Cours de Boxe Petit Groupe à Genève",
                 description: metadata.description,
                 url: "https://bisrepetita.ch/services/small-group-training",
                 serviceType: "Coaching sportif petit groupe",
+                parentService: { name: "Coaching Privé de Boxe", url: "https://bisrepetita.ch/services/coaching-prive" },
             }}
         />
         <Schema type="FAQPage" data={{ faqs: faqs.map(f => ({ question: f.question, answer: f.answer.replace(/<[^>]*>/g, '') })) }} />
+        <Schema
+            type="BreadcrumbList"
+            data={{
+                breadcrumbs: [
+                    { name: "Accueil", href: "/" },
+                    { name: "Programmes", href: "/services" },
+                    { name: "Coaching Privé", href: "/services/coaching-prive" },
+                    { name: "Small Group Training", href: "/services/small-group-training" },
+                ],
+            }}
+        />
     </Fragment>
 
     {/* S1 — Hero */}
@@ -209,7 +222,16 @@ const faqs = [
         />
     </GsapReveal>
 
-    {/* S4 — Features — Le club privé */}
+    {/* S4 — PricingTable (REMONTÉ) */}
+    <GsapReveal animation="fadeUp">
+        <PricingTable
+            tagline="Tarifs"
+            title="Formules small group training"
+            tiers={tiers}
+        />
+    </GsapReveal>
+
+    {/* S5 — Features — Le club privé */}
     <GsapReveal animation="fadeUp">
         <Features
             id="avantages"
@@ -220,7 +242,7 @@ const faqs = [
         />
     </GsapReveal>
 
-    {/* S5 — ContentShowcase — Méthode Round by Round appliquée */}
+    {/* S6 — ContentShowcase — Méthode Round by Round appliquée */}
     <GsapReveal animation="fadeUp">
         <ContentShowcase
             tagline="La méthode"
@@ -253,16 +275,10 @@ const faqs = [
         />
     </GsapReveal>
 
-    {/* S6 — PricingTable */}
-    <GsapReveal animation="fadeUp">
-        <PricingTable
-            tagline="Tarifs"
-            title="Formules small group training"
-            tiers={tiers}
-        />
-    </GsapReveal>
+    {/* S7 — RelatedServices */}
+    <RelatedServices currentSlug="small-group-training" />
 
-    {/* S7 — FAQ */}
+    {/* S8 — FAQ */}
     <GsapReveal animation="fadeUp">
         <FAQ
             id="faq"
@@ -272,7 +288,7 @@ const faqs = [
         />
     </GsapReveal>
 
-    {/* S8 — CTABanner */}
+    {/* S9 — CTABanner */}
     <GsapReveal animation="fadeUp">
         <CTABanner
             variant="brushed-full"

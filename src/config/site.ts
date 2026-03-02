@@ -1,4 +1,70 @@
 import ogImage from "../assets/og-image.png";
+import coursPortrait from "../assets/cours-portrait.webp";
+import nicolasPortrait from "../assets/nicolas-portrait.webp";
+import ambianceBis from "../assets/ambiance-bis-repetita.webp";
+import cours2Landscape from "../assets/cours-2-landscape.webp";
+import homepage from "../assets/homepage.webp";
+import studioAtmosphere from "../assets/studio-atmosphere.webp";
+
+export interface ServicePage {
+  slug: string;
+  title: string;
+  shortDescription: string;
+  href: string;
+  image: ImageMetadata;
+  category: "prive" | "collectif" | "corporate";
+}
+
+export const servicePages: ServicePage[] = [
+  {
+    slug: "coaching-prive",
+    title: "Coaching Privé",
+    shortDescription: "Un accompagnement sur mesure pour atteindre vos objectifs, du solo au petit groupe.",
+    href: "/services/coaching-prive",
+    image: coursPortrait,
+    category: "prive",
+  },
+  {
+    slug: "coaching-solo",
+    title: "Coaching Solo",
+    shortDescription: "Séances individuelles 100% personnalisées avec Nicolas de Boccard.",
+    href: "/services/coaching-solo",
+    image: nicolasPortrait,
+    category: "prive",
+  },
+  {
+    slug: "coaching-duo-trio",
+    title: "Coaching Duo & Trio",
+    shortDescription: "Progressez ensemble grâce à la boxe anglaise, à deux ou trois.",
+    href: "/services/coaching-duo-trio",
+    image: ambianceBis,
+    category: "prive",
+  },
+  {
+    slug: "small-group-training",
+    title: "Small Group Training",
+    shortDescription: "L'énergie du collectif, la précision du privé. 6 personnes maximum.",
+    href: "/services/small-group-training",
+    image: cours2Landscape,
+    category: "prive",
+  },
+  {
+    slug: "round-by-round",
+    title: "Round by Round",
+    shortDescription: "Cours collectifs intenses alliant technique de boxe et préparation physique.",
+    href: "/services/round-by-round",
+    image: cours2Landscape,
+    category: "collectif",
+  },
+  {
+    slug: "corporate",
+    title: "Corporate",
+    shortDescription: "Team building, cohésion d'équipe et bien-être en entreprise par la boxe.",
+    href: "/services/corporate",
+    image: studioAtmosphere,
+    category: "corporate",
+  },
+];
 
 export const siteConfig = {
   name: "Bis Repetita",
@@ -31,11 +97,24 @@ export const siteConfig = {
     { text: "Studio", href: "/studio" },
     {
       text: "Programmes",
-      href: "/services/coaching-prive",
-      children: [
-        { text: "Coaching Privé", href: "/services/coaching-prive", description: "Un accompagnement sur mesure pour atteindre vos objectifs", image: "cours-portrait.webp" },
-        { text: "Round by Round", href: "/services/round-by-round", description: "Des cours collectifs intenses et motivants", image: "cours-2-landscape.webp" },
-        { text: "Corporate", href: "/services/corporate", description: "Team building et bien-être en entreprise", image: "homepage.webp" },
+      href: "/services",
+      groups: [
+        {
+          label: "Coaching Privé",
+          items: [
+            { text: "Coaching Privé", href: "/services/coaching-prive", description: "Quel format choisir ? Le guide", image: "cours-portrait.webp" },
+            { text: "Solo", href: "/services/coaching-solo", description: "Séances individuelles sur mesure", image: "nicolas-portrait.webp" },
+            { text: "Duo & Trio", href: "/services/coaching-duo-trio", description: "Progressez ensemble, à deux ou trois", image: "ambiance-bis-repetita.webp" },
+            { text: "Petit Groupe", href: "/services/small-group-training", description: "L'énergie du collectif, 6 max", image: "cours-2-landscape.webp" },
+          ],
+        },
+        {
+          label: "Collectif & Corporate",
+          items: [
+            { text: "Round by Round", href: "/services/round-by-round", description: "Cours collectifs intenses", image: "cours-2-landscape.webp" },
+            { text: "Corporate", href: "/services/corporate", description: "Team building par la boxe", image: "homepage.webp" },
+          ],
+        },
       ],
     },
     { text: "Tarifs", href: "/tarifs" },
@@ -45,6 +124,9 @@ export const siteConfig = {
   footerLinks: {
     services: [
       { text: "Coaching Privé", href: "/services/coaching-prive" },
+      { text: "Coaching Solo", href: "/services/coaching-solo" },
+      { text: "Coaching Duo & Trio", href: "/services/coaching-duo-trio" },
+      { text: "Small Group Training", href: "/services/small-group-training" },
       { text: "Round by Round", href: "/services/round-by-round" },
       { text: "Corporate", href: "/services/corporate" },
     ],

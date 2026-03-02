@@ -1,8 +1,18 @@
 ---
 import { siteConfig } from "../../config/site";
 
+interface BreadcrumbItem {
+    name: string;
+    href: string;
+}
+
+interface ServiceRef {
+    name: string;
+    url: string;
+}
+
 interface Props {
-    type: "WebSite" | "BlogPosting" | "SportsActivityLocation" | "Service" | "Person" | "FAQPage";
+    type: "WebSite" | "BlogPosting" | "SportsActivityLocation" | "Service" | "Person" | "FAQPage" | "BreadcrumbList";
     data?: {
         title?: string;
         description?: string;
@@ -10,7 +20,11 @@ interface Props {
         pubDate?: Date;
         author?: string;
         url?: string;
+        serviceType?: string;
         faqs?: { question: string; answer: string }[];
+        breadcrumbs?: BreadcrumbItem[];
+        parentService?: ServiceRef;
+        childServices?: ServiceRef[];
     };
 }
 
@@ -82,7 +96,6 @@ if (type === "WebSite") {
             latitude: 46.22278,
             longitude: 6.14028,
         },
-        // TODO: Confirmer horaires avec Nicolas
         openingHoursSpecification: [
             {
                 "@type": "OpeningHoursSpecification",
@@ -151,11 +164,32 @@ if (type === "WebSite") {
             url: siteConfig.url,
         },
         url: data.url,
-        serviceType: "Coaching de boxe en entreprise",
+        serviceType: data.serviceType || "Coaching de boxe",
         areaServed: {
             "@type": "City",
             name: "Genève",
         },
+        ...(data.parentService && {
+            isPartOf: {
+                "@type": "Service",
+                name: data.parentService.name,
+                url: data.parentService.url,
+            },
+        }),
+        ...(data.childServices && {
+            hasOfferCatalog: {
+                "@type": "OfferCatalog",
+                name: "Formats de coaching privé",
+                itemListElement: data.childServices.map((child) => ({
+                    "@type": "Offer",
+                    itemOffered: {
+                        "@type": "Service",
+                        name: child.name,
+                        url: child.url,
+                    },
+                })),
+            },
+        }),
     };
 } else if (type === "Person") {
     schema = {
@@ -180,6 +214,17 @@ if (type === "WebSite") {
                 "@type": "Answer",
                 text: faq.answer,
             },
+        })),
+    };
+} else if (type === "BreadcrumbList" && data.breadcrumbs) {
+    schema = {
+        "@context": "https://schema.org",
+        "@type": "BreadcrumbList",
+        itemListElement: data.breadcrumbs.map((item, index) => ({
+            "@type": "ListItem",
+            position: index + 1,
+            name: item.name,
+            item: new URL(item.href, siteConfig.url).toString(),
         })),
     };
 }

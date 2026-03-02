@@ -8,15 +8,16 @@ import Features from "../../components/widgets/Features.astro";
 import PricingTable from "../../components/widgets/PricingTable.astro";
 import FAQ from "../../components/widgets/FAQ.astro";
 import CTABanner from "../../components/widgets/CTABanner.astro";
+import RelatedServices from "../../components/widgets/RelatedServices.astro";
 import GsapReveal from "../../components/widgets/GsapReveal.astro";
 import Schema from "../../components/seo/Schema.astro";
 import ambianceBis from "../../assets/ambiance-bis-repetita.webp";
 import coursPortrait from "../../assets/cours-portrait.webp";
 
 const metadata = {
-    title: "Coaching Sportif Duo & Trio Genève | S'entraîner à deux | Nicolas de Boccard",
+    title: "Boxe en Duo & Trio Genève | Coaching Partagé Premium",
     description:
-        "Coaching sportif duo et trio à Genève. Progressez ensemble grâce à la boxe anglaise avec Nicolas de Boccard. Couples, amis, collègues. Réservez votre séance d'essai.",
+        "Entraînez-vous en duo ou trio à Genève. Boxe anglaise entre amis, en couple ou entre collègues avec Nicolas de Boccard. Tarif partagé, coaching intact. Essai gratuit.",
 };
 
 const stats = [
@@ -33,7 +34,7 @@ const stats = [
     {
         value: "15+",
         label: "Années d'expérience",
-        description: "Nicolas de Boccard, licencié SwissBoxing, expert du coaching en binôme et petit groupe.",
+        description: "Des centaines de duos et trios coachés, de tous niveaux et de tous profils.",
     },
 ];
 
@@ -118,8 +119,8 @@ const faqs = [
         answer: "Avec qui vous voulez : conjoint, ami, collègue, membre de la famille. Le format duo & trio fonctionne avec n'importe quelle combinaison — l'essentiel est l'envie de progresser ensemble.",
     },
     {
-        question: "Quelle est la différence avec le coaching solo ?",
-        answer: "Le <a href='/services/coaching-solo' class='text-primary hover:underline'>coaching solo</a> offre 100% de l'attention du coach sur un seul élève. Le duo & trio ajoute une dimension d'émulation et de partage, avec un tarif par personne plus accessible. Pour un groupe de 4 à 6, découvrez notre <a href='/services/small-group-training' class='text-primary hover:underline'>small group training</a>.",
+        question: "Quelle est la différence avec les autres formats de coaching privé ?",
+        answer: "Le duo & trio offre une dimension d'émulation et de partage, avec un tarif par personne plus accessible que le solo. D'autres formats existent selon vos besoins. <a href='/services/coaching-prive' class='text-primary hover:underline'>Comparez les 3 formats de coaching privé</a> pour choisir le vôtre.",
     },
     {
         question: "Comment se déroule une séance duo ou trio ?",
@@ -127,7 +128,7 @@ const faqs = [
     },
     {
         question: "Quels sont les tarifs du coaching duo & trio ?",
-        answer: "Le tarif est global (par séance, pas par personne). Consultez nos <a href='/tarifs' class='text-primary hover:underline'>tarifs détaillés</a> ou <a href='/contact' class='text-primary hover:underline'>contactez-nous</a> pour un devis. Vous pouvez aussi combiner avec les <a href='/services/round-by-round' class='text-primary hover:underline'>cours collectifs Round by Round</a>.",
+        answer: "Le duo est facturé par séance (prix global, pas par personne), ce qui rend le coaching partagé très accessible. Packs de séances disponibles avec tarif dégressif. Consultez nos <a href='/tarifs' class='text-primary hover:underline'>tarifs détaillés</a> ou <a href='/contact' class='text-primary hover:underline'>contactez-nous</a>.",
     },
 ];
 ---
@@ -137,13 +138,25 @@ const faqs = [
         <Schema
             type="Service"
             data={{
-                title: "Coaching Sportif Duo & Trio à Genève",
+                title: "Boxe en Duo & Trio à Genève",
                 description: metadata.description,
                 url: "https://bisrepetita.ch/services/coaching-duo-trio",
                 serviceType: "Coaching sportif duo et trio",
+                parentService: { name: "Coaching Privé de Boxe", url: "https://bisrepetita.ch/services/coaching-prive" },
             }}
         />
         <Schema type="FAQPage" data={{ faqs: faqs.map(f => ({ question: f.question, answer: f.answer.replace(/<[^>]*>/g, '') })) }} />
+        <Schema
+            type="BreadcrumbList"
+            data={{
+                breadcrumbs: [
+                    { name: "Accueil", href: "/" },
+                    { name: "Programmes", href: "/services" },
+                    { name: "Coaching Privé", href: "/services/coaching-prive" },
+                    { name: "Coaching Duo & Trio", href: "/services/coaching-duo-trio" },
+                ],
+            }}
+        />
     </Fragment>
 
     {/* S1 — Hero */}
@@ -201,7 +214,16 @@ const faqs = [
         />
     </GsapReveal>
 
-    {/* S4 — Features — Pourquoi à deux ? */}
+    {/* S4 — PricingTable (REMONTÉ) */}
+    <GsapReveal animation="fadeUp">
+        <PricingTable
+            tagline="Tarifs"
+            title="Formules duo & trio"
+            tiers={tiers}
+        />
+    </GsapReveal>
+
+    {/* S5 — Features — Pourquoi à deux ? */}
     <GsapReveal animation="fadeUp">
         <Features
             id="avantages"
@@ -212,7 +234,7 @@ const faqs = [
         />
     </GsapReveal>
 
-    {/* S5 — ContentShowcase — Ni collectif, ni solo */}
+    {/* S6 — ContentShowcase — Ni collectif, ni solo */}
     <GsapReveal animation="fadeUp">
         <ContentShowcase
             tagline="Le juste milieu"
@@ -237,16 +259,10 @@ const faqs = [
         />
     </GsapReveal>
 
-    {/* S6 — PricingTable */}
-    <GsapReveal animation="fadeUp">
-        <PricingTable
-            tagline="Tarifs"
-            title="Formules duo & trio"
-            tiers={tiers}
-        />
-    </GsapReveal>
+    {/* S7 — RelatedServices */}
+    <RelatedServices currentSlug="coaching-duo-trio" />
 
-    {/* S7 — FAQ */}
+    {/* S8 — FAQ */}
     <GsapReveal animation="fadeUp">
         <FAQ
             id="faq"
@@ -256,7 +272,7 @@ const faqs = [
         />
     </GsapReveal>
 
-    {/* S8 — CTABanner */}
+    {/* S9 — CTABanner */}
     <GsapReveal animation="fadeUp">
         <CTABanner
             variant="brushed-full"

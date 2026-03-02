@@ -5,11 +5,15 @@ import { Image } from "astro:assets";
 import coursPortrait from "../../assets/cours-portrait.webp";
 import cours2Landscape from "../../assets/cours-2-landscape.webp";
 import homepage from "../../assets/homepage.webp";
+import nicolasPortrait from "../../assets/nicolas-portrait.webp";
+import ambianceBis from "../../assets/ambiance-bis-repetita.webp";
 
 const megaMenuImages: Record<string, ImageMetadata> = {
     "cours-portrait.webp": coursPortrait,
     "cours-2-landscape.webp": cours2Landscape,
     "homepage.webp": homepage,
+    "nicolas-portrait.webp": nicolasPortrait,
+    "ambiance-bis-repetita.webp": ambianceBis,
 };
 
 let linkIndex = 0;
@@ -30,95 +34,113 @@ function getNavIndex() {
         <!-- LEFT: Desktop Nav Links -->
         <div class="hidden lg:flex items-center gap-10">
             {
-                siteConfig.navLinks.map((link) =>
-                    link.children ? (
-                        <div class="relative group" id="mega-menu-trigger">
-                            <button class="nav-link relative text-sm font-medium text-foreground transition-colors hover:text-primary flex items-center gap-1 py-1 whitespace-nowrap">
-                                {link.text}
-                                <svg
-                                    class="w-3.5 h-3.5 shrink-0 transition-transform group-hover:rotate-180"
-                                    fill="none"
-                                    viewBox="0 0 24 24"
-                                    stroke="currentColor"
+                (() => {
+                    let globalIdx = 0;
+                    return siteConfig.navLinks.map((link) =>
+                        link.groups ? (
+                            <div class="relative group" id="mega-menu-trigger">
+                                <button class="nav-link relative text-sm font-medium text-foreground transition-colors hover:text-primary flex items-center gap-1 py-1 whitespace-nowrap">
+                                    {link.text}
+                                    <svg
+                                        class="w-3.5 h-3.5 shrink-0 transition-transform group-hover:rotate-180"
+                                        fill="none"
+                                        viewBox="0 0 24 24"
+                                        stroke="currentColor"
+                                    >
+                                        <path
+                                            stroke-linecap="round"
+                                            stroke-linejoin="round"
+                                            stroke-width="2"
+                                            d="M19 9l-7 7-7-7"
+                                        />
+                                    </svg>
+                                </button>
+                                {/* Mega Menu */}
+                                <div
+                                    id="mega-menu-panel"
+                                    class="absolute left-0 top-full pt-2 opacity-0 invisible translate-y-[-8px] group-hover:opacity-100 group-hover:visible group-hover:translate-y-0 transition-all duration-200 ease-out z-50"
                                 >
-                                    <path
-                                        stroke-linecap="round"
-                                        stroke-linejoin="round"
-                                        stroke-width="2"
-                                        d="M19 9l-7 7-7-7"
-                                    />
-                                </svg>
-                            </button>
-                            <!-- Mega Menu -->
-                            <div
-                                id="mega-menu-panel"
-                                class="absolute left-0 top-full pt-2 opacity-0 invisible translate-y-[-8px] group-hover:opacity-100 group-hover:visible group-hover:translate-y-0 transition-all duration-200 ease-out z-50"
-                            >
-                                <div class="bg-black border border-white/10 rounded-2xl w-[576px] overflow-hidden">
-                                    <div class="grid grid-cols-5 gap-3 p-4">
-                                        <!-- Left column: title + links + bottom link -->
-                                        <div class="col-span-3 flex flex-col">
-                                            <span class="text-[11px] uppercase tracking-widest text-white/30 px-3 mb-1.5">{siteConfig.name} présente</span>
-                                            {link.children.map((child: any, idx: number) => (
+                                    <div class="bg-black border border-white/10 rounded-2xl w-[720px] overflow-hidden">
+                                        <div class="grid grid-cols-5 gap-3 p-4">
+                                            {/* Left: grouped links */}
+                                            <div class="col-span-3 flex flex-col">
+                                                <div class="flex gap-6">
+                                                    {link.groups.map((group) => (
+                                                        <div class="flex-1">
+                                                            <span class="text-[11px] uppercase tracking-widest text-white/30 px-3 mb-1 block">{group.label}</span>
+                                                            {group.items.map((child) => {
+                                                                const idx = globalIdx++;
+                                                                return (
+                                                                    <a
+                                                                        href={child.href}
+                                                                        class="mega-menu-link group/link flex flex-col gap-0.5 rounded-lg px-3 py-2 transition-colors hover:bg-white/5"
+                                                                        data-service={idx}
+                                                                    >
+                                                                        <span class="text-sm font-medium text-foreground transition-colors group-hover/link:text-primary">
+                                                                            {child.text}
+                                                                        </span>
+                                                                        {child.description && (
+                                                                            <span class="text-xs text-muted-foreground leading-tight">
+                                                                                {child.description}
+                                                                            </span>
+                                                                        )}
+                                                                    </a>
+                                                                );
+                                                            })}
+                                                        </div>
+                                                    ))}
+                                                </div>
                                                 <a
-                                                    href={child.href}
-                                                    class="mega-menu-link group/link flex flex-col gap-0.5 rounded-lg px-3 py-2 transition-colors hover:bg-white/5"
-                                                    data-service={idx}
+                                                    href="/services"
+                                                    class="flex items-center gap-1 text-xs text-white/40 hover:text-primary transition-colors px-3 pt-2 mt-auto"
                                                 >
-                                                    <span class="text-sm font-medium text-foreground transition-colors group-hover/link:text-primary">
-                                                        {child.text}
-                                                    </span>
-                                                    {child.description && (
-                                                        <span class="text-xs text-muted-foreground leading-tight">
-                                                            {child.description}
-                                                        </span>
-                                                    )}
+                                                    Tous nos programmes
+                                                    <svg class="w-3 h-3" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" /></svg>
                                                 </a>
-                                            ))}
-                                            <a
-                                                href="/services/coaching-prive"
-                                                class="flex items-center gap-1 text-xs text-white/40 hover:text-primary transition-colors px-3 pt-2 mt-auto"
-                                            >
-                                                Tous nos programmes
-                                                <svg class="w-3 h-3" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" /></svg>
-                                            </a>
-                                        </div>
-                                        <!-- Right column: image -->
-                                        <div class="col-span-2 relative aspect-[4/5] overflow-hidden rounded-xl">
-                                            {link.children.map((child: any, idx: number) => {
-                                                const imgSrc = child.image && megaMenuImages[child.image];
-                                                return imgSrc ? (
-                                                    <div
-                                                        class:list={[
-                                                            "mega-menu-image absolute inset-0 transition-opacity duration-300",
-                                                            idx === 0 ? "opacity-100" : "opacity-0",
-                                                        ]}
-                                                        data-image-index={idx}
-                                                    >
-                                                        <Image
-                                                            src={imgSrc}
-                                                            alt={child.text}
-                                                            class="w-full h-full object-cover"
-                                                            widths={[600, 900]}
-                                                            sizes="(max-width: 1280px) 60vw, 540px"
-                                                        />
-                                                    </div>
-                                                ) : null;
-                                            })}
+                                            </div>
+                                            {/* Right: image */}
+                                            <div class="col-span-2 relative aspect-[4/5] overflow-hidden rounded-xl">
+                                                {(() => {
+                                                    let imgIdx = 0;
+                                                    return link.groups.flatMap((group) =>
+                                                        group.items.map((child) => {
+                                                            const idx = imgIdx++;
+                                                            const imgSrc = child.image && megaMenuImages[child.image];
+                                                            return imgSrc ? (
+                                                                <div
+                                                                    class:list={[
+                                                                        "mega-menu-image absolute inset-0 transition-opacity duration-300",
+                                                                        idx === 0 ? "opacity-100" : "opacity-0",
+                                                                    ]}
+                                                                    data-image-index={idx}
+                                                                >
+                                                                    <Image
+                                                                        src={imgSrc}
+                                                                        alt={child.text}
+                                                                        class="w-full h-full object-cover"
+                                                                        widths={[600, 900]}
+                                                                        sizes="(max-width: 1280px) 60vw, 540px"
+                                                                    />
+                                                                </div>
+                                                            ) : null;
+                                                        }),
+                                                    );
+                                                })()}
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
                             </div>
-                        </div>
-                    ) : (
-                        <a
-                            href={link.href}
-                            class="nav-link relative text-sm font-medium text-foreground transition-colors hover:text-primary py-1"
-                        >
-                            {link.text}
-                        </a>
-                    ),
-                )
+                        ) : (
+                            <a
+                                href={link.href}
+                                class="nav-link relative text-sm font-medium text-foreground transition-colors hover:text-primary py-1"
+                            >
+                                {link.text}
+                            </a>
+                        ),
+                    );
+                })()
             }
         </div>
 
@@ -218,20 +240,25 @@ function getNavIndex() {
                     (() => {
                         let i = 0;
                         return siteConfig.navLinks.map((link) =>
-                            link.children ? (
+                            link.groups ? (
                                 <>
-                                    {link.children.map((child) => {
-                                        i++;
-                                        return (
-                                            <a
-                                                href={child.href}
-                                                class="mobile-nav-item flex items-center gap-4 text-2xl font-medium text-foreground transition-colors hover:text-primary opacity-0"
-                                            >
-                                                <span class="text-sm text-primary/50 font-mono">{String(i).padStart(2, "0")}</span>
-                                                {child.text}
-                                            </a>
-                                        );
-                                    })}
+                                    {link.groups.map((group) => (
+                                        <>
+                                            <span class="mobile-nav-item text-xs uppercase tracking-widest text-white/30 mt-2 opacity-0">{group.label}</span>
+                                            {group.items.map((child) => {
+                                                i++;
+                                                return (
+                                                    <a
+                                                        href={child.href}
+                                                        class="mobile-nav-item flex items-center gap-4 text-2xl font-medium text-foreground transition-colors hover:text-primary opacity-0"
+                                                    >
+                                                        <span class="text-sm text-primary/50 font-mono">{String(i).padStart(2, "0")}</span>
+                                                        {child.text}
+                                                    </a>
+                                                );
+                                            })}
+                                        </>
+                                    ))}
                                 </>
                             ) : (
                                 (() => {

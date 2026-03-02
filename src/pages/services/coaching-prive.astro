@@ -1,15 +1,89 @@
 ---
 import BaseLayout from "../../layouts/BaseLayout.astro";
 import Hero from "../../components/widgets/Hero.astro";
+import Stats from "../../components/widgets/Stats.astro";
+import SplitShowcase from "../../components/widgets/SplitShowcase.astro";
+import FAQ from "../../components/widgets/FAQ.astro";
 import CTABanner from "../../components/widgets/CTABanner.astro";
 import GsapReveal from "../../components/widgets/GsapReveal.astro";
 import Schema from "../../components/seo/Schema.astro";
+import { Icon } from "astro-icon/components";
+import coursPortrait from "../../assets/cours-portrait.webp";
 
 const metadata = {
-    title: "Coaching Privé de Boxe à Genève",
+    title: "Coaching Privé Boxe Genève | Quel Format Choisir ?",
     description:
-        "Séances de coaching privé de boxe à Genève avec Nicolas de Boccard. Entraînement individuel ou en petit groupe (1 à 6 personnes). Programme sur mesure adapté à vos objectifs.",
+        "Quel coaching privé de boxe choisir à Genève ? Solo, duo ou petit groupe — comparez les 3 formats avec Nicolas de Boccard et trouvez celui qui vous correspond.",
 };
+
+const stats = [
+    {
+        value: "1–6",
+        label: "Personnes par séance",
+        description: "Du face-à-face exclusif au petit groupe soudé — jamais plus de 6, pour un encadrement sans compromis.",
+    },
+    {
+        value: "100%",
+        label: "Sur mesure",
+        description: "Chaque programme est construit autour de vos objectifs, votre niveau et votre rythme. Aucune séance ne se ressemble.",
+    },
+    {
+        value: "15+",
+        label: "Années d'expérience",
+        description: "Plus de 500 athlètes coachés en privé, du débutant complet au sportif d'élite.",
+    },
+];
+
+const formats = [
+    {
+        title: "Coaching Solo",
+        description: "L'excellence du sur-mesure. Un coach, un élève, zéro compromis.",
+        href: "/services/coaching-solo",
+        icon: "lucide:user",
+        highlight: "1 personne",
+    },
+    {
+        title: "Coaching Duo & Trio",
+        description: "Progressez ensemble. L'émulation à deux ou trois, le coaching en plus.",
+        href: "/services/coaching-duo-trio",
+        icon: "lucide:users",
+        highlight: "2–3 personnes",
+    },
+    {
+        title: "Small Group Training",
+        description: "L'énergie du collectif, la précision du privé. 6 personnes maximum.",
+        href: "/services/small-group-training",
+        icon: "lucide:users-round",
+        highlight: "4–6 personnes",
+    },
+];
+
+const faqs = [
+    {
+        question: "Quelle est la différence entre coaching solo, duo et small group ?",
+        answer: "Le <a href='/services/coaching-solo' class='text-primary hover:underline'>coaching solo</a> est un face-à-face exclusif avec Nicolas, 100% personnalisé. Le <a href='/services/coaching-duo-trio' class='text-primary hover:underline'>coaching duo & trio</a> permet de s'entraîner à 2 ou 3 avec un programme adapté au groupe. Le <a href='/services/small-group-training' class='text-primary hover:underline'>small group training</a> réunit 4 à 6 personnes pour une dynamique collective avec un encadrement premium.",
+    },
+    {
+        question: "Faut-il un niveau minimum pour commencer ?",
+        answer: "Aucun niveau n'est requis. Que vous choisissiez le <a href='/services/coaching-solo' class='text-primary hover:underline'>solo</a>, le <a href='/services/coaching-duo-trio' class='text-primary hover:underline'>duo</a> ou le <a href='/services/small-group-training' class='text-primary hover:underline'>small group</a>, le programme est entièrement adapté à votre niveau — du débutant complet au boxeur confirmé.",
+    },
+    {
+        question: "Comment se déroule la première séance ?",
+        answer: "La première séance commence par un échange sur vos objectifs et votre condition physique. On passe ensuite aux fondamentaux : posture, garde, déplacements et premiers enchaînements. L'objectif est de vous donner un aperçu concret du coaching.",
+    },
+    {
+        question: "Dois-je apporter mon propre matériel ?",
+        answer: "Non, tout le matériel est fourni : gants, bandes, protections. Venez simplement en tenue de sport avec une bouteille d'eau.",
+    },
+    {
+        question: "À quelle fréquence faut-il s'entraîner ?",
+        answer: "Pour des résultats visibles, nous recommandons 2 à 3 séances par semaine. Mais même une séance hebdomadaire apporte des bénéfices significatifs. Vous pouvez aussi combiner le coaching privé avec nos <a href='/services/round-by-round' class='text-primary hover:underline'>cours collectifs Round by Round</a> pour varier les formats.",
+    },
+    {
+        question: "Quels sont les tarifs du coaching privé ?",
+        answer: "Les tarifs varient selon le format choisi : solo (séances individuelles), duo/trio (prix global par séance) et small group (prix par personne, max 6). Consultez nos <a href='/tarifs' class='text-primary hover:underline'>tarifs détaillés</a> ou <a href='/contact' class='text-primary hover:underline'>contactez-nous</a> pour un devis personnalisé.",
+    },
+];
 ---
 
 <BaseLayout {metadata}>
@@ -17,18 +91,38 @@ const metadata = {
         <Schema
             type="Service"
             data={{
-                title: "Coaching Privé de Boxe",
+                title: "Coaching Privé de Boxe à Genève",
                 description: metadata.description,
+                url: "https://bisrepetita.ch/services/coaching-prive",
+                serviceType: "Coaching sportif privé",
+                childServices: [
+                    { name: "Coaching Solo", url: "https://bisrepetita.ch/services/coaching-solo" },
+                    { name: "Coaching Duo & Trio", url: "https://bisrepetita.ch/services/coaching-duo-trio" },
+                    { name: "Small Group Training", url: "https://bisrepetita.ch/services/small-group-training" },
+                ],
+            }}
+        />
+        <Schema type="FAQPage" data={{ faqs: faqs.map(f => ({ question: f.question, answer: f.answer.replace(/<[^>]*>/g, '') })) }} />
+        <Schema
+            type="BreadcrumbList"
+            data={{
+                breadcrumbs: [
+                    { name: "Accueil", href: "/" },
+                    { name: "Programmes", href: "/services" },
+                    { name: "Coaching Privé", href: "/services/coaching-prive" },
+                ],
             }}
         />
     </Fragment>
 
+    {/* S1 — Hero */}
     <Hero
-        title={`Coaching <span class="font-display text-primary">Privé</span>`}
-        description="Séances individuelles ou en petit groupe (jusqu'à 6 personnes). Un accompagnement sur mesure adapté à vos objectifs."
+        title={`Coaching Privé de <span class="font-display text-primary">Boxe</span> à Genève`}
+        description="L'excellence par Nicolas de Boccard. Du solo au petit groupe, un coaching de boxe anglaise sur mesure — construit autour de vos objectifs, dans un studio privé au cœur de Genève."
+        locationBadge={{ text: "La Voie-Creuse 16, 1202 Genève" }}
         actions={[
             {
-                text: "Réserver une séance",
+                text: "Réserver une séance d'essai",
                 href: "/contact",
                 variant: "primary",
                 icon: "lucide:arrow-right",
@@ -39,16 +133,143 @@ const metadata = {
                 variant: "secondary",
             },
         ]}
-        classes={{ container: "min-h-[60vh]" }}
+        ctaStyle="outline-gold"
+        classes={{ container: "min-h-[80vh]" }}
     />
 
-    <!-- TODO: Déroulé d'une séance, profils adaptés, tarifs. CTA: séance d'essai -->
+    {/* S2 — Stats */}
+    <Stats
+        stats={stats}
+        badge="Coaching sur mesure"
+        badgeHref="#methode"
+        intro="Un coaching privé de boxe anglaise, c'est un programme entièrement construit autour de vos objectifs — que vous soyez débutant ou sportif confirmé."
+    />
 
+    {/* S3 — SplitShowcase — La méthode */}
+    <GsapReveal animation="fadeUp">
+        <SplitShowcase
+            id="methode"
+            tagline="La méthode"
+            title="Un coaching d'excellence, structuré pour durer"
+            image={coursPortrait}
+            imageAlt="Coaching privé boxe anglaise Genève — Nicolas de Boccard"
+            items={[
+                {
+                    title: "Bilan initial personnalisé",
+                    description: "Chaque parcours commence par un échange approfondi : objectifs, condition physique, contraintes. Le programme qui en découle est unique — comme vous.",
+                },
+                {
+                    title: "Progression mesurable",
+                    description: "Technique, physique, mental — chaque séance s'inscrit dans un plan de progression. Vous savez d'où vous partez et où vous allez.",
+                },
+                {
+                    title: "Confidentialité totale",
+                    description: "Studio privé, créneaux dédiés, vestiaires privatifs. Votre entraînement reste votre affaire — dans un cadre pensé pour la discrétion.",
+                },
+            ]}
+        />
+    </GsapReveal>
+
+    {/* S4 — Les 3 formats (custom section) */}
+    <GsapReveal animation="fadeUp">
+        <section id="formats" class="py-16 md:py-28">
+            <div class="max-w-6xl mx-auto px-4 sm:px-6">
+                <div class="text-center mb-12">
+                    <span class="section-label text-primary">Choisissez votre format</span>
+                    <h2 class="text-4xl md:text-5xl font-medium tracking-tight font-display mt-3">
+                        Les 3 formats de coaching privé
+                    </h2>
+                    <p class="text-lg text-muted-foreground max-w-2xl mx-auto mt-4">
+                        Solo, duo ou petit groupe — chaque format est conçu pour un objectif précis. Trouvez celui qui vous correspond.
+                    </p>
+                </div>
+                <div class="grid gap-6 md:grid-cols-3">
+                    {formats.map((format) => (
+                        <a
+                            href={format.href}
+                            class="group relative glass-card rounded-2xl p-8 transition-all duration-300 hover:border-primary/30 hover:shadow-[var(--shadow-gold-card)] flex flex-col"
+                        >
+                            <div class="flex items-center gap-3 mb-4">
+                                <div class="w-12 h-12 rounded-xl bg-primary/10 flex items-center justify-center transition-all duration-300 group-hover:shadow-[var(--shadow-gold-icon)]">
+                                    <Icon name={format.icon} class="w-6 h-6 text-primary" />
+                                </div>
+                                <span class="text-xs font-semibold uppercase tracking-wider text-primary/70">{format.highlight}</span>
+                            </div>
+                            <h3 class="text-xl font-bold text-foreground mb-2 group-hover:text-primary transition-colors">
+                                {format.title}
+                            </h3>
+                            <p class="text-sm text-muted-foreground mb-6 flex-1">
+                                {format.description}
+                            </p>
+                            <span class="inline-flex items-center gap-2 text-sm font-medium text-primary">
+                                Découvrir
+                                <svg class="w-4 h-4 transition-transform group-hover:translate-x-1" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                                    <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7" />
+                                </svg>
+                            </span>
+                        </a>
+                    ))}
+                </div>
+
+                {/* Mini-tableau comparatif */}
+                <div class="mt-12 overflow-x-auto">
+                    <table class="w-full text-sm text-left border-collapse">
+                        <thead>
+                            <tr class="border-b border-border">
+                                <th class="py-3 px-4 text-muted-foreground font-medium">Format</th>
+                                <th class="py-3 px-4 text-muted-foreground font-medium">Participants</th>
+                                <th class="py-3 px-4 text-muted-foreground font-medium">Idéal pour</th>
+                                <th class="py-3 px-4 text-muted-foreground font-medium">Tarif indicatif</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr class="border-b border-border/50">
+                                <td class="py-3 px-4 font-medium text-foreground">
+                                    <a href="/services/coaching-solo" class="text-primary hover:underline">Solo</a>
+                                </td>
+                                <td class="py-3 px-4 text-muted-foreground">1</td>
+                                <td class="py-3 px-4 text-muted-foreground">Progression maximale, confidentialité</td>
+                                <td class="py-3 px-4 text-muted-foreground">Le plus personnalisé</td>
+                            </tr>
+                            <tr class="border-b border-border/50">
+                                <td class="py-3 px-4 font-medium text-foreground">
+                                    <a href="/services/coaching-duo-trio" class="text-primary hover:underline">Duo & Trio</a>
+                                </td>
+                                <td class="py-3 px-4 text-muted-foreground">2–3</td>
+                                <td class="py-3 px-4 text-muted-foreground">Émulation entre amis, couple, collègues</td>
+                                <td class="py-3 px-4 text-muted-foreground">Tarif partagé</td>
+                            </tr>
+                            <tr>
+                                <td class="py-3 px-4 font-medium text-foreground">
+                                    <a href="/services/small-group-training" class="text-primary hover:underline">Petit groupe</a>
+                                </td>
+                                <td class="py-3 px-4 text-muted-foreground">4–6</td>
+                                <td class="py-3 px-4 text-muted-foreground">Dynamique collective, budget accessible</td>
+                                <td class="py-3 px-4 text-muted-foreground">Le plus accessible</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </section>
+    </GsapReveal>
+
+    {/* S5 — FAQ */}
+    <GsapReveal animation="fadeUp">
+        <FAQ
+            id="faq"
+            title="Questions fréquentes"
+            subtitle="Tout ce que vous devez savoir sur le coaching privé de boxe à Genève."
+            items={faqs}
+        />
+    </GsapReveal>
+
+    {/* S6 — CTABanner */}
     <GsapReveal animation="fadeUp">
         <CTABanner
             variant="brushed-full"
-            title="Prêt à commencer votre transformation ?"
-            subtitle="Première séance"
+            title="Prêt à commencer votre coaching privé ?"
+            subtitle="Séance d'essai"
             cta={{ text: "Réserver", href: "/contact" }}
         />
     </GsapReveal>

@@ -8,6 +8,7 @@ import EquipmentPanels from "../../components/widgets/EquipmentPanels.astro";
 import PricingTable from "../../components/widgets/PricingTable.astro";
 import FAQ from "../../components/widgets/FAQ.astro";
 import CTABanner from "../../components/widgets/CTABanner.astro";
+import RelatedServices from "../../components/widgets/RelatedServices.astro";
 import GsapReveal from "../../components/widgets/GsapReveal.astro";
 import Schema from "../../components/seo/Schema.astro";
 import nicolasPortrait from "../../assets/nicolas-portrait.webp";
@@ -18,9 +19,9 @@ import studioAtmosphere from "../../assets/studio-atmosphere.webp";
 import cours2Landscape from "../../assets/cours-2-landscape.webp";
 
 const metadata = {
-    title: "Coach Personnel Genève | Coaching Privé Solo | Nicolas de Boccard",
+    title: "Coach Personnel Boxe Genève | Séances Individuelles",
     description:
-        "Coach sportif personnel à Genève. Séances individuelles de boxe anglaise 100% sur mesure avec Nicolas de Boccard. Cadres, rééducation, sportifs d'élite. Réservez votre séance d'essai.",
+        "Votre coach personnel de boxe à Genève. Séances individuelles sur mesure avec Nicolas de Boccard : technique, physique et mental. Séance d'essai gratuite.",
 };
 
 const stats = [
@@ -37,7 +38,7 @@ const stats = [
     {
         value: "15+",
         label: "Années d'expérience",
-        description: "Nicolas de Boccard, licencié SwissBoxing, formé dans les clubs genevois historiques.",
+        description: "Plus de 500 élèves accompagnés individuellement, du débutant au compétiteur.",
     },
 ];
 
@@ -119,7 +120,7 @@ const tiers = [
 const faqs = [
     {
         question: "Quelle est la différence entre le coaching solo et les autres formats ?",
-        answer: "Le coaching solo est un face-à-face exclusif avec Nicolas : 100% de l'attention, 100% de la personnalisation. Le <a href='/services/coaching-duo-trio' class='text-primary hover:underline'>coaching duo & trio</a> ajoute une dimension d'émulation entre partenaires, tandis que le <a href='/services/small-group-training' class='text-primary hover:underline'>small group training</a> mise sur la dynamique collective.",
+        answer: "Le coaching solo est un face-à-face exclusif avec Nicolas : 100% de l'attention, 100% de la personnalisation. D'autres formats existent (duo, trio, petit groupe) avec des dynamiques différentes. <a href='/services/coaching-prive' class='text-primary hover:underline'>Découvrez nos autres formats de coaching privé</a> pour trouver celui qui vous correspond.",
     },
     {
         question: "Le coaching solo est-il adapté aux débutants complets ?",
@@ -135,7 +136,7 @@ const faqs = [
     },
     {
         question: "Quels sont les tarifs du coaching solo ?",
-        answer: "Nous proposons des séances à l'unité et des packs de 10 séances avec tarif préférentiel. Consultez nos <a href='/tarifs' class='text-primary hover:underline'>tarifs détaillés</a> ou <a href='/contact' class='text-primary hover:underline'>contactez-nous</a> pour un devis personnalisé.",
+        answer: "Le coaching solo est disponible à la séance ou en pack de 10 séances avec tarif préférentiel. Les packs offrent un meilleur rapport qualité-prix et un suivi de progression structuré. Consultez nos <a href='/tarifs' class='text-primary hover:underline'>tarifs détaillés</a> ou <a href='/contact' class='text-primary hover:underline'>contactez-nous</a>.",
     },
 ];
 ---
@@ -145,13 +146,32 @@ const faqs = [
         <Schema
             type="Service"
             data={{
-                title: "Coaching Sportif Solo à Genève",
+                title: "Coach Personnel de Boxe à Genève",
                 description: metadata.description,
                 url: "https://bisrepetita.ch/services/coaching-solo",
                 serviceType: "Coaching sportif individuel",
+                parentService: { name: "Coaching Privé de Boxe", url: "https://bisrepetita.ch/services/coaching-prive" },
+            }}
+        />
+        <Schema
+            type="Person"
+            data={{
+                title: "Nicolas de Boccard",
+                description: "Head Coach & Fondateur de Bis Repetita. Plus de 15 ans d'expérience en boxe anglaise. Licencié SwissBoxing #102860.",
             }}
         />
         <Schema type="FAQPage" data={{ faqs: faqs.map(f => ({ question: f.question, answer: f.answer.replace(/<[^>]*>/g, '') })) }} />
+        <Schema
+            type="BreadcrumbList"
+            data={{
+                breadcrumbs: [
+                    { name: "Accueil", href: "/" },
+                    { name: "Programmes", href: "/services" },
+                    { name: "Coaching Privé", href: "/services/coaching-prive" },
+                    { name: "Coaching Solo", href: "/services/coaching-solo" },
+                ],
+            }}
+        />
     </Fragment>
 
     {/* S1 — Hero */}
@@ -210,13 +230,12 @@ const faqs = [
         />
     </GsapReveal>
 
-    {/* S4 — Pour qui ? — Panneaux interactifs */}
+    {/* S4 — PricingTable (REMONTÉ) */}
     <GsapReveal animation="fadeUp">
-        <EquipmentPanels
-            id="pour-qui"
-            tagline="Pour qui ?"
-            title="Un coaching personnalisé pour chaque profil"
-            panels={pourQuiPanels}
+        <PricingTable
+            tagline="Tarifs"
+            title="Formules coaching solo"
+            tiers={tiers}
         />
     </GsapReveal>
 
@@ -248,16 +267,20 @@ const faqs = [
         />
     </GsapReveal>
 
-    {/* S6 — PricingTable */}
+    {/* S6 — Pour qui ? — Panneaux interactifs */}
     <GsapReveal animation="fadeUp">
-        <PricingTable
-            tagline="Tarifs"
-            title="Formules coaching solo"
-            tiers={tiers}
+        <EquipmentPanels
+            id="pour-qui"
+            tagline="Pour qui ?"
+            title="Un coaching personnalisé pour chaque profil"
+            panels={pourQuiPanels}
         />
     </GsapReveal>
 
-    {/* S7 — FAQ */}
+    {/* S7 — RelatedServices */}
+    <RelatedServices currentSlug="coaching-solo" />
+
+    {/* S8 — FAQ */}
     <GsapReveal animation="fadeUp">
         <FAQ
             id="faq"
@@ -267,7 +290,7 @@ const faqs = [
         />
     </GsapReveal>
 
-    {/* S8 — CTABanner */}
+    {/* S9 — CTABanner */}
     <GsapReveal animation="fadeUp">
         <CTABanner
             variant="brushed-full"

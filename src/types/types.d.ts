@@ -21,10 +21,23 @@ export interface Service {
   icon: string;
 }
 
+export interface NavChildLink {
+  text: string;
+  href: string;
+  description?: string;
+  image?: string;
+}
+
+export interface NavGroup {
+  label: string;
+  items: NavChildLink[];
+}
+
 export interface NavLink {
   text: string;
   href: string;
-  children?: NavLink[];
+  children?: NavChildLink[];
+  groups?: NavGroup[];
 }
 
 export interface Widget {
@@ -50,6 +63,7 @@ export interface HeroProps extends HeadlineProps {
   image?: ImageMetadata | string;
   imageAlt?: string;
   variant?: "default" | "centered";
+  ctaStyle?: "default" | "outline-gold";
   socialProof?: {
     avatars: (ImageMetadata | string)[];
     badge?: string;
