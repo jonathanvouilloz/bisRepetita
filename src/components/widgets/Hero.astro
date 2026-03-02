@@ -11,6 +11,7 @@ const {
     image,
     imageAlt = "",
     variant = "default",
+    ctaStyle = "default",
     socialProof,
     locationBadge,
     classes = {},
@@ -136,7 +137,7 @@ const isCentered = variant === "centered";
             }
 
             <!-- Bottom section: title left + CTA block right -->
-            <div class="flex items-end justify-between">
+            <div class="mt-auto flex items-end justify-between">
                 <!-- Left: description + title -->
                 <div class="hero-fade-in px-6 md:px-12 lg:px-20 pb-10 md:pb-14">
                     {
@@ -159,17 +160,27 @@ const isCentered = variant === "centered";
                 <!-- Right: CTA block — bridges into next section -->
                 {
                     Array.isArray(actions) && actions.length > 0 && actions[0] && (
-                        <a
-                            href={actions[0].href}
-                            class="hero-fade-in hidden md:inline-flex items-center gap-6 shrink-0 rounded-tl-[2rem] bg-white text-background px-14 lg:px-24 xl:px-32 py-7 lg:py-10 xl:py-12 hover:bg-white/90 transition-colors group"
-                        >
-                            <span
-                                class="text-xl lg:text-2xl xl:text-3xl uppercase tracking-normal font-semibold font-display"
+                        ctaStyle === "outline-gold" ? (
+                            <a
+                                href={actions[0].href}
+                                class="hero-fade-in hidden md:inline-flex items-center gap-6 shrink-0 rounded-full border border-primary bg-primary/10 text-primary px-10 py-5 hover:bg-primary/20 transition-colors group mb-10 mr-6 lg:mr-12"
                             >
-                                {actions[0].text}
-                            </span>
-                            <span class="text-2xl lg:text-3xl xl:text-4xl transition-transform group-hover:translate-x-2" aria-hidden="true">&rarr;</span>
-                        </a>
+                                <span class="text-xl lg:text-2xl uppercase tracking-normal font-semibold font-display">
+                                    {actions[0].text}
+                                </span>
+                                <span class="text-2xl lg:text-3xl text-primary transition-transform group-hover:translate-x-2" aria-hidden="true">&rarr;</span>
+                            </a>
+                        ) : (
+                            <a
+                                href={actions[0].href}
+                                class="hero-fade-in hidden md:inline-flex items-center gap-6 shrink-0 rounded-tl-[2rem] bg-white text-background px-14 lg:px-24 xl:px-32 py-7 lg:py-10 xl:py-12 hover:bg-white/90 transition-colors group"
+                            >
+                                <span class="text-xl lg:text-2xl xl:text-3xl uppercase tracking-normal font-semibold font-display">
+                                    {actions[0].text}
+                                </span>
+                                <span class="text-2xl lg:text-3xl xl:text-4xl transition-transform group-hover:translate-x-2" aria-hidden="true">&rarr;</span>
+                            </a>
+                        )
                     )
                 }
             </div>
@@ -180,12 +191,20 @@ const isCentered = variant === "centered";
                     <div class="flex md:hidden px-6 pb-6">
                         <a
                             href={actions[0].href}
-                            class="hero-fade-in inline-flex items-center gap-3 rounded-full bg-white text-background px-8 py-4 hover:bg-white/90 transition-colors group"
+                            class:list={[
+                                "hero-fade-in inline-flex items-center gap-3 rounded-full transition-colors group",
+                                ctaStyle === "outline-gold"
+                                    ? "border border-primary bg-primary/10 text-primary px-8 py-4 hover:bg-primary/20"
+                                    : "bg-white text-background px-8 py-4 hover:bg-white/90",
+                            ]}
                         >
                             <span class="text-base uppercase tracking-normal font-semibold font-display">
                                 {actions[0].text}
                             </span>
-                            <span class="text-lg transition-transform group-hover:translate-x-1" aria-hidden="true">&rarr;</span>
+                            <span class:list={[
+                                "text-lg transition-transform group-hover:translate-x-1",
+                                ctaStyle === "outline-gold" && "text-primary",
+                            ]} aria-hidden="true">&rarr;</span>
                         </a>
                     </div>
                 )

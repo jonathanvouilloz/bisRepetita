@@ -1,6 +1,6 @@
 ---
 interface Props {
-    variant?: "primary" | "secondary" | "tertiary";
+    variant?: "primary" | "secondary" | "tertiary" | "ghost";
     size?: "sm" | "md" | "lg";
     href?: string;
     type?: "button" | "submit" | "reset";
@@ -26,9 +26,11 @@ const variants = {
     primary:
         "bg-primary text-background hover:shadow-[var(--shadow-gold-button)] hover:-translate-y-0.5 shimmer-btn",
     secondary:
-        "border border-primary text-primary hover:bg-primary hover:text-background hover:shadow-[0_0_20px_rgba(212,168,83,0.15)]",
+        "border border-primary text-primary hover:bg-primary hover:text-background hover:shadow-[0_0_20px_rgba(184,164,126,0.15)]",
     tertiary:
         "bg-transparent text-foreground hover:text-primary",
+    ghost:
+        "bg-transparent border-none text-neutral-900 hover:text-primary gap-2",
 };
 
 const sizes = {

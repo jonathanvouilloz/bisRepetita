@@ -398,7 +398,37 @@ const faqs = [
 
     {/* 5. Équipements — Panneaux interactifs */}
     <GsapReveal animation="fadeUp">
-        <EquipmentPanels />
+        <EquipmentPanels
+            tagline="Équipements"
+            title="Un studio équipé pour la performance"
+            subtitle="Des équipements professionnels pour un entraînement optimal, dans un cadre premium au cœur de Genève."
+            panels={[
+                {
+                    title: "Ring professionnel",
+                    description: "Un ring aux dimensions réglementaires pour les séances de sparring, le coaching privé et les cours Round by Round.",
+                    image: studioInterior,
+                    alt: "Ring professionnel du studio Bis Repetita",
+                },
+                {
+                    title: "Sacs & équipements pro",
+                    description: "Sacs de frappe, pattes d'ours, speed bags et matériel de renforcement — tout est là pour progresser.",
+                    image: salle1,
+                    alt: "Sacs de frappe et équipements de boxe",
+                },
+                {
+                    title: "Vestiaires premium",
+                    description: "Douches, casiers sécurisés et espace détente pour une expérience complète digne d'un studio haut de gamme.",
+                    image: studioAtmosphere,
+                    alt: "Vestiaires premium du studio",
+                },
+                {
+                    title: "Espace fonctionnel",
+                    description: "150m² optimisés avec zones dédiées : échauffement, renforcement, travail au sac et ring central.",
+                    image: cours2Landscape,
+                    alt: "Espace fonctionnel du studio de boxe",
+                },
+            ]}
+        />
     </GsapReveal>
 
     {/* 7. ServiceCards — 3 programmes */}

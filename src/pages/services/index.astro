@@ -1,0 +1,87 @@
+---
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import ServiceCard from "../../components/widgets/ServiceCard.astro";
+import CTABanner from "../../components/widgets/CTABanner.astro";
+import GsapReveal from "../../components/widgets/GsapReveal.astro";
+import Container from "../../components/ui/Container.astro";
+import Button from "../../components/ui/Button.astro";
+import { Icon } from "astro-icon/components";
+import Schema from "../../components/seo/Schema.astro";
+import { servicePages } from "../../config/site";
+
+const metadata = {
+    title: "Programmes de Boxe à Genève | Coaching & Cours",
+    description:
+        "Découvrez tous les programmes de boxe Bis Repetita à Genève : coaching privé, solo, duo, small group, cours collectifs Round by Round et boxe corporate. Séance d'essai gratuite.",
+};
+---
+
+<BaseLayout {metadata}>
+    <Fragment slot="head">
+        <Schema type="SportsActivityLocation" data={{}} />
+        <Schema
+            type="BreadcrumbList"
+            data={{
+                breadcrumbs: [
+                    { name: "Accueil", href: "/" },
+                    { name: "Programmes", href: "/services" },
+                ],
+            }}
+        />
+    </Fragment>
+
+    {/* Light wrapper — masks the dark body/dots pattern */}
+    <div class="bg-white">
+        {/* S1 — Page header */}
+        <section class="pt-36 md:pt-44 pb-16 md:pb-20">
+            <Container class="text-center">
+                <span class="section-label text-primary mb-4 block">Nos programmes</span>
+                <h1
+                    class="text-5xl md:text-[3.75rem] lg:text-7xl font-medium font-display tracking-tight text-neutral-900 leading-[0.95]"
+                    style="letter-spacing: -0.05em;"
+                >
+                    Programmes de <span class="text-primary">Boxe</span> à Genève
+                </h1>
+                <p class="text-lg md:text-xl text-neutral-600 max-w-2xl mx-auto mt-6">
+                    Du coaching individuel aux cours collectifs, en passant par les programmes corporate — trouvez le format qui vous correspond.
+                </p>
+                <div class="flex flex-wrap items-center justify-center gap-6 mt-8">
+                    <Button href="/contact" variant="primary" size="lg" class="bg-neutral-900 text-white hover:bg-neutral-800 hover:shadow-lg">
+                        Réserver une séance d'essai
+                    </Button>
+                    <Button href="/tarifs" variant="ghost" size="lg">
+                        Voir les tarifs
+                        <Icon name="lucide:arrow-right" class="w-5 h-5" />
+                    </Button>
+                </div>
+            </Container>
+        </section>
+
+        {/* S2 — Grille des 6 programmes */}
+        <Container class="pb-16 md:pb-24">
+            <div class="grid gap-8 md:grid-cols-2 lg:grid-cols-3 gsap-stagger-cards">
+                {servicePages.map((service, i) => (
+                    <ServiceCard
+                        service={{
+                            title: service.title,
+                            description: service.shortDescription,
+                            href: service.href,
+                            image: service.image,
+                        }}
+                        index={i + 1}
+                    />
+                ))}
+            </div>
+        </Container>
+    </div>
+
+    {/* S3 — CTABanner */}
+    <GsapReveal animation="fadeUp">
+        <CTABanner
+            variant="brushed-full"
+            title="Pas sûr du format qui vous convient ?"
+            subtitle="On vous guide"
+            cta={{ text: "Nous contacter", href: "/contact" }}
+        />
+    </GsapReveal>
+</BaseLayout>

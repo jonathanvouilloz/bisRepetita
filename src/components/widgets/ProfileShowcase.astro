@@ -1,0 +1,82 @@
+---
+import WidgetWrapper from "./WidgetWrapper.astro";
+import SectionTitle from "../ui/SectionTitle.astro";
+import { Image } from "astro:assets";
+
+interface Props {
+    tagline?: string;
+    title?: string;
+    image: ImageMetadata;
+    imageAlt?: string;
+    items: Array<{ title: string; description: string }>;
+    id?: string;
+}
+
+const {
+    tagline,
+    title,
+    image,
+    imageAlt = "",
+    items = [],
+    id,
+} = Astro.props;
+---
+
+<WidgetWrapper id={id} containerClass="max-w-7xl mx-auto">
+    {/* Section header */}
+    <SectionTitle badge={tagline} title={title} align="center" class="mb-12" />
+
+    {/* Desktop: 3-column layout */}
+    <div class="hidden lg:grid lg:grid-cols-3 gap-8 items-center">
+        {/* Left column — cards 1 & 2 */}
+        <div class="flex flex-col gap-6">
+            {items.slice(0, 2).map((item) => (
+                <div class="bg-card/60 backdrop-blur-sm p-6 rounded-3xl border border-border/50 transition-all duration-300 hover:border-primary/30 hover:shadow-[var(--shadow-gold-card)]">
+                    <h3 class="text-lg font-medium leading-6 mb-2">{item.title}</h3>
+                    <p class="text-muted-foreground text-sm">{item.description}</p>
+                </div>
+            ))}
+        </div>
+
+        {/* Center column — photo */}
+        <div class="flex justify-center">
+            <Image
+                src={image}
+                alt={imageAlt}
+                class="w-full aspect-square object-cover rounded-3xl shadow-lg"
+            />
+        </div>
+
+        {/* Right column — cards 3 & 4 */}
+        <div class="flex flex-col gap-6">
+            {items.slice(2, 4).map((item) => (
+                <div class="bg-card/60 backdrop-blur-sm p-6 rounded-3xl border border-border/50 transition-all duration-300 hover:border-primary/30 hover:shadow-[var(--shadow-gold-card)]">
+                    <h3 class="text-lg font-medium leading-6 mb-2">{item.title}</h3>
+                    <p class="text-muted-foreground text-sm">{item.description}</p>
+                </div>
+            ))}
+        </div>
+    </div>
+
+    {/* Mobile: stacked layout */}
+    <div class="lg:hidden flex flex-col gap-6">
+        {/* Photo first on mobile */}
+        <div class="flex justify-center">
+            <img
+                src={image.src}
+                alt={imageAlt}
+                class="w-full max-w-sm aspect-square object-cover rounded-3xl shadow-lg"
+                loading="lazy"
+                decoding="async"
+            />
+        </div>
+
+        {/* All cards stacked */}
+        {items.map((item) => (
+            <div class="bg-card/60 backdrop-blur-sm p-6 rounded-3xl border border-border/50 transition-all duration-300 hover:border-primary/30 hover:shadow-[var(--shadow-gold-card)]">
+                <h3 class="text-lg font-medium leading-6 mb-2">{item.title}</h3>
+                <p class="text-muted-foreground text-sm">{item.description}</p>
+            </div>
+        ))}
+    </div>
+</WidgetWrapper>

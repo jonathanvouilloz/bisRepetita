@@ -11,6 +11,7 @@ import LocationMap from "../../components/widgets/LocationMap.astro";
 import PricingTable from "../../components/widgets/PricingTable.astro";
 import FAQ from "../../components/widgets/FAQ.astro";
 import CTABanner from "../../components/widgets/CTABanner.astro";
+import RelatedServices from "../../components/widgets/RelatedServices.astro";
 import GsapReveal from "../../components/widgets/GsapReveal.astro";
 import Headline from "../../components/ui/Headline.astro";
 import Schema from "../../components/seo/Schema.astro";
@@ -19,10 +20,9 @@ import salle1 from "../../assets/salle-1.webp";
 import coachsPhoto from "../../assets/lionel-nicolas-boxe.webp";
 
 const metadata = {
-    title: "Cours de Boxe Round by Round Genève",
+    title: "Cours de Boxe Genève | Round by Round",
     description:
-        "Découvrez la boxe Round by Round à Genève. Un entraînement intensif sans combat, axé sur la technique et l'énergie du groupe. Séance d'essai disponible !",
-    ogImage: coursLandscape,
+        "Cours de boxe Round by Round à Genève. Entraînement intensif sans combat : technique, cardio et énergie du groupe. 8 participants max, 2 coachs. Séance d'essai gratuite.",
 };
 
 const stats = [
@@ -192,6 +192,16 @@ const testimonials = [
         />
         <Schema type="FAQPage" data={{ faqs: faqs.map(f => ({ question: f.question, answer: f.answer.replace(/<[^>]*>/g, '') })) }} />
         <Schema type="SportsActivityLocation" data={{}} />
+        <Schema
+            type="BreadcrumbList"
+            data={{
+                breadcrumbs: [
+                    { name: "Accueil", href: "/" },
+                    { name: "Programmes", href: "/services" },
+                    { name: "Round by Round", href: "/services/round-by-round" },
+                ],
+            }}
+        />
     </Fragment>
 
     {/* S1 — Hero (default variant with full-bleed image) */}
@@ -256,7 +266,16 @@ const testimonials = [
         />
     </GsapReveal>
 
-    {/* S5 — ContentShowcase (sécurité / trust) */}
+    {/* S5 — PricingTable (REMONTÉ de S9) */}
+    <GsapReveal animation="fadeUp">
+        <PricingTable
+            tagline="Tarifs"
+            title="Formules Round by Round"
+            tiers={tiers}
+        />
+    </GsapReveal>
+
+    {/* S6 — ContentShowcase (sécurité / trust) */}
     <GsapReveal animation="fadeUp">
         <ContentShowcase
             id="securite"
@@ -290,7 +309,7 @@ const testimonials = [
         />
     </GsapReveal>
 
-    {/* S6 — ProfileShowcase (coachs) */}
+    {/* S7 — ProfileShowcase (coachs) */}
     <GsapReveal animation="fadeUp">
         <ProfileShowcase
             id="coachs"
@@ -319,7 +338,7 @@ const testimonials = [
         />
     </GsapReveal>
 
-    {/* S7 — Testimonials */}
+    {/* S8 — Testimonials */}
     <GsapReveal animation="fadeUp">
         <Testimonials
             id="temoignages"
@@ -335,7 +354,10 @@ const testimonials = [
         />
     </GsapReveal>
 
-    {/* S8 — LocationMap with H2 wrapper */}
+    {/* S9 — RelatedServices */}
+    <RelatedServices currentSlug="round-by-round" />
+
+    {/* S10 — LocationMap with H2 wrapper */}
     <GsapReveal animation="fadeUp">
         <section id="localisation">
             <div class="max-w-7xl mx-auto px-6 md:px-12 lg:px-20 pt-16 md:pt-24 pb-0">
@@ -355,16 +377,7 @@ const testimonials = [
         </section>
     </GsapReveal>
 
-    {/* S9 — PricingTable */}
-    <GsapReveal animation="fadeUp">
-        <PricingTable
-            tagline="Tarifs"
-            title="Formules Round by Round"
-            tiers={tiers}
-        />
-    </GsapReveal>
-
-    {/* S10 — FAQ */}
+    {/* S11 — FAQ */}
     <GsapReveal animation="fadeUp">
         <FAQ
             id="faq"
@@ -374,7 +387,7 @@ const testimonials = [
         />
     </GsapReveal>
 
-    {/* S10 — CTABanner */}
+    {/* S12 — CTABanner */}
     <GsapReveal animation="fadeUp">
         <CTABanner
             variant="brushed-full"

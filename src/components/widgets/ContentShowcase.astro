@@ -34,9 +34,9 @@ const { container: containerClassProp = "", ...otherClasses } = classes;
     classes={otherClasses}
 >
     <div
-        class={`mx-auto max-w-7xl ${image ? `${isReversed ? "md:flex-row-reverse" : ""} md:flex items-center` : ""}`}
+        class={`mx-auto max-w-7xl ${image ? `${isReversed ? "md:flex-row-reverse" : ""} md:flex items-center gap-12 lg:gap-20 xl:gap-24` : ""}`}
     >
-        <div class={image ? "md:basis-1/2 self-center text-left relative z-10 md:-mr-12" : "max-w-3xl mx-auto text-left"}>
+        <div class={image ? "md:basis-1/2 self-center text-left relative z-10" : "max-w-3xl mx-auto text-left"}>
             <SectionTitle
                 badge={tagline}
                 title={title}
@@ -84,46 +84,44 @@ const { container: containerClassProp = "", ...otherClasses } = classes;
                     </div>
                 )
             }
-            {
-                Array.isArray(actions) && actions.length > 0 && (
-                    <div class="mt-8 flex flex-col sm:flex-row gap-4">
-                        {actions.map((action) => (
-                            <Button
-                                href={action.href}
-                                variant={
-                                    action.variant as "primary" | "secondary"
-                                }
-                                aria-label={action.ariaLabel}
-                                class="w-full sm:w-auto"
-                            >
-                                {action.icon && (
-                                    <Icon
-                                        name={action.icon}
-                                        class="w-5 h-5 mr-2 -ml-1"
-                                    />
-                                )}
-                                {action.text}
-                            </Button>
-                        ))}
-                    </div>
-                )
-            }
-
             {/* Slot after items if isAfterContent */}
             {isAfterContent && <slot />}
         </div>
-        <div class="md:basis-1/2 self-center mt-10 md:mt-0" aria-hidden="true">
+        <div class="md:basis-1/2 self-center mt-10 md:mt-0 min-w-0" aria-hidden="true">
             {
                 image && (
-                    <div class="relative m-auto max-w-4xl">
+                    <div class="relative m-auto max-w-full overflow-hidden">
                         <Image
                             src={image}
                             alt={imageAlt}
-                            class="mx-auto w-full rounded-3xl border-l-4 border-primary shadow-lg"
+                            class="mx-auto w-full rounded-3xl shadow-lg object-cover"
                         />
                     </div>
                 )
             }
         </div>
     </div>
+    {
+        Array.isArray(actions) && actions.length > 0 && (
+            <div class="mt-12 flex justify-center gap-4">
+                {actions.map((action) => (
+                    <Button
+                        href={action.href}
+                        variant={
+                            action.variant as "primary" | "secondary"
+                        }
+                        aria-label={action.ariaLabel}
+                    >
+                        {action.icon && (
+                            <Icon
+                                name={action.icon}
+                                class="w-5 h-5 mr-2 -ml-1"
+                            />
+                        )}
+                        {action.text}
+                    </Button>
+                ))}
+            </div>
+        )
+    }
 </WidgetWrapper>

@@ -1,0 +1,44 @@
+---
+import { servicePages } from "../../config/site";
+import ServiceCard from "./ServiceCard.astro";
+import WidgetWrapper from "./WidgetWrapper.astro";
+import SectionTitle from "../ui/SectionTitle.astro";
+
+interface Props {
+    currentSlug: string;
+    maxItems?: number;
+    id?: string;
+}
+
+const { currentSlug, maxItems = 3, id = "programmes" } = Astro.props;
+
+const current = servicePages.find((s) => s.slug === currentSlug);
+const currentCategory = current?.category;
+
+// Prioritize same category, then others
+const others = servicePages.filter((s) => s.slug !== currentSlug);
+const sameCategory = others.filter((s) => s.category === currentCategory);
+const diffCategory = others.filter((s) => s.category !== currentCategory);
+const related = [...sameCategory, ...diffCategory].slice(0, maxItems);
+---
+
+<WidgetWrapper id={id}>
+    <SectionTitle
+        badge="Cela pourrait vous intéresser"
+        title="Découvrez nos autres programmes"
+        class="mb-12"
+    />
+    <div class="grid gap-8 md:grid-cols-3 gsap-stagger-cards">
+        {related.map((service, i) => (
+            <ServiceCard
+                service={{
+                    title: service.title,
+                    description: service.shortDescription,
+                    href: service.href,
+                    image: service.image,
+                }}
+                index={i + 1}
+            />
+        ))}
+    </div>
+</WidgetWrapper>

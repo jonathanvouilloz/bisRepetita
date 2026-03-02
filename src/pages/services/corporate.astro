@@ -10,6 +10,7 @@ import Testimonials from "../../components/widgets/Testimonials.astro";
 import FAQ from "../../components/widgets/FAQ.astro";
 import CTABanner from "../../components/widgets/CTABanner.astro";
 import ProfileShowcase from "../../components/widgets/ProfileShowcase.astro";
+import RelatedServices from "../../components/widgets/RelatedServices.astro";
 import GsapReveal from "../../components/widgets/GsapReveal.astro";
 import { Image } from "astro:assets";
 import Schema from "../../components/seo/Schema.astro";
@@ -19,9 +20,9 @@ import nicolasPortrait from "../../assets/nicolas-de-boccard.webp";
 import mapGeneve from "../../assets/map-geneve-boxe.webp";
 
 const metadata = {
-    title: "Boxe Corporate à Genève — Team Building Entreprise",
+    title: "Boxe Corporate Genève | Team Building Entreprise",
     description:
-        "Boxe corporate à Genève : team building, gestion du stress, cohésion d'équipe. Coachs certifiés J+S, déplacement dans tout le canton. Devis sous 24h.",
+        "Boxe corporate à Genève : team building, gestion du stress, cohésion d'équipe. Coachs certifiés, déplacement dans tout le canton. Séance découverte gratuite.",
 };
 
 const stats = [
@@ -151,8 +152,8 @@ const faqs = [
         answer: "Jusqu'à 20 personnes en déplacement, 12 au studio pour garantir un encadrement optimal sur le ring et les équipements.",
     },
     {
-        question: "Quels sont les tarifs ?",
-        answer: "Les séances corporate sont facturées entre 400 et 600 CHF selon le format, la durée et le nombre de participants. <a href='/contact' class='text-primary hover:underline'>Demandez un devis personnalisé</a> pour un tarif précis.",
+        question: "Quels sont les tarifs corporate ?",
+        answer: "Les séances corporate sont facturées entre 400 et 600 CHF selon le format, la durée et le nombre de participants. Les formules mensuelles bénéficient de tarifs dégressifs. <a href='/contact' class='text-primary hover:underline'>Demandez un devis personnalisé</a> pour un tarif précis.",
     },
     {
         question: "Proposez-vous des contrats récurrents ?",
@@ -173,6 +174,7 @@ const faqs = [
                 title: "Coaching de Boxe Corporate à Genève",
                 description: metadata.description,
                 url: "https://bisrepetita.ch/services/corporate",
+                serviceType: "Boxe corporate et team building",
             }}
         />
         <Schema
@@ -182,6 +184,16 @@ const faqs = [
                     question: f.question,
                     answer: f.answer.replace(/<[^>]*>/g, ""),
                 })),
+            }}
+        />
+        <Schema
+            type="BreadcrumbList"
+            data={{
+                breadcrumbs: [
+                    { name: "Accueil", href: "/" },
+                    { name: "Programmes", href: "/services" },
+                    { name: "Corporate", href: "/services/corporate" },
+                ],
             }}
         />
     </Fragment>
@@ -346,7 +358,10 @@ const faqs = [
         />
     </GsapReveal>
 
-    <!-- 9. FAQ (DARK) -->
+    <!-- 9. RelatedServices -->
+    <RelatedServices currentSlug="corporate" />
+
+    <!-- 10. FAQ (DARK) -->
     <GsapReveal animation="fadeUp">
         <FAQ
             title="Questions fréquentes"
@@ -355,7 +370,7 @@ const faqs = [
         />
     </GsapReveal>
 
-    <!-- 10. CTABanner brushed-full (DARK) -->
+    <!-- 11. CTABanner brushed-full (DARK) -->
     <GsapReveal animation="fadeUp">
         <CTABanner
             variant="brushed-full"

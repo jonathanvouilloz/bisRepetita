@@ -1,52 +1,40 @@
 ---
 import { Image } from "astro:assets";
+import type { ImageMetadata } from "astro";
 
-import studioInterior from "../../assets/studio-interior.webp";
-import salle1 from "../../assets/salle-1.webp";
-import studioAtmosphere from "../../assets/studio-atmosphere.webp";
-import cours2Landscape from "../../assets/cours-2-landscape.webp";
+interface Panel {
+    title: string;
+    description: string;
+    image: ImageMetadata;
+    alt: string;
+}
 
-const panels = [
-    {
-        title: "Ring professionnel",
-        description:
-            "Un ring aux dimensions réglementaires pour les séances de sparring, le coaching privé et les cours Round by Round.",
-        image: studioInterior,
-        alt: "Ring professionnel du studio Bis Repetita",
-    },
-    {
-        title: "Sacs & équipements pro",
-        description:
-            "Sacs de frappe, pattes d'ours, speed bags et matériel de renforcement — tout est là pour progresser.",
-        image: salle1,
-        alt: "Sacs de frappe et équipements de boxe",
-    },
-    {
-        title: "Vestiaires premium",
-        description:
-            "Douches, casiers sécurisés et espace détente pour une expérience complète digne d'un studio haut de gamme.",
-        image: studioAtmosphere,
-        alt: "Vestiaires premium du studio",
-    },
-    {
-        title: "Espace fonctionnel",
-        description:
-            "150m² optimisés avec zones dédiées : échauffement, renforcement, travail au sac et ring central.",
-        image: cours2Landscape,
-        alt: "Espace fonctionnel du studio de boxe",
-    },
-];
+interface Props {
+    tagline?: string;
+    title?: string;
+    subtitle?: string;
+    panels: Panel[];
+    id?: string;
+}
+
+const { tagline, title, subtitle, panels, id } = Astro.props;
 ---
 
-<section class="bg-background">
+<section class="bg-background" id={id}>
     {/* Header */}
-    <div class="mx-auto max-w-7xl px-6 md:px-12 lg:px-20 pt-20 md:pt-32 pb-10 md:pb-14">
-        <p class="text-sm font-semibold uppercase tracking-wider text-primary mb-3">Équipements</p>
-        <h2 class="text-3xl md:text-4xl font-bold text-foreground mb-3">Un studio équipé pour la performance</h2>
-        <p class="text-lg text-muted-foreground max-w-2xl">
-            Des équipements professionnels pour un entraînement optimal, dans un cadre premium au cœur de Genève.
-        </p>
-    </div>
+    {(tagline || title || subtitle) && (
+        <div class="mx-auto max-w-7xl px-6 md:px-12 lg:px-20 pt-20 md:pt-32 pb-10 md:pb-14">
+            {tagline && (
+                <p class="text-sm font-semibold uppercase tracking-wider text-primary mb-3">{tagline}</p>
+            )}
+            {title && (
+                <h2 class="text-3xl md:text-4xl font-bold text-foreground mb-3">{title}</h2>
+            )}
+            {subtitle && (
+                <p class="text-lg text-muted-foreground max-w-2xl">{subtitle}</p>
+            )}
+        </div>
+    )}
 
     {/* Panels — Desktop */}
     <div class="hidden md:flex h-[550px] w-full">

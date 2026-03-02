@@ -1,10 +1,13 @@
-import { defineConfig } from "astro/config";
+import { defineConfig, passthroughImageService } from "astro/config";
 import sitemap from "@astrojs/sitemap";
 import tailwindcss from "@tailwindcss/vite";
 import icon from "astro-icon";
 import remarkReadingTime from "remark-reading-time";
 
 export default defineConfig({
+  image: {
+    service: passthroughImageService(),
+  },
   site: "https://bisrepetita.ch",
   trailingSlash: "never",
   integrations: [sitemap(), icon()],
