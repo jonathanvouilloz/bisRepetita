@@ -16,6 +16,8 @@ const megaMenuImages: Record<string, ImageMetadata> = {
     "ambiance-bis-repetita.webp": ambianceBis,
 };
 
+const isLight = Astro.url.pathname.startsWith("/tarifs");
+
 let linkIndex = 0;
 function getNavIndex() {
     linkIndex++;
@@ -26,6 +28,7 @@ function getNavIndex() {
 <nav
     id="main-nav"
     class="fixed top-0 z-50 w-full transition-all duration-500"
+    data-theme={isLight ? "light" : "dark"}
 >
     <div
         id="nav-inner"
@@ -149,14 +152,19 @@ function getNavIndex() {
             href="/"
             class="absolute left-1/2 -translate-x-1/2 transition-opacity hover:opacity-80"
         >
-            <img src="/logo-black.svg" alt={siteConfig.name} class="h-8 w-auto invert brightness-200" />
+            <img src="/logo-black.svg" alt={siteConfig.name} class:list={["h-8 w-auto", !isLight && "invert brightness-200"]} />
         </a>
 
         <!-- RIGHT: CTA (desktop) -->
         <div class="hidden lg:flex items-center gap-4">
             <a
                 href={siteConfig.navCta.href}
-                class="nav-cta rounded-full bg-white/10 border border-white/20 backdrop-blur-sm px-6 py-2.5 text-sm font-bold text-foreground transition-all hover:shadow-[0_0_20px_rgba(255,255,255,0.15)] flex items-center gap-2"
+                class:list={[
+                    "nav-cta rounded-full backdrop-blur-sm px-6 py-2.5 text-sm font-bold text-foreground transition-all flex items-center gap-2",
+                    isLight
+                        ? "bg-black/6 border border-black/12 hover:shadow-[0_0_20px_rgba(0,0,0,0.08)]"
+                        : "bg-white/10 border border-white/20 hover:shadow-[0_0_20px_rgba(255,255,255,0.15)]",
+                ]}
             >
                 {siteConfig.navCta.text}
                 <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
@@ -215,7 +223,7 @@ function getNavIndex() {
         <div class="flex flex-col h-full">
             <div class="flex items-center justify-between px-4 py-4 sm:px-6">
                 <a href="/" class="transition-opacity hover:opacity-80">
-                    <img src="/logo-black.svg" alt={siteConfig.name} class="h-8 w-auto invert brightness-200" />
+                    <img src="/logo-black.svg" alt={siteConfig.name} class:list={["h-8 w-auto", !isLight && "invert brightness-200"]} />
                 </a>
                 <button
                     id="mobile-menu-close"

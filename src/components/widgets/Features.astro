@@ -99,7 +99,8 @@ const gridClass = gridColsClass[columns] || "md:grid-cols-3";
                     <div
                         class:list={[
                             "group relative bg-card/60 backdrop-blur-sm p-8 rounded-3xl border border-border/50 transition-all duration-300 hover:border-primary/30 hover:shadow-[var(--shadow-gold-card)] overflow-hidden",
-                            i === 0 && "md:col-span-2",
+                            i === 0 && !isDark && "md:col-span-2",
+                            isDark && "highlighted-card",
                         ]}
                     >
                         {feature.icon && (

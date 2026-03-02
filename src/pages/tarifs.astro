@@ -1,22 +1,38 @@
 ---
 import BaseLayout from "../layouts/BaseLayout.astro";
 import Hero from "../components/widgets/Hero.astro";
+import PricingNav from "../components/widgets/PricingNav.astro";
+import QuizFormule from "../components/widgets/QuizFormule.astro";
 import PricingTable from "../components/widgets/PricingTable.astro";
 import Features from "../components/widgets/Features.astro";
 import FAQ from "../components/widgets/FAQ.astro";
 import CTABanner from "../components/widgets/CTABanner.astro";
 import GsapReveal from "../components/widgets/GsapReveal.astro";
+import WidgetWrapper from "../components/widgets/WidgetWrapper.astro";
+import Headline from "../components/ui/Headline.astro";
+import Button from "../components/ui/Button.astro";
 import Schema from "../components/seo/Schema.astro";
+import heroImage from "../assets/studio-interior.webp";
 
 const metadata = {
-    title: "Tarifs — Coaching Privé, Round by Round & Corporate | Bis Repetita",
+    title: "Tarifs & Abonnements Coaching Sportif Genève | Nicolas de Boccard",
     description:
-        "Tarifs transparents pour le coaching privé, les cours collectifs Round by Round et les programmes corporate. Studio de boxe premium à Genève.",
+        "Transparence et flexibilité. Découvrez les tarifs des coachings solo, duo et cours collectifs à Genève. Séance d'essai offerte. Studio premium aux Pâquis.",
 };
 
-const coachingTiers = [
+// --- Nav items ---
+const navItems = [
+    { label: "Solo", anchorId: "solo" },
+    { label: "Duo & Trio", anchorId: "duo-trio" },
+    { label: "Small Group", anchorId: "small-group" },
+    { label: "Round by Round", anchorId: "boxe-groupe" },
+    { label: "Corporate", anchorId: "corporate" },
+];
+
+// --- Coaching Privé 1:1 ---
+const soloTiers = [
     {
-        name: "Solo — Découverte",
+        name: "Séance unité",
         description: "Premier contact avec le coaching individuel.",
         price: "CHF TODO",
         priceNote: "/ séance",
@@ -27,11 +43,11 @@ const coachingTiers = [
             "Matériel fourni",
             "Sans engagement",
         ],
-        cta: { text: "En savoir plus", href: "/services/coaching-solo" },
+        cta: { text: "Réserver", href: "/contact" },
     },
     {
-        name: "Solo — Pack 10",
-        description: "La formule pour progresser durablement en individuel.",
+        name: "Pack 10 séances",
+        description: "La formule pour progresser durablement.",
         price: "CHF TODO",
         priceNote: "/ 10 séances",
         highlighted: true,
@@ -43,23 +59,73 @@ const coachingTiers = [
             "Matériel fourni",
             "Tarif préférentiel",
         ],
-        cta: { text: "En savoir plus", href: "/services/coaching-solo" },
+        cta: { text: "Réserver", href: "/contact" },
     },
     {
-        name: "Duo & Trio",
-        description: "S'entraîner à 2 ou 3, avec un coaching personnalisé.",
+        name: "Pack 20 séances",
+        description: "L'engagement pour une transformation complète.",
+        price: "CHF TODO",
+        priceNote: "/ 20 séances",
+        features: [
+            "20 × 60 minutes",
+            "Programme sur mesure",
+            "Suivi de progression avancé",
+            "Matériel fourni",
+            "Meilleur tarif",
+        ],
+        cta: { text: "Réserver", href: "/contact" },
+    },
+];
+
+// --- Duo & Trio ---
+const duoTiers = [
+    {
+        name: "Séance duo",
+        description: "Un coaching privé à deux.",
         price: "CHF TODO",
         priceNote: "/ séance (prix total)",
         features: [
             "60 minutes de coaching",
-            "2 à 3 participants",
+            "2 participants",
+            "Programme adapté au duo",
+            "Matériel fourni",
+            "Sans engagement",
+        ],
+        cta: { text: "Réserver", href: "/contact" },
+    },
+    {
+        name: "Séance trio",
+        description: "Trois complices, un coach dédié.",
+        price: "CHF TODO",
+        priceNote: "/ séance (prix total)",
+        highlighted: true,
+        popularLabel: "Recommandé",
+        features: [
+            "60 minutes de coaching",
+            "3 participants",
             "Programme adapté au groupe",
             "Matériel fourni",
+            "Sans engagement",
         ],
-        cta: { text: "En savoir plus", href: "/services/coaching-duo-trio" },
+        cta: { text: "Réserver", href: "/contact" },
+    },
+    {
+        name: "Pack 10 duo",
+        description: "L'engagement partagé pour progresser ensemble.",
+        price: "CHF TODO",
+        priceNote: "/ 10 séances",
+        features: [
+            "10 × 60 minutes",
+            "Programme personnalisé duo",
+            "Suivi de progression",
+            "Matériel fourni",
+            "Tarif préférentiel",
+        ],
+        cta: { text: "Réserver", href: "/contact" },
     },
 ];
 
+// --- Small Group ---
 const smallGroupTiers = [
     {
         name: "Séance unité",
@@ -72,7 +138,7 @@ const smallGroupTiers = [
             "Programme structuré",
             "Matériel fourni",
         ],
-        cta: { text: "En savoir plus", href: "/services/small-group-training" },
+        cta: { text: "Réserver", href: "/contact" },
     },
     {
         name: "Pack 10 séances",
@@ -88,23 +154,25 @@ const smallGroupTiers = [
             "Matériel fourni",
             "Tarif préférentiel",
         ],
-        cta: { text: "En savoir plus", href: "/services/small-group-training" },
+        cta: { text: "Réserver", href: "/contact" },
     },
 ];
 
+// --- Round by Round ---
 const rbrTiers = [
     {
-        name: "Séance unité",
-        description: "Un cours collectif à la carte.",
-        price: "CHF TODO",
-        priceNote: "/ cours",
+        name: "Séance d'essai",
+        description: "Votre première séance est offerte.",
+        price: "Gratuit",
+        priceNote: "",
         features: [
             "60 minutes",
             "8 participants max",
             "2 coachs",
             "Matériel fourni",
+            "Sans engagement",
         ],
-        cta: { text: "Réserver", href: "/contact" },
+        cta: { text: "Réserver mon essai", href: "/contact" },
     },
     {
         name: "Pack 10 cours",
@@ -123,7 +191,7 @@ const rbrTiers = [
         cta: { text: "Réserver", href: "/contact" },
     },
     {
-        name: "Pack mensuel",
+        name: "Abonnement mensuel",
         description: "Accès illimité aux cours du mois.",
         price: "CHF TODO",
         priceNote: "/ mois",
@@ -133,10 +201,11 @@ const rbrTiers = [
             "Matériel fourni",
             "Sans engagement longue durée",
         ],
-        cta: { text: "Réserver", href: "/contact" },
+        cta: { text: "S'abonner", href: "/contact" },
     },
 ];
 
+// --- Features "Inclus" ---
 const features = [
     {
         title: "Matériel fourni",
@@ -151,31 +220,44 @@ const features = [
         icon: "lucide:droplets",
     },
     {
-        title: "Corporate sur devis",
+        title: "Séance d'essai offerte",
         description:
-            "Les programmes entreprise sont tarifés sur mesure selon le format, le lieu et le nombre de participants. <a href='/services/corporate' class='text-primary hover:underline'>En savoir plus</a>.",
-        icon: "lucide:building-2",
+            "Testez gratuitement les cours Round by Round ou demandez un bilan initial pour le coaching privé.",
+        icon: "lucide:gift",
     },
     {
-        title: "Politique d'essai",
+        title: "Suivi personnalisé",
         description:
-            "Première séance découverte pour tester le coaching privé ou les cours collectifs. Détails à confirmer — contactez-nous.",
-        icon: "lucide:gift",
+            "Chaque client bénéficie d'un programme adapté à ses objectifs, son niveau et ses contraintes.",
+        icon: "lucide:chart-line",
+    },
+    {
+        title: "Studio premium aux Pâquis",
+        description:
+            "Un espace exclusif au cœur de Genève, équipé de matériel professionnel haut de gamme.",
+        icon: "lucide:map-pin",
+    },
+    {
+        title: "Flexibilité totale",
+        description:
+            "Packs sans abonnement obligatoire, valables 6 mois. Annulation gratuite 24h à l'avance.",
+        icon: "lucide:calendar-check",
     },
 ];
 
+// --- FAQ enrichie ---
 const faqs = [
     {
         question: "Proposez-vous une séance d'essai ?",
-        answer: "Oui, nous proposons une séance découverte pour le coaching privé et les cours collectifs. <a href='/contact' class='text-primary hover:underline'>Contactez-nous</a> pour réserver votre première séance.",
+        answer: "Oui ! Les cours collectifs Round by Round incluent une première séance d'essai gratuite. Pour le coaching privé, nous proposons un bilan initial pour définir vos objectifs. <a href='/contact' class='text-primary hover:underline'>Réservez votre séance d'essai</a>.",
     },
     {
         question: "Les packs ont-ils une date d'expiration ?",
         answer: "Les packs de séances sont valables 6 mois à compter de la date d'achat. Ce délai permet de maintenir une régularité d'entraînement tout en restant flexible.",
     },
     {
-        question: "Peut-on partager un pack entre plusieurs personnes ?",
-        answer: "Les packs de coaching privé sont nominatifs. Pour les séances duo ou groupe, chaque participant bénéficie du même tarif groupé.",
+        question: "Peut-on partager un pack avec son conjoint ou un ami ?",
+        answer: "Les packs de coaching privé sont nominatifs. Pour vous entraîner ensemble, optez pour les séances Duo ou Trio qui offrent un tarif groupé avantageux.",
     },
     {
         question: "Quels modes de paiement acceptez-vous ?",
@@ -185,75 +267,223 @@ const faqs = [
         question: "Comment fonctionne la facturation corporate ?",
         answer: "Les <a href='/services/corporate' class='text-primary hover:underline'>programmes corporate</a> font l'objet d'un devis personnalisé. La facturation se fait par virement avec un délai de 30 jours. <a href='/contact' class='text-primary hover:underline'>Contactez-nous</a> pour en discuter.",
     },
+    {
+        question: "Les séances de coaching sont-elles déductibles des impôts ou prises en charge par l'assurance à Genève ?",
+        answer: "À Genève, les frais de coaching sportif ne sont généralement pas déductibles des impôts pour les particuliers. Certaines assurances complémentaires (Helsana, Swica, CSS) proposent des contributions santé qui peuvent couvrir une partie des cours. Nous vous conseillons de vérifier auprès de votre assureur.",
+    },
+    {
+        question: "Quelle est votre politique d'annulation ?",
+        answer: "Toute annulation effectuée au moins 24 heures à l'avance est gratuite. En cas d'annulation tardive (moins de 24h) ou de no-show, la séance est décomptée du pack. Nous comprenons les imprévus — contactez-nous en cas de circonstances exceptionnelles.",
+    },
+    {
+        question: "Où se situe le studio ? Est-il facile d'accès depuis les Eaux-Vives, Plainpalais ou Cologny ?",
+        answer: "Le studio Bis Repetita est situé à La Voie-Creuse 16, 1202 Genève, dans le quartier des Pâquis. Facilement accessible en transports publics depuis les Eaux-Vives, Plainpalais, Cologny et Carouge (arrêt à proximité). Parking disponible à quelques minutes à pied. <a href='/contact#map' class='text-primary hover:underline'>Voir le plan d'accès</a>.",
+    },
+];
+
+// --- OfferCatalog data ---
+const offers = [
+    { name: "Coaching Privé 1:1", description: "Séances individuelles de boxe avec programme personnalisé à Genève.", url: "/services/coaching-solo" },
+    { name: "Coaching Duo & Trio", description: "Coaching privé partagé à 2 ou 3 personnes.", url: "/services/coaching-duo-trio" },
+    { name: "Small Group Training", description: "Coaching en petit groupe de 6 personnes maximum.", url: "/services/small-group-training" },
+    { name: "Round by Round", description: "Cours collectifs de boxe accessibles à tous, sans combat.", url: "/services/round-by-round" },
+    { name: "Programme Corporate", description: "Boxe en entreprise à Genève — team building et bien-être au travail.", url: "/services/corporate" },
 ];
 ---
 
 <BaseLayout {metadata}>
     <Fragment slot="head">
         <Schema type="FAQPage" data={{ faqs: faqs.map(f => ({ question: f.question, answer: f.answer.replace(/<[^>]*>/g, '') })) }} />
+        <Schema type="OfferCatalog" data={{ offers }} />
+        <Schema type="BreadcrumbList" data={{ breadcrumbs: [{ name: "Accueil", href: "/" }, { name: "Tarifs", href: "/tarifs" }] }} />
     </Fragment>
 
+    <div class="theme-light">
+
+    {/* 1. Hero */}
     <Hero
-        title={`Nos <span class="font-display text-primary">Tarifs</span>`}
-        description="Des formules transparentes pour chaque objectif. Coaching privé, cours collectifs ou programme corporate."
+        title={`Tarifs et <span class="font-display text-primary">Formules</span>`}
+        description="Des formules transparentes et flexibles pour chaque objectif. Coaching privé, duo, petit groupe, cours collectifs ou programme corporate."
         actions={[
             {
-                text: "Nous contacter",
+                text: "Réserver mon bilan initial",
                 href: "/contact",
                 variant: "primary",
                 icon: "lucide:arrow-right",
             },
         ]}
-        classes={{ container: "min-h-[50vh]" }}
+        image={heroImage}
+        imageAlt="Studio de boxe Bis Repetita à Genève"
+        lightOverlay={true}
+        ctaStyle="dark"
+        classes={{ container: "min-h-[70vh]" }}
     />
 
+    {/* 2. PricingNav (sticky) */}
+    <PricingNav items={navItems} />
+
+    {/* 3. Quiz */}
     <GsapReveal animation="fadeUp">
-        <PricingTable
-            tagline="Coaching Privé"
-            title="Solo & Duo — Personal training"
-            tiers={coachingTiers}
-        />
+        <QuizFormule />
     </GsapReveal>
 
+    {/* 4. Coaching Privé 1:1 — #solo */}
     <GsapReveal animation="fadeUp">
         <PricingTable
+            id="solo"
+            tagline="Coaching Privé"
+            title="Coaching Privé — Tarifs Séances Individuelles à Genève"
+            subtitle="Chaque séance inclut un suivi personnalisé et une adaptation constante."
+            tiers={soloTiers}
+        />
+        <div class="text-center -mt-8 mb-16">
+            <p class="text-muted-foreground italic mb-4">L'investissement ultime pour des résultats sans compromis.</p>
+            <a href="/services/coaching-solo" class="text-primary hover:underline text-sm font-medium">
+                En savoir plus sur le coaching solo &rarr;
+            </a>
+        </div>
+    </GsapReveal>
+
+    {/* 5. Duo & Trio — #duo-trio */}
+    <GsapReveal animation="fadeUp">
+        <PricingTable
+            id="duo-trio"
+            tagline="Duo & Trio"
+            title="Duo & Trio — Tarifs Coaching Partagé"
+            subtitle="La qualité du privé avec le plaisir du partage."
+            tiers={duoTiers}
+        />
+        <div class="text-center -mt-8 mb-16">
+            <p class="text-muted-foreground italic mb-4">Divisez les coûts, multipliez la motivation.</p>
+            <a href="/services/coaching-duo-trio" class="text-primary hover:underline text-sm font-medium">
+                En savoir plus sur le coaching duo & trio &rarr;
+            </a>
+        </div>
+    </GsapReveal>
+
+    {/* 6. Small Group — #small-group */}
+    <GsapReveal animation="fadeUp">
+        <PricingTable
+            id="small-group"
             tagline="Small Group Training"
-            title="Coaching petit groupe (max 6)"
+            title="Small Group Training — Abonnements Petit Groupe"
+            subtitle="6 personnes max pour que Nicolas corrige chaque mouvement."
             tiers={smallGroupTiers}
         />
+        <div class="text-center -mt-8 mb-16">
+            <p class="text-muted-foreground italic mb-4">Le compromis parfait entre prix et attention personnalisée.</p>
+            <a href="/services/small-group-training" class="text-primary hover:underline text-sm font-medium">
+                En savoir plus sur le small group training &rarr;
+            </a>
+        </div>
     </GsapReveal>
 
+    {/* 7. Round by Round — #boxe-groupe */}
     <GsapReveal animation="fadeUp">
         <PricingTable
+            id="boxe-groupe"
             tagline="Round by Round"
-            title="Cours collectifs de boxe"
+            title="Cours Collectifs Round by Round — Tarifs Boxe Genève"
+            subtitle="Accessible à tous, sans combat. 2 coachs par session."
             tiers={rbrTiers}
         />
+        <div class="text-center -mt-8 mb-16">
+            <p class="text-muted-foreground italic mb-4">Rejoignez le mouvement. 12 rounds pour se dépasser.</p>
+            <a href="/services/round-by-round" class="text-primary hover:underline text-sm font-medium">
+                En savoir plus sur Round by Round &rarr;
+            </a>
+        </div>
     </GsapReveal>
 
+    {/* 8. Corporate — #corporate */}
+    <GsapReveal animation="fadeUp">
+        <WidgetWrapper id="corporate">
+            <Headline
+                title="Programme Corporate — Boxe en Entreprise à Genève"
+                subtitle="Plus qu'un cours, un levier de performance pour vos équipes."
+                tagline="Corporate"
+                titleAs="h2"
+                align="center"
+                classes={{
+                    container: "max-w-3xl mx-auto mb-12 text-center",
+                    title: "text-4xl md:text-5xl font-medium tracking-tight font-display",
+                }}
+            />
+            <div class="max-w-3xl mx-auto">
+                <div class="relative bg-card/60 backdrop-blur-sm rounded-3xl p-8 md:p-12 border border-border/50 overflow-hidden">
+                    <div class="absolute top-0 inset-x-0 h-24 bg-gradient-to-b from-primary/5 to-transparent pointer-events-none" aria-hidden="true"></div>
+                    <div class="relative z-10">
+                        <ul class="space-y-4 mb-10">
+                            <li class="flex items-start gap-3 text-foreground/80">
+                                <span class="w-1.5 h-1.5 rounded-full bg-primary mt-2 shrink-0" aria-hidden="true"></span>
+                                <span>Cours de boxe sur mesure pour vos collaborateurs — team building, bien-être, cohésion d'équipe</span>
+                            </li>
+                            <li class="flex items-start gap-3 text-foreground/80">
+                                <span class="w-1.5 h-1.5 rounded-full bg-primary mt-2 shrink-0" aria-hidden="true"></span>
+                                <span>Sessions au studio ou dans vos locaux à Genève et environs</span>
+                            </li>
+                            <li class="flex items-start gap-3 text-foreground/80">
+                                <span class="w-1.5 h-1.5 rounded-full bg-primary mt-2 shrink-0" aria-hidden="true"></span>
+                                <span>Formats flexibles : séance unique, programme récurrent, événement ponctuel</span>
+                            </li>
+                            <li class="flex items-start gap-3 text-foreground/80">
+                                <span class="w-1.5 h-1.5 rounded-full bg-primary mt-2 shrink-0" aria-hidden="true"></span>
+                                <span>Matériel professionnel fourni pour tous les participants</span>
+                            </li>
+                            <li class="flex items-start gap-3 text-foreground/80">
+                                <span class="w-1.5 h-1.5 rounded-full bg-primary mt-2 shrink-0" aria-hidden="true"></span>
+                                <span>Facturation entreprise avec délai de 30 jours</span>
+                            </li>
+                        </ul>
+                        <div class="flex flex-col sm:flex-row gap-4 justify-center">
+                            <Button href="/contact" variant="primary" size="lg">
+                                Obtenir un devis sur-mesure
+                            </Button>
+                            <Button href="/plaquette-corporate.pdf" variant="secondary" size="lg">
+                                Télécharger la plaquette
+                            </Button>
+                        </div>
+                    </div>
+                </div>
+                <div class="text-center mt-6">
+                    <a href="/services/corporate" class="text-primary hover:underline text-sm font-medium">
+                        En savoir plus sur nos programmes corporate &rarr;
+                    </a>
+                </div>
+            </div>
+        </WidgetWrapper>
+    </GsapReveal>
+
+    {/* 9. Inclus dans chaque formule */}
     <GsapReveal animation="fadeUp">
         <Features
             tagline="Inclus"
-            title="Pas de mauvaise surprise"
+            title="Inclus dans chaque formule"
             features={features}
             columns={3}
+            isDark={true}
         />
     </GsapReveal>
 
+    {/* 10. FAQ enrichie */}
     <GsapReveal animation="fadeUp">
         <FAQ
-            title="Questions fréquentes"
-            subtitle="Tout ce que vous devez savoir sur nos tarifs et formules."
+            title="Questions fréquentes — Tarifs"
+            subtitle="Tout ce que vous devez savoir sur nos tarifs, formules et conditions."
             items={faqs}
         />
     </GsapReveal>
 
+    {/* 11. CTABanner final */}
     <GsapReveal animation="fadeUp">
         <CTABanner
             variant="brushed-full"
-            title="Une question sur nos tarifs ?"
+            title="Prêt à commencer ?"
             subtitle="Tarifs & formules"
-            cta={{ text: "Nous contacter", href: "/contact" }}
+            description="Réservez votre séance d'essai gratuite ou demandez un bilan initial personnalisé."
+            cta={{ text: "Réserver mon bilan initial", href: "/contact" }}
         />
     </GsapReveal>
+
+    </div>{/* .theme-light */}
 </BaseLayout>

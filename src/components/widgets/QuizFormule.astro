@@ -1,0 +1,314 @@
+---
+import WidgetWrapper from "./WidgetWrapper.astro";
+import Headline from "../ui/Headline.astro";
+---
+
+<WidgetWrapper id="quiz" classes={{ container: "max-w-xl mx-auto" }}>
+  <Headline
+    title="Quel programme est fait pour vous ?"
+    subtitle="Répondez à 2 questions pour découvrir la formule idéale."
+    tagline="Quiz"
+    titleAs="h2"
+    align="center"
+    classes={{
+      container: "max-w-2xl mx-auto mb-12 text-center",
+      title: "text-4xl md:text-5xl font-medium tracking-tight font-display",
+    }}
+  />
+
+  <div id="quiz-container">
+    <!-- Step 1 -->
+    <div id="quiz-step-1" class="quiz-step">
+      <p class="text-center text-lg text-foreground font-medium mb-8">
+        Quelle est votre priorité ?
+      </p>
+      <div class="grid gap-3">
+        <button class="quiz-option" data-value="solo" type="button">
+          <span class="quiz-option-icon" aria-hidden="true">
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/></svg>
+          </span>
+          <span class="quiz-option-text">Un programme sur mesure rien que pour moi</span>
+        </button>
+        <button class="quiz-option" data-value="duo-trio" type="button">
+          <span class="quiz-option-icon" aria-hidden="true">
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M22 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+          </span>
+          <span class="quiz-option-text">M'entraîner avec un(e) ami(e)</span>
+        </button>
+        <button class="quiz-option" data-value="small-group" type="button">
+          <span class="quiz-option-icon" aria-hidden="true">
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+          </span>
+          <span class="quiz-option-text">L'énergie d'un petit groupe avec corrections</span>
+        </button>
+        <button class="quiz-option" data-value="boxe-groupe" type="button">
+          <span class="quiz-option-icon" aria-hidden="true">
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="m8 12 3 3 5-5"/></svg>
+          </span>
+          <span class="quiz-option-text">Me défouler à fond sur les sacs</span>
+        </button>
+        <button class="quiz-option" data-value="corporate" type="button">
+          <span class="quiz-option-icon" aria-hidden="true">
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="16" height="20" x="4" y="2" rx="2" ry="2"/><path d="M9 22v-4h6v4"/><path d="M8 6h.01"/><path d="M16 6h.01"/><path d="M12 6h.01"/><path d="M12 10h.01"/><path d="M12 14h.01"/><path d="M16 10h.01"/><path d="M16 14h.01"/><path d="M8 10h.01"/><path d="M8 14h.01"/></svg>
+          </span>
+          <span class="quiz-option-text">La cohésion de mon équipe</span>
+        </button>
+      </div>
+    </div>
+
+    <!-- Step 2 -->
+    <div id="quiz-step-2" class="quiz-step" style="display: none;">
+      <p class="text-center text-lg text-foreground font-medium mb-8">
+        Combien de personnes participent ?
+      </p>
+      <div class="grid gap-3" id="quiz-step-2-options">
+        <!-- Options injected by JS based on Q1 answer -->
+      </div>
+      <div class="flex justify-center mt-6">
+        <button id="quiz-back" type="button" class="inline-flex items-center gap-2 text-sm text-muted-foreground hover:text-foreground transition-colors">
+          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m15 18-6-6 6-6"/></svg>
+          Retour
+        </button>
+      </div>
+    </div>
+
+    <!-- Result -->
+    <div id="quiz-result" class="quiz-step" style="display: none;">
+      <div class="text-center">
+        <div class="inline-flex items-center gap-2 rounded-full bg-primary/10 border border-primary/20 px-4 py-2 text-sm text-primary mb-6">
+          Votre formule idéale
+        </div>
+        <h3 id="quiz-result-title" class="text-3xl md:text-4xl font-display font-medium text-foreground mb-3"></h3>
+        <p id="quiz-result-tagline" class="text-lg text-muted-foreground mb-4"></p>
+      </div>
+      <ul id="quiz-result-highlights" class="space-y-2 mb-8 mt-6"></ul>
+      <div class="flex flex-col sm:flex-row items-center justify-center gap-4">
+        <a id="quiz-result-cta" href="#" class="inline-flex items-center gap-2 rounded-full bg-[#1a1a1a] text-white px-7 py-3 font-bold transition-all hover:bg-[#2a2a2a] hover:shadow-lg hover:-translate-y-0.5">
+          Voir les tarifs
+          <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m6 9 6 6 6-6"/></svg>
+        </a>
+        <button id="quiz-restart" type="button" class="inline-flex items-center gap-2 rounded-full border border-border/50 text-muted-foreground px-6 py-3 text-sm hover:text-foreground hover:border-foreground/20 transition-all">
+          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 12a9 9 0 1 0 9-9 9.75 9.75 0 0 0-6.74 2.74L3 8"/><path d="M3 3v5h5"/></svg>
+          Recommencer
+        </button>
+      </div>
+    </div>
+  </div>
+</WidgetWrapper>
+
+<script>
+  function initQuiz() {
+    const container = document.getElementById("quiz-container");
+    if (!container || container.hasAttribute("data-quiz-init")) return;
+    container.setAttribute("data-quiz-init", "true");
+
+    const step1 = document.getElementById("quiz-step-1")!;
+    const step2 = document.getElementById("quiz-step-2")!;
+    const step2Options = document.getElementById("quiz-step-2-options")!;
+    const result = document.getElementById("quiz-result")!;
+    const resultTitle = document.getElementById("quiz-result-title")!;
+    const resultTagline = document.getElementById("quiz-result-tagline")!;
+    const resultHighlights = document.getElementById("quiz-result-highlights")!;
+    const resultCta = document.getElementById("quiz-result-cta") as HTMLAnchorElement;
+    const backBtn = document.getElementById("quiz-back")!;
+    const restartBtn = document.getElementById("quiz-restart")!;
+
+    const prefersReduced = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+    type ProfileKey = "solo" | "duo-trio" | "small-group" | "boxe-groupe" | "corporate";
+
+    const profiles: Record<ProfileKey, { title: string; tagline: string; highlights: string[]; anchorId: string }> = {
+      solo: {
+        title: "L'Excellence 1:1",
+        tagline: "Nicolas vous accompagne en tête-à-tête avec un programme 100 % adapté à vos objectifs, votre niveau et votre rythme.",
+        highlights: [
+          "Programme sur mesure, ajusté à chaque séance",
+          "Attention totale du coach pendant 60 minutes",
+          "Progression rapide et mesurable",
+          "Séance d'essai offerte pour définir vos objectifs",
+        ],
+        anchorId: "solo",
+      },
+      "duo-trio": {
+        title: "La Synergie Partagée",
+        tagline: "La qualité d'un coaching privé, le plaisir de partager l'effort. Entraînez-vous avec un(e) ami(e) ou un(e) collègue pour rester motivé(e).",
+        highlights: [
+          "Même qualité de coaching qu'en solo, à prix partagé",
+          "Émulation et motivation entre partenaires",
+          "Programme adapté au duo ou trio",
+          "Idéal entre amis, en couple ou entre collègues",
+        ],
+        anchorId: "duo-trio",
+      },
+      "small-group": {
+        title: "Le Club Privé",
+        tagline: "6 personnes maximum pour que Nicolas puisse corriger chaque mouvement. L'énergie du groupe avec l'attention du privé.",
+        highlights: [
+          "6 participants max pour un suivi personnalisé",
+          "Tarif avantageux par rapport au coaching individuel",
+          "Ambiance motivante en petit comité",
+          "Programme structuré avec progression régulière",
+        ],
+        anchorId: "small-group",
+      },
+      "boxe-groupe": {
+        title: "L'Intensité Signature",
+        tagline: "12 rounds chronométrés, 2 coachs, une énergie collective incomparable. Accessible à tous les niveaux, sans combat.",
+        highlights: [
+          "Format unique : 12 rounds encadrés par 2 coachs",
+          "Aucune expérience requise, zéro contact",
+          "Cardio, technique et renforcement en une séance",
+          "Première séance d'essai gratuite",
+        ],
+        anchorId: "boxe-groupe",
+      },
+      corporate: {
+        title: "Le Capital Santé Entreprise",
+        tagline: "Un programme sur mesure pour vos collaborateurs. Team building, bien-être, cohésion d'équipe — la boxe comme levier de performance.",
+        highlights: [
+          "Sessions au studio ou dans vos locaux à Genève",
+          "Formats flexibles : ponctuel ou récurrent",
+          "Matériel professionnel fourni pour tous",
+          "Facturation entreprise avec devis sur mesure",
+        ],
+        anchorId: "corporate",
+      },
+    };
+
+    // Q2 options per Q1 answer
+    const q2Map: Record<string, { options: { label: string; result: ProfileKey }[] }> = {
+      solo: {
+        options: [
+          { label: "Juste moi", result: "solo" },
+          { label: "À deux ou trois", result: "duo-trio" },
+        ],
+      },
+      "duo-trio": {
+        options: [
+          { label: "2 personnes", result: "duo-trio" },
+          { label: "3 personnes", result: "duo-trio" },
+          { label: "4 à 6 personnes", result: "small-group" },
+        ],
+      },
+      "small-group": {
+        options: [
+          { label: "2-3 personnes", result: "duo-trio" },
+          { label: "4-6 personnes", result: "small-group" },
+          { label: "Plus de 6", result: "boxe-groupe" },
+        ],
+      },
+      "boxe-groupe": {
+        options: [
+          { label: "Seul(e) ou entre amis", result: "boxe-groupe" },
+          { label: "Mon équipe (entreprise)", result: "corporate" },
+        ],
+      },
+      corporate: {
+        options: [
+          { label: "5-15 collaborateurs", result: "corporate" },
+          { label: "16+ collaborateurs", result: "corporate" },
+        ],
+      },
+    };
+
+    function showStep(show: HTMLElement, hide: HTMLElement[]) {
+      hide.forEach((el) => {
+        el.style.display = "none";
+      });
+      show.style.display = "block";
+      show.style.opacity = "0";
+      show.style.transform = "translateY(12px)";
+      requestAnimationFrame(() => {
+        show.style.transition = prefersReduced ? "none" : "opacity 0.3s ease, transform 0.3s ease";
+        show.style.opacity = "1";
+        show.style.transform = "translateY(0)";
+      });
+    }
+
+    function showResult(key: ProfileKey) {
+      const profile = profiles[key];
+      resultTitle.textContent = profile.title;
+      resultTagline.textContent = profile.tagline;
+      resultHighlights.innerHTML = profile.highlights
+        .map((h) => `<li class="flex items-start gap-3 text-sm text-foreground/80"><span class="w-1.5 h-1.5 rounded-full bg-primary mt-1.5 shrink-0" aria-hidden="true"></span>${h}</li>`)
+        .join("");
+      resultCta.href = `#${profile.anchorId}`;
+      resultCta.onclick = (e) => {
+        e.preventDefault();
+        const target = document.getElementById(profile.anchorId);
+        if (target) {
+          target.scrollIntoView({ behavior: prefersReduced ? "auto" : "smooth", block: "start" });
+        }
+      };
+      showStep(result, [step1, step2]);
+    }
+
+    // Q1 handlers
+    step1.querySelectorAll<HTMLButtonElement>(".quiz-option").forEach((btn) => {
+      btn.addEventListener("click", () => {
+        const value = btn.dataset.value as string;
+        const q2 = q2Map[value];
+        if (!q2) return;
+
+        step2Options.innerHTML = q2.options
+          .map(
+            (opt) =>
+              `<button class="quiz-option" data-result="${opt.result}" type="button">
+                <span class="quiz-option-text">${opt.label}</span>
+              </button>`
+          )
+          .join("");
+
+        // Bind Q2 handlers
+        step2Options.querySelectorAll<HTMLButtonElement>(".quiz-option").forEach((optBtn) => {
+          optBtn.addEventListener("click", () => {
+            showResult(optBtn.dataset.result as ProfileKey);
+          });
+        });
+
+        showStep(step2, [step1, result]);
+      });
+    });
+
+    backBtn.addEventListener("click", () => {
+      showStep(step1, [step2, result]);
+    });
+
+    restartBtn.addEventListener("click", () => {
+      showStep(step1, [step2, result]);
+    });
+  }
+
+  initQuiz();
+  document.addEventListener("astro:page-load", initQuiz);
+</script>
+
+<style is:global>
+  .quiz-option {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    padding: 1rem 1.25rem;
+    border-radius: 1rem;
+    border: 1px solid var(--border);
+    background: var(--card);
+    color: var(--foreground);
+    text-align: left;
+    cursor: pointer;
+    transition: all 0.2s ease;
+  }
+  .quiz-option:hover {
+    border-color: var(--primary);
+    background: rgba(212, 168, 83, 0.05);
+    transform: translateY(-1px);
+  }
+  .quiz-option-icon {
+    color: var(--primary);
+    flex-shrink: 0;
+  }
+  .quiz-option-text {
+    font-size: 0.938rem;
+    font-weight: 500;
+    line-height: 1.4;
+  }
+</style>

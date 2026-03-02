@@ -63,7 +63,8 @@ export interface HeroProps extends HeadlineProps {
   image?: ImageMetadata | string;
   imageAlt?: string;
   variant?: "default" | "centered";
-  ctaStyle?: "default" | "outline-gold";
+  ctaStyle?: "default" | "outline-gold" | "dark";
+  lightOverlay?: boolean;
   socialProof?: {
     avatars: (ImageMetadata | string)[];
     badge?: string;
@@ -179,4 +180,30 @@ export interface ServiceCardData {
   href: string;
   image?: ImageMetadata | string;
   index?: number;
+}
+
+// Pricing Nav
+export interface PricingNavItem {
+  label: string;
+  anchorId: string;
+  icon?: string;
+}
+
+export interface PricingNavProps {
+  items: PricingNavItem[];
+}
+
+// Quiz Formule
+export interface QuizOption {
+  label: string;
+  value: string;
+  icon?: string;
+}
+
+export interface QuizResult {
+  key: string;
+  title: string;
+  tagline: string;
+  cta: CallToAction;
+  anchorId: string;
 }

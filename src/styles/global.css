@@ -143,3 +143,158 @@
 .animate-pulse-gold {
   animation: pulse-gold 2s ease-in-out infinite;
 }
+
+/* ============================================
+   Light Mode — scoped to .theme-light
+   ============================================ */
+.theme-light {
+  --background: #f8f6f3;
+  --foreground: #1a1a1a;
+  --primary: #9C8A68;
+  --primary-light: #B8A47E;
+  --border: #e2ddd6;
+  --muted: #f0ece7;
+  --muted-foreground: #6b6560;
+  --card: #ffffff;
+  --primary-glow: rgba(156, 138, 104, 0.1);
+  --card-hover: rgba(156, 138, 104, 0.06);
+  --surface-elevated: rgba(255, 255, 255, 0.8);
+  --shadow-gold-card: 0 4px 30px rgba(156, 138, 104, 0.08);
+  --shadow-gold-button: 0 8px 30px rgba(156, 138, 104, 0.20);
+  --shadow-gold-icon: 0 0 12px rgba(156, 138, 104, 0.2);
+
+  /* FIX: Override Tailwind @theme --color-* variables directement */
+  --color-background: #f8f6f3;
+  --color-foreground: #1a1a1a;
+  --color-primary: #9C8A68;
+  --color-primary-light: #B8A47E;
+  --color-border: #e2ddd6;
+  --color-muted: #f0ece7;
+  --color-muted-foreground: #6b6560;
+  --color-card: #ffffff;
+
+  background-color: var(--background);
+  background-image: none;
+  color: var(--foreground);
+}
+
+.theme-light .glass-card {
+  background: rgba(255, 255, 255, 0.7);
+  border: 1px solid var(--border);
+}
+
+.theme-light ::selection {
+  background: rgba(156, 138, 104, 0.25);
+  color: #1a1a1a;
+}
+
+.theme-light .pricing-nav-link:hover {
+  background: rgba(0, 0, 0, 0.05);
+}
+
+/* Navbar light mode overrides */
+[data-theme="light"] #nav-inner {
+  background: rgba(248, 246, 243, 0.8);
+  border-bottom: 1px solid rgba(0, 0, 0, 0.06);
+}
+
+#main-nav[data-theme="light"].scrolled #nav-inner {
+  background: rgba(248, 246, 243, 0.92);
+  border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+}
+
+[data-theme="light"] .nav-link {
+  color: #1a1a1a;
+}
+
+[data-theme="light"] .nav-cta {
+  background: rgba(0, 0, 0, 0.06);
+  border-color: rgba(0, 0, 0, 0.12);
+  color: #1a1a1a;
+}
+
+[data-theme="light"] .nav-cta:hover {
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.08);
+}
+
+/* Boutons primary → noir en light mode */
+.theme-light .shimmer-btn {
+  background-color: #1a1a1a;
+  color: #ffffff;
+}
+.theme-light .shimmer-btn:hover {
+  background-color: #2a2a2a;
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.15);
+}
+/* Highlighted card : bouton gold */
+.theme-light .highlighted-card .shimmer-btn {
+  background-color: #D4A853;
+  color: #0a0a0a;
+}
+.theme-light .highlighted-card .shimmer-btn:hover {
+  background-color: #e8c874;
+  box-shadow: 0 8px 30px rgba(212, 168, 83, 0.3);
+}
+
+/* Quiz option hover override — remplace le rgba(212,168,83) hardcodé */
+.theme-light .quiz-option:hover {
+  border-color: var(--primary);
+  background: rgba(156, 138, 104, 0.06);
+}
+
+/* Text gradient gold — adapter aux couleurs light */
+.theme-light .text-gradient-gold {
+  background: linear-gradient(135deg, #9C8A68 0%, #B8A47E 50%, #9C8A68 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* ============================================
+   Highlighted card (dark) within light mode
+   ============================================ */
+.theme-light .highlighted-card {
+  background-color: #111111 !important;
+  background-image: none !important;
+  border-color: #D4A853 !important;
+  --color-foreground: #e8e4de;
+  --color-muted-foreground: #a1a1aa;
+  --color-primary: #D4A853;
+  --color-border: #1f1f1f;
+  --color-card: #111111;
+  --color-background: #0a0a0a;
+  --foreground: #e8e4de;
+  --muted-foreground: #a1a1aa;
+  --primary: #D4A853;
+  --border: #1f1f1f;
+  --card: #111111;
+  --background: #0a0a0a;
+  --shadow-gold-card: 0 4px 30px rgba(212, 168, 83, 0.12);
+}
+
+.theme-light .highlighted-card .text-gradient-gold {
+  background: linear-gradient(135deg, #D4A853 0%, #f0d78c 50%, #D4A853 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* PricingNav dark in light mode */
+.theme-light #pricing-nav {
+  background-color: rgba(10, 10, 10, 0.92);
+  backdrop-filter: blur(16px);
+  --color-background: #0a0a0a;
+  --color-border: #1f1f1f;
+  --color-muted-foreground: #a1a1aa;
+  --color-foreground: #e8e4de;
+  --color-primary: #D4A853;
+  --background: #0a0a0a;
+  --border: #1f1f1f;
+  --muted-foreground: #a1a1aa;
+  --foreground: #e8e4de;
+  --primary: #D4A853;
+}
+
+.theme-light #pricing-nav .pricing-nav-link:hover {
+  background: rgba(255, 255, 255, 0.05);
+}

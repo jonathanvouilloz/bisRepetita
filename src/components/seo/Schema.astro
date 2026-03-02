@@ -12,7 +12,7 @@ interface ServiceRef {
 }
 
 interface Props {
-    type: "WebSite" | "BlogPosting" | "SportsActivityLocation" | "Service" | "Person" | "FAQPage" | "BreadcrumbList";
+    type: "WebSite" | "BlogPosting" | "SportsActivityLocation" | "Service" | "Person" | "FAQPage" | "BreadcrumbList" | "OfferCatalog";
     data?: {
         title?: string;
         description?: string;
@@ -25,6 +25,7 @@ interface Props {
         breadcrumbs?: BreadcrumbItem[];
         parentService?: ServiceRef;
         childServices?: ServiceRef[];
+        offers?: { name: string; description: string; url?: string }[];
     };
 }
 
@@ -213,6 +214,31 @@ if (type === "WebSite") {
             acceptedAnswer: {
                 "@type": "Answer",
                 text: faq.answer,
+            },
+        })),
+    };
+} else if (type === "OfferCatalog" && data.offers) {
+    schema = {
+        "@context": "https://schema.org",
+        "@type": "OfferCatalog",
+        name: "Tarifs & Formules — " + siteConfig.name,
+        url: new URL("/tarifs", siteConfig.url).toString(),
+        numberOfItems: data.offers.length,
+        itemListElement: data.offers.map((offer) => ({
+            "@type": "Offer",
+            itemOffered: {
+                "@type": "Service",
+                name: offer.name,
+                description: offer.description,
+                ...(offer.url && { url: new URL(offer.url, siteConfig.url).toString() }),
+                provider: {
+                    "@type": "SportsActivityLocation",
+                    name: siteConfig.name,
+                },
+                areaServed: {
+                    "@type": "City",
+                    name: "Genève",
+                },
             },
         })),
     };

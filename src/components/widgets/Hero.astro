@@ -12,6 +12,7 @@ const {
     imageAlt = "",
     variant = "default",
     ctaStyle = "default",
+    lightOverlay = false,
     socialProof,
     locationBadge,
     classes = {},
@@ -39,8 +40,17 @@ const isCentered = variant === "centered";
     </div>
 
     <!-- Z-10: Gradient overlays -->
-    <div class="absolute inset-0 bg-gradient-to-t from-background via-background/60 to-background/20"></div>
-    <div class="absolute inset-x-0 top-0 h-40 bg-gradient-to-b from-black/60 to-transparent"></div>
+    {lightOverlay ? (
+        <>
+            <div class="absolute inset-0 bg-black/40"></div>
+            <div class="absolute inset-0 bg-gradient-to-t from-[#0a0a0a] via-transparent to-transparent"></div>
+        </>
+    ) : (
+        <>
+            <div class="absolute inset-0 bg-gradient-to-t from-background via-background/60 to-background/20"></div>
+            <div class="absolute inset-x-0 top-0 h-40 bg-gradient-to-b from-black/60 to-transparent"></div>
+        </>
+    )}
 
     <!-- Z-20: Content -->
     {isCentered ? (
@@ -142,7 +152,10 @@ const isCentered = variant === "centered";
                 <div class="hero-fade-in px-6 md:px-12 lg:px-20 pb-10 md:pb-14">
                     {
                         description && (
-                            <p class="max-w-lg text-lg md:text-xl text-muted-foreground mb-4">
+                            <p class:list={[
+                                "max-w-lg text-lg md:text-xl mb-4",
+                                lightOverlay ? "text-white/70" : "text-muted-foreground",
+                            ]}>
                                 {description}
                             </p>
                         )
@@ -150,7 +163,11 @@ const isCentered = variant === "centered";
                     {
                         title && (
                             <h1
-                                class="text-6xl md:text-8xl lg:text-[7.2rem] xl:text-[8.4rem] font-medium not-italic text-foreground leading-[0.95]" style="letter-spacing: -0.05em;"
+                                class:list={[
+                                    "text-6xl md:text-8xl lg:text-[7.2rem] xl:text-[8.4rem] font-medium not-italic leading-[0.95]",
+                                    lightOverlay ? "text-white" : "text-foreground",
+                                ]}
+                                style="letter-spacing: -0.05em;"
                                 set:html={title}
                             />
                         )
@@ -160,7 +177,17 @@ const isCentered = variant === "centered";
                 <!-- Right: CTA block — bridges into next section -->
                 {
                     Array.isArray(actions) && actions.length > 0 && actions[0] && (
-                        ctaStyle === "outline-gold" ? (
+                        ctaStyle === "dark" ? (
+                            <a
+                                href={actions[0].href}
+                                class="hero-fade-in hidden md:inline-flex items-center gap-6 shrink-0 rounded-full bg-white text-[#0a0a0a] px-10 py-5 hover:bg-white/90 transition-colors group mb-10 mr-6 lg:mr-12"
+                            >
+                                <span class="text-xl lg:text-2xl uppercase tracking-normal font-semibold font-display">
+                                    {actions[0].text}
+                                </span>
+                                <span class="text-2xl lg:text-3xl transition-transform group-hover:translate-x-2" aria-hidden="true">&rarr;</span>
+                            </a>
+                        ) : ctaStyle === "outline-gold" ? (
                             <a
                                 href={actions[0].href}
                                 class="hero-fade-in hidden md:inline-flex items-center gap-6 shrink-0 rounded-full border border-primary bg-primary/10 text-primary px-10 py-5 hover:bg-primary/20 transition-colors group mb-10 mr-6 lg:mr-12"
@@ -193,9 +220,11 @@ const isCentered = variant === "centered";
                             href={actions[0].href}
                             class:list={[
                                 "hero-fade-in inline-flex items-center gap-3 rounded-full transition-colors group",
-                                ctaStyle === "outline-gold"
-                                    ? "border border-primary bg-primary/10 text-primary px-8 py-4 hover:bg-primary/20"
-                                    : "bg-white text-background px-8 py-4 hover:bg-white/90",
+                                ctaStyle === "dark"
+                                    ? "bg-white text-[#0a0a0a] px-8 py-4 hover:bg-white/90"
+                                    : ctaStyle === "outline-gold"
+                                      ? "border border-primary bg-primary/10 text-primary px-8 py-4 hover:bg-primary/20"
+                                      : "bg-white text-background px-8 py-4 hover:bg-white/90",
                             ]}
                         >
                             <span class="text-base uppercase tracking-normal font-semibold font-display">
@@ -203,7 +232,7 @@ const isCentered = variant === "centered";
                             </span>
                             <span class:list={[
                                 "text-lg transition-transform group-hover:translate-x-1",
-                                ctaStyle === "outline-gold" && "text-primary",
+                                ctaStyle === "outline-gold" ? "text-primary" : "",
                             ]} aria-hidden="true">&rarr;</span>
                         </a>
                     </div>
