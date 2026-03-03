@@ -1,53 +1,77 @@
 ---
 import BaseLayout from "../../layouts/BaseLayout.astro";
 import { getCollection } from "astro:content";
-import Headline from "../../components/ui/Headline.astro";
-import Pagination from "../../components/ui/Pagination.astro";
+import BlogHero from "../../components/blog/BlogHero.astro";
+import PostFeatured from "../../components/blog/PostFeatured.astro";
 import PostItem from "../../components/blog/PostItem.astro";
+import Pagination from "../../components/ui/Pagination.astro";
 import type { GetStaticPathsOptions } from "astro";
 
 export async function getStaticPaths({ paginate }: GetStaticPathsOptions) {
-    const blogEntries = await getCollection("blog");
-    const sortedPosts = blogEntries
-        .filter((post) => post.data && post.data.pubDate)
-        .sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf());
+  const blogEntries = await getCollection("blog");
+  const sortedPosts = blogEntries
+    .filter((post) => post.data && post.data.pubDate)
+    .sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf());
 
-    return paginate(sortedPosts, { pageSize: 6 });
+  return paginate(sortedPosts, { pageSize: 7 });
 }
 
 const { page } = Astro.props;
-const blog = page.data;
+const allPosts = page.data;
+const isFirstPage = page.currentPage === 1;
+
+const featuredPost = isFirstPage && allPosts.length > 0 ? allPosts[0] : null;
+const gridPosts = isFirstPage ? allPosts.slice(1) : allPosts;
+
+const allBlogEntries = await getCollection("blog");
+const allCategories = allBlogEntries
+  .map((p) => p.data.category)
+  .filter((c): c is string => !!c);
 
 const metadata = {
-    title: "Blog — Conseils boxe, entraînement et bien-être",
-    description: "Actualités, conseils et articles sur la boxe, l'entraînement et le bien-être par le studio Bis Repetita à Genève. Techniques, nutrition et mental.",
+  title: "Blog — Conseils boxe, entrainement et bien-etre",
+  description:
+    "Actualites, conseils et articles sur la boxe, l'entrainement et le bien-etre par le studio Bis Repetita a Geneve. Techniques, nutrition et mental.",
 };
 ---
 
 <BaseLayout metadata={metadata}>
-    <section class="relative px-4 pt-24 pb-8 sm:px-6 lg:px-8 md:pb-12">
-        <div class="absolute inset-0 z-0">
-            <div
-                class="absolute inset-0 bg-linear-to-br from-primary/5 via-transparent to-primary/3"
-            >
-            </div>
-        </div>
-        <div class="relative mx-auto max-w-5xl">
-            <Headline
-                tagline="Blog"
-                title="Nos publications"
-                subtitle="Actualites, conseils et articles sur la boxe, le bien-etre et la performance."
-                classes={{
-                    container: "mb-12 text-center",
-                    title: "font-heading mb-4 text-4xl font-bold tracking-tight text-foreground md:text-6xl",
-                    subtitle: "mx-auto max-w-3xl text-xl text-muted-foreground",
-                }}
-            />
+  <div class="theme-light">
+    <div class="min-h-screen bg-background">
+      <BlogHero categories={allCategories} />
 
-            <div class="grid gap-8 md:grid-cols-2 lg:grid-cols-3">
-                {blog.map((post) => <PostItem post={post} />)}
+      <div class="mx-auto max-w-7xl px-4 pb-20 sm:px-6 lg:px-8">
+        {
+          allPosts.length === 0 ? (
+            <div class="py-20 text-center">
+              <p class="text-lg text-muted-foreground">
+                Aucun article pour le moment.
+              </p>
+              <p class="mt-2 text-sm text-muted-foreground">
+                Revenez bientot pour decouvrir nos premiers articles.
+              </p>
             </div>
-            <Pagination page={page} />
-        </div>
-    </section>
+          ) : (
+            <>
+              {featuredPost && (
+                <div class="mb-12">
+                  <PostFeatured post={featuredPost} />
+                </div>
+              )}
+
+              {gridPosts.length > 0 && (
+                <div class="grid gap-8 sm:grid-cols-2 lg:grid-cols-3">
+                  {gridPosts.map((post) => (
+                    <PostItem post={post} />
+                  ))}
+                </div>
+              )}
+
+              <Pagination page={page} />
+            </>
+          )
+        }
+      </div>
+    </div>
+  </div>
 </BaseLayout>

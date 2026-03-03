@@ -1,83 +1,170 @@
 ---
 import BaseLayout from "../../layouts/BaseLayout.astro";
 import Schema from "../../components/seo/Schema.astro";
+import Tags from "../../components/ui/Tags.astro";
 
 import { getCollection, render } from "astro:content";
 
 export async function getStaticPaths() {
-    const blog = await getCollection("blog");
-    return blog.map((post) => ({
-        params: { slug: post.id },
-        props: { post },
-    }));
+  const blog = await getCollection("blog");
+  return blog.map((post) => ({
+    params: { slug: post.id },
+    props: { post },
+  }));
 }
 
 const { post } = Astro.props;
 const { Content, remarkPluginFrontmatter } = await render(post);
-const { title, description, pubDate, author, image } = post.data;
+const { title, description, pubDate, author, image, category, tags } =
+  post.data;
 
 const formattedDate = pubDate.toLocaleDateString("fr-CH", {
-    year: "numeric",
-    month: "long",
-    day: "numeric",
+  year: "numeric",
+  month: "long",
+  day: "numeric",
+  timeZone: "UTC",
 });
 
 const readingTime = remarkPluginFrontmatter?.minutesRead
-    ? `${Math.ceil(remarkPluginFrontmatter.minutesRead)} min de lecture`
-    : "";
+  ? `${Math.ceil(remarkPluginFrontmatter.minutesRead)} min de lecture`
+  : "";
 
 const metadata = {
-    title: title,
-    description: description,
-    ogImage: image,
+  title: title,
+  description: description,
+  ogImage: image,
 };
 ---
 
 <BaseLayout metadata={metadata}>
-    <Schema
-        type="BlogPosting"
-        data={{
-            title,
-            description,
-            image,
-            pubDate,
-            author,
-            url: Astro.url.href,
-        }}
-    />
-    <section class="relative px-4 pt-24 pb-8 sm:px-6 lg:px-8 md:pb-12">
-        <div class="relative mx-auto max-w-3xl">
-            <div class="mb-10 text-center">
-                <p
-                    class="text-sm font-semibold tracking-wide text-primary uppercase"
-                >
-                    {formattedDate} • {author}
-                    {readingTime && ` • ${readingTime}`}
-                </p>
-                <h1
-                    class="font-heading mt-2 text-3xl font-bold leading-tight tracking-tighter text-foreground sm:text-4xl md:text-5xl"
-                >
-                    {title}
-                </h1>
-            </div>
+  <Schema
+    type="BlogPosting"
+    data={{
+      title,
+      description,
+      image,
+      pubDate,
+      author,
+      url: Astro.url.href,
+    }}
+  />
 
-            {
-                image && (
-                    <div class="relative mb-8 h-96 w-full overflow-hidden rounded-xl shadow-lg">
-                        <img
-                            src={image}
-                            alt={title}
-                            class="h-full w-full object-cover"
-                        />
-                    </div>
+  <div class="theme-light">
+    <div class="min-h-screen bg-background">
+      <section class="pt-32 pb-16 md:pt-40">
+        <div class="mx-auto max-w-5xl px-4 sm:px-6 lg:px-8">
+          <!-- Breadcrumb -->
+          <nav class="mb-8 text-sm text-muted-foreground" aria-label="Fil d'Ariane">
+            <ol class="flex items-center gap-1.5">
+              <li>
+                <a href="/blog" class="transition-colors hover:text-foreground">
+                  Blog
+                </a>
+              </li>
+              {
+                category && (
+                  <>
+                    <li aria-hidden="true">/</li>
+                    <li>
+                      <a
+                        href={`/blog/category/${category}`}
+                        class="transition-colors hover:text-foreground"
+                      >
+                        {category}
+                      </a>
+                    </li>
+                  </>
                 )
+              }
+              <li aria-hidden="true">/</li>
+              <li class="text-foreground font-medium truncate max-w-[200px]">
+                {title}
+              </li>
+            </ol>
+          </nav>
+
+          <!-- Header -->
+          <div class="mx-auto max-w-3xl text-center">
+            {
+              category && (
+                <span class="mb-4 inline-block rounded-full bg-primary/10 px-3 py-1 text-xs font-medium text-primary">
+                  {category}
+                </span>
+              )
             }
 
-            <div
-                class="prose prose-lg prose-invert mx-auto prose-headings:text-foreground prose-a:text-primary hover:prose-a:underline prose-p:text-muted-foreground prose-strong:text-foreground prose-li:text-muted-foreground prose-code:text-primary"
+            <h1
+              class="font-heading text-3xl font-medium tracking-tight text-foreground sm:text-4xl md:text-5xl"
             >
-                <Content />
+              {title}
+            </h1>
+
+            <p class="mt-4 text-lg text-muted-foreground">
+              {description}
+            </p>
+
+            <div
+              class="mt-4 flex items-center justify-center gap-2 text-sm text-muted-foreground"
+            >
+              <time datetime={pubDate.toISOString()}>
+                {formattedDate}
+              </time>
+              <span aria-hidden="true">&middot;</span>
+              <span>{author}</span>
+              {readingTime && <span aria-hidden="true">&middot;</span>}
+              {readingTime && <span>{readingTime}</span>}
             </div>
+          </div>
+
+          <!-- Hero image -->
+          {
+            image && (
+              <div class="mx-auto mt-10 max-w-5xl overflow-hidden rounded-2xl">
+                <img
+                  src={image}
+                  alt={title}
+                  class="h-auto w-full object-cover"
+                />
+              </div>
+            )
+          }
         </div>
-    </section>
+      </section>
+
+      <!-- Content -->
+      <section class="pb-20">
+        <div class="mx-auto max-w-3xl px-4 sm:px-6 lg:px-8">
+          <div
+            class="prose prose-lg mx-auto prose-headings:font-heading prose-headings:font-medium prose-headings:tracking-tight prose-a:text-primary hover:prose-a:underline prose-img:rounded-xl"
+          >
+            <Content />
+          </div>
+
+          <!-- Tags + back link -->
+          <div class="mt-12 border-t border-border pt-8">
+            {tags && tags.length > 0 && <Tags tags={tags} class="mb-6" />}
+
+            <a
+              href="/blog"
+              class="inline-flex items-center text-sm font-medium text-primary transition-colors hover:text-primary/80"
+            >
+              <svg
+                class="mr-1 h-4 w-4"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke="currentColor"
+                stroke-width="2"
+              >
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  d="M7 16l-4-4m0 0l4-4m-4 4h18"></path>
+              </svg>
+              Retour au blog
+            </a>
+          </div>
+        </div>
+      </section>
+    </div>
+  </div>
 </BaseLayout>
