@@ -16,7 +16,7 @@ const megaMenuImages: Record<string, ImageMetadata> = {
     "ambiance-bis-repetita.webp": ambianceBis,
 };
 
-const isLight = Astro.url.pathname.startsWith("/tarifs");
+const isLight = ["/tarifs", "/contact"].some(p => Astro.url.pathname.startsWith(p));
 
 let linkIndex = 0;
 function getNavIndex() {

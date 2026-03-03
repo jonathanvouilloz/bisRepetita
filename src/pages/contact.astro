@@ -1,29 +1,36 @@
 ---
 import BaseLayout from "../layouts/BaseLayout.astro";
-import Hero from "../components/widgets/Hero.astro";
-import FormSection from "../components/widgets/FormSection.astro";
+import Container from "../components/ui/Container.astro";
+import ContactForm from "../components/widgets/ContactForm.astro";
 import LocationMap from "../components/widgets/LocationMap.astro";
 import GsapReveal from "../components/widgets/GsapReveal.astro";
 
 const metadata = {
-    title: "Contactez notre studio de boxe à Genève",
+    title: "Contact & Devis — Bis Repetita | Studio de Boxe Genève",
     description:
-        "Réservez votre séance de boxe chez Bis Repetita à Genève. Coaching privé, cours collectifs ou programme corporate — nous vous répondons sous 24h.",
+        "Contactez Bis Repetita pour réserver votre séance de boxe à Genève. Coaching privé, duo, trio ou programme corporate — demandez votre devis personnalisé.",
 };
 ---
 
 <BaseLayout {metadata}>
-    <Hero
-        title={`Nous <span class="font-display text-primary">contacter</span>`}
-        description="Reservez votre seance, posez vos questions ou demandez un devis. Nous vous repondons sous 24h."
-        classes={{ container: "min-h-[50vh]" }}
-    />
+    <div class="theme-light">
+        <!-- Split: contenu + formulaire -->
+        <ContactForm />
 
-    <GsapReveal animation="fadeUp">
-        <FormSection title="" />
-    </GsapReveal>
+        <!-- Map heading -->
+        <section class="pt-8 pb-4 md:pt-16 md:pb-6">
+            <Container>
+                <GsapReveal animation="fadeUp">
+                    <h2 class="text-3xl md:text-4xl lg:text-5xl font-bold font-display tracking-tight text-center">
+                        Où trouver le studio <span class="text-primary">Bis Repetita</span> ?
+                    </h2>
+                </GsapReveal>
+            </Container>
+        </section>
 
-    <GsapReveal animation="fadeUp">
-        <LocationMap />
-    </GsapReveal>
+        <!-- Map -->
+        <GsapReveal animation="fadeUp">
+            <LocationMap />
+        </GsapReveal>
+    </div>
 </BaseLayout>

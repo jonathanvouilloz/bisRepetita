@@ -298,3 +298,8 @@
 .theme-light #pricing-nav .pricing-nav-link:hover {
   background: rgba(255, 255, 255, 0.05);
 }
+
+/* Map — couleurs normales en light mode */
+.theme-light .map-iframe {
+  filter: none !important;
+}
