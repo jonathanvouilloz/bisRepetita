@@ -49,6 +49,14 @@ export const servicePages: ServicePage[] = [
     category: "prive",
   },
   {
+    slug: "coaching-boxe-domicile",
+    title: "Coaching à Domicile",
+    shortDescription: "Votre coach de boxe à domicile à Genève. Matériel fourni, programme sur mesure.",
+    href: "/services/coaching-boxe-domicile",
+    image: coursPortrait,
+    category: "prive",
+  },
+  {
     slug: "round-by-round",
     title: "Round by Round",
     shortDescription: "Cours collectifs intenses alliant technique de boxe et préparation physique.",
@@ -85,7 +93,7 @@ export const siteConfig = {
     linkedin: "https://linkedin.com/company/bisrepetita",
   },
   navCta: {
-    text: "Reserver",
+    text: "Séance d'essai",
     href: "/contact",
   },
   maps: {
@@ -106,6 +114,7 @@ export const siteConfig = {
             { text: "Solo", href: "/services/coaching-solo", description: "Séances individuelles sur mesure", image: "nicolas-portrait.webp" },
             { text: "Duo & Trio", href: "/services/coaching-duo-trio", description: "Progressez ensemble, à deux ou trois", image: "ambiance-bis-repetita.webp" },
             { text: "Petit Groupe", href: "/services/small-group-training", description: "L'énergie du collectif, 6 max", image: "cours-2-landscape.webp" },
+            { text: "À Domicile", href: "/services/coaching-boxe-domicile", description: "Le studio vient à vous", image: "cours-portrait.webp" },
           ],
         },
         {
@@ -119,7 +128,6 @@ export const siteConfig = {
     },
     { text: "Tarifs", href: "/tarifs" },
     { text: "Blog", href: "/blog" },
-    { text: "Contact", href: "/contact" },
   ],
   footerLinks: {
     services: [
@@ -127,6 +135,7 @@ export const siteConfig = {
       { text: "Coaching Solo", href: "/services/coaching-solo" },
       { text: "Coaching Duo & Trio", href: "/services/coaching-duo-trio" },
       { text: "Small Group Training", href: "/services/small-group-training" },
+      { text: "Coaching à Domicile", href: "/services/coaching-boxe-domicile" },
       { text: "Round by Round", href: "/services/round-by-round" },
       { text: "Corporate", href: "/services/corporate" },
     ],
