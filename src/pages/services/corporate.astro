@@ -12,6 +12,7 @@ import CTABanner from "../../components/widgets/CTABanner.astro";
 import ProfileShowcase from "../../components/widgets/ProfileShowcase.astro";
 import RelatedServices from "../../components/widgets/RelatedServices.astro";
 import GsapReveal from "../../components/widgets/GsapReveal.astro";
+import { Icon } from "astro-icon/components";
 import { Image } from "astro:assets";
 import Schema from "../../components/seo/Schema.astro";
 import studioAtmosphere from "../../assets/studio-atmosphere.webp";
@@ -27,7 +28,7 @@ const metadata = {
 
 const stats = [
     { value: "100%", label: "Sur mesure", description: "Chaque programme est conçu autour de vos objectifs d'équipe, votre secteur et vos contraintes logistiques." },
-    { value: "J+S", label: "Coachs certifiés", description: "Nicolas et Lionel de Boccard, licenciés SwissBoxing, formés à l'encadrement sportif professionnel." },
+    { value: "Swiss Boxing", label: "Coachs certifiés", description: "Nicolas et Lionel de Boccard, entraineurs agréés Swiss Boxing, formés à l'encadrement sportif professionnel." },
     { value: "Canton GE", label: "Mobilité totale", description: "Au studio ou dans vos locaux — nous nous déplaçons dans tout le canton de Genève." },
 ];
 
@@ -55,6 +56,35 @@ const features = [
         description:
             "Proposer la boxe en entreprise envoie un signal fort : une culture d'entreprise dynamique, un engagement concret pour le bien-être au travail.",
         icon: "lucide:award",
+    },
+];
+
+const approches = [
+    {
+        title: "Boxe sans contact",
+        icon: "lucide:shield",
+        highlight: "Accessible à tous",
+        description: "Le format le plus demandé en entreprise. Zéro opposition entre participants : tout le travail se fait au sac et aux pattes d'ours. Technique, cardio, renforcement — l'intensité de la boxe sans aucun risque.",
+        items: [
+            "Travail au sac de frappe et pattes d'ours",
+            "Circuit training haute intensité",
+            "Shadow boxing et déplacements",
+            "Aucun prérequis sportif",
+        ],
+        ideal: "Team building, bien-être au travail, découverte de la boxe",
+    },
+    {
+        title: "Boxe avec contact",
+        icon: "lucide:swords",
+        highlight: "Pour aller plus loin",
+        description: "Pour les équipes qui veulent l'expérience complète. Sparring contrôlé et encadré, avec protections intégrales. Une montée en intensité qui forge le mental et pousse les limites — dans un cadre 100% sécurisé.",
+        items: [
+            "Sparring contrôlé avec protections complètes",
+            "Assauts éducatifs encadrés par le coach",
+            "Exercices d'opposition progressive",
+            "Niveau intermédiaire recommandé",
+        ],
+        ideal: "Cohésion avancée, dépassement de soi, séminaires leadership",
     },
 ];
 
@@ -141,7 +171,11 @@ const faqs = [
     },
     {
         question: "Est-ce dangereux ? Y a-t-il des contacts physiques ?",
-        answer: "Aucun risque. Nos séances reposent sur la boxe éducative : zéro opposition directe, zéro impact au visage. Tout le travail se fait au sac et aux pattes d'ours, dans un cadre 100% sécurisé.",
+        answer: "Par défaut, nos séances corporate reposent sur la boxe sans contact : zéro opposition directe, tout le travail se fait au sac et aux pattes d'ours, dans un cadre 100% sécurisé. Pour les équipes qui souhaitent aller plus loin, nous proposons aussi un format avec contact — du sparring encadré avec protections intégrales, toujours sous la supervision du coach.",
+    },
+    {
+        question: "Quelle différence entre boxe sans contact et boxe avec contact ?",
+        answer: "La boxe sans contact est accessible à tous : technique au sac, pattes d'ours, shadow boxing et circuit training. Aucune opposition entre participants. La boxe avec contact introduit du sparring éducatif et contrôlé, avec protections complètes, pour les équipes qui cherchent une expérience plus immersive et un dépassement de soi collectif. Les deux approches sont combinables dans un même programme.",
     },
     {
         question: "Quel espace prévoir dans nos bureaux ?",
@@ -181,7 +215,7 @@ const faqs = [
             type="Person"
             data={{
                 title: "Nicolas de Boccard",
-                description: "Head Coach & Fondateur de Bis Repetita. Plus de 15 ans d'expérience en boxe anglaise. Licencié SwissBoxing #102860.",
+                description: "Head Coach & Fondateur de Bis Repetita. Dans la boxe depuis 2002, entraineur agréé Swiss Boxing. Licencié SwissBoxing #102860.",
             }}
         />
         <Schema
@@ -228,7 +262,7 @@ const faqs = [
         stats={stats}
         badge="Boxe Corporate"
         badgeHref="#pourquoi"
-        intro="La boxe en entreprise : un levier de performance collective piloté par des professionnels de compétition. Pas de combat, pas de risque — une méthode éducative qui transforme les dynamiques d'équipe."
+        intro="La boxe en entreprise : un levier de performance collective piloté par des professionnels de compétition. Sans contact ou avec sparring encadré — une méthode qui s'adapte à vos objectifs et transforme les dynamiques d'équipe."
     />
 
     <!-- 3. Features bento (DARK) — Le "Pourquoi" -->
@@ -252,14 +286,14 @@ const faqs = [
     <GsapReveal animation="fadeUp">
         <SplitShowcase
             tagline="Notre approche"
-            title="Boxe éducative, pas compétitive"
+            title="Une méthode, deux intensités"
             image={coursLandscape}
             imageAlt="Entraînement de boxe éducative en groupe au studio Bis Repetita"
             items={[
                 {
-                    title: "Zéro opposition directe",
+                    title: "Sécurité avant tout",
                     description:
-                        "Tout le travail se fait au sac et aux pattes d'ours. Aucun contact entre participants. La sécurité de vos collaborateurs est notre priorité absolue.",
+                        "Que ce soit en mode sans contact ou avec sparring encadré, la sécurité de vos collaborateurs est notre priorité absolue. Protections, supervision continue, intensité progressive.",
                 },
                 {
                     title: "Adapté à tous les niveaux",
@@ -275,7 +309,60 @@ const faqs = [
         />
     </GsapReveal>
 
-    <!-- 5. PricingTable — 3 formules (DARK) -->
+    <!-- 5. Deux approches : avec et sans contact -->
+    <GsapReveal animation="fadeUp">
+        <section id="approches" class="py-16 md:py-28">
+            <div class="max-w-6xl mx-auto px-4 sm:px-6">
+                <div class="text-center mb-12">
+                    <span class="section-label text-primary">Deux approches</span>
+                    <h2 class="text-4xl md:text-5xl font-medium tracking-tight font-display mt-3">
+                        Avec ou sans contact : vous choisissez
+                    </h2>
+                    <p class="text-lg text-muted-foreground max-w-2xl mx-auto mt-4">
+                        La boxe en entreprise ne se résume pas à un seul format. Selon vos objectifs et le profil de vos équipes, nous adaptons l'intensité — de la découverte au sparring encadré.
+                    </p>
+                </div>
+                <div class="grid gap-8 md:grid-cols-2">
+                    {approches.map((approche) => (
+                        <div class="group relative glass-card rounded-2xl p-8 transition-all duration-300 hover:border-primary/30 hover:shadow-[var(--shadow-gold-card)] flex flex-col">
+                            <div class="flex items-center gap-3 mb-5">
+                                <div class="w-12 h-12 rounded-xl bg-primary/10 flex items-center justify-center transition-all duration-300 group-hover:shadow-[var(--shadow-gold-icon)]">
+                                    <Icon name={approche.icon} class="w-6 h-6 text-primary" />
+                                </div>
+                                <span class="text-xs font-semibold uppercase tracking-wider text-primary/70">{approche.highlight}</span>
+                            </div>
+                            <h3 class="text-2xl font-bold text-foreground mb-3 group-hover:text-primary transition-colors">
+                                {approche.title}
+                            </h3>
+                            <p class="text-sm text-muted-foreground mb-6">
+                                {approche.description}
+                            </p>
+                            <ul class="space-y-2 mb-6 flex-1">
+                                {approche.items.map((item) => (
+                                    <li class="flex items-start gap-2 text-sm text-muted-foreground">
+                                        <Icon name="lucide:check" class="w-4 h-4 text-primary mt-0.5 shrink-0" />
+                                        <span>{item}</span>
+                                    </li>
+                                ))}
+                            </ul>
+                            <div class="pt-4 border-t border-border/50">
+                                <p class="text-xs text-muted-foreground">
+                                    <span class="font-medium text-foreground">Idéal pour :</span> {approche.ideal}
+                                </p>
+                            </div>
+                        </div>
+                    ))}
+                </div>
+                <div class="mt-8 text-center">
+                    <p class="text-sm text-muted-foreground">
+                        Les deux formats sont combinables au sein d'un même programme. <a href="/contact" class="text-primary hover:underline">Discutons de vos besoins</a>.
+                    </p>
+                </div>
+            </div>
+        </section>
+    </GsapReveal>
+
+    <!-- 6. PricingTable — 3 formules (DARK) -->
     <GsapReveal animation="fadeUp">
         <PricingTable
             tagline="Nos formules"
@@ -298,19 +385,19 @@ const faqs = [
                         "Licencié SwissBoxing #102860, formé dans les clubs genevois historiques. Nicolas a transposé la rigueur de la compétition en une méthode pédagogique adaptée au monde de l'entreprise.",
                 },
                 {
-                    title: "Certifié Jeunesse+Sport",
+                    title: "Entraineur agréé Swiss Boxing",
                     description:
-                        "Brevet fédéral de coach sportif, spécialisé dans l'encadrement de publics non-sportifs. Une expertise qui garantit sécurité et progression pour tous les profils.",
+                        "Certification Swiss Boxing, spécialisé dans l'encadrement de publics non-sportifs. Une expertise qui garantit sécurité et progression pour tous les profils.",
                 },
                 {
-                    title: "15+ ans d'expérience",
+                    title: "20+ ans dans la boxe",
                     description:
                         "Des centaines de séances corporate délivrées auprès d'entreprises genevoises. Nicolas comprend les contraintes logistiques et les attentes du monde professionnel.",
                 },
                 {
                     title: "Ancré à Genève",
                     description:
-                        "Formé et enraciné dans le tissu sportif genevois depuis plus de 15 ans. Nicolas connaît les entreprises, les espaces et les rythmes du canton — un coach local qui comprend vos réalités.",
+                        "Formé et enraciné dans le tissu sportif genevois depuis plus de 20 ans. Nicolas connaît les entreprises, les espaces et les rythmes du canton — un coach local qui comprend vos réalités.",
                 },
             ]}
         />
