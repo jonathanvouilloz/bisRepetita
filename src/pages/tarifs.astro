@@ -15,7 +15,7 @@ import Schema from "../components/seo/Schema.astro";
 import heroImage from "../assets/studio-interior.webp";
 
 const metadata = {
-    title: "Tarifs & Abonnements Coaching Sportif Genève | Nicolas de Boccard",
+    title: "Tarifs & Abonnements Coaching Sportif Genève",
     description:
         "Transparence et flexibilité. Découvrez les tarifs des coachings solo, duo et cours collectifs à Genève. Séance d'essai offerte. Studio premium aux Pâquis.",
 };
@@ -160,20 +160,6 @@ const smallGroupTiers = [
 
 // --- Round by Round ---
 const rbrTiers = [
-    {
-        name: "Séance d'essai",
-        description: "Votre première séance est offerte.",
-        price: "Gratuit",
-        priceNote: "",
-        features: [
-            "60 minutes",
-            "8 participants max",
-            "2 coachs",
-            "Matériel fourni",
-            "Sans engagement",
-        ],
-        cta: { text: "Réserver mon essai", href: "/contact" },
-    },
     {
         name: "Pack 10 cours",
         description: "L'engagement qui fait la différence.",
@@ -337,6 +323,11 @@ const offers = [
             tiers={soloTiers}
         />
         <div class="text-center -mt-8 mb-16">
+            <p class="text-primary font-medium mb-1">🎁 Votre première séance est offerte</p>
+            <p class="text-muted-foreground text-sm mb-3">Découvrez notre approche sans engagement. Si l'expérience vous plaît, un partage de votre ressenti sur Google aide d'autres sportifs à nous trouver.</p>
+            <a href="/contact" class="text-primary hover:underline text-sm font-medium mb-4 inline-block">
+                Réserver mon essai &rarr;
+            </a>
             <p class="text-muted-foreground italic mb-4">L'investissement ultime pour des résultats sans compromis.</p>
             <a href="/services/coaching-solo" class="text-primary hover:underline text-sm font-medium">
                 En savoir plus sur le coaching solo &rarr;
@@ -354,6 +345,11 @@ const offers = [
             tiers={duoTiers}
         />
         <div class="text-center -mt-8 mb-16">
+            <p class="text-primary font-medium mb-1">🎁 Votre première séance est offerte</p>
+            <p class="text-muted-foreground text-sm mb-3">Découvrez notre approche sans engagement. Si l'expérience vous plaît, un partage de votre ressenti sur Google aide d'autres sportifs à nous trouver.</p>
+            <a href="/contact" class="text-primary hover:underline text-sm font-medium mb-4 inline-block">
+                Réserver mon essai &rarr;
+            </a>
             <p class="text-muted-foreground italic mb-4">Divisez les coûts, multipliez la motivation.</p>
             <a href="/services/coaching-duo-trio" class="text-primary hover:underline text-sm font-medium">
                 En savoir plus sur le coaching duo & trio &rarr;
@@ -369,8 +365,14 @@ const offers = [
             title="Small Group Training — Abonnements Petit Groupe"
             subtitle="6 personnes max pour que Nicolas corrige chaque mouvement."
             tiers={smallGroupTiers}
+            columns={2}
         />
         <div class="text-center -mt-8 mb-16">
+            <p class="text-primary font-medium mb-1">🎁 Votre première séance est offerte</p>
+            <p class="text-muted-foreground text-sm mb-3">Découvrez notre approche sans engagement. Si l'expérience vous plaît, un partage de votre ressenti sur Google aide d'autres sportifs à nous trouver.</p>
+            <a href="/contact" class="text-primary hover:underline text-sm font-medium mb-4 inline-block">
+                Réserver mon essai &rarr;
+            </a>
             <p class="text-muted-foreground italic mb-4">Le compromis parfait entre prix et attention personnalisée.</p>
             <a href="/services/small-group-training" class="text-primary hover:underline text-sm font-medium">
                 En savoir plus sur le small group training &rarr;
@@ -386,8 +388,14 @@ const offers = [
             title="Cours Collectifs Round by Round — Tarifs Boxe Genève"
             subtitle="Accessible à tous, sans combat. 2 coachs par session."
             tiers={rbrTiers}
+            columns={2}
         />
         <div class="text-center -mt-8 mb-16">
+            <p class="text-primary font-medium mb-1">🎁 Votre première séance est offerte</p>
+            <p class="text-muted-foreground text-sm mb-3">Découvrez notre approche sans engagement. Si l'expérience vous plaît, un partage de votre ressenti sur Google aide d'autres sportifs à nous trouver.</p>
+            <a href="/contact" class="text-primary hover:underline text-sm font-medium mb-4 inline-block">
+                Réserver mon essai &rarr;
+            </a>
             <p class="text-muted-foreground italic mb-4">Rejoignez le mouvement. 12 rounds pour se dépasser.</p>
             <a href="/services/round-by-round" class="text-primary hover:underline text-sm font-medium">
                 En savoir plus sur Round by Round &rarr;

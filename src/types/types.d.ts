@@ -164,6 +164,7 @@ export interface TestimonialsProps extends HeadlineProps {
 
 export interface PricingTableProps extends HeadlineProps {
   tiers: PricingTier[];
+  columns?: 2 | 3;
 }
 
 export interface FAQProps extends HeadlineProps {

@@ -36,9 +36,9 @@ const stats = [
         description: "Le format optimal pour un entraînement complet : échauffement, technique, physique, bilan.",
     },
     {
-        value: "15+",
+        value: "20+",
         label: "Années d'expérience",
-        description: "Plus de 500 élèves accompagnés individuellement, du débutant au compétiteur.",
+        description: "Plus de 100 élèves accompagnés individuellement, du débutant au compétiteur.",
     },
 ];
 
@@ -74,18 +74,6 @@ const pourQuiPanels = [
 ];
 
 const tiers = [
-    {
-        name: "Séance d'essai",
-        description: "Découvrez le coaching solo sans engagement.",
-        price: "Gratuit",
-        features: [
-            "60 minutes de coaching",
-            "Découverte du format solo",
-            "Matériel fourni",
-            "Sans engagement",
-        ],
-        cta: { text: "Réserver", href: "/contact" },
-    },
     {
         name: "Séance découverte",
         description: "Premier contact avec le coaching solo. Idéal pour tester l'approche.",
@@ -157,7 +145,7 @@ const faqs = [
             type="Person"
             data={{
                 title: "Nicolas de Boccard",
-                description: "Head Coach & Fondateur de Bis Repetita. Plus de 15 ans d'expérience en boxe anglaise. Licencié SwissBoxing #102860.",
+                description: "Head Coach & Fondateur de Bis Repetita. Dans la boxe depuis 2002, entraineur agréé Swiss Boxing. Licencié SwissBoxing #102860.",
             }}
         />
         <Schema type="FAQPage" data={{ faqs: faqs.map(f => ({ question: f.question, answer: f.answer.replace(/<[^>]*>/g, '') })) }} />
@@ -236,7 +224,15 @@ const faqs = [
             tagline="Tarifs"
             title="Formules coaching solo"
             tiers={tiers}
+            columns={2}
         />
+        <div class="text-center -mt-8 mb-8 max-w-xl mx-auto px-6">
+            <p class="text-primary font-medium mb-1">🎁 Votre première séance est offerte</p>
+            <p class="text-muted-foreground text-sm mb-3">Découvrez notre approche sans engagement. Si l'expérience vous plaît, un partage de votre ressenti sur Google aide d'autres sportifs à nous trouver.</p>
+            <a href="/contact" class="text-primary hover:underline text-sm font-medium">
+                Réserver mon essai &rarr;
+            </a>
+        </div>
     </GsapReveal>
 
     {/* S5 — ContentShowcase — 60 minutes */}

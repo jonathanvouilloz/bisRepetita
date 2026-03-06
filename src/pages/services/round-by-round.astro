@@ -37,7 +37,7 @@ const stats = [
         description: "Le format combat : rounds chronométrés avec récupération active entre chaque série.",
     },
     {
-        value: "15+",
+        value: "20+",
         label: "Années d'expérience",
         description: "Nicolas et Lionel de Boccard, formés dans les clubs genevois historiques.",
     },
@@ -113,18 +113,6 @@ const faqs = [
 
 const tiers = [
     {
-        name: "Séance d'essai",
-        description: "Découvrez le format Round by Round sans engagement.",
-        price: "Gratuit",
-        features: [
-            "60 minutes de coaching",
-            "Découverte du format collectif",
-            "Matériel fourni",
-            "Sans engagement",
-        ],
-        cta: { text: "Réserver", href: "/contact" },
-    },
-    {
         name: "Séance unité",
         description: "Un cours Round by Round à la carte.",
         price: "CHF TODO",
@@ -194,7 +182,7 @@ const testimonials = [
             type="Person"
             data={{
                 title: "Nicolas de Boccard",
-                description: "Head Coach & Fondateur de Bis Repetita. Plus de 15 ans d'expérience en boxe anglaise. Licencié SwissBoxing #102860.",
+                description: "Head Coach & Fondateur de Bis Repetita. Dans la boxe depuis 2002, entraineur agréé Swiss Boxing. Licencié SwissBoxing #102860.",
             }}
         />
         <Schema type="FAQPage" data={{ faqs: faqs.map(f => ({ question: f.question, answer: f.answer.replace(/<[^>]*>/g, '') })) }} />
@@ -279,7 +267,15 @@ const testimonials = [
             tagline="Tarifs"
             title="Formules Round by Round"
             tiers={tiers}
+            columns={2}
         />
+        <div class="text-center -mt-8 mb-8 max-w-xl mx-auto px-6">
+            <p class="text-primary font-medium mb-1">🎁 Votre première séance est offerte</p>
+            <p class="text-muted-foreground text-sm mb-3">Découvrez notre approche sans engagement. Si l'expérience vous plaît, un partage de votre ressenti sur Google aide d'autres sportifs à nous trouver.</p>
+            <a href="/contact" class="text-primary hover:underline text-sm font-medium">
+                Réserver mon essai &rarr;
+            </a>
+        </div>
     </GsapReveal>
 
     {/* S6 — ContentShowcase (sécurité / trust) */}
@@ -326,7 +322,7 @@ const testimonials = [
             imageAlt="Nicolas et Lionel de Boccard — coachs de boxe Bis Repetita Genève"
             items={[
                 {
-                    title: "15+ ans d'expérience",
+                    title: "20+ ans dans la boxe",
                     description: "Formés dans les clubs genevois historiques, Nicolas et Lionel ont forgé leur expertise au contact des meilleurs entraîneurs suisses.",
                 },
                 {
