@@ -1,0 +1,39 @@
+---
+import WidgetWrapper from "./WidgetWrapper.astro";
+import Headline from "../ui/Headline.astro";
+
+interface Props {
+    id?: string;
+    title?: string;
+    subtitle?: string;
+    tagline?: string;
+    isDark?: boolean;
+}
+
+const {
+    id = "reservation",
+    title = "Réservez votre créneau",
+    subtitle = "Consultez les disponibilités et réservez directement votre séance.",
+    tagline = "Réservation",
+    isDark = false,
+} = Astro.props;
+---
+
+<WidgetWrapper id={id} isDark={isDark}>
+    <Headline
+        title={title}
+        subtitle={subtitle}
+        tagline={tagline}
+        titleAs="h2"
+        classes={{
+            container: "mb-12 text-center",
+            title: "text-4xl md:text-5xl font-medium tracking-tight font-display",
+            subtitle: "text-lg text-muted-foreground max-w-2xl mx-auto",
+        }}
+    />
+    <div class="zenamu-calendar-wrapper">
+        <div id="zenamu-calendar" calendar-id="468b71a7480a5332d2d1b5187f627b96"></div>
+    </div>
+</WidgetWrapper>
+
+<script is:inline src="https://zenamu.com/calendar/list.js" crossorigin></script>

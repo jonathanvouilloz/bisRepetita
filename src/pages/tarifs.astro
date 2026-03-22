@@ -34,7 +34,7 @@ const soloTiers = [
     {
         name: "Séance unité",
         description: "Premier contact avec le coaching individuel.",
-        price: "CHF TODO",
+        price: "CHF 120.-",
         priceNote: "/ séance",
         features: [
             "60 minutes de coaching",
@@ -48,7 +48,7 @@ const soloTiers = [
     {
         name: "Pack 10 séances",
         description: "La formule pour progresser durablement.",
-        price: "CHF TODO",
+        price: "CHF 1'100.-",
         priceNote: "/ 10 séances",
         highlighted: true,
         popularLabel: "Recommandé",
@@ -61,20 +61,6 @@ const soloTiers = [
         ],
         cta: { text: "Réserver", href: "/contact" },
     },
-    {
-        name: "Pack 20 séances",
-        description: "L'engagement pour une transformation complète.",
-        price: "CHF TODO",
-        priceNote: "/ 20 séances",
-        features: [
-            "20 × 60 minutes",
-            "Programme sur mesure",
-            "Suivi de progression avancé",
-            "Matériel fourni",
-            "Meilleur tarif",
-        ],
-        cta: { text: "Réserver", href: "/contact" },
-    },
 ];
 
 // --- Duo & Trio ---
@@ -82,7 +68,7 @@ const duoTiers = [
     {
         name: "Séance duo",
         description: "Un coaching privé à deux.",
-        price: "CHF TODO",
+        price: "CHF 140.-",
         priceNote: "/ séance (prix total)",
         features: [
             "60 minutes de coaching",
@@ -96,10 +82,8 @@ const duoTiers = [
     {
         name: "Séance trio",
         description: "Trois complices, un coach dédié.",
-        price: "CHF TODO",
+        price: "CHF 160.-",
         priceNote: "/ séance (prix total)",
-        highlighted: true,
-        popularLabel: "Recommandé",
         features: [
             "60 minutes de coaching",
             "3 participants",
@@ -112,11 +96,27 @@ const duoTiers = [
     {
         name: "Pack 10 duo",
         description: "L'engagement partagé pour progresser ensemble.",
-        price: "CHF TODO",
+        price: "CHF 1'300.-",
         priceNote: "/ 10 séances",
         features: [
             "10 × 60 minutes",
             "Programme personnalisé duo",
+            "Suivi de progression",
+            "Matériel fourni",
+            "Tarif préférentiel",
+        ],
+        cta: { text: "Réserver", href: "/contact" },
+    },
+    {
+        name: "Pack 10 trio",
+        description: "L'engagement partagé pour progresser à trois.",
+        price: "CHF 1'500.-",
+        priceNote: "/ 10 séances",
+        highlighted: true,
+        popularLabel: "Recommandé",
+        features: [
+            "10 × 60 minutes",
+            "Programme personnalisé trio",
             "Suivi de progression",
             "Matériel fourni",
             "Tarif préférentiel",
@@ -130,11 +130,11 @@ const smallGroupTiers = [
     {
         name: "Séance unité",
         description: "Un cours small group à la carte.",
-        price: "CHF TODO",
+        price: "CHF 200.-",
         priceNote: "/ séance",
         features: [
             "60 minutes de coaching",
-            "6 participants max",
+            "4 participants",
             "Programme structuré",
             "Matériel fourni",
         ],
@@ -143,13 +143,13 @@ const smallGroupTiers = [
     {
         name: "Pack 10 séances",
         description: "L'engagement qui fait la différence.",
-        price: "CHF TODO",
+        price: "CHF 1'800.-",
         priceNote: "/ 10 séances",
         highlighted: true,
         popularLabel: "Recommandé",
         features: [
             "10 × 60 minutes",
-            "6 participants max",
+            "4 participants",
             "Suivi de progression",
             "Matériel fourni",
             "Tarif préférentiel",
@@ -161,33 +161,18 @@ const smallGroupTiers = [
 // --- Round by Round ---
 const rbrTiers = [
     {
-        name: "Pack 10 cours",
-        description: "L'engagement qui fait la différence.",
-        price: "CHF TODO",
-        priceNote: "/ 10 cours",
-        highlighted: true,
-        popularLabel: "Le plus populaire",
+        name: "Séance unité",
+        description: "Un cours collectif Round by Round à la carte.",
+        price: "CHF 40.-",
+        priceNote: "/ séance",
         features: [
-            "10 × 60 minutes",
+            "60 minutes de coaching",
             "8 participants max",
             "2 coachs",
             "Matériel fourni",
-            "Tarif préférentiel",
+            "Sans engagement",
         ],
         cta: { text: "Réserver", href: "/contact" },
-    },
-    {
-        name: "Abonnement mensuel",
-        description: "Accès illimité aux cours du mois.",
-        price: "CHF TODO",
-        priceNote: "/ mois",
-        features: [
-            "Cours illimités",
-            "Réservation prioritaire",
-            "Matériel fourni",
-            "Sans engagement longue durée",
-        ],
-        cta: { text: "S'abonner", href: "/contact" },
     },
 ];
 
@@ -343,6 +328,7 @@ const offers = [
             title="Duo & Trio — Tarifs Coaching Partagé"
             subtitle="La qualité du privé avec le plaisir du partage."
             tiers={duoTiers}
+            columns={2}
         />
         <div class="text-center -mt-8 mb-16">
             <p class="text-primary font-medium mb-1">🎁 Votre première séance est offerte</p>
@@ -388,7 +374,7 @@ const offers = [
             title="Cours Collectifs Round by Round — Tarifs Boxe Genève"
             subtitle="Accessible à tous, sans combat. 2 coachs par session."
             tiers={rbrTiers}
-            columns={2}
+            columns={1}
         />
         <div class="text-center -mt-8 mb-16">
             <p class="text-primary font-medium mb-1">🎁 Votre première séance est offerte</p>

@@ -8,6 +8,7 @@ import Features from "../../components/widgets/Features.astro";
 import PricingTable from "../../components/widgets/PricingTable.astro";
 import FAQ from "../../components/widgets/FAQ.astro";
 import CTABanner from "../../components/widgets/CTABanner.astro";
+import ZenamuCalendar from "../../components/widgets/ZenamuCalendar.astro";
 import RelatedServices from "../../components/widgets/RelatedServices.astro";
 import GsapReveal from "../../components/widgets/GsapReveal.astro";
 import Schema from "../../components/seo/Schema.astro";
@@ -89,29 +90,14 @@ const tiers = [
     {
         name: "Séance unité",
         description: "Une séance complète de coaching de boxe chez vous.",
-        price: "CHF TODO",
+        price: "dès CHF 150.-",
         priceNote: "/ séance",
+        highlighted: true,
         features: [
             "60 minutes de coaching individuel",
             "Programme personnalisé",
             "Matériel professionnel fourni",
             "Déplacement inclus (canton GE)",
-        ],
-        cta: { text: "Réserver", href: "/contact" },
-    },
-    {
-        name: "Pack 10 séances",
-        description: "La formule pour progresser durablement avec un suivi structuré.",
-        price: "CHF TODO",
-        priceNote: "/ 10 séances",
-        highlighted: true,
-        popularLabel: "Recommandé",
-        features: [
-            "10 × 60 minutes de coaching",
-            "Programme personnalisé évolutif",
-            "Suivi de progression",
-            "Matériel fourni",
-            "Tarif préférentiel",
         ],
         cta: { text: "Réserver", href: "/contact" },
     },
@@ -331,6 +317,11 @@ const faqs = [
             subtitle="Tout ce que vous devez savoir sur le coaching de boxe à domicile à Genève."
             items={faqs}
         />
+    </GsapReveal>
+
+    {/* Calendrier Zenamu */}
+    <GsapReveal animation="fadeUp">
+        <ZenamuCalendar />
     </GsapReveal>
 
     {/* S10 — CTA */}

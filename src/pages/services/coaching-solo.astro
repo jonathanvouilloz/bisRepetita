@@ -8,6 +8,7 @@ import EquipmentPanels from "../../components/widgets/EquipmentPanels.astro";
 import PricingTable from "../../components/widgets/PricingTable.astro";
 import FAQ from "../../components/widgets/FAQ.astro";
 import CTABanner from "../../components/widgets/CTABanner.astro";
+import ZenamuCalendar from "../../components/widgets/ZenamuCalendar.astro";
 import RelatedServices from "../../components/widgets/RelatedServices.astro";
 import GsapReveal from "../../components/widgets/GsapReveal.astro";
 import Schema from "../../components/seo/Schema.astro";
@@ -77,7 +78,7 @@ const tiers = [
     {
         name: "Séance découverte",
         description: "Premier contact avec le coaching solo. Idéal pour tester l'approche.",
-        price: "CHF TODO",
+        price: "CHF 120.-",
         priceNote: "/ séance",
         features: [
             "60 minutes de coaching individuel",
@@ -90,7 +91,7 @@ const tiers = [
     {
         name: "Pack 10 séances",
         description: "La formule pour progresser durablement avec un suivi structuré.",
-        price: "CHF TODO",
+        price: "CHF 1'100.-",
         priceNote: "/ 10 séances",
         highlighted: true,
         popularLabel: "Recommandé",
@@ -284,6 +285,11 @@ const faqs = [
             subtitle="Tout ce que vous devez savoir sur le coaching solo à Genève."
             items={faqs}
         />
+    </GsapReveal>
+
+    {/* Calendrier Zenamu */}
+    <GsapReveal animation="fadeUp">
+        <ZenamuCalendar />
     </GsapReveal>
 
     {/* S9 — CTABanner */}

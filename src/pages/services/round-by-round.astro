@@ -11,6 +11,7 @@ import LocationMap from "../../components/widgets/LocationMap.astro";
 import PricingTable from "../../components/widgets/PricingTable.astro";
 import FAQ from "../../components/widgets/FAQ.astro";
 import CTABanner from "../../components/widgets/CTABanner.astro";
+import ZenamuCalendar from "../../components/widgets/ZenamuCalendar.astro";
 import RelatedServices from "../../components/widgets/RelatedServices.astro";
 import GsapReveal from "../../components/widgets/GsapReveal.astro";
 import Headline from "../../components/ui/Headline.astro";
@@ -114,30 +115,15 @@ const faqs = [
 const tiers = [
     {
         name: "Séance unité",
-        description: "Un cours Round by Round à la carte.",
-        price: "CHF TODO",
+        description: "Un cours collectif Round by Round à la carte.",
+        price: "CHF 40.-",
         priceNote: "/ séance",
         features: [
             "60 minutes de coaching",
             "8 participants max",
             "2 coachs présents",
             "Matériel fourni",
-        ],
-        cta: { text: "Réserver", href: "/contact" },
-    },
-    {
-        name: "Pack 10 séances",
-        description: "L'engagement qui fait la différence.",
-        price: "CHF TODO",
-        priceNote: "/ 10 séances",
-        highlighted: true,
-        popularLabel: "Recommandé",
-        features: [
-            "10 × 60 minutes",
-            "8 participants max",
-            "2 coachs présents",
-            "Matériel fourni",
-            "Tarif préférentiel",
+            "Sans engagement",
         ],
         cta: { text: "Réserver", href: "/contact" },
     },
@@ -388,6 +374,11 @@ const testimonials = [
             subtitle="Tout ce que vous devez savoir sur les cours collectifs de boxe à Genève."
             items={faqs}
         />
+    </GsapReveal>
+
+    {/* Calendrier Zenamu */}
+    <GsapReveal animation="fadeUp">
+        <ZenamuCalendar />
     </GsapReveal>
 
     {/* S12 — CTABanner */}

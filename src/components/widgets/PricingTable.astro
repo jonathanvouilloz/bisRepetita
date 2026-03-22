@@ -29,7 +29,7 @@ const {
             subtitle: "text-lg text-muted-foreground max-w-2xl mx-auto",
         }}
     />
-    <div class:list={["grid gap-8", columns === 2 ? "md:grid-cols-2 max-w-4xl mx-auto" : "md:grid-cols-3"]}>
+    <div class:list={["grid gap-8", columns === 1 ? "max-w-lg mx-auto" : columns === 2 ? "md:grid-cols-2 max-w-4xl mx-auto" : "md:grid-cols-3"]}>
         {
             tiers.map((tier) => (
                 <div

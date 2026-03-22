@@ -8,6 +8,7 @@ import Features from "../../components/widgets/Features.astro";
 import PricingTable from "../../components/widgets/PricingTable.astro";
 import FAQ from "../../components/widgets/FAQ.astro";
 import CTABanner from "../../components/widgets/CTABanner.astro";
+import ZenamuCalendar from "../../components/widgets/ZenamuCalendar.astro";
 import RelatedServices from "../../components/widgets/RelatedServices.astro";
 import GsapReveal from "../../components/widgets/GsapReveal.astro";
 import Schema from "../../components/seo/Schema.astro";
@@ -69,7 +70,7 @@ const tiers = [
     {
         name: "Séance duo",
         description: "S'entraîner à deux avec un coaching personnalisé.",
-        price: "CHF TODO",
+        price: "CHF 140.-",
         priceNote: "/ séance (prix total)",
         features: [
             "60 minutes de coaching",
@@ -82,7 +83,7 @@ const tiers = [
     {
         name: "Séance trio",
         description: "L'émulation à trois, le coaching en plus.",
-        price: "CHF TODO",
+        price: "CHF 160.-",
         priceNote: "/ séance (prix total)",
         highlighted: true,
         popularLabel: "Populaire",
@@ -273,6 +274,11 @@ const faqs = [
             subtitle="Tout ce que vous devez savoir sur le coaching duo & trio à Genève."
             items={faqs}
         />
+    </GsapReveal>
+
+    {/* Calendrier Zenamu */}
+    <GsapReveal animation="fadeUp">
+        <ZenamuCalendar />
     </GsapReveal>
 
     {/* S9 — CTABanner */}

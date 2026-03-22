@@ -8,6 +8,7 @@ import Features from "../../components/widgets/Features.astro";
 import PricingTable from "../../components/widgets/PricingTable.astro";
 import FAQ from "../../components/widgets/FAQ.astro";
 import CTABanner from "../../components/widgets/CTABanner.astro";
+import ZenamuCalendar from "../../components/widgets/ZenamuCalendar.astro";
 import RelatedServices from "../../components/widgets/RelatedServices.astro";
 import GsapReveal from "../../components/widgets/GsapReveal.astro";
 import Schema from "../../components/seo/Schema.astro";
@@ -75,11 +76,11 @@ const tiers = [
     {
         name: "Séance unité",
         description: "Un cours small group à la carte.",
-        price: "CHF TODO",
+        price: "CHF 200.-",
         priceNote: "/ séance",
         features: [
             "60 minutes de coaching",
-            "6 participants max",
+            "4 participants",
             "Programme structuré",
             "Matériel fourni",
         ],
@@ -88,13 +89,13 @@ const tiers = [
     {
         name: "Pack 10 séances",
         description: "L'engagement qui fait la différence.",
-        price: "CHF TODO",
+        price: "CHF 1'800.-",
         priceNote: "/ 10 séances",
         highlighted: true,
         popularLabel: "Recommandé",
         features: [
             "10 × 60 minutes",
-            "6 participants max",
+            "4 participants",
             "Suivi de progression",
             "Matériel fourni",
             "Tarif préférentiel",
@@ -289,6 +290,11 @@ const faqs = [
             subtitle="Tout ce que vous devez savoir sur le small group training à Genève."
             items={faqs}
         />
+    </GsapReveal>
+
+    {/* Calendrier Zenamu */}
+    <GsapReveal animation="fadeUp">
+        <ZenamuCalendar />
     </GsapReveal>
 
     {/* S9 — CTABanner */}

@@ -11,6 +11,7 @@ import GsapReveal from "../components/widgets/GsapReveal.astro";
 import SectionTitle from "../components/ui/SectionTitle.astro";
 import Container from "../components/ui/Container.astro";
 
+import ZenamuCalendar from "../components/widgets/ZenamuCalendar.astro";
 import Schema from "../components/seo/Schema.astro";
 import heroImage from "../assets/homepage.webp";
 import coursPortrait from "../assets/cours-portrait.webp";
@@ -237,7 +238,9 @@ const testimonials = [
         />
     </GsapReveal>
 
-    <div class="mt-8 md:mt-16"></div>
+    <GsapReveal animation="fadeUp">
+        <ZenamuCalendar />
+    </GsapReveal>
 
     <GsapReveal animation="fadeUp">
         <CTABanner

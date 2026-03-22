@@ -2,6 +2,7 @@
 import BaseLayout from "../layouts/BaseLayout.astro";
 import Container from "../components/ui/Container.astro";
 import ContactForm from "../components/widgets/ContactForm.astro";
+import ZenamuCalendar from "../components/widgets/ZenamuCalendar.astro";
 import LocationMap from "../components/widgets/LocationMap.astro";
 import GsapReveal from "../components/widgets/GsapReveal.astro";
 
@@ -16,6 +17,11 @@ const metadata = {
     <div class="theme-light">
         <!-- Split: contenu + formulaire -->
         <ContactForm />
+
+        <!-- Calendrier Zenamu -->
+        <GsapReveal animation="fadeUp">
+            <ZenamuCalendar />
+        </GsapReveal>
 
         <!-- Map heading -->
         <section class="pt-8 pb-4 md:pt-16 md:pb-6">
