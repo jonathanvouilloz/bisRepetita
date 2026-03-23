@@ -22,7 +22,7 @@ const {
     badge = "Blog",
 } = Astro.props;
 
-const allPosts = (await getCollection("blog"))
+const allPosts = (await getCollection("blog", ({ data }) => !data.draft))
     .filter((p) => p.id !== excludePostId)
     .filter((p) => !filterCategory || p.data.category === filterCategory)
     .sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf())

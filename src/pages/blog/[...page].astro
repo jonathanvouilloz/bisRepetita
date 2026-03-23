@@ -8,7 +8,7 @@ import Pagination from "../../components/ui/Pagination.astro";
 import type { GetStaticPathsOptions } from "astro";
 
 export async function getStaticPaths({ paginate }: GetStaticPathsOptions) {
-  const blogEntries = await getCollection("blog");
+  const blogEntries = await getCollection("blog", ({ data }) => !data.draft);
   const sortedPosts = blogEntries
     .filter((post) => post.data && post.data.pubDate)
     .sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf());
@@ -23,15 +23,15 @@ const isFirstPage = page.currentPage === 1;
 const featuredPost = isFirstPage && allPosts.length > 0 ? allPosts[0] : null;
 const gridPosts = isFirstPage ? allPosts.slice(1) : allPosts;
 
-const allBlogEntries = await getCollection("blog");
+const allBlogEntries = await getCollection("blog", ({ data }) => !data.draft);
 const allCategories = allBlogEntries
   .map((p) => p.data.category)
   .filter((c): c is string => !!c);
 
 const metadata = {
-  title: "Blog — Conseils boxe, entrainement et bien-etre",
+  title: "Blog — Boxe, coaching et bien-être à Genève",
   description:
-    "Actualites, conseils et articles sur la boxe, l'entrainement et le bien-etre par le studio Bis Repetita a Geneve. Techniques, nutrition et mental.",
+    "Articles et conseils sur la boxe, l'entraînement et le bien-être par le studio Bis Repetita à Genève. Techniques, nutrition et mental.",
 };
 ---
 
