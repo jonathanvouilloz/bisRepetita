@@ -6,6 +6,7 @@ interface Props {
     canonical?: string;
     ogImage?: string | ImageMetadata;
     ignoreTitleTemplate?: boolean;
+    ogType?: string;
 }
 
 import { siteConfig } from "../../config/site";
@@ -16,6 +17,7 @@ const {
     canonical,
     ogImage = siteConfig.ogImage,
     ignoreTitleTemplate = false,
+    ogType = "website",
 } = Astro.props;
 
 const ogImageSrc = typeof ogImage === "string" ? ogImage : ogImage.src;
@@ -45,7 +47,7 @@ const canonicalURL =
 <meta name="author" content={siteConfig.author} />
 
 <!-- Open Graph / Facebook -->
-<meta property="og:type" content="website" />
+<meta property="og:type" content={ogType} />
 <meta property="og:url" content={canonicalURL} />
 <meta property="og:title" content={fullTitle} />
 <meta property="og:description" content={description} />

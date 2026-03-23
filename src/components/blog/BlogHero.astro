@@ -65,7 +65,7 @@ const uniqueCategories = [...new Set(categories)].sort();
                   : "bg-muted text-muted-foreground hover:bg-border hover:text-foreground",
               ]}
             >
-              {cat}
+              {cat.charAt(0).toUpperCase() + cat.slice(1)}
             </a>
           ))}
         </nav>

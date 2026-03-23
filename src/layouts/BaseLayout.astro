@@ -10,6 +10,7 @@ interface Props {
         ogImage?: string;
         canonical?: string;
         ignoreTitleTemplate?: boolean;
+        ogType?: string;
     };
 }
 
@@ -28,6 +29,7 @@ const finalDescription = metadata?.description || description;
 const finalOgImage = metadata?.ogImage || ogImage;
 const finalCanonical = metadata?.canonical || canonical;
 const finalIgnoreTitleTemplate = metadata?.ignoreTitleTemplate || false;
+const finalOgType = metadata?.ogType || "website";
 ---
 
 <!doctype html>
@@ -39,6 +41,7 @@ const finalIgnoreTitleTemplate = metadata?.ignoreTitleTemplate || false;
             ogImage={finalOgImage}
             canonical={finalCanonical}
             ignoreTitleTemplate={finalIgnoreTitleTemplate}
+            ogType={finalOgType}
         />
         <Schema type="WebSite" data={{}} />
         <slot name="head" />
@@ -79,7 +82,7 @@ const finalIgnoreTitleTemplate = metadata?.ignoreTitleTemplate || false;
             Aller au contenu
         </a>
 
-        <div class="relative flex min-h-screen flex-col overflow-x-hidden">
+        <div class="relative flex min-h-screen flex-col">
             <!-- Background Glow -->
             <div class="pointer-events-none fixed inset-0 z-0 hidden md:block">
                 <div

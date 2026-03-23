@@ -36,10 +36,11 @@ export async function getStaticPaths() {
 }
 
 const { category, allCategories, posts } = Astro.props;
+const categoryLabel = category.charAt(0).toUpperCase() + category.slice(1);
 
 const metadata = {
-  title: `${category} — Blog Bis Repetita`,
-  description: `Articles dans la categorie ${category}. Conseils et actualites par Bis Repetita Geneve.`,
+  title: `${categoryLabel} — Blog Bis Repetita`,
+  description: `Articles dans la categorie ${categoryLabel}. Conseils et actualites par Bis Repetita Geneve.`,
 };
 ---
 
@@ -47,7 +48,7 @@ const metadata = {
   <div class="theme-light">
     <div class="min-h-screen bg-background">
       <BlogHero
-        title={category}
+        title={categoryLabel}
         subtitle={`${posts.length} article${posts.length === 1 ? "" : "s"} dans cette categorie.`}
         categories={allCategories}
         activeCategory={category}

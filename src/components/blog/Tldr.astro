@@ -1,0 +1,30 @@
+---
+interface Props {
+  title?: string;
+}
+
+const { title = "L'essentiel en bref" } = Astro.props;
+---
+
+<aside class="not-prose mb-8 rounded-xl border border-primary/20 bg-primary/5 p-6">
+  <div class="mb-3 flex items-center gap-2">
+    <svg
+      class="h-5 w-5 text-primary"
+      fill="none"
+      viewBox="0 0 24 24"
+      stroke="currentColor"
+      stroke-width="2"
+    >
+      <path
+        stroke-linecap="round"
+        stroke-linejoin="round"
+        d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+    </svg>
+    <span class="text-sm font-semibold uppercase tracking-wide text-primary">
+      {title}
+    </span>
+  </div>
+  <div class="text-base leading-relaxed text-foreground/80 [&_ul]:list-disc [&_ul]:pl-5 [&_ul]:space-y-1">
+    <slot />
+  </div>
+</aside>

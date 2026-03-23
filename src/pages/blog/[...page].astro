@@ -40,7 +40,7 @@ const metadata = {
     <div class="min-h-screen bg-background">
       <BlogHero categories={allCategories} />
 
-      <div class="mx-auto max-w-7xl px-4 pb-20 sm:px-6 lg:px-8">
+      <div class="mx-auto max-w-6xl px-4 pb-20 sm:px-6 lg:px-8">
         {
           allPosts.length === 0 ? (
             <div class="py-20 text-center">
@@ -60,7 +60,7 @@ const metadata = {
               )}
 
               {gridPosts.length > 0 && (
-                <div class="grid gap-8 sm:grid-cols-2 lg:grid-cols-3">
+                <div class="grid gap-8 sm:grid-cols-2">
                   {gridPosts.map((post) => (
                     <PostItem post={post} />
                   ))}
