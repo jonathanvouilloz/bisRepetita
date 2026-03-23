@@ -12,6 +12,7 @@ import WidgetWrapper from "../components/widgets/WidgetWrapper.astro";
 import Headline from "../components/ui/Headline.astro";
 import Button from "../components/ui/Button.astro";
 import Schema from "../components/seo/Schema.astro";
+import { Icon } from "astro-icon/components";
 import heroImage from "../assets/studio-interior.webp";
 
 const metadata = {
@@ -80,6 +81,22 @@ const duoTiers = [
         cta: { text: "Réserver", href: "/contact" },
     },
     {
+        name: "Pack 10 duo",
+        description: "L'engagement partagé pour progresser ensemble.",
+        price: "CHF 1'300.-",
+        priceNote: "/ 10 séances",
+        highlighted: true,
+        popularLabel: "Recommandé",
+        features: [
+            "10 × 60 minutes",
+            "Programme personnalisé duo",
+            "Suivi de progression",
+            "Matériel fourni",
+            "Tarif préférentiel",
+        ],
+        cta: { text: "Réserver", href: "/contact" },
+    },
+    {
         name: "Séance trio",
         description: "Trois complices, un coach dédié.",
         price: "CHF 160.-",
@@ -90,20 +107,6 @@ const duoTiers = [
             "Programme adapté au groupe",
             "Matériel fourni",
             "Sans engagement",
-        ],
-        cta: { text: "Réserver", href: "/contact" },
-    },
-    {
-        name: "Pack 10 duo",
-        description: "L'engagement partagé pour progresser ensemble.",
-        price: "CHF 1'300.-",
-        priceNote: "/ 10 séances",
-        features: [
-            "10 × 60 minutes",
-            "Programme personnalisé duo",
-            "Suivi de progression",
-            "Matériel fourni",
-            "Tarif préférentiel",
         ],
         cta: { text: "Réserver", href: "/contact" },
     },
@@ -368,25 +371,53 @@ const offers = [
 
     {/* 7. Round by Round — #boxe-groupe */}
     <GsapReveal animation="fadeUp">
-        <PricingTable
-            id="boxe-groupe"
-            tagline="Round by Round"
-            title="Cours Collectifs Round by Round — Tarifs Boxe Genève"
-            subtitle="Accessible à tous, sans combat. 2 coachs par session."
-            tiers={rbrTiers}
-            columns={1}
-        />
-        <div class="text-center -mt-8 mb-16">
-            <p class="text-primary font-medium mb-1">🎁 Votre première séance est offerte</p>
-            <p class="text-muted-foreground text-sm mb-3">Découvrez notre approche sans engagement. Si l'expérience vous plaît, un partage de votre ressenti sur Google aide d'autres sportifs à nous trouver.</p>
-            <a href="/contact" class="text-primary hover:underline text-sm font-medium mb-4 inline-block">
-                Réserver mon essai &rarr;
-            </a>
-            <p class="text-muted-foreground italic mb-4">Rejoignez le mouvement. 12 rounds pour se dépasser.</p>
-            <a href="/services/round-by-round" class="text-primary hover:underline text-sm font-medium">
-                En savoir plus sur Round by Round &rarr;
-            </a>
-        </div>
+        <WidgetWrapper id="boxe-groupe">
+            <Headline
+                title="Cours Collectifs Round by Round — Tarifs Boxe Genève"
+                subtitle="Accessible à tous, sans combat. 2 coachs par session."
+                tagline="Round by Round"
+                titleAs="h2"
+                align="center"
+                classes={{
+                    container: "max-w-3xl mx-auto mb-12 text-center",
+                    title: "text-4xl md:text-5xl font-medium tracking-tight font-display",
+                }}
+            />
+            <div class="bg-card/60 backdrop-blur-sm rounded-3xl border border-border/50 p-8 md:p-12 max-w-4xl mx-auto">
+                <div class="grid md:grid-cols-2 gap-10 items-center">
+                    <div class="text-center md:text-left">
+                        <span class="text-6xl md:text-7xl font-extrabold text-gradient-gold">CHF 40.-</span>
+                        <p class="text-muted-foreground mt-2">/ séance</p>
+                        <p class="text-foreground font-medium mt-4 text-lg">Un cours collectif Round by Round à la carte.</p>
+                        <div class="mt-6">
+                            <Button href="/contact" variant="primary" class="w-full md:w-auto">
+                                Réserver une séance
+                            </Button>
+                        </div>
+                    </div>
+                    <div>
+                        <ul class="space-y-4">
+                            {rbrTiers[0].features.map((feature) => (
+                                <li class="flex items-start gap-3 text-foreground/80">
+                                    <Icon name="lucide:check" class="w-5 h-5 text-primary mt-0.5 shrink-0" />
+                                    <span>{feature}</span>
+                                </li>
+                            ))}
+                        </ul>
+                    </div>
+                </div>
+                <div class="mt-10 pt-8 border-t border-border/50 text-center">
+                    <p class="text-primary font-medium mb-1">Votre première séance est offerte</p>
+                    <p class="text-muted-foreground text-sm">Découvrez notre approche sans engagement. Si l'expérience vous plaît, un partage de votre ressenti sur Google aide d'autres sportifs à nous trouver.</p>
+                </div>
+            </div>
+            <div class="text-center mt-6">
+                <p class="text-muted-foreground italic mb-4">Rejoignez le mouvement. 12 rounds pour se dépasser.</p>
+                <a href="/services/round-by-round" class="text-primary hover:underline text-sm font-medium">
+                    En savoir plus sur Round by Round &rarr;
+                </a>
+            </div>
+        </WidgetWrapper>
     </GsapReveal>
 
     {/* 8. Corporate — #corporate */}

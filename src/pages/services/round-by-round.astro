@@ -8,13 +8,15 @@ import Features from "../../components/widgets/Features.astro";
 import ProfileShowcase from "../../components/widgets/ProfileShowcase.astro";
 import Testimonials from "../../components/widgets/Testimonials.astro";
 import LocationMap from "../../components/widgets/LocationMap.astro";
-import PricingTable from "../../components/widgets/PricingTable.astro";
+import WidgetWrapper from "../../components/widgets/WidgetWrapper.astro";
+import Button from "../../components/ui/Button.astro";
 import FAQ from "../../components/widgets/FAQ.astro";
 import CTABanner from "../../components/widgets/CTABanner.astro";
 import ZenamuCalendar from "../../components/widgets/ZenamuCalendar.astro";
 import RelatedServices from "../../components/widgets/RelatedServices.astro";
 import GsapReveal from "../../components/widgets/GsapReveal.astro";
 import Headline from "../../components/ui/Headline.astro";
+import { Icon } from "astro-icon/components";
 import Schema from "../../components/seo/Schema.astro";
 import coursLandscape from "../../assets/cours-2-landscape.webp";
 import salle1 from "../../assets/salle-1.webp";
@@ -247,21 +249,47 @@ const testimonials = [
         />
     </GsapReveal>
 
-    {/* S5 — PricingTable (REMONTÉ de S9) */}
+    {/* S5 — Tarif unique */}
     <GsapReveal animation="fadeUp">
-        <PricingTable
-            tagline="Tarifs"
-            title="Formules Round by Round"
-            tiers={tiers}
-            columns={2}
-        />
-        <div class="text-center -mt-8 mb-8 max-w-xl mx-auto px-6">
-            <p class="text-primary font-medium mb-1">🎁 Votre première séance est offerte</p>
-            <p class="text-muted-foreground text-sm mb-3">Découvrez notre approche sans engagement. Si l'expérience vous plaît, un partage de votre ressenti sur Google aide d'autres sportifs à nous trouver.</p>
-            <a href="/contact" class="text-primary hover:underline text-sm font-medium">
-                Réserver mon essai &rarr;
-            </a>
-        </div>
+        <WidgetWrapper id="tarifs">
+            <Headline
+                title="Tarif Round by Round"
+                tagline="Tarifs"
+                titleAs="h2"
+                classes={{
+                    container: "mb-12 text-center",
+                    title: "text-4xl md:text-5xl font-medium tracking-tight font-display",
+                }}
+            />
+            <div class="glass-card rounded-3xl border border-border/50 p-8 md:p-12 max-w-4xl mx-auto">
+                <div class="grid md:grid-cols-2 gap-10 items-center">
+                    <div class="text-center md:text-left">
+                        <span class="text-6xl md:text-7xl font-extrabold text-gradient-gold">CHF 40.-</span>
+                        <p class="text-muted-foreground mt-2">/ séance</p>
+                        <p class="text-foreground font-medium mt-4 text-lg">Un cours collectif Round by Round à la carte.</p>
+                        <div class="mt-6">
+                            <Button href="/contact" variant="primary" class="w-full md:w-auto">
+                                Réserver une séance
+                            </Button>
+                        </div>
+                    </div>
+                    <div>
+                        <ul class="space-y-4">
+                            {tiers[0].features.map((feature) => (
+                                <li class="flex items-start gap-3 text-foreground/80">
+                                    <Icon name="lucide:check" class="w-5 h-5 text-primary mt-0.5 shrink-0" />
+                                    <span>{feature}</span>
+                                </li>
+                            ))}
+                        </ul>
+                    </div>
+                </div>
+                <div class="mt-10 pt-8 border-t border-border/50 text-center">
+                    <p class="text-primary font-medium mb-1">Votre première séance est offerte</p>
+                    <p class="text-muted-foreground text-sm">Découvrez notre approche sans engagement. Si l'expérience vous plaît, un partage de votre ressenti sur Google aide d'autres sportifs à nous trouver.</p>
+                </div>
+            </div>
+        </WidgetWrapper>
     </GsapReveal>
 
     {/* S6 — ContentShowcase (sécurité / trust) */}

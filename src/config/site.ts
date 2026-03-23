@@ -93,7 +93,7 @@ export const siteConfig = {
     linkedin: "https://linkedin.com/company/bisrepetita",
   },
   navCta: {
-    text: "Séance d'essai",
+    text: "Séance d'essai gratuite",
     href: "/contact",
   },
   maps: {
