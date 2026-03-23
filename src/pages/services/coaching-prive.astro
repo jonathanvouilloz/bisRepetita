@@ -4,6 +4,7 @@ import Hero from "../../components/widgets/Hero.astro";
 import Stats from "../../components/widgets/Stats.astro";
 import SplitShowcase from "../../components/widgets/SplitShowcase.astro";
 import FAQ from "../../components/widgets/FAQ.astro";
+import RelatedArticles from "../../components/widgets/RelatedArticles.astro";
 import CTABanner from "../../components/widgets/CTABanner.astro";
 import GsapReveal from "../../components/widgets/GsapReveal.astro";
 import Schema from "../../components/seo/Schema.astro";
@@ -280,7 +281,15 @@ const faqs = [
         />
     </GsapReveal>
 
-    {/* S6 — CTABanner */}
+    {/* S6 — Articles liés */}
+    <GsapReveal animation="fadeUp">
+        <RelatedArticles
+            title="Pourquoi choisir un studio privé pour votre coaching ?"
+            badge="À lire aussi"
+        />
+    </GsapReveal>
+
+    {/* S7 — CTABanner */}
     <GsapReveal animation="fadeUp">
         <CTABanner
             variant="brushed-full"

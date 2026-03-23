@@ -12,6 +12,7 @@ import SectionTitle from "../components/ui/SectionTitle.astro";
 import Container from "../components/ui/Container.astro";
 
 import ZenamuCalendar from "../components/widgets/ZenamuCalendar.astro";
+import RelatedArticles from "../components/widgets/RelatedArticles.astro";
 import Schema from "../components/seo/Schema.astro";
 import heroImage from "../assets/homepage.webp";
 import coursPortrait from "../assets/cours-portrait.webp";
@@ -240,6 +241,13 @@ const testimonials = [
 
     <GsapReveal animation="fadeUp">
         <ZenamuCalendar />
+    </GsapReveal>
+
+    <GsapReveal animation="fadeUp">
+        <RelatedArticles
+            title="Nos derniers articles"
+            badge="Blog"
+        />
     </GsapReveal>
 
     <GsapReveal animation="fadeUp">

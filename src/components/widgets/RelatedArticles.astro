@@ -1,0 +1,50 @@
+---
+import { getCollection } from "astro:content";
+import WidgetWrapper from "./WidgetWrapper.astro";
+import SectionTitle from "../ui/SectionTitle.astro";
+import PostItem from "../blog/PostItem.astro";
+
+interface Props {
+    maxItems?: number;
+    filterCategory?: string;
+    excludePostId?: string;
+    id?: string;
+    title?: string;
+    badge?: string;
+}
+
+const {
+    maxItems = 3,
+    filterCategory,
+    excludePostId,
+    id = "articles",
+    title = "Nos derniers articles",
+    badge = "Blog",
+} = Astro.props;
+
+const allPosts = (await getCollection("blog"))
+    .filter((p) => p.id !== excludePostId)
+    .filter((p) => !filterCategory || p.data.category === filterCategory)
+    .sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf())
+    .slice(0, maxItems);
+
+const gridCols =
+    allPosts.length === 1
+        ? "max-w-lg mx-auto"
+        : allPosts.length === 2
+          ? "grid gap-8 md:grid-cols-2 max-w-4xl mx-auto"
+          : "grid gap-8 md:grid-cols-3";
+---
+
+{
+    allPosts.length > 0 && (
+        <WidgetWrapper id={id}>
+            <SectionTitle badge={badge} title={title} class="mb-12" />
+            <div class:list={[gridCols, "gsap-stagger-cards"]}>
+                {allPosts.map((post) => (
+                    <PostItem post={post} />
+                ))}
+            </div>
+        </WidgetWrapper>
+    )
+}

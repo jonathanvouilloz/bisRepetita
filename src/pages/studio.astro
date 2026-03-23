@@ -7,6 +7,7 @@ import EquipmentPanels from "../components/widgets/EquipmentPanels.astro";
 import ServiceCard from "../components/widgets/ServiceCard.astro";
 import Testimonials from "../components/widgets/Testimonials.astro";
 import FAQ from "../components/widgets/FAQ.astro";
+import RelatedArticles from "../components/widgets/RelatedArticles.astro";
 import CTABanner from "../components/widgets/CTABanner.astro";
 import GsapReveal from "../components/widgets/GsapReveal.astro";
 import SectionTitle from "../components/ui/SectionTitle.astro";
@@ -448,7 +449,15 @@ const faqs = [
         </div>
     </Container>
 
-    {/* 8. Testimonials */}
+    {/* 8. Articles liés */}
+    <GsapReveal animation="fadeUp">
+        <RelatedArticles
+            title="Studio privé vs salle classique : le match"
+            badge="À lire aussi"
+        />
+    </GsapReveal>
+
+    {/* 9. Testimonials */}
     <GsapReveal animation="fadeUp">
         <Testimonials
             tagline="Témoignages"
