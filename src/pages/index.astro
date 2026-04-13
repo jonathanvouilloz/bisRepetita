@@ -14,7 +14,6 @@ import Container from "../components/ui/Container.astro";
 import ZenamuCalendar from "../components/widgets/ZenamuCalendar.astro";
 import RelatedArticles from "../components/widgets/RelatedArticles.astro";
 import Schema from "../components/seo/Schema.astro";
-import heroImage from "../assets/homepage.webp";
 import coursPortrait from "../assets/cours-portrait.webp";
 import coursLandscape from "../assets/cours-2-landscape.webp";
 
@@ -125,8 +124,8 @@ const testimonials = [
     <Hero
         title={`Votre studio de <br class="hidden md:block" /> <span class="text-primary">boxe premium</span> à Genève`}
         description="Découvrez la boxe dans un cadre d'exception. Coaching privé, cours collectifs et programmes corporate avec Nicolas de Boccard."
-        image={heroImage}
-        imageAlt="Studio de boxe premium Bis Repetita à Genève"
+        videoSrc="/videos/video-bg.mp4"
+        lightOverlay={true}
         actions={[
             {
                 text: "Réserver une séance",

@@ -65,6 +65,7 @@ export interface HeroProps extends HeadlineProps {
   variant?: "default" | "centered";
   ctaStyle?: "default" | "outline-gold" | "dark";
   lightOverlay?: boolean;
+  videoSrc?: string;
   socialProof?: {
     avatars: (ImageMetadata | string)[];
     badge?: string;

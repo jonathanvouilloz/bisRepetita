@@ -16,6 +16,7 @@ const {
     socialProof,
     locationBadge,
     classes = {},
+    videoSrc,
 } = Astro.props as HeroProps;
 
 const containerClass = classes.container || "h-[100vh]";
@@ -24,10 +25,20 @@ const isCentered = variant === "centered";
 
 <section id={id} class={`relative w-full ${containerClass} overflow-hidden`}>
 
-    <!-- Z-0: Full-bleed background image -->
+    <!-- Z-0: Full-bleed background (video or image) -->
     <div class="absolute inset-0">
         {
-            image ? (
+            videoSrc ? (
+                <video
+                    class="w-full h-full object-cover"
+                    autoplay
+                    muted
+                    loop
+                    playsinline
+                    preload="auto"
+                    src={videoSrc}
+                />
+            ) : image ? (
                 typeof image === "string" ? (
                     <img src={image} alt={imageAlt} class="w-full h-full object-cover" loading="eager" fetchpriority="high" />
                 ) : (
