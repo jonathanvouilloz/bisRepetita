@@ -217,6 +217,10 @@ body {
   color: #1a1a1a;
 }
 
+[data-theme="light"] #mobile-menu-button {
+  color: #1a1a1a;
+}
+
 [data-theme="light"] .nav-cta:hover {
   box-shadow: 0 0 20px rgba(0, 0, 0, 0.08);
 }
