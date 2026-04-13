@@ -59,6 +59,29 @@ const features = [
     },
 ];
 
+const teamBuildingFormats = [
+    {
+        title: "Atelier découverte (1h)",
+        description: "Initiation à la boxe sans contact pour 10 à 20 collaborateurs. Idéal pour un afterwork, une journée d'intégration ou un team building ponctuel.",
+        icon: "lucide:sparkles",
+    },
+    {
+        title: "Séminaire leadership (demi-journée)",
+        description: "Atelier pratique + conférence interactive sur la prise de décision sous pression, la gestion du stress et la résilience. Le parallèle entre le ring et le management.",
+        icon: "lucide:presentation",
+    },
+    {
+        title: "Programme récurrent (hebdomadaire)",
+        description: "Sessions boxe fitness intégrées au programme bien-être de votre entreprise. Tarifs dégressifs, suivi collectif, rapport trimestriel de progression.",
+        icon: "lucide:calendar-check",
+    },
+    {
+        title: "Défi d'équipe (compétition interne)",
+        description: "Tournoi de shadow boxing ou circuit training par équipes. 100% sans contact, 100% compétitif. Le format qui crée les souvenirs les plus forts.",
+        icon: "lucide:trophy",
+    },
+];
+
 const approches = [
     {
         title: "Boxe sans contact",
@@ -283,7 +306,46 @@ const faqs = [
         </Features>
     </GsapReveal>
 
-    <!-- 4. SplitShowcase — Méthodologie (DARK) -->
+    <!-- 4. Team Building Formats (DARK) -->
+    <GsapReveal animation="fadeUp">
+        <section id="team-building" class="py-16 md:py-28">
+            <div class="max-w-6xl mx-auto px-4 sm:px-6">
+                <div class="text-center mb-12">
+                    <span class="section-label text-primary">Formats</span>
+                    <h2 class="text-4xl md:text-5xl font-medium tracking-tight font-display mt-3">
+                        Team Building Boxe à Genève
+                    </h2>
+                    <p class="text-lg text-muted-foreground max-w-2xl mx-auto mt-4">
+                        De l'atelier découverte au programme annuel, la boxe fédère vos équipes autour d'un effort partagé — toujours <a href="#faq" class="text-primary hover:underline">dans un cadre 100% sécurisé</a>.
+                    </p>
+                </div>
+                <div class="grid gap-8 md:grid-cols-2">
+                    {teamBuildingFormats.map((format) => (
+                        <div class="group relative glass-card rounded-2xl p-8 transition-all duration-300 hover:border-primary/30 hover:shadow-[var(--shadow-gold-card)] flex flex-col">
+                            <div class="flex items-center gap-3 mb-5">
+                                <div class="w-12 h-12 rounded-xl bg-primary/10 flex items-center justify-center transition-all duration-300 group-hover:shadow-[var(--shadow-gold-icon)]">
+                                    <Icon name={format.icon} class="w-6 h-6 text-primary" />
+                                </div>
+                            </div>
+                            <h3 class="text-2xl font-bold text-foreground mb-3 group-hover:text-primary transition-colors">
+                                {format.title}
+                            </h3>
+                            <p class="text-sm text-muted-foreground">
+                                {format.description}
+                            </p>
+                        </div>
+                    ))}
+                </div>
+                <div class="mt-8 text-center">
+                    <p class="text-sm text-muted-foreground">
+                        Tous les formats sont combinables. <a href="/contact" class="text-primary hover:underline">Demandez un devis sur mesure</a>.
+                    </p>
+                </div>
+            </div>
+        </section>
+    </GsapReveal>
+
+    <!-- 5. SplitShowcase — Méthodologie (DARK) -->
     <GsapReveal animation="fadeUp">
         <SplitShowcase
             tagline="Notre approche"
@@ -310,7 +372,7 @@ const faqs = [
         />
     </GsapReveal>
 
-    <!-- 5. Deux approches : avec et sans contact -->
+    <!-- 6. Deux approches : avec et sans contact -->
     <GsapReveal animation="fadeUp">
         <section id="approches" class="py-16 md:py-28">
             <div class="max-w-6xl mx-auto px-4 sm:px-6">
@@ -363,7 +425,7 @@ const faqs = [
         </section>
     </GsapReveal>
 
-    <!-- 6. PricingTable — 3 formules (DARK) -->
+    <!-- 7. PricingTable — 3 formules (DARK) -->
     <GsapReveal animation="fadeUp">
         <PricingTable
             tagline="Nos formules"
@@ -372,7 +434,7 @@ const faqs = [
         />
     </GsapReveal>
 
-    <!-- 6. ProfileShowcase — Coach Nicolas (DARK) -->
+    <!-- 8. ProfileShowcase — Coach Nicolas (DARK) -->
     <GsapReveal animation="fadeUp">
         <ProfileShowcase
             tagline="Votre coach"
@@ -404,7 +466,7 @@ const faqs = [
         />
     </GsapReveal>
 
-    <!-- 7. ContentShowcase centré — Ancrage local (DARK) -->
+    <!-- 9. ContentShowcase centré — Ancrage local (DARK) -->
     <div class="relative overflow-hidden py-12 md:py-20">
         <Image
             src={mapGeneve}
@@ -444,7 +506,7 @@ const faqs = [
         </GsapReveal>
     </div>
 
-    <!-- 8. Testimonials (DARK) — TODO placeholders -->
+    <!-- 10. Testimonials (DARK) — TODO placeholders -->
     {/* <GsapReveal animation="fadeUp">
         <Testimonials
             tagline="Ils nous font confiance"
@@ -453,10 +515,10 @@ const faqs = [
         />
     </GsapReveal> */}
 
-    <!-- 9. RelatedServices -->
+    <!-- 11. RelatedServices -->
     <RelatedServices currentSlug="corporate" />
 
-    <!-- 10. FAQ (DARK) -->
+    <!-- 12. FAQ (DARK) -->
     <GsapReveal animation="fadeUp">
         <FAQ
             title="Questions fréquentes"
@@ -465,7 +527,7 @@ const faqs = [
         />
     </GsapReveal>
 
-    <!-- 11. CTABanner brushed-full (DARK) -->
+    <!-- 13. CTABanner brushed-full (DARK) -->
     <GsapReveal animation="fadeUp">
         <CTABanner
             variant="brushed-full"

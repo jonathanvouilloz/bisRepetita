@@ -1,0 +1,209 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import Hero from "../components/widgets/Hero.astro";
+import Stats from "../components/widgets/Stats.astro";
+import Features from "../components/widgets/Features.astro";
+import EquipmentPanels from "../components/widgets/EquipmentPanels.astro";
+import FAQ from "../components/widgets/FAQ.astro";
+import CTABanner from "../components/widgets/CTABanner.astro";
+import RelatedArticles from "../components/widgets/RelatedArticles.astro";
+import GsapReveal from "../components/widgets/GsapReveal.astro";
+import Schema from "../components/seo/Schema.astro";
+import coursPortrait from "../assets/cours-portrait.webp";
+import nicolasPortrait from "../assets/nicolas-portrait.webp";
+import studioAtmosphere from "../assets/studio-atmosphere.webp";
+import cours2Landscape from "../assets/cours-2-landscape.webp";
+
+const metadata = {
+    title: "Cours de Boxe à Genève | Guide Complet 2026",
+    description: "Tout savoir sur les cours de boxe à Genève : formats, tarifs, profils, premiers pas. Guide complet par Bis Repetita, studio de boxe premium.",
+};
+
+const stats = [
+    { value: "15+", label: "Clubs à Genève", description: "Des clubs associatifs historiques aux studios privés — mais peu offrent un coaching véritablement personnalisé." },
+    { value: "4", label: "Formats de pratique", description: "Solo, duo, petit groupe, collectif : trouvez celui qui correspond à vos objectifs et votre budget." },
+    { value: "25-65", label: "Ans — tous les âges", description: "La boxe se pratique à tout âge. L'important, c'est l'encadrement et la progressivité." },
+];
+
+const profilPanels = [
+    {
+        title: "Le débutant curieux",
+        description: "Vous n'avez jamais mis les gants ? C'est le profil le plus fréquent chez nous. On part de zéro, sans jugement, avec un programme adapté.",
+        image: coursPortrait,
+        alt: "Débutant en cours de boxe à Genève",
+    },
+    {
+        title: "La femme qui ose",
+        description: "Cadre privé, sans contact, coaching bienveillant. La boxe au féminin chez Bis Repetita, c'est un espace pensé pour vous.",
+        image: studioAtmosphere,
+        alt: "Cours de boxe pour femme à Genève",
+    },
+    {
+        title: "Le sportif en reconversion",
+        description: "Runner, crossfiteur, nageur — vous cherchez un sport technique et cérébral pour compléter votre pratique. La boxe est le complément idéal.",
+        image: cours2Landscape,
+        alt: "Sportif en cours de boxe technique à Genève",
+    },
+    {
+        title: "Le compétiteur amateur",
+        description: "Vous voulez préparer un combat, obtenir votre licence SwissBoxing, progresser en sparring encadré. Nicolas connaît le chemin.",
+        image: nicolasPortrait,
+        alt: "Préparation combat amateur boxe Genève",
+    },
+];
+
+const typesDePratique = [
+    {
+        title: "Boxe fitness & cardio",
+        description: "Brûler des calories, se défouler, sculpter son corps. Le travail au sac et aux pattes d'ours offre un entraînement complet sans aucun contact. Le format idéal pour commencer.",
+        icon: "lucide:heart-pulse",
+    },
+    {
+        title: "Boxe technique & progression",
+        description: "Apprendre les vrais fondamentaux : garde, déplacements, jab, direct, crochet, esquives. Progresser séance après séance avec un coach qui corrige chaque geste.",
+        icon: "lucide:target",
+    },
+    {
+        title: "Boxe compétition & sparring",
+        description: "Pour ceux qui veulent aller sur le ring. Sparring encadré, préparation physique et mentale, suivi nutritionnel. Le chemin vers le combat amateur, avec un coach de coin expérimenté.",
+        icon: "lucide:swords",
+    },
+];
+
+const faqs = [
+    {
+        question: "Combien coûte un cours de boxe à Genève ?",
+        answer: "Les tarifs varient selon le format. Chez Bis Repetita : CHF 40.- pour un cours collectif Round by Round (8 pers. max), CHF 120.- pour un coaching solo, CHF 140.- pour un duo. La première séance d'essai est gratuite. <a href='/tarifs' class='text-primary hover:underline'>Voir tous les tarifs</a>.",
+    },
+    {
+        question: "À quel âge peut-on commencer la boxe ?",
+        answer: "Il n'y a pas d'âge limite pour débuter. Nos élèves ont entre 25 et 65 ans. La boxe éducative s'adapte à chaque condition physique — l'important est d'être encadré par un professionnel qui ajuste l'intensité.",
+    },
+    {
+        question: "Quel équipement faut-il pour débuter ?",
+        answer: "Pour votre première séance : une tenue de sport confortable et des baskets propres suffisent. Gants, bandes et tout le matériel technique sont fournis par le studio. Si vous souhaitez acheter vos propres gants par la suite, comptez entre CHF 50 et 80.",
+    },
+    {
+        question: "La boxe est-elle dangereuse pour un débutant ?",
+        answer: "Non. La boxe éducative se pratique sans contact entre participants. Tout le travail se fait au sac et aux pattes d'ours tenues par le coach. Il n'y a aucun sparring tant que vous ne le demandez pas — et même là, c'est progressif et encadré. <a href='/services/corporate#faq' class='text-primary hover:underline'>En savoir plus sur la sécurité</a>.",
+    },
+    {
+        question: "Combien de séances par semaine pour progresser ?",
+        answer: "Deux séances par semaine est le rythme idéal pour un débutant : assez pour progresser, pas assez pour s'épuiser. Vous verrez des résultats techniques et physiques dès les 4 premières semaines.",
+    },
+    {
+        question: "Comment se passe un premier cours de boxe ?",
+        answer: "On commence par un échauffement doux (corde, mobilité), puis on passe aux fondamentaux : position de garde, déplacements, premiers coups sur les pattes d'ours. Le coach ajuste tout en temps réel à votre niveau. Vous repartez fatigué mais jamais blessé. <a href='/contact' class='text-primary hover:underline'>Réserver votre séance d'essai gratuite</a>.",
+    },
+    {
+        question: "Y a-t-il du contact dès le premier cours ?",
+        answer: "Non. Nos séances sont sans contact par défaut. Vous frappez le sac et les pattes d'ours, jamais une autre personne. Le sparring n'arrive que bien plus tard, sur demande, après une progression technique validée par le coach.",
+    },
+    {
+        question: "La boxe fait-elle maigrir ?",
+        answer: "Une séance de boxe de 60 minutes brûle entre 500 et 800 calories selon l'intensité — plus que la course à pied ou le vélo elliptique. Combinée à une alimentation équilibrée, la boxe est l'un des sports les plus efficaces pour la perte de poids et le raffermissement.",
+    },
+];
+---
+
+<BaseLayout {metadata}>
+    <Fragment slot="head">
+        <Schema type="SportsActivityLocation" data={{}} />
+        <Schema
+            type="FAQPage"
+            data={{
+                faqs: faqs.map((f) => ({
+                    question: f.question,
+                    answer: f.answer.replace(/<[^>]*>/g, ""),
+                })),
+            }}
+        />
+        <Schema
+            type="BreadcrumbList"
+            data={{
+                breadcrumbs: [
+                    { name: "Accueil", href: "/" },
+                    { name: "Cours de Boxe à Genève", href: "/cours-de-boxe-geneve" },
+                ],
+            }}
+        />
+    </Fragment>
+
+    <!-- 1. Hero (DARK, centered, informationnel) -->
+    <Hero
+        variant="centered"
+        title={`Cours de Boxe à <span class="font-display text-primary">Genève</span>`}
+        description="Le guide complet pour choisir votre cours de boxe à Genève : formats, profils, tarifs, premiers pas. Par les coachs de Bis Repetita."
+        actions={[
+            {
+                text: "Découvrir nos formules",
+                href: "/services",
+                variant: "primary",
+                icon: "lucide:arrow-right",
+            },
+            {
+                text: "Lire le guide",
+                href: "#profils",
+                variant: "secondary",
+            },
+        ]}
+        classes={{ container: "min-h-[60vh]" }}
+    />
+
+    <!-- 2. Stats (LIGHT) -->
+    <Stats
+        stats={stats}
+        badge="Boxe à Genève"
+        badgeHref="#profils"
+        variant="wide"
+        intro="Genève compte plus d'une quinzaine de clubs et studios de boxe — du club associatif historique au studio privé haut de gamme. Comment s'y retrouver ? Ce guide vous aide à choisir en fonction de votre profil, vos objectifs et votre budget."
+    />
+
+    <!-- 3. EquipmentPanels — Pour quel profil ? -->
+    <GsapReveal animation="fadeUp">
+        <EquipmentPanels
+            id="profils"
+            tagline="Pour quel profil ?"
+            title="4 profils, 4 parcours de boxe à Genève"
+            panels={profilPanels}
+        />
+    </GsapReveal>
+
+    <!-- 4. Features — Types de pratique -->
+    <GsapReveal animation="fadeUp">
+        <Features
+            tagline="Types de pratique"
+            title="Trois manières de pratiquer la boxe à Genève"
+            features={typesDePratique}
+            columns={3}
+        />
+    </GsapReveal>
+
+    <!-- 5. RelatedArticles — Articles du blog -->
+    <GsapReveal animation="fadeUp">
+        <RelatedArticles
+            title="Nos articles sur la boxe à Genève"
+            badge="Ressources"
+            maxItems={6}
+        />
+    </GsapReveal>
+
+    <!-- 6. FAQ -->
+    <GsapReveal animation="fadeUp">
+        <FAQ
+            title="Questions fréquentes sur les cours de boxe à Genève"
+            subtitle="Les réponses aux questions les plus posées par les débutants."
+            items={faqs}
+        />
+    </GsapReveal>
+
+    <!-- 7. CTABanner (informationnel → vers /services) -->
+    <GsapReveal animation="fadeUp">
+        <CTABanner
+            variant="brushed-full"
+            title="Prêt à commencer ?"
+            subtitle="Découvrez nos programmes"
+            cta={{ text: "Voir les formules", href: "/services" }}
+        />
+    </GsapReveal>
+</BaseLayout>

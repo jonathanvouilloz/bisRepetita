@@ -72,6 +72,14 @@ export const servicePages: ServicePage[] = [
     image: studioAtmosphere,
     category: "corporate",
   },
+  {
+    slug: "boxe-femme",
+    title: "Boxe Femme",
+    shortDescription: "Coaching pour femmes : cadre privé, sans contact, toutes formules.",
+    href: "/services/boxe-femme",
+    image: studioAtmosphere,
+    category: "prive",
+  },
 ];
 
 export const siteConfig = {
@@ -115,6 +123,7 @@ export const siteConfig = {
             { text: "Duo & Trio", href: "/services/coaching-duo-trio", description: "Progressez ensemble, à deux ou trois", image: "ambiance-bis-repetita.webp" },
             { text: "Petit Groupe", href: "/services/small-group-training", description: "L'énergie du collectif, 6 max", image: "cours-2-landscape.webp" },
             { text: "À Domicile", href: "/services/coaching-boxe-domicile", description: "Le studio vient à vous", image: "cours-portrait.webp" },
+            { text: "Boxe Femme", href: "/services/boxe-femme", description: "Coaching pour femmes, cadre privé", image: "studio-atmosphere.webp" },
           ],
         },
         {
@@ -138,11 +147,13 @@ export const siteConfig = {
       { text: "Coaching à Domicile", href: "/services/coaching-boxe-domicile" },
       { text: "Round by Round", href: "/services/round-by-round" },
       { text: "Corporate", href: "/services/corporate" },
+      { text: "Boxe Femme", href: "/services/boxe-femme" },
     ],
     infos: [
       { text: "Studio", href: "/studio" },
       { text: "Tarifs", href: "/tarifs" },
       { text: "Blog", href: "/blog" },
+      { text: "Cours de Boxe Genève", href: "/cours-de-boxe-geneve" },
       { text: "CGV", href: "/cgv" },
     ],
   },

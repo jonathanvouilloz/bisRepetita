@@ -26,7 +26,7 @@ const categoryLabel = post.data.category
 
 <article class="group">
   <a href={`/blog/${post.id}`} class="block">
-    <div class="rounded-2xl border border-border bg-card p-5 md:grid md:grid-cols-[0.6fr_1fr] md:gap-8 md:items-stretch">
+    <div class="rounded-2xl border border-border bg-card p-5">
       <!-- Image -->
       <div class="relative overflow-hidden rounded-xl">
         {
@@ -34,10 +34,10 @@ const categoryLabel = post.data.category
             <img
               src={post.data.image}
               alt={post.data.title}
-              class="h-full w-full object-cover transition-transform duration-500 group-hover:scale-105"
+              class="aspect-video w-full object-cover transition-transform duration-500 group-hover:scale-105"
             />
           ) : (
-            <div class="flex h-full w-full items-center justify-center rounded-xl bg-muted">
+            <div class="flex aspect-video w-full items-center justify-center rounded-xl bg-muted">
               <span class="text-4xl text-muted-foreground/30">BIS</span>
             </div>
           )
@@ -45,7 +45,7 @@ const categoryLabel = post.data.category
       </div>
 
       <!-- Contenu -->
-      <div class="pt-5 md:pt-0">
+      <div class="pt-5">
         <div class="flex items-center gap-2 text-sm uppercase tracking-wide text-muted-foreground">
           <time datetime={post.data.pubDate.toISOString()}>
             {formattedDate}

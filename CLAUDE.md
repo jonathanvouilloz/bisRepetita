@@ -30,6 +30,39 @@ npm run test         # Vitest
 - **Netlify** deployment with security headers and redirects (`netlify.toml`)
 - **Plausible Analytics** (privacy-first, loaded in BaseLayout)
 
+## Site Map
+
+```
+bisrepetita.ch/
+├── /                                → Home (hero, stats, services overview, FAQ, CTA)
+├── /studio                          → Présentation du lieu, équipements, localisation
+├── /tarifs                          → Grille tarifaire toutes formules
+├── /contact                         → Formulaire de contact + carte
+├── /cgv                             → Conditions générales de vente
+├── /cours-de-boxe-geneve            → Pillar page SEO informationnelle (guide débutant, profils, FAQ)
+├── /services/                       → Index des programmes (grid ServiceCard)
+│   ├── /services/coaching-prive     → Hub coaching privé (comparatif formats)
+│   ├── /services/coaching-solo      → Coaching individuel 1-on-1
+│   ├── /services/coaching-duo-trio  → Coaching à 2 ou 3
+│   ├── /services/small-group-training → Petit groupe (6 max)
+│   ├── /services/coaching-boxe-domicile → Coaching à domicile
+│   ├── /services/round-by-round     → Cours collectifs (8 max, 2 coachs)
+│   ├── /services/corporate          → Programmes entreprise + team building
+│   └── /services/boxe-femme         → Landing page dédiée femmes
+├── /blog/                           → Liste des articles (pagination)
+│   ├── /blog/[slug]                 → Article individuel (MDX)
+│   ├── /blog/category/[category]    → Articles filtrés par catégorie
+│   └── /blog/tags/[tag]             → Articles filtrés par tag
+├── /styleguide                      → Guide visuel interne (dev only)
+└── /404                             → Page d'erreur
+```
+
+### Pages pillar SEO (maillage interne)
+
+- `/cours-de-boxe-geneve` — hub informationnel pour le cluster Persona 1 (débutants, femmes, reconversion, compétiteur). Les articles blog P1 pointent vers cette page.
+- `/services/boxe-femme` — landing service ciblant "boxe femme Genève". Les articles blog cluster B pointent ici.
+- `/services/corporate` — contient une section Team Building ciblant "team building boxe Genève". Les articles blog Corporate pointent ici.
+
 ## Architecture
 
 ### Layout Flow
@@ -43,6 +76,7 @@ npm run test         # Vitest
 - `src/styles/global.css` — Tailwind v4 `@theme` config, CSS custom properties (colors, shadows), custom utilities (`.glass-card`, `.text-gradient-gold`, `.section-label`), keyframe animations
 - `src/utils/gsap.ts` — GSAP initialization with ScrollTrigger, defines all animation types
 - `src/content.config.ts` — blog content collection (glob `src/content/blog/*.{md,mdx}`)
+- `docs/calendrier-editorial-6-mois.md` — calendrier éditorial 80 articles sur 6 mois (avr–sept 2026)
 
 ### Component Pattern
 
