@@ -22,3 +22,6 @@ pnpm-debug.log*
 
 # jetbrains setting folder
 .idea/
+
+# moodboard backups (les générations sont versionnées, pas les backups)
+moodboard/.backup-*.md

@@ -1,0 +1,114 @@
+# presets.yaml — cas d'usage de génération d'image pour bis-repetita
+#
+# Chaque preset = une configuration technique (ratio, dimensions, layout) réutilisable.
+# Composable avec le base_style du moodboard.md via le moteur render_prompt.py.
+#
+# IMPORTANT : le ratio n'est PAS forçable via l'API Gemini nano-banana.
+# Il est injecté textuellement dans le prompt via le champ `layout_directives`.
+
+version: 1
+
+defaults:
+  reference_image: refs/portrait-ambient.webp
+  output_format: webp
+  output_quality: 85
+
+# Placement-first routing
+placement_to_preset:
+  cover: blog-cover-text
+  "after-h2:*": blog-inline
+  "after-h3:*": blog-inline
+
+# Fallback mapping
+brief_type_to_preset:
+  photo: blog-inline
+  portrait: service-portrait
+  cover: blog-cover-text
+  infographic: SKIP
+  schema: SKIP
+  illustration: SKIP
+
+presets:
+
+  blog-cover-text:
+    description: "Cover 16:9 — photo clean (Gemini) + texte overlay freetype (PIL)"
+    aspect_ratio: "16:9"
+    dimensions: "1792x1024"
+    layout_directives: |
+      Generate a VERY WIDE horizontal banner in 16:9 landscape ratio, 1792x1024px.
+      CLEAN PHOTO ONLY — absolutely NO text, NO typography, NO letters anywhere.
+      Subject positioned on the RIGHT HALF of the frame.
+      LEFT HALF must be mostly empty, light, or a clean neutral background — pale concrete,
+      off-white wall, or soft out-of-focus light background. NOT dark, NOT black.
+      Soft diffuse natural light, neutral earthy tones, low saturation.
+      Clean athletic editorial fitness photography style. Calm, premium, minimal.
+      Alternate between male and female subjects across different generations.
+    text_overlay_supported: false
+    compose_text: true
+    font_file: fonts/BricolageGrotesque-Variable.ttf
+    banner_color: "#1a1a1a"
+    reference_image: refs/blog-cover-style.webp
+    output_dir: public/images/blog
+    output_naming: "{slug}.webp"
+    text_overlay:
+      position: "bottom-left"
+      banner: false
+      uppercase: false
+      rotation: 0.0
+      gradient: true
+
+  blog-inline:
+    description: "Image 4:3 pour insertion dans le corps d'un article"
+    aspect_ratio: "4:3"
+    dimensions: "1600x1200"
+    layout_directives: |
+      Generate a landscape 4:3 photo (1600x1200px).
+      Use the attached image ONLY as style reference — generate a COMPLETELY DIFFERENT scene.
+      Dark premium boxing gym, dramatic side lighting, no text.
+      Cinematic grain, editorial sports photography style.
+    text_overlay_supported: false
+    reference_image: refs/portrait-ambient.webp
+    output_dir: public/images/blog
+    output_naming: "{slug}-{index}.webp"
+
+  service-portrait:
+    description: "Portrait 1:1 pour page service"
+    aspect_ratio: "1:1"
+    dimensions: "1280x1280"
+    layout_directives: |
+      Generate a square 1:1 photo (1280x1280px).
+      Close-up portrait, single subject, head and shoulders framing.
+      Dark background, dramatic side lighting, athletic subject.
+      No props in foreground. No text.
+    text_overlay_supported: false
+    reference_image: refs/portrait-ambient.webp
+    output_dir: public/images/services
+    output_naming: "service-{slug}.webp"
+
+  category-hero:
+    description: "Portrait 4:5 hero pour catégorie de service"
+    aspect_ratio: "4:5"
+    dimensions: "1024x1280"
+    layout_directives: |
+      Generate a portrait 4:5 photo (1024x1280px).
+      Use the attached image as style reference only — different scene required.
+      Premium boxing studio, dark dramatic atmosphere, single subject in action.
+      No text.
+    text_overlay_supported: false
+    reference_image: refs/scene-wide.webp
+    output_dir: public/images/categories
+    output_naming: "cat-{slug}.webp"
+
+  scene-wide:
+    description: "Scène d'ambiance large 16:10 pour hero/landing"
+    aspect_ratio: "16:10"
+    dimensions: "1600x1000"
+    layout_directives: |
+      Generate a wide 16:10 landscape photo (1600x1000px).
+      Environmental shot of a premium boxing studio, 1–2 subjects allowed.
+      Dark, moody, cinematic atmosphere. Leather punching bags, professional ring.
+      No text.
+    text_overlay_supported: false
+    reference_image: refs/scene-wide.webp
+    output_dir: public/images/scenes
+    output_naming: "scene-{slug}.webp"

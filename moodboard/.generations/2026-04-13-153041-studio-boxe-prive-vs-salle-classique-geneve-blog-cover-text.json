@@ -1,0 +1,41 @@
+{
+  "timestamp": "2026-04-13T15:30:41.324152+00:00",
+  "slug": "studio-boxe-prive-vs-salle-classique-geneve",
+  "preset": "blog-cover-text",
+  "prompt_text": "Generate a VERY WIDE horizontal banner in 16:9 landscape ratio, 1792x1024px.\nCLEAN PHOTO ONLY — absolutely NO text, NO typography, NO letters anywhere.\nSubject on the RIGHT HALF of the frame. LEFT HALF mostly dark, blurry, or empty.\nStrong dramatic rim light from the right. Dark premium boxing studio atmosphere.\nCinematic grain, editorial sports photography style.\n\nUltra-realistic RAW DSLR photograph.\nNatural skin texture with visible pores, sharp focus on eyes.\nVery shallow depth of field, extreme cinematic bokeh in background,\nenvironment reduced to soft abstract warm color fields and ambient light,\nsubject pin-sharp against dreamy out-of-focus backdrop.\n85mm lens equivalent, high contrast, cinematic shadows.\nAuthentic unretouched photography — no retouching, no beauty filters.\nNo CGI, no 3D render, no digital illustration.\n\nRendering: Photographie DSLR photoréaliste — pas d'illustration, pas de rendu 3D.\nLighting: Lumière dramatique latérale ou rim light, ambiance studio dark, contraste fort.\nLens: Portrait 85–135mm f/1.8–2.8 pour les portraits. 24–35mm pour les scènes larges..\nSkin: Naturel, athlétique, tonique — en mouvement ou au repos post-effort. Pas de retouche excessive..\nComposition: Sujet principal en dominance. Fond sombre épuré ou bokeh prononcé. Ratio négatif généreux côté gauche pour les covers..\nRatios_allowed: 16:9 (blog-cover), 4:3 (blog-inline), 1:1 (service-portrait), 4:5 (category-hero), 16:10 (scene-wide).\n\nSUBJECT: Cinematic wide shot of a premium private boxing studio, dark moody atmosphere. A coach holding focus mitts and a boxer throwing a jab, seen from behind at a low angle. Professional boxing ring with ropes in the background. Dramatic side lighting with warm golden tones cutting through the darkness. Heavy bags, clean matte black floor. No faces visible — both figures shot from behind or in silhouette. Deep black background, minimal clutter, high-end private gym aesthetic.\n\nNEGATIVE: Pas de gants colorés vifs (rouge flashy, bleu fluo) — préférer noir, cuir naturel, or, Pas de fond blanc ou studio photo neutre, Pas d'effet HDR, pas de saturation excessive, Pas de foule, spectateurs, ambiance compétition, Pas de texte dans l'image, Pas de casque de boxe moderne plastifié, digital art, 3D render, CGI, illustration, anime, cartoon, painting, plastic skin, airbrushed, smooth skin, oversaturated, watermark, text overlay, logo, graphic design, blurry, soft focus, flat lighting, overexposed, extra hands, extra fingers, mutated hands, duplicate, clone, mirror reflection, full body shot, wide angle distortion",
+  "reference_image": "C:\\Users\\jojo-\\Desktop\\apps\\bisRepetita\\bisRepetita\\moodboard\\refs\\blog-cover-style.webp",
+  "output": "C:\\Users\\jojo-\\Desktop\\apps\\bisRepetita\\bisRepetita\\public\\images\\blog\\studio-boxe-prive-vs-salle-classique-geneve.webp",
+  "model": "nano-banana-pro-preview",
+  "response_metadata": {
+    "usage": {
+      "promptTokenCount": 892,
+      "candidatesTokenCount": 1298,
+      "totalTokenCount": 2381,
+      "promptTokensDetails": [
+        {
+          "modality": "TEXT",
+          "tokenCount": 634
+        },
+        {
+          "modality": "IMAGE",
+          "tokenCount": 258
+        }
+      ],
+      "candidatesTokensDetails": [
+        {
+          "modality": "IMAGE",
+          "tokenCount": 1120
+        }
+      ],
+      "thoughtsTokenCount": 191
+    },
+    "compose": {
+      "composed": true,
+      "font_path": "C:\\Users\\jojo-\\Desktop\\apps\\bisRepetita\\bisRepetita\\moodboard\\fonts\\Manrope-Variable.ttf",
+      "banner_font_path": null,
+      "title_text": "STUDIO BOXE PRIVE VS SALLE CLASSIQUE",
+      "banner_text": "GENÈVE",
+      "banner_color": "#0a0a0a"
+    }
+  }
+}
