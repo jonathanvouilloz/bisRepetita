@@ -221,7 +221,8 @@ function getNavIndex() {
         id="mobile-menu"
     >
         <div class="flex flex-col h-full">
-            <div class="flex items-center justify-between px-4 py-4 sm:px-6">
+            <!-- Header -->
+            <div class="flex items-center justify-between px-4 py-4 sm:px-6 shrink-0">
                 <a href="/" class="transition-opacity hover:opacity-80">
                     <img src="/logo-black.svg" alt={siteConfig.name} class:list={["h-8 w-auto", !isLight && "invert brightness-200"]} />
                 </a>
@@ -229,45 +230,53 @@ function getNavIndex() {
                     id="mobile-menu-close"
                     class="p-2 text-foreground hover:text-primary transition-colors"
                 >
-                    <svg
-                        class="h-6 w-6"
-                        fill="none"
-                        viewBox="0 0 24 24"
-                        stroke="currentColor"
-                    >
-                        <path
-                            stroke-linecap="round"
-                            stroke-linejoin="round"
-                            stroke-width="2"
-                            d="M6 18L18 6M6 6l12 12"></path>
+                    <svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
                     </svg>
                 </button>
             </div>
-            <div id="mobile-nav-links" class="flex flex-col items-start justify-center flex-1 gap-6 px-8">
+
+            <!-- Nav links (scrollable) -->
+            <div id="mobile-nav-links" class="flex flex-col items-start flex-1 overflow-y-auto gap-3 px-8 py-4">
                 {
                     (() => {
                         let i = 0;
                         return siteConfig.navLinks.map((link) =>
                             link.groups ? (
-                                <>
-                                    {link.groups.map((group) => (
-                                        <>
-                                            <span class="mobile-nav-item text-xs uppercase tracking-widest text-white/30 mt-2 opacity-0">{group.label}</span>
-                                            {group.items.map((child) => {
-                                                i++;
-                                                return (
-                                                    <a
-                                                        href={child.href}
-                                                        class="mobile-nav-item flex items-center gap-4 text-2xl font-medium text-foreground transition-colors hover:text-primary opacity-0"
-                                                    >
-                                                        <span class="text-sm text-primary/50 font-mono">{String(i).padStart(2, "0")}</span>
-                                                        {child.text}
-                                                    </a>
-                                                );
-                                            })}
-                                        </>
-                                    ))}
-                                </>
+                                (() => {
+                                    i++;
+                                    return (
+                                        <div class="w-full">
+                                            <button
+                                                id="mobile-submenu-trigger"
+                                                class="mobile-nav-item flex items-center justify-between w-full gap-4 text-2xl font-medium text-foreground transition-colors hover:text-primary opacity-0"
+                                            >
+                                                <span class="flex items-center gap-4">
+                                                    <span class="text-sm text-primary/50 font-mono">{String(i).padStart(2, "0")}</span>
+                                                    {link.text}
+                                                </span>
+                                                <svg class="chevron h-5 w-5 text-primary/50 transition-transform duration-300 shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+                                                </svg>
+                                            </button>
+                                            <div id="mobile-submenu-programmes" style="max-height: 0; overflow: hidden; transition: max-height 0.35s ease">
+                                                <div class="flex flex-col gap-1 pl-10 pt-2 pb-1">
+                                                    {link.groups.flatMap((group) =>
+                                                        group.items.map((child) => (
+                                                            <a
+                                                                href={child.href}
+                                                                class="flex items-center gap-3 text-lg text-foreground/75 transition-colors hover:text-primary py-1"
+                                                            >
+                                                                <span class="w-1 h-1 rounded-full bg-primary/50 shrink-0"></span>
+                                                                {child.text}
+                                                            </a>
+                                                        ))
+                                                    )}
+                                                </div>
+                                            </div>
+                                        </div>
+                                    );
+                                })()
                             ) : (
                                 (() => {
                                     i++;
@@ -285,11 +294,18 @@ function getNavIndex() {
                         );
                     })()
                 }
+            </div>
+
+            <!-- CTA — toujours visible en bas -->
+            <div class="px-8 pb-8 pt-3 shrink-0">
                 <a
                     href={siteConfig.navCta.href}
-                    class="mobile-nav-item mt-6 rounded-full bg-primary px-8 py-3 text-lg font-bold text-background transition-all hover:bg-primary-light opacity-0"
+                    class="mobile-nav-item flex items-center justify-center gap-2 w-full rounded-full bg-primary px-8 py-3.5 text-lg font-bold text-background transition-all hover:bg-primary-light opacity-0"
                 >
                     {siteConfig.navCta.text}
+                    <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7" />
+                    </svg>
                 </a>
             </div>
         </div>
@@ -352,6 +368,15 @@ function getNavIndex() {
             });
         }
 
+        const subTrigger = document.getElementById("mobile-submenu-trigger");
+        const subPanel = document.getElementById("mobile-submenu-programmes");
+        const chevron = subTrigger?.querySelector(".chevron") as HTMLElement | null;
+
+        function closeSubmenu() {
+            if (subPanel) subPanel.style.maxHeight = "0px";
+            chevron?.classList.remove("rotate-180");
+        }
+
         function closeMenu() {
             menu?.classList.add("hidden");
             iconClosed?.classList.remove("hidden");
@@ -362,6 +387,8 @@ function getNavIndex() {
             document.querySelectorAll(".mobile-nav-item").forEach((item) => {
                 (item as HTMLElement).style.opacity = "0";
             });
+
+            closeSubmenu();
         }
 
         button?.addEventListener("click", openMenu);
@@ -369,6 +396,17 @@ function getNavIndex() {
 
         menu?.querySelectorAll("a").forEach((link) => {
             link.addEventListener("click", closeMenu);
+        });
+
+        // Accordion toggle
+        subTrigger?.addEventListener("click", () => {
+            const isOpen = subPanel?.style.maxHeight && subPanel.style.maxHeight !== "0px";
+            if (isOpen) {
+                closeSubmenu();
+            } else {
+                if (subPanel) subPanel.style.maxHeight = subPanel.scrollHeight + "px";
+                chevron?.classList.add("rotate-180");
+            }
         });
 
         // Navbar scroll effect
