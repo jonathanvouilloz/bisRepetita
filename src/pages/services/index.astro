@@ -10,15 +10,14 @@ import Schema from "../../components/seo/Schema.astro";
 import { servicePages } from "../../config/site";
 
 const metadata = {
-    title: "Programmes de Boxe à Genève | Coaching & Cours",
+    title: "Programmes de Boxe à Genève",
     description:
-        "Découvrez tous les programmes de boxe Bis Repetita à Genève : coaching privé, solo, duo, small group, cours collectifs Round by Round et boxe corporate. Séance d'essai gratuite.",
+        "Tous les programmes de boxe Bis Repetita à Genève : coaching privé, duo, petit groupe, Round by Round et corporate. Essai gratuit.",
 };
 ---
 
 <BaseLayout {metadata}>
     <Fragment slot="head">
-        <Schema type="SportsActivityLocation" data={{}} />
         <Schema
             type="BreadcrumbList"
             data={{
