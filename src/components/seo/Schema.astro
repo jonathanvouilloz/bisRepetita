@@ -12,7 +12,7 @@ interface ServiceRef {
 }
 
 interface Props {
-    type: "WebSite" | "BlogPosting" | "SportsActivityLocation" | "Service" | "Person" | "FAQPage" | "BreadcrumbList" | "OfferCatalog";
+    type: "WebSite" | "BlogPosting" | "SportsActivityLocation" | "Service" | "Person" | "FAQPage" | "BreadcrumbList" | "OfferCatalog" | "Organization";
     data?: {
         title?: string;
         description?: string;
@@ -75,47 +75,24 @@ if (type === "WebSite") {
             },
         },
     };
-} else if (type === "SportsActivityLocation") {
+} else if (type === "Organization") {
     schema = {
         "@context": "https://schema.org",
-        "@type": "SportsActivityLocation",
+        "@type": "Organization",
         name: siteConfig.name,
-        description: siteConfig.description,
         url: siteConfig.url,
-        telephone: siteConfig.contact.phone,
-        email: siteConfig.contact.email,
-        ...(data?.image && { image: data.image }),
-        address: {
-            "@type": "PostalAddress",
-            streetAddress: "La Voie-Creuse 16",
-            addressLocality: "Genève",
-            postalCode: "1202",
-            addressCountry: "CH",
+        description: siteConfig.description,
+        founder: {
+            "@type": "Person",
+            name: siteConfig.author,
         },
-        geo: {
-            "@type": "GeoCoordinates",
-            latitude: 46.22278,
-            longitude: 6.14028,
+        logo: {
+            "@type": "ImageObject",
+            url: new URL("/favicon.svg", siteConfig.url).toString(),
         },
-        openingHoursSpecification: [
-            {
-                "@type": "OpeningHoursSpecification",
-                dayOfWeek: ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"],
-                opens: "07:00",
-                closes: "21:00",
-            },
-            {
-                "@type": "OpeningHoursSpecification",
-                dayOfWeek: "Saturday",
-                opens: "09:00",
-                closes: "17:00",
-            },
-            {
-                "@type": "OpeningHoursSpecification",
-                dayOfWeek: "Sunday",
-                opens: "00:00",
-                closes: "00:00",
-            },
+        sameAs: [
+            siteConfig.socialLinks.instagram,
+            siteConfig.socialLinks.linkedin,
         ],
         hasOfferCatalog: {
             "@type": "OfferCatalog",
@@ -171,6 +148,71 @@ if (type === "WebSite") {
                 },
             ],
         },
+    };
+} else if (type === "SportsActivityLocation") {
+    schema = {
+        "@context": "https://schema.org",
+        "@type": "SportsActivityLocation",
+        name: siteConfig.name,
+        description: siteConfig.description,
+        url: data?.url ? new URL(data.url, siteConfig.url).toString() : siteConfig.url,
+        telephone: siteConfig.contact.phone,
+        email: siteConfig.contact.email,
+        ...(data?.image && { image: data.image }),
+        address: {
+            "@type": "PostalAddress",
+            streetAddress: "La Voie-Creuse 16",
+            addressLocality: "Genève",
+            postalCode: "1202",
+            addressCountry: "CH",
+        },
+        geo: {
+            "@type": "GeoCoordinates",
+            latitude: 46.22278,
+            longitude: 6.14028,
+        },
+        openingHoursSpecification: [
+            {
+                "@type": "OpeningHoursSpecification",
+                dayOfWeek: ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"],
+                opens: "07:00",
+                closes: "21:00",
+            },
+            {
+                "@type": "OpeningHoursSpecification",
+                dayOfWeek: "Saturday",
+                opens: "09:00",
+                closes: "17:00",
+            },
+            {
+                "@type": "OpeningHoursSpecification",
+                dayOfWeek: "Sunday",
+                opens: "00:00",
+                closes: "00:00",
+            },
+        ],
+        amenityFeature: [
+            {
+                "@type": "LocationFeatureSpecification",
+                name: "Ring professionnel",
+                value: true,
+            },
+            {
+                "@type": "LocationFeatureSpecification",
+                name: "Sacs de frappe",
+                value: true,
+            },
+            {
+                "@type": "LocationFeatureSpecification",
+                name: "Vestiaires premium",
+                value: true,
+            },
+            {
+                "@type": "LocationFeatureSpecification",
+                name: "Espace fonctionnel",
+                value: true,
+            },
+        ],
         aggregateRating: {
             "@type": "AggregateRating",
             ratingValue: "4.8",

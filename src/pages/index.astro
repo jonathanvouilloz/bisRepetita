@@ -18,9 +18,9 @@ import coursPortrait from "../assets/cours-portrait.webp";
 import coursLandscape from "../assets/cours-2-landscape.webp";
 
 const metadata = {
-    title: "Bis Repetita — Studio de boxe premium à Genève",
+    title: "Bis Repetita — Coaching de boxe premium à Genève",
     description:
-        "Studio de boxe premium à Genève. Coaching privé, cours collectifs Round by Round et programmes corporate avec Nicolas de Boccard. Première séance offerte.",
+        "Coaching de boxe premium à Genève avec Nicolas de Boccard. Cours privés, collectifs Round by Round et programmes corporate. Première séance offerte.",
     ignoreTitleTemplate: true,
 };
 
@@ -119,11 +119,11 @@ const testimonials = [
 <BaseLayout {metadata}>
     <Fragment slot="head">
         <Schema type="WebSite" />
-        <Schema type="SportsActivityLocation" data={{}} />
+        <Schema type="Organization" />
     </Fragment>
     <Hero
-        title={`Votre studio de <br class="hidden md:block" /> <span class="text-primary">boxe premium</span> à Genève`}
-        description="Découvrez la boxe dans un cadre d'exception. Coaching privé, cours collectifs et programmes corporate avec Nicolas de Boccard."
+        title={`Coaching de <br class="hidden md:block" /> <span class="text-primary">boxe premium</span> à Genève`}
+        description="Coaching privé, cours collectifs et programmes corporate avec Nicolas de Boccard, entraîneur agréé Swiss Boxing depuis 2002."
         videoSrc="/videos/video-bg.mp4"
         lightOverlay={true}
         actions={[
@@ -154,8 +154,7 @@ const testimonials = [
 
     <Stats
         stats={stats}
-        badge="Découvrir la salle"
-        badgeHref="/studio"
+        badge="Notre expertise"
         intro="Chez Bis Repetita, nous sommes une équipe de passionnés qui accompagnent plus de 100 athlètes à révéler leur potentiel, atteindre leurs objectifs et élever leur performance."
     />
 

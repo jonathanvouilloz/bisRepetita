@@ -4,7 +4,7 @@ import Hero from "../components/widgets/Hero.astro";
 import Stats from "../components/widgets/Stats.astro";
 import ContentShowcase from "../components/widgets/ContentShowcase.astro";
 import EquipmentPanels from "../components/widgets/EquipmentPanels.astro";
-import ServiceCard from "../components/widgets/ServiceCard.astro";
+
 import Testimonials from "../components/widgets/Testimonials.astro";
 import FAQ from "../components/widgets/FAQ.astro";
 import RelatedArticles from "../components/widgets/RelatedArticles.astro";
@@ -27,9 +27,9 @@ import imageCta from "../assets/image-cta.webp";
 import footerSection from "../assets/footer-section.webp";
 
 const metadata = {
-    title: "Studio de Boxe Premium à Genève — La Voie-Creuse",
+    title: "Salle de boxe premium à Genève — La Voie-Creuse 16 | Bis Repetita",
     description:
-        "Studio de boxe premium au cœur de Genève (La Voie-Creuse 16, 1202). Ring pro, équipements haut de gamme, coaching personnalisé. Réservez votre séance.",
+        "Visitez notre salle de boxe au cœur de Genève : ring professionnel, 150 m² d'espace, vestiaires premium. La Voie-Creuse 16, 1202 Genève. Horaires et accès.",
     ignoreTitleTemplate: true,
 };
 
@@ -48,33 +48,6 @@ const stats = [
         value: "150m²",
         label: "De surface",
         description: "Un espace entièrement dédié à la boxe, au cœur de Genève.",
-    },
-];
-
-const services = [
-    {
-        title: "Coaching Privé",
-        description:
-            "Séances individuelles ou en petit groupe (jusqu'à 6 personnes) dans notre studio de boxe premium à Genève. Un programme sur mesure adapté à vos objectifs.",
-        href: "/services/coaching-prive",
-        image: coursPortrait,
-        index: 1,
-    },
-    {
-        title: "Round by Round",
-        description:
-            "Cours collectifs structurés en rounds de 3 minutes. Technique de boxe, cardio et renforcement dans l'ambiance unique de notre studio genevois.",
-        href: "/services/round-by-round",
-        image: salle1,
-        index: 2,
-    },
-    {
-        title: "Corporate",
-        description:
-            "Team building et programmes bien-être pour les entreprises. Accueillez vos équipes dans un espace premium au cœur de Genève.",
-        href: "/services/corporate",
-        image: studioAtmosphere,
-        index: 3,
     },
 ];
 
@@ -137,15 +110,15 @@ const faqs = [
 
 <BaseLayout {metadata}>
     <Fragment slot="head">
-        <Schema type="SportsActivityLocation" data={{ image: studioHero.src }} />
+        <Schema type="SportsActivityLocation" data={{ image: studioHero.src, url: "/studio" }} />
         <Schema type="FAQPage" data={{ faqs: faqs.map(f => ({ question: f.question, answer: f.answer.replace(/<[^>]*>/g, '') })) }} />
     </Fragment>
 
     {/* 1. Hero */}
     <Hero
         variant="centered"
-        title={`Votre studio de <span class="text-primary">boxe premium</span><br/>au cœur de Genève`}
-        description="Ring professionnel, équipements haut de gamme et coaching personnalisé par Nicolas de Boccard."
+        title={`La salle de <span class="text-primary">boxe premium</span><br/>de Genève`}
+        description="150 m² dédiés à la boxe : ring professionnel, équipements haut de gamme et vestiaires premium au cœur de Genève."
         image={studioHero}
         imageAlt="Studio de boxe premium Bis Repetita à Genève"
         locationBadge={{ text: "La Voie-Creuse 16, 1202 Genève" }}
@@ -166,12 +139,12 @@ const faqs = [
                     </div>
                     <div class="md:basis-1/2">
                         <span class="inline-block text-xs font-semibold uppercase tracking-widest text-primary mb-4">À propos</span>
-                        <h2 class="text-3xl md:text-4xl font-bold text-neutral-900 mb-6">Bis Repetita — <span class="text-primary">la répétition comme philosophie</span></h2>
+                        <h2 class="text-3xl md:text-4xl font-bold text-neutral-900 mb-6">Un espace <span class="text-primary">conçu pour la boxe</span></h2>
                         <p class="text-lg text-neutral-600 leading-relaxed mb-4">
-                            Fondé en 2024, Bis Repetita est un studio de boxe premium au cœur de Genève. Notre nom est notre méthode : la maîtrise passe par la répétition.
+                            Situé dans le quartier de Sécheron, le studio Bis Repetita occupe 150 m² entièrement pensés pour la pratique de la boxe. Ring aux dimensions réglementaires, sacs de frappe professionnels, espace fonctionnel et vestiaires haut de gamme — chaque mètre carré a été optimisé pour l'entraînement.
                         </p>
                         <p class="text-neutral-600 leading-relaxed">
-                            Porté par Nicolas de Boccard, entraineur agréé Swiss Boxing et passionné de boxe depuis 2002, le studio accompagne dirigeants, avocats, entrepreneurs et passionnés de tous niveaux. Ring professionnel, équipements haut de gamme, coaching certifié — chaque détail a été pensé pour offrir une expérience d'entraînement incomparable.
+                            Un cadre privé, loin des salles bondées, où l'attention est portée sur vous. L'atmosphère, l'éclairage, les matériaux — tout a été choisi pour créer un environnement qui allie exigence sportive et confort premium.
                         </p>
                     </div>
                 </div>
@@ -305,9 +278,9 @@ const faqs = [
     <Stats
         id="stats"
         stats={stats}
-        badge="L'équipe"
+        badge="Le studio en chiffres"
         badgeHref="/contact"
-        intro="Une équipe de 5 coachs certifiés, unis par la passion du noble art. Plus de 100 membres nous font confiance dans notre studio de 150m² au cœur de Genève."
+        intro="150 m² au cœur de Genève, 5 coachs certifiés sur place et plus de 100 membres qui s'entraînent chaque semaine à La Voie-Creuse."
     />
 
     {/* 3. Bento Gallery — Studio */}
@@ -430,21 +403,20 @@ const faqs = [
         />
     </GsapReveal>
 
-    {/* 7. ServiceCards — 3 programmes */}
+    {/* 7. Programmes — lien léger vers /services */}
     <Container class="py-20 md:py-32">
         <SectionTitle
-            badge="Nos programmes"
-            title="Trouvez la formule <span class='text-primary'>qui vous correspond</span>"
-            class="mb-12"
+            badge="Programmes"
+            title="S'entraîner à <span class='text-primary'>La Voie-Creuse</span>"
+            class="mb-8"
         />
-        <div class="grid gap-8 md:grid-cols-3 gsap-stagger-cards">
-            {services.map((service, i) => (
-                <ServiceCard service={service} index={i + 1} />
-            ))}
-        </div>
-        <div class="mt-10 text-center">
-            <a href="/tarifs" class="text-primary hover:underline font-medium">
-                Voir nos tarifs &rarr;
+        <p class="text-center text-muted-foreground max-w-2xl mx-auto mb-8">
+            Coaching privé, cours collectifs Round by Round ou séances corporate :
+            tous nos programmes sont dispensés dans cet espace premium.
+        </p>
+        <div class="text-center">
+            <a href="/services" class="inline-flex items-center gap-2 text-primary font-medium hover:underline">
+                Découvrir tous nos programmes &rarr;
             </a>
         </div>
     </Container>
