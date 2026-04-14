@@ -97,7 +97,7 @@ export const siteConfig = {
     address: "La Voie-Creuse 16, 1202 Genève",
   },
   socialLinks: {
-    instagram: "https://instagram.com/bisrepetita",
+    instagram: "https://www.instagram.com/bisrepetitaboxing/",
     linkedin: "https://linkedin.com/company/bisrepetita",
   },
   navCta: {
