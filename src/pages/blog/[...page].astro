@@ -13,7 +13,7 @@ export async function getStaticPaths({ paginate }: GetStaticPathsOptions) {
     .filter((post) => post.data && post.data.pubDate)
     .sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf());
 
-  return paginate(sortedPosts, { pageSize: 7 });
+  return paginate(sortedPosts, { pageSize: 9 });
 }
 
 const { page } = Astro.props;
