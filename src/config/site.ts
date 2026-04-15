@@ -93,7 +93,7 @@ export const siteConfig = {
   ogImage: ogImage,
   contact: {
     phone: "+41 76 801 25 96",
-    email: "info@bisrepetita.ch",
+    email: "contact@bisrepetita.ch",
     address: "La Voie-Creuse 16, 1202 Genève",
   },
   socialLinks: {

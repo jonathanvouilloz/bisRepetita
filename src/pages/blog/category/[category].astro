@@ -3,6 +3,7 @@ import BaseLayout from "../../../layouts/BaseLayout.astro";
 import { getCollection } from "astro:content";
 import BlogHero from "../../../components/blog/BlogHero.astro";
 import PostItem from "../../../components/blog/PostItem.astro";
+import { slugify } from "../../../utils/slugify";
 
 export async function getStaticPaths() {
   const allPosts = await getCollection("blog", ({ data }) => !data.draft);
@@ -21,7 +22,7 @@ export async function getStaticPaths() {
 
   return Array.from(categories).map((category) => {
     return {
-      params: { category },
+      params: { category: slugify(category) },
       props: {
         category,
         allCategories,

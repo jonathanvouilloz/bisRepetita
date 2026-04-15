@@ -1,4 +1,6 @@
 ---
+import { slugify } from "../../utils/slugify";
+
 export interface Props {
   title?: string;
   subtitle?: string;
@@ -57,7 +59,7 @@ const uniqueCategories = [...new Set(categories)].sort();
           </a>
           {uniqueCategories.map((cat) => (
             <a
-              href={`/blog/category/${cat}`}
+              href={`/blog/category/${slugify(cat)}`}
               class:list={[
                 "rounded-full px-4 py-1.5 text-sm font-medium transition-colors duration-200",
                 activeCategory === cat

@@ -1,5 +1,6 @@
 ---
 import { type CollectionEntry, render } from "astro:content";
+import { slugify } from "../../utils/slugify";
 
 export interface Props {
   post: CollectionEntry<"blog">;
@@ -49,7 +50,7 @@ const categoryLabel = post.data.category
     {
       categoryLabel && (
         <a
-          href={`/blog/category/${post.data.category}`}
+          href={`/blog/category/${slugify(post.data.category)}`}
           class="mb-2 inline-block w-fit rounded-full bg-primary/10 px-3 py-1 text-xs font-medium text-primary transition-colors hover:bg-primary/20"
         >
           {categoryLabel}

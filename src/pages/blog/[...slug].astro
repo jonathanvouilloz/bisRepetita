@@ -3,6 +3,7 @@ import BaseLayout from "../../layouts/BaseLayout.astro";
 import Schema from "../../components/seo/Schema.astro";
 import Tags from "../../components/ui/Tags.astro";
 import TableOfContents from "../../components/blog/TableOfContents.astro";
+import { slugify } from "../../utils/slugify";
 
 import { getCollection, render } from "astro:content";
 
@@ -69,7 +70,7 @@ const metadata = {
                     <li aria-hidden="true">/</li>
                     <li>
                       <a
-                        href={`/blog/category/${category}`}
+                        href={`/blog/category/${slugify(category)}`}
                         class="transition-colors hover:text-foreground"
                       >
                         {category.charAt(0).toUpperCase() + category.slice(1)}
@@ -103,7 +104,7 @@ const metadata = {
               {
                 category && (
                   <a
-                    href={`/blog/category/${category}`}
+                    href={`/blog/category/${slugify(category)}`}
                     class="rounded-full bg-primary/10 px-3 py-1 text-xs font-medium text-primary transition-colors hover:bg-primary/20"
                   >
                     {category.charAt(0).toUpperCase() + category.slice(1)}

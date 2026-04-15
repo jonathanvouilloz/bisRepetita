@@ -11,7 +11,13 @@ export default defineConfig({
   },
   site: "https://bisrepetita.ch",
   trailingSlash: "never",
-  integrations: [sitemap(), mdx(), icon()],
+  integrations: [
+    sitemap({
+      filter: (page) => !page.includes("/styleguide"),
+    }),
+    mdx(),
+    icon(),
+  ],
   markdown: {
     remarkPlugins: [
       remarkReadingTime,
