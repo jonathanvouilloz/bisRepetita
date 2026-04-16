@@ -1,4 +1,3 @@
-import ogImage from "../assets/og-image.png";
 import coursPortrait from "../assets/cours-portrait.webp";
 import nicolasPortrait from "../assets/nicolas-portrait.webp";
 import ambianceBis from "../assets/ambiance-bis-repetita.webp";
@@ -90,7 +89,7 @@ export const siteConfig = {
   lang: "fr",
   locale: "fr_CH",
   author: "Nicolas de Boccard",
-  ogImage: ogImage,
+  ogImage: "/og_image.png",
   contact: {
     phone: "+41 76 801 25 96",
     email: "contact@bisrepetita.ch",
