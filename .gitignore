@@ -23,5 +23,8 @@ pnpm-debug.log*
 # jetbrains setting folder
 .idea/
 
+# Claude Code session-specific files
+.claude/
+
 # moodboard backups (les générations sont versionnées, pas les backups)
 moodboard/.backup-*.md

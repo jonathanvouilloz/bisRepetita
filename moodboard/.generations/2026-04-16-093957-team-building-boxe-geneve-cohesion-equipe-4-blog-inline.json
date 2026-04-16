@@ -1,0 +1,33 @@
+{
+  "timestamp": "2026-04-16T09:39:57.526714+00:00",
+  "slug": "team-building-boxe-geneve-cohesion-equipe-4",
+  "preset": "blog-inline",
+  "prompt_text": "Generate a landscape 4:3 photo (1600x1200px).\nUse the attached image ONLY as style reference — generate a COMPLETELY DIFFERENT scene.\nDark premium boxing gym, dramatic side lighting, no text.\nCinematic grain, editorial sports photography style.\n\nUltra-realistic RAW DSLR photograph.\nNatural skin texture with visible pores, sharp focus on eyes.\nVery shallow depth of field, extreme cinematic bokeh in background,\nenvironment reduced to soft abstract warm color fields and ambient light,\nsubject pin-sharp against dreamy out-of-focus backdrop.\n85mm lens equivalent, high contrast, cinematic shadows.\nAuthentic unretouched photography — no retouching, no beauty filters.\nNo CGI, no 3D render, no digital illustration.\n\nRendering: Photographie DSLR photoréaliste lifestyle — pas d'illustration, pas de rendu 3D.\nLighting: Lumière douce diffuse, naturelle ou window light simulée. Ombres légères et sculptantes. Contraste modéré — sauf option B&W éditoriale plus contrastée..\nLens: Portrait 85mm f/2.0 pour les portraits. 35–50mm pour les scènes d'ensemble. Profondeur de champ modérée..\nSkin: Naturel, athlétique, tonique. Teintes earthy — pas de retouche excessive. Feeling réel, pas publicité..\nComposition: Cadrage centré, poses statiques ou légèrement asymétriques. Beaucoup d'espace négatif. Focus silhouette + matière + posture. Fond clair (béton, mur blanc/gris, vestiaires propres)..\nRatios_allowed: 16:9 (blog-cover), 4:3 (blog-inline), 1:1 (service-portrait), 4:5 (category-hero), 16:10 (scene-wide).\n\nSUBJECT: vue d'ambiance studio entre deux rounds, équipement posé au premier plan (gants cuir, bandes, bouteille d'eau), 2 ou 3 silhouettes floues en arrière-plan. Ambient interior shot of a premium private boxing studio in Geneva between rounds. Foreground: leather boxing gloves and white hand wraps resting on a wooden bench, water bottle, clean towel. Background (soft out-of-focus): two or three silhouettes of professionals taking a short break, chatting calmly. Soft diffuse natural window light, pale concrete wall, earthy neutral palette, discreet gold tones. Negative space, minimal composition, editorial athletic lifestyle. No aggression, no dark cinematic lighting, no HDR, no text.\n\nNEGATIVE: Pas de fond entièrement noir ou ambiance dark cinématique, Pas de rim light dramatique ou éclairage de scène, Pas de mouvement extrême — pas d'action boxing agressive (sparring, coups échangés), Pas de couleurs vives ou saturées (rouge flashy, bleu fluo), Pas d'ambiance street/urban dur — pas de graffiti, entrepôt, ruelle, Pas de texte dans l'image, Pas d'effet HDR, pas de saturation excessive, Pas de foule, spectateurs, ambiance compétition, digital art, 3D render, CGI, illustration, anime, cartoon, painting, plastic skin, airbrushed, smooth skin, oversaturated, watermark, text overlay, logo, graphic design, blurry, soft focus, flat lighting, overexposed, extra hands, extra fingers, mutated hands, duplicate, clone, mirror reflection, full body shot, wide angle distortion",
+  "reference_image": "C:\\Users\\jojo-\\Desktop\\apps\\bisRepetita\\bisRepetita\\moodboard\\refs\\portrait-ambient.webp",
+  "output": "C:\\Users\\jojo-\\Desktop\\apps\\bisRepetita\\bisRepetita\\public\\images\\blog\\team-building-boxe-geneve-cohesion-equipe-4.webp",
+  "model": "nano-banana-pro-preview",
+  "response_metadata": {
+    "usage": {
+      "promptTokenCount": 993,
+      "candidatesTokenCount": 1271,
+      "totalTokenCount": 2550,
+      "promptTokensDetails": [
+        {
+          "modality": "TEXT",
+          "tokenCount": 735
+        },
+        {
+          "modality": "IMAGE",
+          "tokenCount": 258
+        }
+      ],
+      "candidatesTokensDetails": [
+        {
+          "modality": "IMAGE",
+          "tokenCount": 1120
+        }
+      ],
+      "thoughtsTokenCount": 286
+    }
+  }
+}

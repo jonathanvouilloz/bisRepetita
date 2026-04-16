@@ -52,10 +52,19 @@ presets:
     output_naming: "{slug}.webp"
     text_overlay:
       position: "bottom-left"
+      title_anchor: bottom
+      title_y_ratio: 0.92
       banner: false
       uppercase: false
       rotation: 0.0
       gradient: true
+      shadow: false
+      text_color: "#ffffff"
+      font_size_ratio: 0.072
+      font_weight: 700
+      tracking: -0.02
+      line_spacing: 1.1
+      max_title_width_ratio: 0.55
 
   blog-inline:
     description: "Image 4:3 pour insertion dans le corps d'un article"

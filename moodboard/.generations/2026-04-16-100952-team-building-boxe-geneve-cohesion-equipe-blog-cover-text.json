@@ -1,0 +1,57 @@
+{
+  "timestamp": "2026-04-16T10:09:52.277642+00:00",
+  "slug": "team-building-boxe-geneve-cohesion-equipe",
+  "preset": "blog-cover-text",
+  "prompt_text": "Generate a VERY WIDE horizontal banner in 16:9 landscape ratio, 1792x1024px.\nCLEAN PHOTO ONLY — absolutely NO text, NO typography, NO letters anywhere.\nSubject positioned on the RIGHT HALF of the frame.\nLEFT HALF must be mostly empty, light, or a clean neutral background — pale concrete,\noff-white wall, or soft out-of-focus light background. NOT dark, NOT black.\nSoft diffuse natural light, neutral earthy tones, low saturation.\nClean athletic editorial fitness photography style. Calm, premium, minimal.\nAlternate between male and female subjects across different generations.\n\nUltra-realistic RAW DSLR photograph.\nNatural skin texture with visible pores, sharp focus on eyes.\nVery shallow depth of field, extreme cinematic bokeh in background,\nenvironment reduced to soft abstract warm color fields and ambient light,\nsubject pin-sharp against dreamy out-of-focus backdrop.\n85mm lens equivalent, high contrast, cinematic shadows.\nAuthentic unretouched photography — no retouching, no beauty filters.\nNo CGI, no 3D render, no digital illustration.\n\nRendering: Photographie DSLR photoréaliste lifestyle — pas d'illustration, pas de rendu 3D.\nLighting: Lumière douce diffuse, naturelle ou window light simulée. Ombres légères et sculptantes. Contraste modéré — sauf option B&W éditoriale plus contrastée..\nLens: Portrait 85mm f/2.0 pour les portraits. 35–50mm pour les scènes d'ensemble. Profondeur de champ modérée..\nSkin: Naturel, athlétique, tonique. Teintes earthy — pas de retouche excessive. Feeling réel, pas publicité..\nComposition: Cadrage centré, poses statiques ou légèrement asymétriques. Beaucoup d'espace négatif. Focus silhouette + matière + posture. Fond clair (béton, mur blanc/gris, vestiaires propres)..\nRatios_allowed: 16:9 (blog-cover), 4:3 (blog-inline), 1:1 (service-portrait), 4:5 (category-hero), 16:10 (scene-wide).\n\nSUBJECT: Groupe de 3 collaborateurs en mouvement coordonné dans un studio de boxe premium, ambiance focused not aggressive, lumière studio naturelle douce, palette earthy, vue d'ensemble, sujets sur la moitié droite du cadre, espace clair en bas à gauche\n\nNEGATIVE: Pas de fond entièrement noir ou ambiance dark cinématique, Pas de rim light dramatique ou éclairage de scène, Pas de mouvement extrême — pas d'action boxing agressive (sparring, coups échangés), Pas de couleurs vives ou saturées (rouge flashy, bleu fluo), Pas d'ambiance street/urban dur — pas de graffiti, entrepôt, ruelle, Pas de texte dans l'image, Pas d'effet HDR, pas de saturation excessive, Pas de foule, spectateurs, ambiance compétition, digital art, 3D render, CGI, illustration, anime, cartoon, painting, plastic skin, airbrushed, smooth skin, oversaturated, watermark, text overlay, logo, graphic design, blurry, soft focus, flat lighting, overexposed, extra hands, extra fingers, mutated hands, duplicate, clone, mirror reflection, full body shot, wide angle distortion",
+  "reference_image": "C:\\Users\\jojo-\\Desktop\\apps\\bisRepetita\\bisRepetita\\moodboard\\refs\\blog-cover-style.webp",
+  "output": "C:\\Users\\jojo-\\Desktop\\apps\\bisRepetita\\bisRepetita\\public\\images\\blog\\team-building-boxe-geneve-cohesion-equipe.webp",
+  "model": "nano-banana-pro-preview",
+  "response_metadata": {
+    "usage": {
+      "promptTokenCount": 973,
+      "candidatesTokenCount": 1341,
+      "totalTokenCount": 2677,
+      "promptTokensDetails": [
+        {
+          "modality": "TEXT",
+          "tokenCount": 715
+        },
+        {
+          "modality": "IMAGE",
+          "tokenCount": 258
+        }
+      ],
+      "candidatesTokensDetails": [
+        {
+          "modality": "IMAGE",
+          "tokenCount": 1120
+        }
+      ],
+      "thoughtsTokenCount": 363
+    },
+    "compose": {
+      "composed": true,
+      "font_path": "C:\\Users\\jojo-\\Desktop\\apps\\bisRepetita\\bisRepetita\\moodboard\\fonts\\BricolageGrotesque-Variable.ttf",
+      "banner_font_path": null,
+      "title_text": "Team building boxe à Genève : créer la cohésion",
+      "banner_text": "",
+      "banner_color": "#1a1a1a",
+      "text_overlay_cfg": {
+        "position": "bottom-left",
+        "title_anchor": "bottom",
+        "title_y_ratio": 0.92,
+        "banner": false,
+        "uppercase": false,
+        "rotation": 0.0,
+        "gradient": true,
+        "shadow": true,
+        "text_color": "#ffffff",
+        "font_size_ratio": 0.058,
+        "font_weight": 700,
+        "tracking": -0.02,
+        "line_spacing": 1.1,
+        "max_title_width_ratio": 0.55
+      }
+    }
+  }
+}
