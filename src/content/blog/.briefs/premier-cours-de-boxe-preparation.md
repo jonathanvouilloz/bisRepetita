@@ -117,6 +117,7 @@ Contenu: La premiere seance d'essai est gratuite, sans engagement. Ensuite : Sol
 - Description : Plan moyen d'un coach tenant des pattes d'ours face a un(e) debutant(e) qui lance un jab. Le ring professionnel est visible en arriere-plan. L'eclairage est chaleureux, l'ambiance concentree mais detendue. Le/la debutant(e) porte une tenue de sport simple (t-shirt, short), le coach est en polo ou t-shirt technique.
 - Alt text : Premier cours de boxe avec coach aux pattes d'ours dans un studio prive a Geneve
 - Text overlay : null
+- Titre : Premier cours de boxe : préparation et déroulement
 - Aspect ratio : 16:9
 - Notes : Atmosphere accueillante, pas intimidante. Montrer la proximite coach/eleve.
 
