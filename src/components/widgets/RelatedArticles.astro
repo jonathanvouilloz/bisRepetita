@@ -3,6 +3,7 @@ import { getCollection } from "astro:content";
 import WidgetWrapper from "./WidgetWrapper.astro";
 import SectionTitle from "../ui/SectionTitle.astro";
 import PostItem from "../blog/PostItem.astro";
+import { isPublished } from "../../utils/blog";
 
 interface Props {
     maxItems?: number;
@@ -22,7 +23,7 @@ const {
     badge = "Blog",
 } = Astro.props;
 
-const allPosts = (await getCollection("blog", ({ data }) => !data.draft))
+const allPosts = (await getCollection("blog", isPublished))
     .filter((p) => p.id !== excludePostId)
     .filter((p) => !filterCategory || p.data.category === filterCategory)
     .sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf())

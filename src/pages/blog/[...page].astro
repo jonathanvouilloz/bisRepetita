@@ -5,10 +5,11 @@ import BlogHero from "../../components/blog/BlogHero.astro";
 import PostFeatured from "../../components/blog/PostFeatured.astro";
 import PostItem from "../../components/blog/PostItem.astro";
 import Pagination from "../../components/ui/Pagination.astro";
+import { isPublished } from "../../utils/blog";
 import type { GetStaticPathsOptions } from "astro";
 
 export async function getStaticPaths({ paginate }: GetStaticPathsOptions) {
-  const blogEntries = await getCollection("blog", ({ data }) => !data.draft);
+  const blogEntries = await getCollection("blog", isPublished);
   const sortedPosts = blogEntries
     .filter((post) => post.data && post.data.pubDate)
     .sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf());
@@ -23,7 +24,7 @@ const isFirstPage = page.currentPage === 1;
 const featuredPost = isFirstPage && allPosts.length > 0 ? allPosts[0] : null;
 const gridPosts = isFirstPage ? allPosts.slice(1) : allPosts;
 
-const allBlogEntries = await getCollection("blog", ({ data }) => !data.draft);
+const allBlogEntries = await getCollection("blog", isPublished);
 const allCategories = allBlogEntries
   .map((p) => p.data.category)
   .filter((c): c is string => !!c);

@@ -3,9 +3,10 @@ import BaseLayout from "../../../layouts/BaseLayout.astro";
 import { getCollection } from "astro:content";
 import PostItem from "../../../components/blog/PostItem.astro";
 import { slugify } from "../../../utils/slugify";
+import { isPublished } from "../../../utils/blog";
 
 export async function getStaticPaths() {
-  const allPosts = await getCollection("blog", ({ data }) => !data.draft);
+  const allPosts = await getCollection("blog", isPublished);
   const posts = allPosts.filter((post) => post.data && post.data.pubDate);
 
   const tags = new Set<string>();

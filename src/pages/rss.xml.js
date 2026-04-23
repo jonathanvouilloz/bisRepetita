@@ -1,9 +1,10 @@
 import rss from "@astrojs/rss";
 import { getCollection } from "astro:content";
 import { siteConfig } from "../config/site";
+import { isPublished } from "../utils/blog";
 
 export async function GET(context) {
-  const blog = await getCollection("blog", ({ data }) => !data.draft);
+  const blog = await getCollection("blog", isPublished);
 
   return rss({
     title: siteConfig.name,

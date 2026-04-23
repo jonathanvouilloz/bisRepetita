@@ -4,11 +4,12 @@ import Schema from "../../components/seo/Schema.astro";
 import Tags from "../../components/ui/Tags.astro";
 import TableOfContents from "../../components/blog/TableOfContents.astro";
 import { slugify } from "../../utils/slugify";
+import { isPublished } from "../../utils/blog";
 
 import { getCollection, render } from "astro:content";
 
 export async function getStaticPaths() {
-  const blog = await getCollection("blog", ({ data }) => !data.draft);
+  const blog = await getCollection("blog", isPublished);
   return blog.map((post) => ({
     params: { slug: post.id },
     props: { post },

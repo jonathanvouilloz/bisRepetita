@@ -4,9 +4,10 @@ import { getCollection } from "astro:content";
 import BlogHero from "../../../components/blog/BlogHero.astro";
 import PostItem from "../../../components/blog/PostItem.astro";
 import { slugify } from "../../../utils/slugify";
+import { isPublished } from "../../../utils/blog";
 
 export async function getStaticPaths() {
-  const allPosts = await getCollection("blog", ({ data }) => !data.draft);
+  const allPosts = await getCollection("blog", isPublished);
   const posts = allPosts.filter((post) => post.data && post.data.pubDate);
 
   const categories = new Set<string>();
