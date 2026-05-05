@@ -8,6 +8,8 @@ import FAQ from "../components/widgets/FAQ.astro";
 import CTABanner from "../components/widgets/CTABanner.astro";
 import RelatedArticles from "../components/widgets/RelatedArticles.astro";
 import GsapReveal from "../components/widgets/GsapReveal.astro";
+import Container from "../components/ui/Container.astro";
+import SectionTitle from "../components/ui/SectionTitle.astro";
 import Schema from "../components/seo/Schema.astro";
 import coursPortrait from "../assets/cours-portrait.webp";
 import nicolasPortrait from "../assets/nicolas-portrait.webp";
@@ -176,6 +178,94 @@ const faqs = [
             features={typesDePratique}
             columns={3}
         />
+    </GsapReveal>
+
+    <!-- 4b. Choisir votre format — maillage interne pillar → 7 services -->
+    <GsapReveal animation="fadeUp">
+        <Container class="py-16 md:py-24" id="formats">
+            <SectionTitle
+                badge="Choisir votre format"
+                title={`7 formats pour pratiquer la boxe à <span class='text-primary'>Genève</span>`}
+                class="mb-12"
+            />
+            <p class="text-lg text-foreground/70 max-w-3xl mx-auto -mt-6 mb-12 text-center">
+                Solo, duo, petit groupe, collectif, à domicile, en entreprise ou cadre 100 % féminin — chaque format répond à un besoin précis. Voici comment choisir.
+            </p>
+            <div class="grid gap-8 md:grid-cols-2">
+                <article class="border border-border rounded-2xl p-6 hover:border-primary transition-colors">
+                    <h3 class="text-2xl font-display font-medium mb-3">Coaching Privé</h3>
+                    <p class="text-foreground/70 mb-4">
+                        Le format historique de Bis Repetita : un coach, votre rythme, votre programme. Hub qui regroupe les déclinaisons solo, duo, trio et petit groupe. Idéal si vous cherchez une progression rapide et mesurable.
+                    </p>
+                    <a href="/services/coaching-prive" class="text-primary hover:underline font-medium">
+                        Découvrir le coaching privé →
+                    </a>
+                </article>
+                <article class="border border-border rounded-2xl p-6 hover:border-primary transition-colors">
+                    <h3 class="text-2xl font-display font-medium mb-3">Coaching Solo</h3>
+                    <p class="text-foreground/70 mb-4">
+                        Séance 1-on-1 avec Nicolas de Boccard. Le format le plus exigeant et le plus rapide pour transformer votre technique de boxe à Genève. 60 minutes 100 % pour vous.
+                    </p>
+                    <a href="/services/coaching-solo" class="text-primary hover:underline font-medium">
+                        Découvrir le coaching solo →
+                    </a>
+                </article>
+                <article class="border border-border rounded-2xl p-6 hover:border-primary transition-colors">
+                    <h3 class="text-2xl font-display font-medium mb-3">Coaching Duo & Trio</h3>
+                    <p class="text-foreground/70 mb-4">
+                        Le coaching privé à deux ou trois — même qualité d'encadrement, coût partagé. Format apprécié des couples, amis ou collègues qui veulent progresser ensemble.
+                    </p>
+                    <a href="/services/coaching-duo-trio" class="text-primary hover:underline font-medium">
+                        Découvrir le coaching duo / trio →
+                    </a>
+                </article>
+                <article class="border border-border rounded-2xl p-6 hover:border-primary transition-colors">
+                    <h3 class="text-2xl font-display font-medium mb-3">Small Group Training</h3>
+                    <p class="text-foreground/70 mb-4">
+                        6 personnes maximum, ratio coach/élèves favorable. Le format intermédiaire entre coaching privé et cours collectif, pour ceux qui veulent l'énergie du groupe sans diluer le suivi technique.
+                    </p>
+                    <a href="/services/small-group-training" class="text-primary hover:underline font-medium">
+                        Découvrir le small group training →
+                    </a>
+                </article>
+                <article class="border border-border rounded-2xl p-6 hover:border-primary transition-colors">
+                    <h3 class="text-2xl font-display font-medium mb-3">Coaching à Domicile</h3>
+                    <p class="text-foreground/70 mb-4">
+                        Le studio se déplace chez vous, partout dans le canton de Genève. Matériel professionnel inclus (gants, pattes d'ours, tapis, corde). Pour les agendas saturés ou les expats à Cologny, Versoix, Champel ou Carouge.
+                    </p>
+                    <a href="/services/coaching-boxe-domicile" class="text-primary hover:underline font-medium">
+                        Découvrir le coaching à domicile →
+                    </a>
+                </article>
+                <article class="border border-border rounded-2xl p-6 hover:border-primary transition-colors">
+                    <h3 class="text-2xl font-display font-medium mb-3">Round by Round</h3>
+                    <p class="text-foreground/70 mb-4">
+                        Cours collectif structuré en rounds chronométrés, 8 participants maximum, 2 coachs sur le ring. Le format le plus accessible (40 CHF la séance) pour découvrir la boxe anglaise dans un cadre exigeant.
+                    </p>
+                    <a href="/services/round-by-round" class="text-primary hover:underline font-medium">
+                        Découvrir Round by Round →
+                    </a>
+                </article>
+                <article class="border border-border rounded-2xl p-6 hover:border-primary transition-colors">
+                    <h3 class="text-2xl font-display font-medium mb-3">Corporate & Team Building</h3>
+                    <p class="text-foreground/70 mb-4">
+                        Programmes pour entreprises genevoises : team building, séances bien-être au travail, masterclass technique. Intervention au studio La Voie-Creuse 16 ou dans vos locaux. Devis sous 48 h.
+                    </p>
+                    <a href="/services/corporate" class="text-primary hover:underline font-medium">
+                        Découvrir les programmes corporate →
+                    </a>
+                </article>
+                <article class="border border-border rounded-2xl p-6 hover:border-primary transition-colors">
+                    <h3 class="text-2xl font-display font-medium mb-3">Boxe Femme</h3>
+                    <p class="text-foreground/70 mb-4">
+                        Cadre privé, sans contact, sans regard masculin. Format dédié aux femmes qui veulent débuter la boxe à Genève sereinement, en solo, en duo ou en petit groupe 100 % féminin.
+                    </p>
+                    <a href="/services/boxe-femme" class="text-primary hover:underline font-medium">
+                        Découvrir la boxe femme →
+                    </a>
+                </article>
+            </div>
+        </Container>
     </GsapReveal>
 
     <!-- 5. RelatedArticles — Articles du blog -->
