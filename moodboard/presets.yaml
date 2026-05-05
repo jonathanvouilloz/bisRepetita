@@ -121,3 +121,37 @@ presets:
     reference_image: refs/scene-wide.webp
     output_dir: public/images/scenes
     output_naming: "scene-{slug}.webp"
+
+  gmb-post-template:
+    description: "Image GMB 1200x900 (4:3) depuis fond statique + dual-text overlay PIL (titre photo + sous-titre bande). Lue par /gmb-generate-images."
+    source: template
+    template_image: moodboard/refs/gmb-bg.png
+    compose_text: true
+    font_file: fonts/BricolageGrotesque-Variable.ttf
+    dimensions: "1200x900"
+    title_overlay:
+      anchor: above_band
+      band_top_ratio: 0.556
+      gap_to_band: 100
+      text_color: "#ffffff"
+      font_size_ratio: 0.082
+      font_weight: 700
+      tracking: -0.02
+      line_spacing: 1.1
+      max_width_ratio: 0.82
+      align: center
+      auto_shrink: false
+    subtitle_overlay:
+      anchor: band_center
+      band_top_ratio: 0.556
+      band_bot_ratio: 0.786
+      text_color: "#1a1a1a"
+      font_size_ratio: 0.062
+      font_weight: 500
+      tracking: 0.0
+      line_spacing: 1.1
+      max_width_ratio: 0.75
+      align: center
+      auto_shrink: true
+    output_dir: static/gmb-assets/bis-repetita
+    output_naming: "{slug}.png"

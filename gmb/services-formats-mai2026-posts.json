@@ -1,0 +1,134 @@
+[
+  {
+    "type": "gmb",
+    "title": "Coaching solo — progression sur mesure",
+    "content": "Chaque séance de coaching solo est construite autour de vos objectifs techniques. À Genève, nos coachs licenciés SwissBoxing adaptent chaque round à votre niveau — du premier gant au pratiquant confirmé.",
+    "post_type": "whats_new",
+    "scheduled_at": "2026-04-27T09:00:00",
+    "cta": {
+      "action": "LEARN_MORE",
+      "url": "https://bisrepetita.ch/services/coaching-solo"
+    },
+    "location_target": "all",
+    "image_template": "photo-band",
+    "image_style": "photo-object",
+    "image_text": "Coaching solo, progression sur mesure",
+    "image_prompt": "4:3 aspect ratio, landscape orientation, 1200x900 pixels, image must be wider than tall. Full-background dark and moody boxing gym scene: a coach holding focus mitts in a dimly lit professional ring, atmospheric side lighting casting long shadows, silhouettes in background, gritty premium feel. Overlay: large bold white Bricolage Grotesque text 'Coaching solo' centered in the upper 65% of the image, very large display size, slight text shadow for legibility. Solid white horizontal band occupying the bottom 30% of the image, dark charcoal text 'Progression sur mesure à Genève' in Bricolage Grotesque medium weight, centered in the band. Premium athletic lifestyle, clean, minimal, confident atmosphere. No identifiable faces, no geographic landmarks, no visible text except the two designated zones."
+  },
+  {
+    "type": "gmb",
+    "title": "Première séance offerte — tous formats",
+    "content": "Première séance offerte, tous formats. Solo, duo, petit groupe ou Round by Round : testez le studio de boxe anglaise à Genève sans engagement. Réservation via le site ou WhatsApp.",
+    "post_type": "offer",
+    "scheduled_at": "2026-04-30T13:00:00",
+    "event_start_date": "2026-04-30",
+    "event_end_date": "2026-05-14",
+    "cta": {
+      "action": "BOOK",
+      "url": "https://bisrepetita.ch/contact"
+    },
+    "location_target": "all",
+    "image_template": "photo-band",
+    "image_style": "photo-object",
+    "image_text": "Première séance offerte, tous formats",
+    "image_prompt": "4:3 aspect ratio, landscape orientation, 1200x900 pixels, image must be wider than tall. Full-background dark and moody boxing gym scene: wide shot of an empty premium boxing studio with a professional ring, dark walls, polished wooden floor, low-key atmospheric lighting with warm amber rim lighting on the ring ropes. Overlay: large bold white Bricolage Grotesque text 'Première séance offerte' centered in the upper 65% of the image, very large display size, slight text shadow for legibility. Solid white horizontal band occupying the bottom 30% of the image, dark charcoal text 'Tous formats · Sans engagement' in Bricolage Grotesque medium weight, centered in the band. Premium athletic lifestyle, clean, minimal, confident atmosphere. No identifiable faces, no geographic landmarks, no visible text except the two designated zones."
+  },
+  {
+    "type": "gmb",
+    "title": "Round by Round — 8 max, 2 coachs",
+    "content": "8 participants maximum, 2 coachs sur le ring : le Round by Round offre l'énergie d'un cours collectif avec un encadrement que les grandes salles ne permettent pas. Cours de boxe Genève centre.",
+    "post_type": "whats_new",
+    "scheduled_at": "2026-05-04T09:00:00",
+    "cta": {
+      "action": "LEARN_MORE",
+      "url": "https://bisrepetita.ch/services/round-by-round"
+    },
+    "location_target": "all",
+    "image_template": "photo-band",
+    "image_style": "photo-object",
+    "image_text": "L'énergie du collectif, 8 max",
+    "image_prompt": "4:3 aspect ratio, landscape orientation, 1200x900 pixels, image must be wider than tall. Full-background dark and moody boxing gym scene: multiple people sparring or hitting bags simultaneously in a large dark gym, energetic yet controlled atmosphere, dramatic overhead lighting creating pools of light, silhouettes in motion, no identifiable faces. Overlay: large bold white Bricolage Grotesque text 'Round by Round' centered in the upper 65% of the image, very large display size, slight text shadow for legibility. Solid white horizontal band occupying the bottom 30% of the image, dark charcoal text '8 max · 2 coachs · Cours de boxe Genève' in Bricolage Grotesque medium weight, centered in the band. Premium athletic lifestyle, clean, confident atmosphere. No identifiable faces, no geographic landmarks, no visible text except the two designated zones."
+  },
+  {
+    "type": "gmb",
+    "title": "Coaching duo ou trio — même exigence",
+    "content": "À deux ou à trois, le coaching privé reste exigeant et le coût devient plus accessible. Un format apprécié des pratiquants genevois qui souhaitent progresser ensemble à leur rythme.",
+    "post_type": "whats_new",
+    "scheduled_at": "2026-05-07T13:00:00",
+    "cta": {
+      "action": "LEARN_MORE",
+      "url": "https://bisrepetita.ch/services/coaching-duo-trio"
+    },
+    "location_target": "all",
+    "image_template": "photo-band",
+    "image_style": "photo-object",
+    "image_text": "Coaching duo ou trio, même exigence",
+    "image_prompt": "4:3 aspect ratio, landscape orientation, 1200x900 pixels, image must be wider than tall. Full-background dark and moody boxing gym scene: two silhouettes in boxing stance facing each other in a dimly lit ring, only shapes visible, no identifiable faces, dramatic low-key side lighting with warm amber edge glow, professional premium feel. Overlay: large bold white Bricolage Grotesque text 'Coaching duo ou trio' centered in the upper 65% of the image, very large display size, slight text shadow for legibility. Solid white horizontal band occupying the bottom 30% of the image, dark charcoal text 'Progresser ensemble, même exigence' in Bricolage Grotesque medium weight, centered in the band. Premium athletic lifestyle, clean, minimal, confident atmosphere. No identifiable faces, no geographic landmarks, no visible text except the two designated zones."
+  },
+  {
+    "type": "gmb",
+    "title": "Team building boxe — devis sur demande",
+    "content": "Programme de team building boxe anglaise à Genève : cohésion, dépassement de soi, aucun niveau requis. Intervention au studio ou dans vos locaux. Devis sur demande pour équipes et DRH.",
+    "post_type": "offer",
+    "scheduled_at": "2026-05-11T09:00:00",
+    "event_start_date": "2026-05-11",
+    "event_end_date": "2026-05-25",
+    "cta": {
+      "action": "ORDER",
+      "url": "https://bisrepetita.ch/services/corporate"
+    },
+    "location_target": "all",
+    "image_template": "photo-band",
+    "image_style": "photo-object",
+    "image_text": "Le team building par la boxe anglaise",
+    "image_prompt": "4:3 aspect ratio, landscape orientation, 1200x900 pixels, image must be wider than tall. Full-background dark and moody boxing gym scene: a row of identical premium boxing gloves lined up on a bench in a dark gym, atmospheric lighting, studio quality shot, sense of group and uniformity, no people visible. Overlay: large bold white Bricolage Grotesque text 'Team building boxe' centered in the upper 65% of the image, very large display size, slight text shadow for legibility. Solid white horizontal band occupying the bottom 30% of the image, dark charcoal text 'Cohésion d'équipe · Devis sur demande' in Bricolage Grotesque medium weight, centered in the band. Premium athletic lifestyle, clean, minimal, confident atmosphere. No identifiable faces, no geographic landmarks, no visible text except the two designated zones."
+  },
+  {
+    "type": "gmb",
+    "title": "Small Group Training — 6 max",
+    "content": "6 personnes maximum : le Small Group Training allie suivi technique individuel et dynamique collective. Entre cours collectif et coaching privé — le format intermédiaire pour progresser à Genève.",
+    "post_type": "whats_new",
+    "scheduled_at": "2026-05-14T13:00:00",
+    "cta": {
+      "action": "LEARN_MORE",
+      "url": "https://bisrepetita.ch/services/small-group-training"
+    },
+    "location_target": "all",
+    "image_template": "photo-band",
+    "image_style": "photo-object",
+    "image_text": "Entre collectif et coaching privé",
+    "image_prompt": "4:3 aspect ratio, landscape orientation, 1200x900 pixels, image must be wider than tall. Full-background dark and moody boxing gym scene: small group of silhouetted people gathered around a heavy bag in a dark premium gym, coach gesturing, intimate training atmosphere, warm spot lighting from above isolating the group, dark walls and floor. Overlay: large bold white Bricolage Grotesque text 'Small Group Training' centered in the upper 65% of the image, very large display size, slight text shadow for legibility. Solid white horizontal band occupying the bottom 30% of the image, dark charcoal text '6 personnes max · Genève' in Bricolage Grotesque medium weight, centered in the band. Premium athletic lifestyle, clean, minimal, confident atmosphere. No identifiable faces, no geographic landmarks, no visible text except the two designated zones."
+  },
+  {
+    "type": "gmb",
+    "title": "Coaching boxe à domicile — Genève",
+    "content": "Pas de déplacement jusqu'au studio : nos coachs interviennent chez vous à Genève pour des séances de boxe anglaise sur mesure. Le même niveau d'exigence technique, dans votre espace.",
+    "post_type": "whats_new",
+    "scheduled_at": "2026-05-18T09:00:00",
+    "cta": {
+      "action": "LEARN_MORE",
+      "url": "https://bisrepetita.ch/services/coaching-boxe-domicile"
+    },
+    "location_target": "all",
+    "image_template": "photo-band",
+    "image_style": "photo-object",
+    "image_text": "La boxe anglaise dans votre espace",
+    "image_prompt": "4:3 aspect ratio, landscape orientation, 1200x900 pixels, image must be wider than tall. Full-background dark and moody scene: a pair of premium leather boxing gloves placed on a clean modern wooden floor next to a white wall in a bright living room or open space apartment, minimal and elegant, natural light from a window casting soft shadows. Overlay: large bold white Bricolage Grotesque text 'Coaching à domicile' centered in the upper 65% of the image — use a subtle dark gradient overlay on the photo to ensure white text legibility, very large display size. Solid white horizontal band occupying the bottom 30% of the image, dark charcoal text 'Boxe anglaise sur mesure · Genève' in Bricolage Grotesque medium weight, centered in the band. Premium athletic lifestyle, clean, minimal, confident atmosphere. No identifiable faces, no geographic landmarks, no visible text except the two designated zones."
+  },
+  {
+    "type": "gmb",
+    "title": "Quel format de cours vous correspond ?",
+    "content": "Solo, duo, petit groupe, Round by Round, corporate ou coaching à domicile : Bis Repetita propose six formats de cours de boxe à Genève, adaptés à vos objectifs et à votre emploi du temps.",
+    "post_type": "whats_new",
+    "scheduled_at": "2026-05-22T13:00:00",
+    "cta": {
+      "action": "LEARN_MORE",
+      "url": "https://bisrepetita.ch/services"
+    },
+    "location_target": "all",
+    "image_template": "photo-band",
+    "image_style": "photo-object",
+    "image_text": "Quel format de cours vous correspond ?",
+    "image_prompt": "4:3 aspect ratio, landscape orientation, 1200x900 pixels, image must be wider than tall. Full-background dark and moody boxing gym scene: panoramic shot of a premium boxing studio with a ring, heavy bags hanging in a row, dark walls, low-key atmospheric lighting creating depth and layers, empty gym conveying possibility and invitation. Overlay: large bold white Bricolage Grotesque text 'Quel format vous correspond' centered in the upper 65% of the image, very large display size, slight text shadow for legibility. Solid white horizontal band occupying the bottom 30% of the image, dark charcoal text '6 formules de boxe · Genève' in Bricolage Grotesque medium weight, centered in the band. Premium athletic lifestyle, clean, minimal, confident atmosphere. No identifiable faces, no geographic landmarks, no visible text except the two designated zones."
+  }
+]

@@ -1,0 +1,34 @@
+{
+  "timestamp": "2026-04-27T12:14:20.166123+00:00",
+  "slug": "post-08",
+  "preset": "gmb-post-template",
+  "prompt_text": "[template — no prompt]",
+  "reference_image": null,
+  "output": "C:\\Users\\jojo-\\Desktop\\apps\\bisRepetita\\bisRepetita\\static\\gmb-assets\\post-00.png",
+  "model": "nano-banana-pro-preview",
+  "response_metadata": {
+    "source": "template",
+    "compose": {
+      "composed": true,
+      "source": "template",
+      "template_image": "C:\\Users\\jojo-\\Desktop\\apps\\bisRepetita\\bisRepetita\\moodboard\\refs\\gmb-bg.png",
+      "font_path": "C:\\Users\\jojo-\\Desktop\\apps\\bisRepetita\\bisRepetita\\moodboard\\fonts\\BricolageGrotesque-Variable.ttf",
+      "title_text": "Quel format vous correspond",
+      "text_overlay_cfg": {
+        "position": "top-center",
+        "title_y_ratio": 0.38,
+        "gradient": false,
+        "banner": false,
+        "rotation": 0,
+        "uppercase": false,
+        "shadow": true,
+        "text_color": "#ffffff",
+        "font_size_ratio": 0.1,
+        "tracking": -0.02,
+        "line_spacing": 1.1,
+        "max_title_width_ratio": 0.85,
+        "font_weight": 700
+      }
+    }
+  }
+}

@@ -1,0 +1,50 @@
+[
+  {
+    "type": "gmb",
+    "title": "Cours boxe débutant — l'âge n'est pas un frein",
+    "content": "Commencer la boxe à 35 ou 40 ans : c'est l'âge de la majorité de nos nouveaux membres à Genève. Pas de condition physique requise, pas de sparring au premier cours. Une tenue de sport suffit. Essai gratuit.",
+    "post_type": "whats_new",
+    "scheduled_at": "2026-05-04T09:00:00",
+    "cta": {
+      "action": "BOOK",
+      "url": "https://bisrepetita.ch/contact"
+    },
+    "location_target": "all",
+    "image_template": "split-vertical",
+    "image_style": "photo-object",
+    "image_text": "Début à tout âge",
+    "image_prompt": "4:3 aspect ratio, landscape orientation, 1200x900 pixels, image must be wider than tall.\n\nSplit-vertical layout: left zone 55% solid #1a1a1a background, 'Début à tout âge' in bold Bricolage Grotesque, high contrast white text. Right zone 45%: a single new pair of boxing gloves in golden-brown leather (#B8A47E tones), unwrapped, placed on a clean white surface, warm natural light, minimal composition.\n\nPremium athletic lifestyle, clean, minimal, confident atmosphere, photo-object style.\n\nNo realistic human faces, no identifiable people, no geographic landmarks, no visible text except the designated text zone.\nNo visual clutter, no complex patterns, no busy backgrounds."
+  },
+  {
+    "type": "gmb",
+    "title": "Cours boxe débutant — zéro équipement",
+    "content": "Vous n'avez besoin de rien pour votre premier cours de boxe à Genève. Gants prêtés, bandes fournies, serviette et douche incluses. Une tenue de sport suffit. Séance d'essai offerte, sans engagement.",
+    "post_type": "whats_new",
+    "scheduled_at": "2026-05-06T13:00:00",
+    "cta": {
+      "action": "BOOK",
+      "url": "https://bisrepetita.ch/contact"
+    },
+    "location_target": "all",
+    "image_template": "centered-minimal",
+    "image_style": "photo-object",
+    "image_text": "Rien à apporter. On fournit tout.",
+    "image_prompt": "4:3 aspect ratio, landscape orientation, 1200x900 pixels, image must be wider than tall.\n\nCentered-minimal layout: solid #1a1a1a background. Centered flat-lay visual: a pair of loaned boxing gloves, white hand wraps neatly rolled beside them, a folded white towel — all arranged cleanly on a dark surface, warm accent light. Text 'Rien à apporter. On fournit tout.' below in Bricolage Grotesque white.\n\nPremium athletic lifestyle, clean, minimal, confident atmosphere, photo-object style.\n\nNo realistic human faces, no identifiable people, no geographic landmarks, no visible text except the designated text zone.\nNo visual clutter, no complex patterns, no busy backgrounds."
+  },
+  {
+    "type": "gmb",
+    "title": "Cours boxe débutant — déroulé première séance",
+    "content": "Échauffement, technique de base, pattes d'ours avec le coach, retour au calme. Une première séance de boxe anglaise à Genève en 60 min. Aucun sparring. Réservez votre cours d'essai gratuit.",
+    "post_type": "whats_new",
+    "scheduled_at": "2026-05-08T09:00:00",
+    "cta": {
+      "action": "BOOK",
+      "url": "https://bisrepetita.ch/contact"
+    },
+    "location_target": "all",
+    "image_template": "split-horizontal",
+    "image_style": "photo-object",
+    "image_text": "Première séance sans sparring",
+    "image_prompt": "4:3 aspect ratio, landscape orientation, 1200x900 pixels, image must be wider than tall.\n\nSplit-horizontal layout: top 60% visual zone — a clean boxing studio with a professional heavy bag hanging in soft natural light, focus mitts resting on the ring apron, no people, calm atmosphere. Bottom 40% solid #B8A47E band with 'Première séance sans sparring' in bold Bricolage Grotesque, high contrast dark text.\n\nPremium athletic lifestyle, clean, minimal, confident atmosphere, photo-object style.\n\nNo realistic human faces, no identifiable people, no geographic landmarks, no visible text except the designated text zone.\nNo visual clutter, no complex patterns, no busy backgrounds."
+  }
+]

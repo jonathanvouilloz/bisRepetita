@@ -1,0 +1,47 @@
+{
+  "timestamp": "2026-04-27T12:32:20.486349+00:00",
+  "slug": "post-07",
+  "preset": "gmb-post-template",
+  "prompt_text": "[template — no prompt]",
+  "reference_image": null,
+  "output": "C:\\Users\\jojo-\\Desktop\\apps\\bisRepetita\\bisRepetita\\static\\gmb-assets\\bis-repetita\\post-07.png",
+  "model": "nano-banana-pro-preview",
+  "response_metadata": {
+    "source": "template",
+    "compose": {
+      "composed": true,
+      "source": "template",
+      "layout": "dual",
+      "template_image": "C:\\Users\\jojo-\\Desktop\\apps\\bisRepetita\\bisRepetita\\moodboard\\refs\\gmb-bg.png",
+      "font_path": "C:\\Users\\jojo-\\Desktop\\apps\\bisRepetita\\bisRepetita\\moodboard\\fonts\\BricolageGrotesque-Variable.ttf",
+      "title_text": "La boxe anglaise dans votre espace",
+      "subtitle_text": "Boxe anglaise sur mesure · Genève",
+      "title_overlay": {
+        "anchor": "above_band",
+        "band_top_ratio": 0.556,
+        "gap_to_band": 100,
+        "text_color": "#ffffff",
+        "font_size_ratio": 0.082,
+        "font_weight": 700,
+        "tracking": -0.02,
+        "line_spacing": 1.1,
+        "max_width_ratio": 0.82,
+        "align": "center",
+        "auto_shrink": false
+      },
+      "subtitle_overlay": {
+        "anchor": "band_center",
+        "band_top_ratio": 0.556,
+        "band_bot_ratio": 0.786,
+        "text_color": "#1a1a1a",
+        "font_size_ratio": 0.062,
+        "font_weight": 500,
+        "tracking": 0.0,
+        "line_spacing": 1.1,
+        "max_width_ratio": 0.75,
+        "align": "center",
+        "auto_shrink": true
+      }
+    }
+  }
+}

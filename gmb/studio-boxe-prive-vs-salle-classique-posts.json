@@ -1,0 +1,50 @@
+[
+  {
+    "type": "gmb",
+    "title": "Studio privé vs salle classique — progression",
+    "content": "En cours collectif, vous recevez 3 min d'attention sur 60. En coaching individuel, 60 min. C'est pourquoi nos membres progressent 2 à 3 fois plus vite. Studio de boxe privé à Genève. Séance d'essai gratuite.",
+    "post_type": "whats_new",
+    "scheduled_at": "2026-04-20T09:00:00",
+    "cta": {
+      "action": "BOOK",
+      "url": "https://bisrepetita.ch/contact"
+    },
+    "location_target": "all",
+    "image_template": "split-vertical",
+    "image_style": "photo-object",
+    "image_text": "3 min vs 60 min",
+    "image_prompt": "4:3 aspect ratio, landscape orientation, 1200x900 pixels, image must be wider than tall.\n\nSplit-vertical layout: left zone 55% solid #1a1a1a background, '3 min vs 60 min' in bold Bricolage Grotesque, high contrast white text. Right zone 45%: a pair of premium leather boxing gloves hanging on a clean concrete wall, warm natural side light, minimal composition.\n\nPremium athletic lifestyle, clean, minimal, confident atmosphere, photo-object style.\n\nNo realistic human faces, no identifiable people, no geographic landmarks, no visible text except the designated text zone.\nNo visual clutter, no complex patterns, no busy backgrounds."
+  },
+  {
+    "type": "gmb",
+    "title": "Studio privé vs salle classique — confidentialité",
+    "content": "Espace fermé, vestiaires privés, coaching sur mesure. Notre studio de boxe à Genève est conçu pour ceux qui préfèrent la discrétion. Ring professionnel, 8 personnes max. Séances 7j/7.",
+    "post_type": "whats_new",
+    "scheduled_at": "2026-04-22T13:00:00",
+    "cta": {
+      "action": "LEARN_MORE",
+      "url": "https://bisrepetita.ch/studio"
+    },
+    "location_target": "all",
+    "image_template": "centered-minimal",
+    "image_style": "photo-object",
+    "image_text": "Cadre privé. Coaching sur mesure.",
+    "image_prompt": "4:3 aspect ratio, landscape orientation, 1200x900 pixels, image must be wider than tall.\n\nCentered-minimal layout: solid #1a1a1a background. Centered visual: a single pair of premium leather boxing gloves in warm golden-brown tones (#B8A47E), neatly placed on a clean concrete surface beside a folded white towel. Generous negative space. Text 'Cadre privé. Coaching sur mesure.' below in Bricolage Grotesque white.\n\nPremium athletic lifestyle, clean, minimal, confident atmosphere, photo-object style.\n\nNo realistic human faces, no identifiable people, no geographic landmarks, no visible text except the designated text zone.\nNo visual clutter, no complex patterns, no busy backgrounds."
+  },
+  {
+    "type": "gmb",
+    "title": "Studio privé vs salle classique — formats flexibles",
+    "content": "Solo, duo, trio ou petit groupe : chaque format s'adapte à votre agenda. Coaching à domicile aussi disponible dans le canton de Genève. Première séance offerte, sans engagement.",
+    "post_type": "whats_new",
+    "scheduled_at": "2026-04-24T09:00:00",
+    "cta": {
+      "action": "BOOK",
+      "url": "https://bisrepetita.ch/contact"
+    },
+    "location_target": "all",
+    "image_template": "split-horizontal",
+    "image_style": "photo-object",
+    "image_text": "Première séance offerte",
+    "image_prompt": "4:3 aspect ratio, landscape orientation, 1200x900 pixels, image must be wider than tall.\n\nSplit-horizontal layout: top 60% visual zone — clean private boxing studio interior, professional ring visible in background, hanging leather bags, warm diffuse natural light, no people. Bottom 40% solid #B8A47E band with 'Première séance offerte' in bold Bricolage Grotesque, high contrast dark text.\n\nPremium athletic lifestyle, clean, minimal, confident atmosphere, photo-object style.\n\nNo realistic human faces, no identifiable people, no geographic landmarks, no visible text except the designated text zone.\nNo visual clutter, no complex patterns, no busy backgrounds."
+  }
+]
