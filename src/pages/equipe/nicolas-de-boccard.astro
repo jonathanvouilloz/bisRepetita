@@ -1,0 +1,243 @@
+---
+import { Image } from "astro:assets";
+import { Icon } from "astro-icon/components";
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import Hero from "../../components/widgets/Hero.astro";
+import Stats from "../../components/widgets/Stats.astro";
+import ProfileShowcase from "../../components/widgets/ProfileShowcase.astro";
+import FAQ from "../../components/widgets/FAQ.astro";
+import RelatedArticles from "../../components/widgets/RelatedArticles.astro";
+import CTABanner from "../../components/widgets/CTABanner.astro";
+import GsapReveal from "../../components/widgets/GsapReveal.astro";
+import Schema from "../../components/seo/Schema.astro";
+import { getAuthor } from "../../config/authors";
+import nicolasAction from "../../assets/nicolas-de-boccard.webp";
+
+const nicolas = getAuthor("Nicolas de Boccard");
+if (!nicolas) {
+    throw new Error("Profil 'Nicolas de Boccard' introuvable dans src/config/authors.ts");
+}
+
+const metadata = {
+    title:
+        "Nicolas de Boccard — Head Coach & Fondateur de Bis Repetita | Boxe Genève",
+    description:
+        "Nicolas de Boccard, fondateur de Bis Repetita à Genève. 20 ans de pratique de la boxe, 5 ans à la tête du studio, 100+ élèves accompagnés. Découvrez son parcours et son approche.",
+    ignoreTitleTemplate: true,
+};
+
+const stats = [
+    {
+        value: "20 ans",
+        label: "De pratique",
+        description: "Boxe anglaise comme discipline et école de rigueur.",
+    },
+    {
+        value: "5 ans",
+        label: "Aux commandes",
+        description: "Bis Repetita fondé à La Voie-Creuse, Genève.",
+    },
+    {
+        value: "100+",
+        label: "Élèves accompagnés",
+        description: "Du débutant complet au compétiteur amateur.",
+    },
+];
+
+const pillars = [
+    {
+        title: "Technique avant intensité",
+        description:
+            "Posture, déplacements, lecture de la garde adverse — la base se travaille à chaque séance, à n'importe quel niveau.",
+    },
+    {
+        title: "Préparation physique adaptée",
+        description:
+            "Charge de travail calibrée selon l'âge, le profil et l'objectif. Pas de programme générique recyclé.",
+    },
+    {
+        title: "Le mental comme outil",
+        description:
+            "La séance sert à reprendre la main sur son corps, son souffle et sa concentration. La confiance suit, pas l'inverse.",
+    },
+    {
+        title: "Du débutant au compétiteur",
+        description:
+            "Le studio reçoit des profils très différents. Chaque progression est suivie individuellement, séance après séance.",
+    },
+];
+
+const faqs = [
+    {
+        question: "Comment Nicolas adapte-t-il une séance pour un débutant complet ?",
+        answer: "La première séance commence par les fondamentaux : garde, déplacements, premier direct. Pas de sparring, pas de matériel imposé. Le rythme s'adapte au souffle et à la coordination du jour, pas à un planning figé. Les détails techniques arrivent quand la base tient debout.",
+    },
+    {
+        question: "Quel format choisir entre coaching solo, duo ou collectif ?",
+        answer: "Le <a href='/services/coaching-solo' class='text-primary hover:underline'>coaching solo</a> est le format le plus précis pour progresser vite. Le <a href='/services/coaching-duo-trio' class='text-primary hover:underline'>duo ou trio</a> garde l'attention privée tout en partageant les exercices. Les <a href='/services/round-by-round' class='text-primary hover:underline'>cours collectifs Round by Round</a> conviennent quand l'énergie de groupe motive plus que le suivi individuel.",
+    },
+    {
+        question: "Coache-t-il aussi des compétiteurs amateurs ?",
+        answer: "Oui. Nicolas accompagne plusieurs compétiteurs amateurs en préparation : travail technique pied-poing, sparring contrôlé sur le ring du studio, préparation physique spécifique. Le <a href='/services/coaching-prive' class='text-primary hover:underline'>coaching privé</a> est le format adapté à ce niveau d'exigence.",
+    },
+    {
+        question: "Travaille-t-il avec des entreprises et des équipes ?",
+        answer: "Le studio propose des <a href='/services/corporate' class='text-primary hover:underline'>programmes corporate</a> : team building, séances bien-être, événements d'entreprise. Nicolas anime personnellement la majorité de ces sessions à La Voie-Creuse ou en intervention sur site.",
+    },
+    {
+        question: "Comment réserver une séance avec Nicolas ?",
+        answer: "Le plus simple : passer par le <a href='/contact' class='text-primary hover:underline'>formulaire de contact</a> ou directement par téléphone. La <a href='/tarifs' class='text-primary hover:underline'>première séance découverte</a> est l'entrée standard pour caler les objectifs et le format adapté.",
+    },
+];
+
+const sameAs = [
+    nicolas.socialLinks.linkedin,
+    nicolas.socialLinks.instagram,
+].filter((u): u is string => Boolean(u));
+---
+
+<BaseLayout {metadata}>
+    <Fragment slot="head">
+        <Schema
+            type="Person"
+            data={{
+                title: nicolas.name,
+                description: nicolas.shortBio,
+                image: nicolas.image.src,
+                pageUrl: nicolas.pageUrl,
+                jobTitle: nicolas.jobTitle,
+                sameAs,
+                knowsAbout: nicolas.expertise,
+            }}
+        />
+        <Schema
+            type="FAQPage"
+            data={{
+                faqs: faqs.map((f) => ({
+                    question: f.question,
+                    answer: f.answer.replace(/<[^>]*>/g, ""),
+                })),
+            }}
+        />
+    </Fragment>
+
+    {/* 1. Hero */}
+    <Hero
+        variant="centered"
+        title={`Nicolas <span class="text-primary">de Boccard</span>`}
+        description="Head Coach & Fondateur de Bis Repetita. 20 ans de boxe anglaise, 5 ans à la tête du studio à Genève."
+        image={nicolas.image}
+        imageAlt={nicolas.imageAlt}
+        locationBadge={{ text: "La Voie-Creuse 16, 1202 Genève" }}
+        actions={[
+            {
+                text: "Réserver une séance",
+                href: "/contact",
+            },
+        ]}
+    />
+
+    {/* 2. Bio narrative */}
+    <section class="bg-white text-neutral-900 py-20 md:py-32">
+        <div class="mx-auto max-w-7xl px-6 md:px-12 lg:px-20">
+            <div class="md:flex items-start gap-16 lg:gap-24">
+                <div class="md:basis-2/5 mb-12 md:mb-0">
+                    <Image
+                        src={nicolasAction}
+                        alt="Nicolas de Boccard en séance de coaching à Bis Repetita"
+                        widths={[400, 700]}
+                        sizes="(min-width: 768px) 40vw, 100vw"
+                        class="w-full rounded-3xl object-cover aspect-[4/5]"
+                    />
+                </div>
+                <div class="md:basis-3/5">
+                    <span class="inline-block text-xs font-semibold uppercase tracking-widest text-primary mb-4">
+                        Le coach
+                    </span>
+                    <h2 class="text-3xl md:text-4xl font-bold text-neutral-900 mb-6">
+                        Une boxe <span class="text-primary">technique, exigeante et accessible</span>
+                    </h2>
+                    <div class="space-y-5 text-lg text-neutral-600 leading-relaxed">
+                        {nicolas.longBio.map((p) => <p>{p}</p>)}
+                    </div>
+
+                    {/* Liens sociaux */}
+                    {(nicolas.socialLinks.linkedin || nicolas.socialLinks.instagram) && (
+                        <div class="mt-8 flex flex-wrap items-center gap-3">
+                            {nicolas.socialLinks.linkedin && (
+                                <a
+                                    href={nicolas.socialLinks.linkedin}
+                                    target="_blank"
+                                    rel="noopener noreferrer"
+                                    class="inline-flex items-center gap-2 rounded-full border border-neutral-300 bg-white px-5 py-2.5 text-sm font-medium text-neutral-900 hover:border-primary hover:text-primary transition-colors"
+                                    aria-label={`LinkedIn de ${nicolas.name}`}
+                                >
+                                    <Icon name="lucide:linkedin" class="w-4 h-4" />
+                                    <span>LinkedIn</span>
+                                </a>
+                            )}
+                            {nicolas.socialLinks.instagram && (
+                                <a
+                                    href={nicolas.socialLinks.instagram}
+                                    target="_blank"
+                                    rel="noopener noreferrer"
+                                    class="inline-flex items-center gap-2 rounded-full border border-neutral-300 bg-white px-5 py-2.5 text-sm font-medium text-neutral-900 hover:border-primary hover:text-primary transition-colors"
+                                    aria-label={`Instagram du studio Bis Repetita`}
+                                >
+                                    <Icon name="lucide:instagram" class="w-4 h-4" />
+                                    <span>Instagram du studio</span>
+                                </a>
+                            )}
+                        </div>
+                    )}
+                </div>
+            </div>
+        </div>
+    </section>
+
+    {/* 3. Stats */}
+    <Stats
+        stats={stats}
+        badge="Parcours en chiffres"
+        intro="Bis Repetita est l'aboutissement d'un parcours de boxeur passionné devenu coach à plein temps. Les chiffres ne disent pas tout — mais ils cadrent la réalité du studio."
+    />
+
+    {/* 4. Piliers de l'approche */}
+    <GsapReveal animation="fadeUp">
+        <ProfileShowcase
+            tagline="L'approche"
+            title="Quatre piliers, une méthode"
+            image={nicolas.image}
+            imageAlt={nicolas.imageAlt}
+            items={pillars}
+        />
+    </GsapReveal>
+
+    {/* 5. Articles signés */}
+    <GsapReveal animation="fadeUp">
+        <RelatedArticles
+            title="Articles signés Nicolas"
+            badge="Lectures"
+            maxItems={3}
+        />
+    </GsapReveal>
+
+    {/* 6. FAQ */}
+    <GsapReveal animation="fadeUp">
+        <FAQ
+            title="Questions fréquentes"
+            subtitle={`Tout ce qu'on demande le plus souvent à Nicolas avant de s'inscrire.`}
+            items={faqs}
+        />
+    </GsapReveal>
+
+    {/* 7. CTA final */}
+    <GsapReveal animation="fadeUp">
+        <CTABanner
+            title="Prêt à mettre les gants avec Nicolas ?"
+            subtitle="Première séance"
+            cta={{ text: "Réserver", href: "/contact" }}
+            variant="brushed-full"
+        />
+    </GsapReveal>
+</BaseLayout>

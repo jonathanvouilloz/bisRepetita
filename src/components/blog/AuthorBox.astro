@@ -1,0 +1,81 @@
+---
+import { Image } from "astro:assets";
+import { Icon } from "astro-icon/components";
+import { getAuthor } from "../../config/authors";
+
+interface Props {
+  authorName: string;
+}
+
+const { authorName } = Astro.props;
+const author = getAuthor(authorName);
+---
+
+{
+  author && (
+    <aside class="not-prose rounded-3xl border border-border/60 bg-card/60 backdrop-blur-sm p-6 sm:p-8 transition-all duration-300 hover:border-primary/30 hover:shadow-[var(--shadow-gold-card)]">
+      <div class="flex flex-col sm:flex-row gap-6 sm:items-start">
+        {/* Photo */}
+        <div class="shrink-0 mx-auto sm:mx-0">
+          <Image
+            src={author.image}
+            alt={author.imageAlt}
+            widths={[96, 192]}
+            sizes="96px"
+            class="h-24 w-24 rounded-2xl object-cover"
+          />
+        </div>
+
+        {/* Texte + actions */}
+        <div class="flex-1 text-center sm:text-left">
+          <p class="text-xs font-semibold uppercase tracking-widest text-primary mb-2">
+            À propos de l'auteur
+          </p>
+          <h2 class="text-xl font-medium text-foreground mb-1">{author.name}</h2>
+          <p class="text-sm text-muted-foreground mb-3">
+            {author.jobTitle} · Bis Repetita, Genève
+          </p>
+          <p class="text-sm text-foreground/80 leading-relaxed mb-5">
+            {author.bio}
+          </p>
+
+          <div class="flex flex-wrap justify-center sm:justify-start items-center gap-2">
+            <a
+              href={author.pageUrl}
+              class="inline-flex items-center gap-1.5 rounded-full bg-primary text-primary-foreground px-4 py-2 text-sm font-medium hover:bg-primary/90 transition-colors"
+            >
+              <span>Voir le profil</span>
+              <Icon name="lucide:arrow-right" class="w-4 h-4" />
+            </a>
+
+            {author.socialLinks.linkedin && (
+              <a
+                href={author.socialLinks.linkedin}
+                target="_blank"
+                rel="noopener noreferrer"
+                class="inline-flex items-center gap-1.5 rounded-full border border-border bg-background/40 px-4 py-2 text-sm font-medium text-foreground hover:border-primary/40 hover:text-primary transition-colors"
+                aria-label={`LinkedIn de ${author.name}`}
+              >
+                <Icon name="lucide:linkedin" class="w-4 h-4" />
+                <span>LinkedIn</span>
+              </a>
+            )}
+
+            {author.socialLinks.instagram && (
+              <a
+                href={author.socialLinks.instagram}
+                target="_blank"
+                rel="noopener noreferrer"
+                class="inline-flex items-center gap-1.5 rounded-full border border-border bg-background/40 px-4 py-2 text-sm font-medium text-foreground hover:border-primary/40 hover:text-primary transition-colors"
+                aria-label={`Instagram de ${author.name}`}
+              >
+                <Icon name="lucide:instagram" class="w-4 h-4" />
+                <span>Instagram</span>
+              </a>
+            )}
+          </div>
+        </div>
+      </div>
+    </aside>
+  )
+}

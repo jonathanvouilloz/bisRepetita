@@ -3,6 +3,8 @@ import BaseLayout from "../../layouts/BaseLayout.astro";
 import Schema from "../../components/seo/Schema.astro";
 import Tags from "../../components/ui/Tags.astro";
 import TableOfContents from "../../components/blog/TableOfContents.astro";
+import AuthorByline from "../../components/blog/AuthorByline.astro";
+import AuthorBox from "../../components/blog/AuthorBox.astro";
 import { slugify } from "../../utils/slugify";
 import { isPublished } from "../../utils/blog";
 
@@ -116,7 +118,7 @@ const metadata = {
                 {formattedDate}
               </time>
               <span aria-hidden="true">&middot;</span>
-              <span>{author}</span>
+              <AuthorByline authorName={author} />
               {readingTime && <span aria-hidden="true">&middot;</span>}
               {readingTime && <span>{readingTime}</span>}
             </div>
@@ -137,8 +139,13 @@ const metadata = {
                 <Content />
               </div>
 
+              <!-- Author box -->
+              <div class="mt-12 max-w-3xl">
+                <AuthorBox authorName={author} />
+              </div>
+
               <!-- Tags + back link -->
-              <div class="mt-12 max-w-3xl border-t border-border pt-8">
+              <div class="mt-8 max-w-3xl border-t border-border pt-8">
                 {tags && tags.length > 0 && <Tags tags={tags} class="mb-6" />}
 
                 <a

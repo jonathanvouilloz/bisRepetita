@@ -150,6 +150,7 @@ export const siteConfig = {
     ],
     infos: [
       { text: "Studio", href: "/studio" },
+      { text: "Nicolas de Boccard", href: "/equipe/nicolas-de-boccard" },
       { text: "Tarifs", href: "/tarifs" },
       { text: "Blog", href: "/blog" },
       { text: "Cours de Boxe Genève", href: "/cours-de-boxe-geneve" },

@@ -1,0 +1,32 @@
+---
+import { Image } from "astro:assets";
+import { getAuthor } from "../../config/authors";
+
+interface Props {
+  authorName: string;
+}
+
+const { authorName } = Astro.props;
+const author = getAuthor(authorName);
+---
+
+{
+  author ? (
+    <a
+      href={author.pageUrl}
+      class="inline-flex items-center gap-2 text-muted-foreground transition-colors hover:text-foreground"
+      rel="author"
+    >
+      <Image
+        src={author.image}
+        alt=""
+        widths={[24, 48]}
+        sizes="24px"
+        class="h-6 w-6 rounded-full object-cover"
+      />
+      <span>{author.name}</span>
+    </a>
+  ) : (
+    <span>{authorName}</span>
+  )
+}

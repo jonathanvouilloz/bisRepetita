@@ -11,7 +11,12 @@
 
 [[redirects]]
   from = "/about"
-  to = "/studio"
+  to = "/equipe/nicolas-de-boccard"
+  status = 301
+
+[[redirects]]
+  from = "/nicolas-de-boccard"
+  to = "/equipe/nicolas-de-boccard"
   status = 301
 
 [[headers]]
