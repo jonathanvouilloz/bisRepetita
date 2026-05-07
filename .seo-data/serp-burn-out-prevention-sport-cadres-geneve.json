@@ -1,0 +1,34 @@
+{
+  "keyword": "burn-out cadre prévention sport Genève",
+  "location": "Genève, Suisse",
+  "scanned_at": "2026-05-07T08:50:00Z",
+  "sample_size": 5,
+  "results": [],
+  "serp_features": {
+    "local_pack": false,
+    "people_also_ask": [
+      "Comment prévenir le burn-out chez les cadres ?",
+      "Quel sport contre le burn-out ?",
+      "Le sport aide-t-il à récupérer d'un burn-out ?",
+      "Quelle activité physique pour réduire le stress au travail ?"
+    ],
+    "featured_snippet": false,
+    "image_pack": false,
+    "video": false
+  },
+  "intent_signal": "informational",
+  "common_ground": [
+    "bienfaits généraux du sport sur le stress",
+    "recommandations OMS activité physique",
+    "signes du burn-out"
+  ],
+  "gap": {
+    "description": "Aucun contenu local genevois ne traite la distinction entre sports décisionnels (charge cognitive active) et sports monotones (running, vélo) dans leur effet sur la rumination mentale — angle différenciant non couvert",
+    "opportunity_score": "medium"
+  },
+  "weakness": [
+    "contenus génériques sans ancrage local ni expertise terrain",
+    "pas de distinction entre types de sports selon leur effet cognitif"
+  ],
+  "recommended_angle": "Pourquoi un sport décisionnel comme la boxe coupe la rumination là où le footing l'amplifie — argumentation par la recherche en charge cognitive, contre-pied argumenté yoga/running, ancrage terrain Nicolas."
+}

@@ -1,0 +1,121 @@
+{
+  "topic": "team building Genève",
+  "location_code": 2756,
+  "location_name": "Switzerland",
+  "language_code": "fr",
+  "generated_at": "2026-05-07T08:35:53Z",
+  "primary": {
+    "keyword": "team building Genève",
+    "search_volume": 110,
+    "cpc": 6.42,
+    "competition": "HIGH",
+    "competition_index": 72,
+    "difficulty": 4,
+    "intent": "commercial",
+    "intent_probability": 0.4053
+  },
+  "secondaries": [
+    {
+      "keyword": "team building genève",
+      "search_volume": 110,
+      "cpc": 6.42,
+      "competition": "HIGH",
+      "competition_index": 72
+    },
+    {
+      "keyword": "activité team building genève",
+      "search_volume": 10,
+      "cpc": 4.3,
+      "competition": "MEDIUM",
+      "competition_index": 37
+    }
+  ],
+  "long_tail": [
+    {
+      "keyword": "trip trap escape",
+      "search_volume": 2900,
+      "cpc": 0.36,
+      "competition": "LOW",
+      "competition_index": 16
+    },
+    {
+      "keyword": "escape game genève",
+      "search_volume": 480,
+      "cpc": 2.23,
+      "competition": "MEDIUM",
+      "competition_index": 51
+    },
+    {
+      "keyword": "escape game carouge",
+      "search_volume": 170,
+      "cpc": 1.86,
+      "competition": "MEDIUM",
+      "competition_index": 41
+    },
+    {
+      "keyword": "meilleur escape game genève",
+      "search_volume": 50,
+      "cpc": 2.53,
+      "competition": "MEDIUM",
+      "competition_index": 60
+    },
+    {
+      "keyword": "team building suisse romande",
+      "search_volume": 40,
+      "cpc": 6.9,
+      "competition": "HIGH",
+      "competition_index": 70
+    },
+    {
+      "keyword": "team building : définition",
+      "search_volume": 40,
+      "cpc": 0,
+      "competition": "LOW",
+      "competition_index": 10
+    },
+    {
+      "keyword": "escape game genève harry potter",
+      "search_volume": 30,
+      "cpc": 1.73,
+      "competition": "LOW",
+      "competition_index": 22
+    },
+    {
+      "keyword": "escape game paquis",
+      "search_volume": 30,
+      "cpc": 3.04,
+      "competition": "MEDIUM",
+      "competition_index": 42
+    },
+    {
+      "keyword": "team building activities geneva",
+      "search_volume": 10,
+      "cpc": 7.24,
+      "competition": "MEDIUM",
+      "competition_index": 59
+    },
+    {
+      "keyword": "sortie entreprise genève",
+      "search_volume": 10,
+      "cpc": 4.74,
+      "competition": "MEDIUM",
+      "competition_index": 45
+    },
+    {
+      "keyword": "soirée team building",
+      "search_volume": 10,
+      "cpc": 2.92,
+      "competition": "HIGH",
+      "competition_index": 86
+    }
+  ],
+  "related": [],
+  "quick_wins": [
+    {
+      "keyword": "trip trap escape",
+      "search_volume": 2900,
+      "competition": "LOW",
+      "reason": "high volume + low competition"
+    }
+  ]
+}

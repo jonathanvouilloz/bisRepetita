@@ -1,0 +1,93 @@
+{
+  "topic": "sport en entreprise",
+  "location_code": 2756,
+  "location_name": "Switzerland",
+  "language_code": "fr",
+  "generated_at": "2026-05-07T08:35:33Z",
+  "primary": {
+    "keyword": "sport en entreprise",
+    "search_volume": 10,
+    "cpc": 0,
+    "competition": "MEDIUM",
+    "competition_index": 39,
+    "difficulty": null,
+    "intent": "informational",
+    "intent_probability": 0.7418
+  },
+  "secondaries": [
+    {
+      "keyword": "sport en entreprise exemple",
+      "search_volume": 10,
+      "cpc": 0,
+      "competition": null,
+      "competition_index": null
+    },
+    {
+      "keyword": "bienfaits du sport en entreprise",
+      "search_volume": 10,
+      "cpc": 0,
+      "competition": null,
+      "competition_index": null
+    },
+    {
+      "keyword": "les bienfaits du sport en entreprise",
+      "search_volume": 10,
+      "cpc": 0,
+      "competition": null,
+      "competition_index": null
+    },
+    {
+      "keyword": "jeux marocains du sport en entreprise",
+      "search_volume": 10,
+      "cpc": 0,
+      "competition": null,
+      "competition_index": null
+    },
+    {
+      "keyword": "promotion du sport en entreprise",
+      "search_volume": 10,
+      "cpc": 0,
+      "competition": null,
+      "competition_index": null
+    },
+    {
+      "keyword": "salle de sport en entreprise",
+      "search_volume": 10,
+      "cpc": 0,
+      "competition": null,
+      "competition_index": null
+    },
+    {
+      "keyword": "sport en entreprise chiffres",
+      "search_volume": 10,
+      "cpc": 0,
+      "competition": null,
+      "competition_index": null
+    },
+    {
+      "keyword": "bienfait du sport en entreprise",
+      "search_volume": 10,
+      "cpc": 0,
+      "competition": null,
+      "competition_index": null
+    }
+  ],
+  "long_tail": [
+    {
+      "keyword": "prise en charge abonnement salle de sport entreprise",
+      "search_volume": 10,
+      "cpc": 0,
+      "competition": null,
+      "competition_index": null
+    },
+    {
+      "keyword": "sport en entreprise avantage",
+      "search_volume": 10,
+      "cpc": 0,
+      "competition": null,
+      "competition_index": null
+    }
+  ],
+  "related": [],
+  "quick_wins": []
+}

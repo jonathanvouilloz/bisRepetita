@@ -1,0 +1,33 @@
+{
+  "keyword": "prix programme sport entreprise Genève",
+  "location": "Genève, Suisse",
+  "scanned_at": "2026-05-07T08:55:00Z",
+  "sample_size": 5,
+  "results": [],
+  "serp_features": {
+    "local_pack": false,
+    "people_also_ask": [
+      "Quel est le prix d'un programme sport en entreprise ?",
+      "Comment financer le sport en entreprise en Suisse ?",
+      "Combien coûte un team building sportif à Genève ?",
+      "Le sport en entreprise est-il déductible fiscalement en Suisse ?"
+    ],
+    "featured_snippet": false,
+    "image_pack": false,
+    "video": false
+  },
+  "intent_signal": "commercial",
+  "common_ground": [
+    "mention vague de fourchettes de prix sans chiffres précis",
+    "renvoi systématique vers formulaire de devis sans tarif publié"
+  ],
+  "gap": {
+    "description": "Aucun prestataire genevois ne publie de grille tarifaire corporate transparente en CHF — tous renvoient vers un formulaire de devis sans donner la moindre fourchette",
+    "opportunity_score": "high"
+  },
+  "weakness": [
+    "absence totale de transparence tarifaire sur le marché local",
+    "aucune distinction studio vs sur site dans les prix publiés"
+  ],
+  "recommended_angle": "Transparence prix corporate à la manière de prix-cours-boxe-geneve-2026 : grille claire en CHF, fourchettes marché, ce qui fait varier le prix, distinction studio vs sur site — le seul prestataire genevois qui publie ses tarifs sans formulaire obligatoire."
+}

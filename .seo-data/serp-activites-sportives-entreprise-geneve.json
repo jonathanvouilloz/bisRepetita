@@ -1,0 +1,22 @@
+{
+  "keyword": "activités sportives entreprise Genève",
+  "location": "Genève, Suisse",
+  "scanned_at": "2026-05-07T08:41:26.997513Z",
+  "sample_size": 5,
+  "results": [],
+  "serp_features": {
+    "local_pack": false,
+    "people_also_ask": [],
+    "featured_snippet": false,
+    "image_pack": false,
+    "video": false
+  },
+  "intent_signal": "commercial",
+  "common_ground": [],
+  "gap": {
+    "description": "Aucune donnée SERP disponible — volume trop faible pour générer des résultats organiques locaux",
+    "opportunity_score": "medium"
+  },
+  "weakness": [],
+  "recommended_angle": "Comparatif factuel des formats sportifs disponibles pour les entreprises à Genève avec tableau coût/bénéfice/logistique — angle non couvert localement."
+}
