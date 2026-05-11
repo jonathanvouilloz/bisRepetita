@@ -9,6 +9,7 @@ interface Props {
     maxItems?: number;
     filterCategory?: string;
     excludePostId?: string;
+    excludePostIds?: string[];
     id?: string;
     title?: string;
     badge?: string;
@@ -18,13 +19,19 @@ const {
     maxItems = 3,
     filterCategory,
     excludePostId,
+    excludePostIds = [],
     id = "articles",
     title = "Nos derniers articles",
     badge = "Blog",
 } = Astro.props;
 
+const excludedIds = new Set<string>([
+    ...(excludePostId ? [excludePostId] : []),
+    ...excludePostIds,
+]);
+
 const allPosts = (await getCollection("blog", isPublished))
-    .filter((p) => p.id !== excludePostId)
+    .filter((p) => !excludedIds.has(p.id))
     .filter((p) => !filterCategory || p.data.category === filterCategory)
     .sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf())
     .slice(0, maxItems);

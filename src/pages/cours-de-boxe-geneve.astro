@@ -33,12 +33,16 @@ const profilPanels = [
         description: "Vous n'avez jamais mis les gants ? C'est le profil le plus fréquent chez nous. On part de zéro, sans jugement, avec un programme adapté.",
         image: coursPortrait,
         alt: "Débutant en cours de boxe à Genève",
+        ctaText: "Lire le guide débutant",
+        ctaHref: "/blog/cours-de-boxe-geneve-guide-debutant",
     },
     {
         title: "La femme qui ose",
         description: "Cadre privé, sans contact, coaching bienveillant. La boxe au féminin chez Bis Repetita, c'est un espace pensé pour vous.",
         image: studioAtmosphere,
         alt: "Cours de boxe pour femme à Genève",
+        ctaText: "Lire le guide boxe femme",
+        ctaHref: "/blog/boxe-femme-geneve-guide-complet",
     },
     {
         title: "Le sportif en reconversion",
@@ -274,6 +278,7 @@ const faqs = [
             title="Nos articles sur la boxe à Genève"
             badge="Ressources"
             maxItems={6}
+            excludePostIds={["cours-de-boxe-geneve-guide-debutant", "boxe-femme-geneve-guide-complet"]}
         />
     </GsapReveal>
 
