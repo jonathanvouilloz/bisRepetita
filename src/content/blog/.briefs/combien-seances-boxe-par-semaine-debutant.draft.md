@@ -1,0 +1,151 @@
+# Combien de séances de boxe par semaine quand on débute (sans se blesser) ?
+
+Deux séances par semaine. Voilà la réponse courte, valable pour la grande majorité des débutants qui commencent la **boxe anglaise à Genève** ou ailleurs. Ce n'est pas une question d'ambition, c'est une question de physiologie.
+
+Après vingt ans de pratique et cinq ans de coaching via **Bis Repetita**, j'observe le même scénario chaque mois : quelqu'un commence avec enthousiasme, veut s'entraîner tous les jours, et abandonne ou se blesse en moins de quatre semaines. Ceux qui tiennent sur la durée ont presque tous démarré doucement. La régularité bat l'intensité ponctuelle, sans exception.
+
+Ce guide répond à la question que tout le monde pose : **combien de fois par semaine pratiquer la boxe** quand on débute. Vous trouverez le rythme idéal pour un débutant, le rôle sous-estimé de la récupération, comment monter en charge progressivement, et les signes que vous en faites trop. Pour un panorama complet avant de commencer, consultez [le guide complet pour débuter la boxe à Genève](/cours-de-boxe-geneve).
+
+---
+
+> **L'essentiel en bref**
+>
+> - Pour débuter, **deux séances par semaine** est le rythme idéal : assez pour progresser, pas assez pour se blesser ou se décourager.
+> - La récupération fait partie de l'entraînement : c'est entre les séances que le corps assimile. Laisser au moins un jour de repos entre deux séances.
+> - On monte à trois séances par semaine quand le corps suit, puis quatre à cinq seulement si l'on vise un objectif avancé ou la compétition.
+> - La régularité sur plusieurs mois bat toujours le démarrage héroïque suivi d'un abandon.
+
+---
+
+## Le bon rythme pour débuter : deux séances par semaine
+
+Deux séances par semaine, c'est la **fréquence d'entraînement recommandée** pour un débutant en boxe. Pas par manque d'ambition, mais par respect du processus d'adaptation.
+
+À ce stade, votre corps apprend deux choses en parallèle : la technique gestuelle (garde, jab, déplacements, coordination) et l'adaptation structurelle (tendons, ligaments, poignets, épaules). Ces deux processus prennent du temps, et aucun des deux ne s'accélère avec plus de volume. Ils s'accélèrent avec plus de qualité et de repos.
+
+**Est-ce que deux séances de boxe par semaine suffisent pour progresser ?** Oui, et même très bien. Le facteur limitant pour un débutant n'est pas le volume, c'est l'assimilation. En 60 minutes de coaching individuel ou en petit groupe, vous recevez plusieurs dizaines de corrections techniques. Le corps a besoin de 48 à 72 heures pour intégrer ces nouvelles informations motrices. Si vous revenez le lendemain, vous commencez à moitié vide.
+
+Cela dit, une seule séance par semaine convient aussi si votre agenda ne permet pas deux créneaux fixes. Une séance tenue chaque semaine pendant six mois vaut mieux que trois séances pendant trois semaines puis rien.
+
+<!-- TODO:image infographic — Semaine type débutant boxe : 2 jours entraînement + jours de récupération — brief: src/content/blog/.briefs/combien-seances-boxe-par-semaine-debutant.md#image-2 -->
+
+## La récupération fait partie de l'entraînement
+
+C'est le message le plus important de ce guide, et le plus souvent ignoré.
+
+**La récupération entre les séances** n'est pas une pause passive. C'est là que le corps construit vraiment. On parle du principe de surcompensation : sous l'effet du stress de l'entraînement, les fibres musculaires se reconstituent légèrement plus solides, les connexions neuromusculaires se renforcent, les gestes s'automatisent. Ce processus se produit au repos, pas pendant l'effort.
+
+Concrètement, pour un débutant :
+
+- Un jour de repos minimum entre deux séances de boxe est impératif. Deux jours, c'est encore mieux au départ.
+- Le sommeil est le premier levier de récupération. Moins de sept heures par nuit et votre progression stagne, même avec le meilleur entraînement.
+- L'hydratation avant, pendant et après la séance conditionne votre récupération musculaire.
+
+Un débutant qui s'entraîne cinq jours sur sept n'assimile pas plus. Il accumule de la fatigue résiduelle, ses gestes se dégradent, et ses tendons ne suivent pas. La blessure ou l'abandon arrivent souvent en quelques semaines.
+
+Sur [ce à quoi s'attendre pour un premier cours de boxe](/blog/premier-cours-de-boxe-preparation) : les courbatures apparaissent 24 à 48 heures après. C'est normal, signe que des muscles peu sollicités au quotidien se réveillent. Ça disparaît après deux ou trois séances régulières. Ce n'est pas une raison de reprendre immédiatement, c'est un signal de repos.
+
+## Quand et comment monter à trois séances (ou plus)
+
+La montée en charge progressive se fait quand le corps envoie les bons signaux :
+
+- Les courbatures ont disparu entre les séances.
+- Les gestes de base (garde, jab, direct, déplacement) sont fluides sans effort conscient.
+- L'intensité des séances peut être augmentée sans fatigue excessive le lendemain.
+
+En général, ces signaux apparaissent après six à douze semaines à deux séances par semaine. Ce n'est pas une règle fixe. Certains mettent un peu moins, d'autres un peu plus, selon leur condition physique de départ, leur âge et leur régularité.
+
+**La progression en charge pour progresser en boxe** :
+
+| Phase | Rythme recommandé | Profil |
+|---|---|---|
+| Débutant (0 à 3 mois) | 2 séances / semaine | Tout débutant |
+| Intermédiaire (3 à 12 mois) | 3 séances / semaine | Corps adapté, gestes fluides |
+| Avancé | 4 à 5 séances / semaine | Objectif performance ou compétition |
+| Préparation compétition | 4 à 6 séances / semaine | Planification avec coach |
+
+À quatre à cinq séances par semaine, on parle d'un niveau avancé qui intègre obligatoirement deux à trois jours de récupération active (marche, mobilité, étirements) et non de repos total. Un coach planifie ce calendrier. Ce n'est plus le territoire du débutant autonome.
+
+## Le rythme dépend aussi de votre objectif
+
+La fréquence idéale n'est pas universelle : elle dépend de ce que vous cherchez.
+
+Forme générale et défoulement : deux séances par semaine suffisent amplement. Vous progressez techniquement, vous transpirez, vous videz la tête. Pas besoin de plus.
+
+Le rythme adapté à un objectif de perte de poids : deux à trois séances par semaine, combinées à une activité quotidienne modérée (marche, vélo) et à une alimentation ajustée. La boxe seule ne fait pas tout. Pour un guide complet sur [la boxe et la perte de poids chez la femme](/blog/boxe-perte-de-poids-femme-geneve), un article dédié développe les mécanismes en détail.
+
+Progression technique sérieuse : trois à quatre séances par semaine, avec au moins un coach sur la majorité des séances (pas uniquement du sac en solo). La correction technique individuelle accélère les progrès de façon notable.
+
+Préparation compétition : quatre à six séances par semaine, planifiées avec un coach licencié. C'est un programme structuré avec des cycles de charge et de repos, pas quelque chose à improviser.
+
+## L'erreur classique du débutant : le surentraînement
+
+C'est le scénario le plus fréquent et le plus évitable.
+
+Un débutant motivé commence, aime ça, veut aller vite. Il enchaîne cinq séances en deux semaines, force sur chaque session. Puis les signaux d'alarme arrivent, et il les ignore parce qu'il les confond avec le progrès.
+
+Les signes du surentraînement à surveiller :
+
+- Fatigue persistante qui ne disparaît pas après une nuit de sommeil
+- Douleurs articulaires aux poignets, aux coudes ou aux épaules (différent des courbatures musculaires normales)
+- Baisse de motivation subite pour des séances que vous aimiez
+- Sommeil dégradé malgré la fatigue physique
+- Performance qui stagne ou régresse malgré l'entraînement
+
+Si deux ou trois de ces signaux sont présents en même temps, c'est une semaine de repos qui s'impose, pas une séance supplémentaire.
+
+La vérité que peu de coachs disent clairement : **deux séances de boxe tenues pendant six mois battent largement cinq séances tenues un mois**. Le corps n'a pas besoin de plus. Il a besoin de régularité.
+
+<!-- TODO:image illustration — Signaux d'alerte du surentraînement : fatigue, douleurs articulaires, motivation, sommeil — brief: src/content/blog/.briefs/combien-seances-boxe-par-semaine-debutant.md#image-3 -->
+
+## Comment on ajuste le rythme chez Bis Repetita
+
+L'avantage du [coaching privé chez Bis Repetita](/services/coaching-prive) se trouve là : le rythme est calé sur votre niveau réel, pas sur un planning de cours collectif rigide.
+
+Dans un club traditionnel, vous vous adaptez au calendrier du club. Chez Bis Repetita, le coach analyse votre profil lors de la première séance (condition physique, historique sportif, disponibilités, objectif) et construit un rythme qui tient sur la durée. Deux séances par semaine pour commencer, ajustées selon comment votre corps répond.
+
+Les formats disponibles s'adaptent aussi à vos contraintes :
+
+- Coaching solo (1-1) : progression maximale, retour individuel à chaque geste
+- Coaching duo ou trio : partager avec un ami ou un collègue, même encadrement de qualité
+- Small group (6 personnes max) : émulation de groupe sans se noyer dans une foule anonyme
+
+La première séance est gratuite et sans engagement. Elle sert à évaluer votre point de départ et à vous proposer un rythme réaliste, pas à vous vendre un abonnement annuel.
+
+---
+
+## FAQ sur la fréquence des séances de boxe pour débutant
+
+### Est-ce que deux séances de boxe par semaine suffisent pour progresser ?
+
+Oui, nettement. Pour un débutant, deux séances par semaine représentent le rythme optimal. Le facteur limitant n'est pas le volume, c'est l'assimilation technique et l'adaptation des tendons et ligaments. Avec deux séances bien encadrées, les progrès sont visibles en quelques semaines. Ajouter une troisième séance n'a du sens qu'après deux à trois mois, quand le corps a intégré les fondamentaux.
+
+### Peut-on faire de la boxe tous les jours quand on débute ?
+
+C'est déconseillé, et la plupart des débutants qui tentent le coup s'arrêtent ou se blessent dans les trois premières semaines. Le corps adulte qui découvre la boxe a besoin de 48 à 72 heures pour récupérer pleinement entre deux séances. S'entraîner quotidiennement accumule de la fatigue résiduelle, dégrade la qualité des gestes, et fragilise les articulations. La régularité hebdomadaire sur plusieurs mois est bien plus efficace.
+
+### Combien de temps faut-il pour voir une progression en boxe ?
+
+Les premiers progrès techniques apparaissent en deux à quatre semaines : la garde devient plus stable, le jab plus précis, les déplacements plus naturels. En deux à trois mois à deux séances par semaine, les fondamentaux sont assimilés et vous enchaînez des combinaisons sans effort conscient. La boxe est un sport technique. La progression est continue et mesurable, mais elle récompense la régularité, pas l'urgence.
+
+### Faut-il un jour de repos entre deux séances de boxe ?
+
+Oui, au minimum un jour de repos entre chaque séance de boxe, idéalement deux jours au début. Ce n'est pas du temps perdu : c'est pendant ce temps que votre corps construit. Si vous vous entraînez lundi et mercredi, vous êtes dans un bon rythme. Lundi et mardi, c'est trop serré pour un débutant.
+
+---
+
+## Conclusion
+
+Deux séances par semaine pour débuter, avec de vrais jours de repos entre les deux, c'est la réponse honnête que trop peu de coachs donnent clairement. La bonne réponse n'est pas "le plus possible", c'est "le plus régulièrement possible". On monte ensuite selon ce que le corps signale, pas selon l'enthousiasme du moment.
+
+Si vous débutez à Genève et souhaitez démarrer avec un rythme calé sur votre profil réel, la première séance d'essai est gratuite. On évalue ensemble votre point de départ et on construit un programme qui tient dans la durée.
+
+[**Réserver ma séance d'essai gratuite →**](/contact?utm_source=blog&utm_medium=article&utm_campaign=combien-seances-boxe-par-semaine-debutant)
+
+---
+
+## Sources et références
+
+- Principe de surcompensation et récupération (physiologie de l'exercice, préparation physique)
+- Fréquence d'entraînement recommandée pour débutant (2/semaine, montée progressive) : références préparation physique et boxe sportive
+- Expertise terrain : Nicolas de Boccard, boxeur licencié SwissBoxing #102860, vingt ans de pratique, cinq ans de coaching via Bis Repetita

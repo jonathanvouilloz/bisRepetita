@@ -1,0 +1,26 @@
+# Production log — boxe-confiance-en-soi-femme-geneve
+Date : 2026-06-01 08:41
+Worker : @article-producer
+
+## Etapes
+- [✓] /humanizer    : 14 patterns IA corrigés (em dashes x10, negative parallelisms x2, sources x1, triplette mécanique x1), règle auteur corrigée ("20 ans de pratique" supprimé)
+- [✓] /seo-enrich   : src/content/blog/boxe-confiance-en-soi-femme-geneve.mdx créé (4.5 kB), build OK 76 pages, fix collatéral combien-seances-boxe-par-semaine-debutant.mdx et boxe-perte-de-poids-femme-geneve.mdx (commentaires HTML invalides en MDX)
+- [✓] /generate-cover : public/images/blog/boxe-confiance-en-soi-femme-geneve.webp (68 kB), pipeline Gemini, preset blog-cover-text
+
+## Frontmatter final
+- title: "Boxe et confiance en soi : pourquoi les femmes s'y mettent" (57 car.)
+- description: "Ce que la boxe change dans la posture et l'assurance d'une femme, et pourquoi elle attire à un tournant. Studio bienveillant à Genève, essai gratuit." (153 car.)
+- pubDate: 2026-06-11
+- author: Nicolas de Boccard
+- category: bien-être
+- draft: false
+
+## Statut final
+SUCCESS — article prêt à publier (pubDate dans frontmatter : 2026-06-11)
+
+## Bloquants éventuels
+aucun
+
+## Notes
+- /seo-write était déjà effectué (draft existant), pipeline repris à l'étape /humanizer.
+- Fix collatéral : 2 fichiers MDX préexistants avaient des commentaires <!-- --> (HTML) invalides en MDX — corrigés en {/* */}.

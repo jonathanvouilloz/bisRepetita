@@ -1,0 +1,72 @@
+[
+  {
+    "type": "gmb",
+    "title": "La boxe est-elle dangereuse en loisir",
+    "content": "La boxe est-elle dangereuse ? En loisir, le risque de blessure est plus faible qu'au football. Aucun KO, aucun sparring imposé : on travaille la technique, le sac et les pattes d'ours. Ce qui sépare vraiment la boxe de loisir de la compétition, chiffres à l'appui, dans notre guide.",
+    "post_type": "whats_new",
+    "scheduled_at": "2026-06-19T09:00:00",
+    "cta": {
+      "action": "LEARN_MORE",
+      "url": "https://bisrepetita.ch/blog/la-boxe-est-elle-dangereuse-blessures-loisir"
+    },
+    "location_target": "all",
+    "image": {
+      "url": "static/gmb-assets/bis-repetita/juin-p1-post-01.png",
+      "mode": "template",
+      "text": "La boxe est-elle dangereuse · Loisir vs compétition · Genève"
+    }
+  },
+  {
+    "type": "gmb",
+    "title": "Combien de séances de boxe par semaine pour débuter",
+    "content": "L'erreur classique du débutant : vouloir s'entraîner cinq fois par semaine dès le départ. Deux à trois séances suffisent pour progresser sans se cramer. Le bon rythme selon votre niveau et votre objectif, on le détaille dans l'article.",
+    "post_type": "whats_new",
+    "scheduled_at": "2026-06-22T09:00:00",
+    "cta": {
+      "action": "LEARN_MORE",
+      "url": "https://bisrepetita.ch/blog/combien-seances-boxe-par-semaine-debutant"
+    },
+    "location_target": "all",
+    "image": {
+      "url": "static/gmb-assets/bis-repetita/juin-p1-post-02.png",
+      "mode": "template",
+      "text": "Combien de séances par semaine · Le bon rythme débutant · Genève"
+    }
+  },
+  {
+    "type": "gmb",
+    "title": "Première séance de boxe femme offerte",
+    "content": "Première séance de boxe offerte aux femmes qui débutent à Genève. Cadre privé, sans contact imposé, sans regard masculin. En solo, en duo entre amies ou en petit groupe 100 % féminin. Réservez votre créneau au studio de La Voie-Creuse.",
+    "post_type": "offer",
+    "scheduled_at": "2026-06-26T09:00:00",
+    "event_start_date": "2026-06-26",
+    "event_end_date": "2026-07-12",
+    "cta": {
+      "action": "BOOK",
+      "url": "https://bisrepetita.ch/services/boxe-femme"
+    },
+    "location_target": "all",
+    "image": {
+      "url": "static/gmb-assets/bis-repetita/juin-p1-post-03.png",
+      "mode": "template",
+      "text": "Boxe femme · Première séance offerte · Genève"
+    }
+  },
+  {
+    "type": "gmb",
+    "title": "Boxe et perte de poids chez la femme",
+    "content": "Boxer pour perdre du poids ne veut pas dire enchaîner les rounds jusqu'à l'épuisement. Ce qui fait la différence chez les femmes : l'intensité par intervalles et le maintien de la masse musculaire. Ce qui change vraiment, mesures à l'appui, dans notre article.",
+    "post_type": "whats_new",
+    "scheduled_at": "2026-06-29T09:00:00",
+    "cta": {
+      "action": "LEARN_MORE",
+      "url": "https://bisrepetita.ch/blog/boxe-perte-de-poids-femme-geneve"
+    },
+    "location_target": "all",
+    "image": {
+      "url": "static/gmb-assets/bis-repetita/juin-p1-post-04.png",
+      "mode": "template",
+      "text": "Boxe et perte de poids · Ce qui change chez la femme"
+    }
+  }
+]

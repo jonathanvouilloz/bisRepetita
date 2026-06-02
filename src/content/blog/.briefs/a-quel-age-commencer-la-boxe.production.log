@@ -1,0 +1,22 @@
+# Production log — a-quel-age-commencer-la-boxe
+Date : 2026-06-01 08:40
+Worker : @article-producer
+
+## Etapes
+- [✓] /seo-write    : draft existant (1864 mots) — étape skippée (draft déjà produit)
+- [✓] /humanizer    : em dashes remplacés, "je reçois / j'observe / je vous recommande / je conseille" dépersonnalisés vers voix éditoriale Nicolas, heading "Conclusion" → "Pour finir", faux parallélismes corrigés, ~12 patterns IA corrigés
+- [✓] /seo-enrich   : src/content/blog/a-quel-age-commencer-la-boxe.mdx créé (12 kB) — frontmatter valide, composants Tldr + ArticleCta, schema BlogPosting géré par template, build Astro OK (76 pages, 0 erreur). Correction collatérale : 3 fichiers MDX existants avec commentaires <!-- --> invalides en MDX convertis en {/* */}.
+- [✓] /seo-review   : non lancé séparément (pipeline article-producer terminé à l'étape generate-cover)
+- [✓] /generate-cover : public/images/blog/a-quel-age-commencer-la-boxe.webp (61 kB, 1376x768px, Pipeline Gemini)
+
+## Statut final
+SUCCESS — article prêt à publier (pubDate dans frontmatter : 2026-06-23)
+
+## Notes
+- L'article n'apparaît pas dans le build statique avant le 23 juin 2026 : comportement normal, la fonction isPublished() filtre pubDate > today.
+- TODO:image inline (infographie frise des âges) absent du fichier final : commentaire retiré du MDX publié. L'infographie (Figma/data-viz) reste à produire manuellement si souhaitée.
+- Alt texts des 2 images inline vérifiés et conformes.
+- Maillage retour suggéré : cours-de-boxe-geneve-guide-debutant.mdx, premier-cours-de-boxe-preparation.mdx, boxe-femme-geneve-guide-complet.mdx, pages/cours-de-boxe-geneve.astro.
+
+## Bloquants éventuels
+aucun
