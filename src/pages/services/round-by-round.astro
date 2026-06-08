@@ -25,7 +25,7 @@ import coachsPhoto from "../../assets/lionel-nicolas-boxe.webp";
 const metadata = {
     title: "Cours de Boxe Genève | Round by Round",
     description:
-        "Cours de boxe Round by Round à Genève. Technique, cardio et énergie du groupe, sans combat. 8 participants max, 2 coachs. Essai gratuit.",
+        "Cours de boxe Round by Round à Genève. Technique, cardio et énergie du groupe, sans combat. 8 participants max, 1 coach. Essai gratuit.",
 };
 
 const stats = [
@@ -35,7 +35,7 @@ const stats = [
         description: "Un groupe volontairement réduit pour un encadrement personnalisé à chaque round.",
     },
     {
-        value: "3 min",
+        value: "2 min",
         label: "Par round",
         description: "Le format combat : rounds chronométrés avec récupération active entre chaque série.",
     },
@@ -68,13 +68,13 @@ const features = [
     {
         title: "Énergie collective",
         description:
-            "8 personnes maximum, deux coachs présents. On se connaît, on se motive, on se dépasse ensemble. Le groupe crée une dynamique qu'aucune salle de sport ne peut reproduire.",
+            "8 personnes maximum, un coach attentif à chaque round. On se connaît, on se motive, on se dépasse ensemble. Le groupe crée une dynamique qu'aucune salle de sport ne peut reproduire.",
         icon: "lucide:users",
     },
     {
         title: "Gestion du stress",
         description:
-            "Frapper au sac libère les tensions accumulées. Le rythme soutenu des rounds active les endorphines et vide l'esprit. Après 60 minutes, vous repartez plus léger, plus calme, plus concentré.",
+            "Frapper au sac libère les tensions accumulées. Le rythme soutenu des rounds active les endorphines et vide l'esprit. Après 50 minutes, vous repartez plus léger, plus calme, plus concentré.",
         icon: "lucide:heart-pulse",
     },
 ];
@@ -90,11 +90,11 @@ const faqs = [
     },
     {
         question: "Combien de participants par cours ?",
-        answer: "8 maximum, toujours. C'est notre engagement pour garantir un encadrement de qualité et des corrections individuelles sur chaque geste technique. Deux coachs sont présents à chaque séance pour un ratio optimal.",
+        answer: "8 maximum, toujours. C'est notre engagement pour garantir un encadrement de qualité et des corrections individuelles sur chaque geste technique. Un coach dédié à chaque séance pour un suivi personnalisé.",
     },
     {
         question: "Quelle est la durée d'un cours ?",
-        answer: "Chaque cours dure 60 minutes, structuré en rounds de 3 minutes avec des temps de récupération active. Le format est calibré pour une intensité optimale sans surcharge — vous ressortez vidé mais jamais cassé.",
+        answer: "Chaque cours dure 50 minutes, structuré en rounds de 2 minutes avec des temps de récupération active. Le format est calibré pour une intensité optimale sans surcharge — vous ressortez vidé mais jamais cassé.",
     },
     {
         question: "Que dois-je apporter pour ma première séance ?",
@@ -121,9 +121,9 @@ const tiers = [
         price: "CHF 40.-",
         priceNote: "/ séance",
         features: [
-            "60 minutes de coaching",
+            "50 minutes de coaching",
             "8 participants max",
-            "2 coachs présents",
+            "1 coach dédié",
             "Matériel fourni",
             "Sans engagement",
         ],
@@ -189,7 +189,7 @@ const testimonials = [
     {/* S1 — Hero (default variant with full-bleed image) */}
     <Hero
         title={`Cours de Boxe <span class="font-display text-primary">Round by Round</span> à Genève`}
-        description="Le bruit du sac, le rythme du timer, l'énergie du groupe. 60 minutes chrono de technique de boxe et de préparation physique — dans un format qui repousse vos limites sans jamais vous opposer."
+        description="Le bruit du sac, le rythme du timer, l'énergie du groupe. 50 minutes chrono de technique de boxe et de préparation physique — dans un format qui repousse vos limites sans jamais vous opposer."
         image={coursLandscape}
         imageAlt="Cours collectif de boxe Round by Round à Genève — entraînement sur sacs de frappe"
         locationBadge={{ text: "La Voie-Creuse 16, 1202 Genève" }}
@@ -223,7 +223,7 @@ const testimonials = [
             items={[
                 {
                     title: "Structure en rounds",
-                    description: "Chaque cours suit le rythme d'un combat professionnel : rounds de 3 minutes, récupération active, montée en intensité progressive. Votre corps apprend à performer sous pression.",
+                    description: "Chaque cours suit le rythme d'un combat professionnel : rounds de 2 minutes, récupération active, montée en intensité progressive. Votre corps apprend à performer sous pression.",
                 },
                 {
                     title: "Technique et physique intégrés",
