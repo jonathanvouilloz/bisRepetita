@@ -1,0 +1,735 @@
+{
+  "site_url": "sc-domain:bisrepetita.ch",
+  "period": {
+    "start": "2026-03-25",
+    "end": "2026-06-23",
+    "days": 91
+  },
+  "page_filter": null,
+  "generated_at": "2026-06-25T19:10:57Z",
+  "totals": {
+    "impressions": 3977,
+    "clicks": 121,
+    "ctr": 0.0304,
+    "avg_position": 8.4
+  },
+  "site_median_ctr": 0,
+  "top_queries": [
+    {
+      "impressions": 377,
+      "clicks": 11,
+      "ctr": 0.0292,
+      "position": 5.6,
+      "query": "bis repetita"
+    },
+    {
+      "impressions": 7,
+      "clicks": 4,
+      "ctr": 0.5714,
+      "position": 3.9,
+      "query": "bisrepetita"
+    },
+    {
+      "impressions": 25,
+      "clicks": 3,
+      "ctr": 0.12,
+      "position": 9.3,
+      "query": "boxe femme geneve"
+    },
+    {
+      "impressions": 38,
+      "clicks": 3,
+      "ctr": 0.0789,
+      "position": 3.1,
+      "query": "nicolas de boccard"
+    },
+    {
+      "impressions": 3,
+      "clicks": 1,
+      "ctr": 0.3333,
+      "position": 22.3,
+      "query": "boxe anglaise geneve"
+    },
+    {
+      "impressions": 18,
+      "clicks": 1,
+      "ctr": 0.0556,
+      "position": 15.9,
+      "query": "boxe femme"
+    },
+    {
+      "impressions": 18,
+      "clicks": 1,
+      "ctr": 0.0556,
+      "position": 15.2,
+      "query": "boxe geneve"
+    },
+    {
+      "impressions": 4,
+      "clicks": 1,
+      "ctr": 0.25,
+      "position": 18.5,
+      "query": "club de boxe geneve"
+    },
+    {
+      "impressions": 2,
+      "clicks": 1,
+      "ctr": 0.5,
+      "position": 1,
+      "query": "cours boxe geneve"
+    },
+    {
+      "impressions": 7,
+      "clicks": 1,
+      "ctr": 0.1429,
+      "position": 7.4,
+      "query": "cours de boxe femme"
+    },
+    {
+      "impressions": 3,
+      "clicks": 1,
+      "ctr": 0.3333,
+      "position": 3,
+      "query": "effet de la boxe sur le corps femme"
+    },
+    {
+      "impressions": 6,
+      "clicks": 1,
+      "ctr": 0.1667,
+      "position": 10,
+      "query": "perte de poids boxe"
+    },
+    {
+      "impressions": 2,
+      "clicks": 0,
+      "ctr": 0,
+      "position": 4,
+      "query": "1h de boxe calories"
+    },
+    {
+      "impressions": 1,
+      "clicks": 0,
+      "ctr": 0,
+      "position": 32,
+      "query": "accompagnement sportif sur mesure genève"
+    },
+    {
+      "impressions": 2,
+      "clicks": 0,
+      "ctr": 0,
+      "position": 7,
+      "query": "affaire de boxe"
+    },
+    {
+      "impressions": 8,
+      "clicks": 0,
+      "ctr": 0,
+      "position": 5.4,
+      "query": "bis"
+    },
+    {
+      "impressions": 2,
+      "clicks": 0,
+      "ctr": 0,
+      "position": 5.5,
+      "query": "bis repetita jjk"
+    },
+    {
+      "impressions": 1,
+      "clicks": 0,
+      "ctr": 0,
+      "position": 7,
+      "query": "bis repetita-circulaire"
+    },
+    {
+      "impressions": 1,
+      "clicks": 0,
+      "ctr": 0,
+      "position": 6,
+      "query": "bis repetitae"
+    },
+    {
+      "impressions": 4,
+      "clicks": 0,
+      "ctr": 0,
+      "position": 8,
+      "query": "bis repetitam"
+    },
+    {
+      "impressions": 6,
+      "clicks": 0,
+      "ctr": 0,
+      "position": 5.3,
+      "query": "bis repetitas"
+    },
+    {
+      "impressions": 2,
+      "clicks": 0,
+      "ctr": 0,
+      "position": 2.5,
+      "query": "bis repetitia"
+    },
+    {
+      "impressions": 2,
+      "clicks": 0,
+      "ctr": 0,
+      "position": 2,
+      "query": "bis repitita"
+    },
+    {
+      "impressions": 2,
+      "clicks": 0,
+      "ctr": 0,
+      "position": 3,
+      "query": "bis répétita"
+    },
+    {
+      "impressions": 1,
+      "clicks": 0,
+      "ctr": 0,
+      "position": 6,
+      "query": "box coaching"
+    },
+    {
+      "impressions": 4,
+      "clicks": 0,
+      "ctr": 0,
+      "position": 53.5,
+      "query": "box geneve"
+    },
+    {
+      "impressions": 1,
+      "clicks": 0,
+      "ctr": 0,
+      "position": 71,
+      "query": "box sport"
+    },
+    {
+      "impressions": 9,
+      "clicks": 0,
+      "ctr": 0,
+      "position": 23.7,
+      "query": "boxe"
+    },
+    {
+      "impressions": 2,
+      "clicks": 0,
+      "ctr": 0,
+      "position": 12,
+      "query": "boxe a"
+    },
+    {
+      "impressions": 1,
+      "clicks": 0,
+      "ctr": 0,
+      "position": 7,
+      "query": "boxe anglaise equipement"
+    },
+    {
+      "impressions": 3,
+      "clicks": 0,
+      "ctr": 0,
+      "position": 38.3,
+      "query": "boxe anglaise genève"
+    },
+    {
+      "impressions": 2,
+      "clicks": 0,
+      "ctr": 0,
+      "position": 8,
+      "query": "boxe avant après corps femme"
+    },
+    {
+      "impressions": 1,
+      "clicks": 0,
+      "ctr": 0,
+      "position": 12,
+      "query": "boxe de crossfit"
+    },
+    {
+      "impressions": 3,
+      "clicks": 0,
+      "ctr": 0,
+      "position": 10,
+      "query": "boxe debutant femme"
+    },
+    {
+      "impressions": 1,
+      "clicks": 0,
+      "ctr": 0,
+      "position": 12,
+      "query": "boxe equipement"
+    },
+    {
+      "impressions": 1,
+      "clicks": 0,
+      "ctr": 0,
+      "position": 69,
+      "query": "boxe equipment"
+    },
+    {
+      "impressions": 2,
+      "clicks": 0,
+      "ctr": 0,
+      "position": 6,
+      "query": "boxe feminine"
+    },
+    {
+      "impressions": 1,
+      "clicks": 0,
+      "ctr": 0,
+      "position": 6,
+      "query": "boxe féminine"
+    },
+    {
+      "impressions": 4,
+      "clicks": 0,
+      "ctr": 0,
+      "position": 33.2,
+      "query": "boxe genève"
+    },
+    {
+      "impressions": 1,
+      "clicks": 0,
+      "ctr": 0,
+      "position": 8,
+      "query": "boxe marche en famenne"
+    },
+    {
+      "impressions": 8,
+      "clicks": 0,
+      "ctr": 0,
+      "position": 18.2,
+      "query": "boxe perte de poids"
+    },
+    {
+      "impressions": 1,
+      "clicks": 0,
+      "ctr": 0,
+      "position": 50,
+      "query": "boxe plan les ouates"
+    },
+    {
+      "impressions": 2,
+      "clicks": 0,
+      "ctr": 0,
+      "position": 7.5,
+      "query": "boxe pour femme"
+    },
+    {
+      "impressions": 1,
+      "clicks": 0,
+      "ctr": 0,
+      "position": 8,
+      "query": "boxe pour les femmes"
+    },
+    {
+      "impressions": 2,
+      "clicks": 0,
+      "ctr": 0,
+      "position": 9.5,
+      "query": "boxe round"
+    },
+    {
+      "impressions": 2,
+      "clicks": 0,
+      "ctr": 0,
+      "position": 98.5,
+      "query": "boxe studio"
+    },
+    {
+      "impressions": 1,
+      "clicks": 0,
+      "ctr": 0,
+      "position": 9,
+      "query": "boxe women"
+    },
+    {
+      "impressions": 1,
+      "clicks": 0,
+      "ctr": 0,
+      "position": 7,
+      "query": "boxing academy near me"
+    },
+    {
+      "impressions": 1,
+      "clicks": 0,
+      "ctr": 0,
+      "position": 16,
+      "query": "boxing club geneva"
+    },
+    {
+      "impressions": 1,
+      "clicks": 0,
+      "ctr": 0,
+      "position": 14,
+      "query": "boxing club geneve"
+    }
+  ],
+  "top_pages": [
+    {
+      "impressions": 748,
+      "clicks": 39,
+      "ctr": 0.0521,
+      "position": 6.1,
+      "page": "https://bisrepetita.ch/"
+    },
+    {
+      "impressions": 226,
+      "clicks": 19,
+      "ctr": 0.0841,
+      "position": 7.4,
+      "page": "https://www.bisrepetita.ch/"
+    },
+    {
+      "impressions": 571,
+      "clicks": 10,
+      "ctr": 0.0175,
+      "position": 6.6,
+      "page": "https://bisrepetita.ch/studio"
+    },
+    {
+      "impressions": 268,
+      "clicks": 7,
+      "ctr": 0.0261,
+      "position": 6.6,
+      "page": "https://bisrepetita.ch/blog/burn-out-prevention-sport-cadres-geneve"
+    },
+    {
+      "impressions": 89,
+      "clicks": 6,
+      "ctr": 0.0674,
+      "position": 9.6,
+      "page": "https://bisrepetita.ch/services/boxe-femme"
+    },
+    {
+      "impressions": 353,
+      "clicks": 5,
+      "ctr": 0.0142,
+      "position": 7.1,
+      "page": "https://bisrepetita.ch/blog/boxe-perte-de-poids-femme-geneve"
+    },
+    {
+      "impressions": 188,
+      "clicks": 5,
+      "ctr": 0.0266,
+      "position": 6.3,
+      "page": "https://bisrepetita.ch/blog/prix-cours-boxe-geneve-2026"
+    },
+    {
+      "impressions": 96,
+      "clicks": 5,
+      "ctr": 0.0521,
+      "position": 4.7,
+      "page": "https://bisrepetita.ch/equipe/nicolas-de-boccard"
+    },
+    {
+      "impressions": 144,
+      "clicks": 4,
+      "ctr": 0.0278,
+      "position": 8.8,
+      "page": "https://bisrepetita.ch/blog/boxe-femme-geneve-guide-complet"
+    },
+    {
+      "impressions": 77,
+      "clicks": 2,
+      "ctr": 0.026,
+      "position": 6.9,
+      "page": "https://bisrepetita.ch/blog/activites-sportives-entreprise-geneve-comparatif"
+    },
+    {
+      "impressions": 63,
+      "clicks": 2,
+      "ctr": 0.0317,
+      "position": 6.7,
+      "page": "https://bisrepetita.ch/blog/boxe-femme-massive-epaules-geneve"
+    },
+    {
+      "impressions": 237,
+      "clicks": 2,
+      "ctr": 0.0084,
+      "position": 7.9,
+      "page": "https://bisrepetita.ch/blog/equipement-boxe-debutant-geneve"
+    },
+    {
+      "impressions": 42,
+      "clicks": 2,
+      "ctr": 0.0476,
+      "position": 7.0,
+      "page": "https://bisrepetita.ch/services/coaching-duo-trio"
+    },
+    {
+      "impressions": 147,
+      "clicks": 2,
+      "ctr": 0.0136,
+      "position": 18.5,
+      "page": "https://bisrepetita.ch/services/coaching-prive"
+    },
+    {
+      "impressions": 146,
+      "clicks": 2,
+      "ctr": 0.0137,
+      "position": 4.3,
+      "page": "https://bisrepetita.ch/tarifs"
+    },
+    {
+      "impressions": 90,
+      "clicks": 1,
+      "ctr": 0.0111,
+      "position": 13.2,
+      "page": "https://bisrepetita.ch/blog/bienfaits-boxe-cadres-managers-geneve"
+    },
+    {
+      "impressions": 62,
+      "clicks": 1,
+      "ctr": 0.0161,
+      "position": 9.5,
+      "page": "https://bisrepetita.ch/blog/boxe-confiance-en-soi-femme-geneve"
+    },
+    {
+      "impressions": 188,
+      "clicks": 1,
+      "ctr": 0.0053,
+      "position": 13.6,
+      "page": "https://bisrepetita.ch/blog/cours-de-boxe-geneve-guide-debutant"
+    },
+    {
+      "impressions": 15,
+      "clicks": 1,
+      "ctr": 0.0667,
+      "position": 5.3,
+      "page": "https://bisrepetita.ch/blog/gants-de-boxe-femme-debutante"
+    },
+    {
+      "impressions": 137,
+      "clicks": 1,
+      "ctr": 0.0073,
+      "position": 9.6,
+      "page": "https://bisrepetita.ch/blog/premier-cours-de-boxe-preparation"
+    },
+    {
+      "impressions": 54,
+      "clicks": 1,
+      "ctr": 0.0185,
+      "position": 9.6,
+      "page": "https://bisrepetita.ch/blog/team-building-boxe-geneve-cohesion-equipe"
+    },
+    {
+      "impressions": 206,
+      "clicks": 1,
+      "ctr": 0.0049,
+      "position": 8.7,
+      "page": "https://bisrepetita.ch/cours-de-boxe-geneve"
+    },
+    {
+      "impressions": 12,
+      "clicks": 1,
+      "ctr": 0.0833,
+      "position": 9.1,
+      "page": "https://bisrepetita.ch/services/coaching-solo"
+    },
+    {
+      "impressions": 29,
+      "clicks": 1,
+      "ctr": 0.0345,
+      "position": 2.6,
+      "page": "https://www.bisrepetita.ch/tarifs"
+    },
+    {
+      "impressions": 84,
+      "clicks": 0,
+      "ctr": 0,
+      "position": 8.4,
+      "page": "https://bisrepetita.ch/blog"
+    },
+    {
+      "impressions": 2,
+      "clicks": 0,
+      "ctr": 0,
+      "position": 7,
+      "page": "https://bisrepetita.ch/blog/category/corporate"
+    },
+    {
+      "impressions": 50,
+      "clicks": 0,
+      "ctr": 0,
+      "position": 5.2,
+      "page": "https://bisrepetita.ch/blog/combien-seances-boxe-par-semaine-debutant"
+    },
+    {
+      "impressions": 28,
+      "clicks": 0,
+      "ctr": 0,
+      "position": 7.9,
+      "page": "https://bisrepetita.ch/blog/sport-en-entreprise-geneve-guide-drh"
+    },
+    {
+      "impressions": 56,
+      "clicks": 0,
+      "ctr": 0,
+      "position": 10.7,
+      "page": "https://bisrepetita.ch/blog/studio-boxe-prive-vs-salle-classique-geneve"
+    },
+    {
+      "impressions": 1,
+      "clicks": 0,
+      "ctr": 0,
+      "position": 1,
+      "page": "https://bisrepetita.ch/blog/tags/bienfaits-boxe-femme"
+    },
+    {
+      "impressions": 3,
+      "clicks": 0,
+      "ctr": 0,
+      "position": 9.3,
+      "page": "https://bisrepetita.ch/blog/tags/boxe-anglaise"
+    },
+    {
+      "impressions": 17,
+      "clicks": 0,
+      "ctr": 0,
+      "position": 15.5,
+      "page": "https://bisrepetita.ch/blog/tags/boxe-anglaise-geneve"
+    },
+    {
+      "impressions": 1,
+      "clicks": 0,
+      "ctr": 0,
+      "position": 8,
+      "page": "https://bisrepetita.ch/blog/tags/boxe-debutant"
+    },
+    {
+      "impressions": 2,
+      "clicks": 0,
+      "ctr": 0,
+      "position": 8.5,
+      "page": "https://bisrepetita.ch/blog/tags/boxe-fait-maigrir"
+    },
+    {
+      "impressions": 2,
+      "clicks": 0,
+      "ctr": 0,
+      "position": 7.5,
+      "page": "https://bisrepetita.ch/blog/tags/boxe-femme-debutante-geneve"
+    },
+    {
+      "impressions": 19,
+      "clicks": 0,
+      "ctr": 0,
+      "position": 13.2,
+      "page": "https://bisrepetita.ch/blog/tags/boxe-femme-geneve"
+    },
+    {
+      "impressions": 4,
+      "clicks": 0,
+      "ctr": 0,
+      "position": 11,
+      "page": "https://bisrepetita.ch/blog/tags/boxe-geneve"
+    },
+    {
+      "impressions": 1,
+      "clicks": 0,
+      "ctr": 0,
+      "position": 6,
+      "page": "https://bisrepetita.ch/blog/tags/boxe-tonifie-corps-femme"
+    },
+    {
+      "impressions": 16,
+      "clicks": 0,
+      "ctr": 0,
+      "position": 10.7,
+      "page": "https://bisrepetita.ch/blog/tags/coaching-prive"
+    },
+    {
+      "impressions": 1,
+      "clicks": 0,
+      "ctr": 0,
+      "position": 9,
+      "page": "https://bisrepetita.ch/blog/tags/combien-de-seances-de-boxe-par-semaine"
+    },
+    {
+      "impressions": 1,
+      "clicks": 0,
+      "ctr": 0,
+      "position": 7,
+      "page": "https://bisrepetita.ch/blog/tags/corporate"
+    },
+    {
+      "impressions": 5,
+      "clicks": 0,
+      "ctr": 0,
+      "position": 3,
+      "page": "https://bisrepetita.ch/blog/tags/corporate-boxing"
+    },
+    {
+      "impressions": 11,
+      "clicks": 0,
+      "ctr": 0,
+      "position": 14,
+      "page": "https://bisrepetita.ch/blog/tags/cours-boxe-feminin-geneve"
+    },
+    {
+      "impressions": 1,
+      "clicks": 0,
+      "ctr": 0,
+      "position": 13,
+      "page": "https://bisrepetita.ch/blog/tags/cours-de-boxe-femme"
+    },
+    {
+      "impressions": 1,
+      "clicks": 0,
+      "ctr": 0,
+      "position": 18,
+      "page": "https://bisrepetita.ch/blog/tags/cours-de-boxe-geneve"
+    },
+    {
+      "impressions": 7,
+      "clicks": 0,
+      "ctr": 0,
+      "position": 9.1,
+      "page": "https://bisrepetita.ch/blog/tags/equipement-boxe-debutant-geneve"
+    },
+    {
+      "impressions": 7,
+      "clicks": 0,
+      "ctr": 0,
+      "position": 9.6,
+      "page": "https://bisrepetita.ch/blog/tags/equipement-boxe-geneve"
+    },
+    {
+      "impressions": 2,
+      "clicks": 0,
+      "ctr": 0,
+      "position": 11.5,
+      "page": "https://bisrepetita.ch/blog/tags/frequence-entrainement-boxe-debutant"
+    },
+    {
+      "impressions": 1,
+      "clicks": 0,
+      "ctr": 0,
+      "position": 5,
+      "page": "https://bisrepetita.ch/blog/tags/gants-boxe-debutant"
+    },
+    {
+      "impressions": 11,
+      "clicks": 0,
+      "ctr": 0,
+      "position": 11.3,
+      "page": "https://bisrepetita.ch/blog/tags/premier-cours-boxe"
+    }
+  ],
+  "quick_wins": [
+    {
+      "query": "bis repetita",
+      "page": "https://bisrepetita.ch/",
+      "impressions": 377,
+      "clicks": 11,
+      "ctr": 0.0292,
+      "position": 5.6,
+      "reason": "position 5-15 + impressions ≥ 100 — push to top 5",
+      "suggested_action": "améliorer title/meta + bold keywords + maillage interne"
+    }
+  ],
+  "ctr_gaps": [],
+  "content_gaps": []
+}

@@ -34,6 +34,9 @@ const { tag, posts } = Astro.props;
 const metadata = {
   title: `#${tag} — Blog Bis Repetita`,
   description: `Articles tagges "${tag}". Conseils et actualites par Bis Repetita Geneve.`,
+  // Pages d'agrégation thin : noindex pour éviter la cannibalisation des vraies pages
+  // (elles rankaient sur des queries commerciales type "boxe femme genève"). Liens suivis.
+  noindex: true,
 };
 ---
 

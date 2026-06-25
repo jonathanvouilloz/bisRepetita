@@ -13,7 +13,9 @@ export default defineConfig({
   trailingSlash: "never",
   integrations: [
     sitemap({
-      filter: (page) => !page.includes("/styleguide"),
+      // Exclut /styleguide (dev) et /blog/tags/* (noindex — pages d'agrégation thin)
+      filter: (page) =>
+        !page.includes("/styleguide") && !page.includes("/blog/tags/"),
     }),
     mdx(),
     icon(),

@@ -2,6 +2,14 @@
   command = "npm run build"
   publish = "dist"
 
+# Force www → apex : évite la double indexation www/non-www qui dilue l'autorité
+# (canonicals pointent déjà vers https://bisrepetita.ch sans www)
+[[redirects]]
+  from = "https://www.bisrepetita.ch/*"
+  to = "https://bisrepetita.ch/:splat"
+  status = 301
+  force = true
+
 # Force trailing slash removal: /page/ → /page (301)
 # Cohérent avec Astro trailingSlash: "never" et les canonicals
 [[redirects]]
