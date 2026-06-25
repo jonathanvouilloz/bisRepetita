@@ -33,8 +33,8 @@ const profilPanels = [
         description: "Vous n'avez jamais mis les gants ? C'est le profil le plus fréquent chez nous. On part de zéro, sans jugement, avec un programme adapté.",
         image: coursPortrait,
         alt: "Débutant en cours de boxe à Genève",
-        ctaText: "Lire le guide débutant",
-        ctaHref: "/blog/cours-de-boxe-geneve-guide-debutant",
+        ctaText: "Voir une première séance",
+        ctaHref: "#premiere-seance",
     },
     {
         title: "La femme qui ose",
@@ -184,6 +184,83 @@ const faqs = [
         />
     </GsapReveal>
 
+    <!-- 4a. Première séance — absorbe le longtail "première séance / débuter" -->
+    <GsapReveal animation="fadeUp">
+        <Container class="py-16 md:py-24" id="premiere-seance">
+            <SectionTitle
+                badge="Premiers pas"
+                title={`Votre première séance de boxe, <span class='text-primary'>minute par minute</span>`}
+                class="mb-12"
+            />
+            <p class="text-lg text-foreground/70 max-w-3xl mx-auto -mt-6 mb-12 text-center">
+                Vous arrivez au studio, La Voie-Creuse 16. Vestiaire privé, douche et serviettes fournis — vous enfilez une tenue de sport, le reste est sur place. Voici comment se déroulent les 60 minutes, sans aucun sparring ni mise en situation de combat.
+            </p>
+            <div class="grid gap-8 md:grid-cols-2 max-w-4xl mx-auto">
+                <article class="border border-border rounded-2xl p-6">
+                    <h3 class="text-xl font-display font-medium mb-3">Échauffement <span class="text-primary text-base">· 10-15 min</span></h3>
+                    <p class="text-foreground/70">
+                        Corde à sauter, mobilité articulaire, shadow boxing léger. Le coach observe votre posture, votre coordination, votre souffle. C'est déjà du travail technique, même si ça n'en a pas l'air.
+                    </p>
+                </article>
+                <article class="border border-border rounded-2xl p-6">
+                    <h3 class="text-xl font-display font-medium mb-3">Technique de base <span class="text-primary text-base">· 20 min</span></h3>
+                    <p class="text-foreground/70">
+                        La garde, le jab, le direct arrière, le déplacement latéral. Le coach décompose chaque geste, vous le répétez, il corrige en temps réel : position des pieds, rotation du buste, retour de la main. C'est précis, pas brutal.
+                    </p>
+                </article>
+                <article class="border border-border rounded-2xl p-6">
+                    <h3 class="text-xl font-display font-medium mb-3">Travail aux pattes d'ours <span class="text-primary text-base">· 15 min</span></h3>
+                    <p class="text-foreground/70">
+                        Le coach enfile les pattes d'ours et vous enchaînez les combinaisons. Vous frappez une cible mouvante, vous dosez votre puissance, vous coordonnez bras et jambes. La partie que la plupart des débutants trouvent la plus addictive.
+                    </p>
+                </article>
+                <article class="border border-border rounded-2xl p-6">
+                    <h3 class="text-xl font-display font-medium mb-3">Retour au calme <span class="text-primary text-base">· 5-10 min</span></h3>
+                    <p class="text-foreground/70">
+                        Étirements, abdominaux légers, bilan de séance. Le coach vous donne un ou deux points à travailler pour la prochaine fois. Vous repartez fatigué mais jamais blessé, les bases posées et l'envie de revenir.
+                    </p>
+                </article>
+            </div>
+        </Container>
+    </GsapReveal>
+
+    <!-- 4a-bis. Les freins les plus courants — objection-handling débutant -->
+    <GsapReveal animation="fadeUp">
+        <Container class="py-16 md:py-24" id="freins">
+            <SectionTitle
+                badge="Lever les doutes"
+                title={`Les freins les plus courants <span class='text-primary'>(et pourquoi ils ne tiennent pas)</span>`}
+                class="mb-12"
+            />
+            <div class="grid gap-8 md:grid-cols-2 max-w-4xl mx-auto">
+                <article class="border border-border rounded-2xl p-6">
+                    <h3 class="text-xl font-display font-medium mb-3">« Je vais prendre des coups »</h3>
+                    <p class="text-foreground/70">
+                        Non. Pas au début, et jamais sans votre accord. Un cours débutant se concentre sur la technique : posture, garde, déplacements, frappes sur sac et pattes d'ours. Le sparring n'intervient qu'après plusieurs mois, uniquement si vous le souhaitez.
+                    </p>
+                </article>
+                <article class="border border-border rounded-2xl p-6">
+                    <h3 class="text-xl font-display font-medium mb-3">« J'ai 35 ans, c'est trop tard »</h3>
+                    <p class="text-foreground/70">
+                        C'est l'âge moyen de nos débutants. Commencer à 30, 35 ou 40 ans est tout à fait courant. Vous n'êtes pas là pour devenir champion du monde, mais pour vous sentir bien et progresser. Le corps s'adapte, le coach aussi.
+                    </p>
+                </article>
+                <article class="border border-border rounded-2xl p-6">
+                    <h3 class="text-xl font-display font-medium mb-3">« Je n'ai pas le physique »</h3>
+                    <p class="text-foreground/70">
+                        Personne ne l'a en arrivant. La condition physique se construit avec la pratique. Les premières séances sont calibrées pour votre niveau réel, pas pour celui que vous imaginez ne pas avoir. Au bout d'un mois, vous sentirez déjà la différence.
+                    </p>
+                </article>
+                <article class="border border-border rounded-2xl p-6">
+                    <h3 class="text-xl font-display font-medium mb-3">« L'ambiance des clubs me fait peur »</h3>
+                    <p class="text-foreground/70">
+                        Un frein réel. Les clubs d'association ont parfois une atmosphère compétitive qui ne convient pas à tout le monde. C'est une des raisons d'être du <a href="/blog/studio-boxe-prive-vs-salle-classique-geneve" class="text-primary hover:underline">studio privé</a> : un espace fermé, un coaching individualisé, aucun regard extérieur.
+                    </p>
+                </article>
+            </div>
+        </Container>
+    </GsapReveal>
+
     <!-- 4b. Choisir votre format — maillage interne pillar → 7 services -->
     <GsapReveal animation="fadeUp">
         <Container class="py-16 md:py-24" id="formats">
@@ -278,7 +355,7 @@ const faqs = [
             title="Nos articles sur la boxe à Genève"
             badge="Ressources"
             maxItems={6}
-            excludePostIds={["cours-de-boxe-geneve-guide-debutant", "boxe-femme-geneve-guide-complet"]}
+            excludePostIds={["boxe-femme-geneve-guide-complet"]}
         />
     </GsapReveal>
 

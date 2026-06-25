@@ -22,6 +22,14 @@
   to = "/equipe/nicolas-de-boccard"
   status = 301
 
+# Consolidation foyer "débutant" : l'article cannibalisait le pillar
+# /cours-de-boxe-geneve (slugs quasi identiques, les 2 rankaient mal).
+# Contenu narratif fusionné dans le pillar, article 301 vers le pillar.
+[[redirects]]
+  from = "/blog/cours-de-boxe-geneve-guide-debutant"
+  to = "/cours-de-boxe-geneve"
+  status = 301
+
 [[redirects]]
   from = "/nicolas-de-boccard"
   to = "/equipe/nicolas-de-boccard"
