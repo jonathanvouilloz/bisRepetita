@@ -1,0 +1,105 @@
+{
+  "keyword": "coach boxe genève",
+  "location": "Genève, Suisse",
+  "scanned_at": "2026-06-08T00:00:00Z",
+  "sample_size": 5,
+  "results": [
+    {
+      "rank": 1,
+      "url": "https://www.coachs-sportifs.ch/boxe-geneve",
+      "title": "Cours de boxe Genève | Coach privé boxe anglaise & Muay Thai",
+      "page_type": "service",
+      "competitor_type": "local-business",
+      "h1": "Coach de boxe à Genève",
+      "h2s": ["Cours privés de boxe anglaise & Muay Thai", "Tarifs", "Nos coachs"],
+      "covers": [
+        "pricing affiché (99–130 CHF/séance)",
+        "6 coaches nommés avec spécialisations",
+        "box anglaise + Muay Thai",
+        "à domicile / en extérieur / studio",
+        "satisfaction guarantee"
+      ],
+      "missing": [
+        "studio privé dédié exclusif",
+        "profil coach unique (personal brand)",
+        "progression mesurable / méthode",
+        "confidentialité client",
+        "photos du lieu"
+      ],
+      "eeat_signals": ["6 coaches nommés", "certifications mentionnées", "section témoignages"]
+    },
+    {
+      "rank": 2,
+      "url": "https://www.superprof.ch/cours/boxe/geneve/",
+      "title": "Cours de boxe à Genève - 22 profs dès 40 CHF/h",
+      "page_type": "directory",
+      "competitor_type": "marketplace",
+      "covers": ["comparaison de profils", "prix affiché", "filtres niveau/localité"],
+      "missing": ["contenu éditorial", "méthode", "studio dédié"],
+      "eeat_signals": ["avis clients par prof"]
+    },
+    {
+      "rank": 3,
+      "url": "https://www.apprentus.ch/cours-boxe/geneve",
+      "title": "4 cours particuliers de boxe à Genève",
+      "page_type": "directory",
+      "competitor_type": "marketplace",
+      "covers": ["mise en relation coach/élève", "tarifs affichés (66–126 CHF/h)", "reviews 4.9★"],
+      "missing": ["contenu unique", "méthode", "studio privé"],
+      "eeat_signals": ["4.9★ 43 899 avis plateforme", "couverture presse (Marie Claire, Figaro)"]
+    },
+    {
+      "rank": 4,
+      "url": "https://www.usinesportsclub.ch/cours-co/boxe",
+      "title": "Cours de Boxe à Genève – Entraînez-vous avec L'Usine Sports Club",
+      "page_type": "service",
+      "competitor_type": "local-business",
+      "covers": ["cours collectifs", "cardio boxe", "grande salle"],
+      "missing": ["coaching privé 1-on-1", "personnalisation"],
+      "eeat_signals": ["salle établie"]
+    },
+    {
+      "rank": 5,
+      "url": "https://boxygene.ch/",
+      "title": "Club de boxe à Genève - Boxygène",
+      "page_type": "homepage",
+      "competitor_type": "local-business",
+      "covers": ["cours enfants et adultes", "outil bien-être"],
+      "missing": ["coaching privé premium", "studio exclusif"],
+      "eeat_signals": ["entraineur diplômé"]
+    }
+  ],
+  "serp_features": {
+    "local_pack": true,
+    "people_also_ask": [
+      "Combien coûte un cours de boxe à Genève ?",
+      "Comment trouver un coach boxe à domicile Genève ?",
+      "Quelle différence entre boxe anglaise et Muay Thai ?"
+    ],
+    "featured_snippet": false,
+    "image_pack": false,
+    "video": false
+  },
+  "intent_signal": "local",
+  "common_ground": [
+    "présence du terme 'coach de boxe' ou 'coach boxe' dans H1/title",
+    "mention de Genève dans title et H1",
+    "tarifs affichés ou mentionnés",
+    "plusieurs formats / styles de boxe proposés"
+  ],
+  "gap": {
+    "description": "Aucun concurrent ne propose la page d'un coach unique nommé avec studio privé exclusif, méthode documentée et angle confidentialité/discrétion. Tous sont soit des marketplaces multi-coachs, soit des clubs de groupe.",
+    "opportunity_score": "high"
+  },
+  "weakness": [
+    "coachs-sportifs.ch : multi-coachs anonymisés — pas de personal brand fort",
+    "marketplaces : zéro contenu éditorial, que du listing",
+    "aucun concurrent ne couvre la progression mesurable sur le long terme"
+  ],
+  "recommended_angle": "Seul coach boxe privé à Genève avec studio dédié : Nicolas de Boccard, méthode personnalisée, confidentialité totale. L'angle 'coach unique qui vous connaît' vs les réseaux de coachs interchangeables.",
+  "title_h1_patterns": {
+    "dominant_form": "Coach de boxe à Genève (avec article 'de')",
+    "query_form": "coach boxe genève (sans article — forme GSC)",
+    "recommendation": "Utiliser 'coach boxe' dans le title (exact match query) et 'coach de boxe' dans le body (forme naturelle française)"
+  }
+}
